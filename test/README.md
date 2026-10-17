@@ -2,41 +2,35 @@
 
 ## 1. Project Overview
 
-This folder contains the progressive quality assessment of PyTodo Pro for the UTP Software Testing and Quality Assurance group project. Document findings and add evidence or test scripts under `test/`; do not modify the application's Python code or logic.
+This folder contains the progressive quality assessment of PyTodo Pro application for the UTP September 2026 Semester - Software Testing and Quality Assurance group project. Document findings and add evidence or test scripts under `test/`.
 
 | Item | Details |
 | --- | --- |
-| Course codes | TEB3433 / TFB3433 - confirm the code applicable to this group |
+| Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance|
 | Semester | September 2026 |
-| Lecturer | Dr Abdullateef |
-| Group / tutorial | [To be completed] |
-| Repository URL | [To be completed] |
-| Submission deadline | End of Course Week 12 - confirm the calendar date |
-| Application version / commit tested | [To be recorded for each execution] |
-
-**Current status:** documentation scaffold only. Phase READMEs contain deliverable checklists and task headings, not completed answers. An existing screenshot is retained in `01_Black_Box/evidences/`; it still needs to be linked to a documented test execution. No automated test scripts are currently present.
+| Lecturer | Ts. Dr Abdullateef Balogun  |
+| Group / tutorial | Wednesday - Group 2 |
+| Repository URL | [GitHub Repository](https://github.com/DariusShin/STQA-pytodo) |
 
 ## 2. Team Members and Responsibilities
 
 Replace the placeholders with the four group members. Roles coordinate work; every member should contribute across phases. Record role rotation and individual contributions as the project progresses.
 
-| Student name | Student ID | Coordination role | Contributions / reviews |
-| --- | --- | --- | --- |
-| [Member 1] | [ID] | QA/Test Lead | [To be completed] |
-| [Member 2] | [ID] | Test Design Coordinator | [To be completed] |
-| [Member 3] | [ID] | Automation/Tool Coordinator | [To be completed] |
-| [Member 4] | [ID] | Defect & Metrics Coordinator | [To be completed] |
+| Student name | Student ID | Coordination role |
+| --- | --- | --- |
+| Eu Kwan Ik  | 22001674 | QA/Test Lead |
+| Mohamd Shukri Bin Abd Ajed | 22006225 | Test Design Coordinator |
+| Darius Lee Shin | 220032369 | Automation/Tool Coordinator |
+| Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator |
 
 ## 3. Deliverable Structure and Progress
 
-The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standards integration and the final presentation during Course Week 12, rather than an additional project execution week.
-
-Source: `STQA Group Project.pdf`, Deliverable Contents on pages 2-5. Page 6 has no separate Deliverable Contents list for Phase 09, so that README reproduces its five integration/presentation requirements. Its introductory guidance also asks the group to briefly contextualise the completed work using ISO 9001, ISO/IEC 25010, CMMI, Agile/DevOps, CI/CD and continuous testing.
+The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standards integration and the final presentation during Course Week 12.
 
 | Phase | Folder / deliverable instructions | Status |
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | Not started |
-| 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | Not started |
+| 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
 | 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | Not started |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
@@ -45,7 +39,7 @@ Source: `STQA Group Project.pdf`, Deliverable Contents on pages 2-5. Page 6 has 
 | 08 | [SQA, metrics and final quality evaluation](08_Final_QA_Report/README.md) | Not started |
 | 09 | [Standards integration, presentation and live demonstration](09_Presentation/README.md) | Not started |
 
-Update status to In progress, Ready for review or Completed as supported by the artefacts. Tick a checklist only after its answer, evidence and peer review are complete. Revisit earlier work when later testing changes a finding or assumption.
+Update status to `In progress`, `Ready for review` or `Completed` as supported by the artefacts. Tick a checklist only after its answer, evidence and peer review are complete. Revisit earlier work when later testing changes a finding or assumption.
 
 ## 4. Environment and Tools
 
@@ -53,8 +47,8 @@ Record the actual environment used; proposed tools below are not yet installed o
 
 | Component | Purpose | Version / configuration |
 | --- | --- | --- |
-| Operating system | Execution environment | [OS and version] |
-| Python | Application and Python test execution | [Record `python --version`] |
+| Operating system | Execution environment | Windows 11, MacOS 26.5.2 |
+| Python | Application and Python test execution | Python 3.14.7 |
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
 | Browser(s) | Manual GUI and compatibility testing | [Name, version, viewport and zoom] |
@@ -64,123 +58,174 @@ Record the actual environment used; proposed tools below are not yet installed o
 | UI automation tool (to be selected) | Selected browser regression workflows | [Tool, browser and driver versions if applicable] |
 | Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
 | Accessibility tools (to be selected) | Basic WCAG-oriented review and manual checks | [Tools, versions and checks] |
-| Git | Version and contribution tracking | [Record `git --version`] |
+| Git | Version and contribution tracking | git version 2.55.0 |
 
 Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.
 
-## 5. Application Setup
+## 5. Application Setup Using the Phase 02 Environment
 
-Run commands from the **application repository root**, containing `app.py`, `requirements.txt` and `test/`. Use a Python installation compatible with Flask 3.0.3 and record the version verified by the group.
+The virtual environment and installed application/testing packages can live entirely inside `test/02_White_Box_Coverage/.venv/`. A virtual environment controls which Python interpreter and packages are used; its location does not restrict which application files the tests can import. Keep the original `app.py` and `helpers.py` in the application root.
 
-### 5.1 Create and activate a virtual environment
+No installation is performed by this README update. The commands below are setup instructions for the group. Existing environments can remain in place; do not move an existing virtual environment into this folder. Create a new one here instead.
+
+### 5.1 Create and activate the local virtual environment
+
+Start in the **application repository root**, containing `app.py`, `requirements.txt` and `test/`, in a terminal without another environment activated. Choose the commands for your platform.
 
 macOS / Linux:
 
 ```bash
-python3 -m venv test/.venv
-source test/.venv/bin/activate
+cd test/02_White_Box_Coverage
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 Windows PowerShell:
 
 ```powershell
-py -m venv test/.venv
-.\test\.venv\Scripts\Activate.ps1
+cd test/02_White_Box_Coverage
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
 ```
 
-The environment belongs to the local machine; exclude it from commits. If an existing environment is reused, record that choice and its package versions.
+All subsequent commands in Sections 5 and 6 run from **`test/02_White_Box_Coverage/`**, with this environment activated. Use a Python version verified by the group to work with the dependencies.
 
-### 5.2 Install dependencies and start PyTodo Pro
-
-With the environment activated:
+Confirm the interpreter before installing packages:
 
 ```bash
-python -m pip install -r requirements.txt
-python app.py
+python -c "import sys; print(sys.executable)"
+python --version
+python -m pip --version
 ```
 
-Open <http://127.0.0.1:5000/>. The API base is <http://127.0.0.1:5000/api>. Starting with `python app.py` initialises the SQLite tables and default categories if needed. There is no pre-seeded login; register a dedicated test account through the UI or API. Stop the server with `Ctrl+C`.
+The interpreter and pip paths should point inside this folder's `.venv`. Activation is optional if the interpreter is invoked explicitly: `.venv/bin/python` on macOS/Linux or `.\.venv\Scripts\python.exe` on Windows.
 
-### 5.3 Test data and database handling
-
-Record account identifiers, task data, prerequisites and cleanup steps for each test. Use dedicated test accounts and preserve existing data needed by other team members. The application uses the database beside `app.py`, so restarting the server does not reset the data.
-
-For future Flask integration tests, use test-side fixtures to direct the application's `DATABASE` variable to a temporary SQLite file, initialise it and restore the original setting after execution. Keep fixtures under `test/`; no source-file changes are required. Pure helper-function tests do not need a server or database.
-
-## 6. Running Automated Tests
-
-**Planned instructions:** these commands become usable after the group adds the corresponding scripts. At this scaffold stage, pytest will find no tests; that outcome is not a passing suite. Record actual results only after running implemented tests.
-
-### 6.1 Install the proposed Python testing tools
-
-In the activated environment, from the repository root:
+### 5.2 Install dependencies locally
 
 ```bash
-python -m pip install pytest pytest-cov
-python -m pip show pytest pytest-cov
+python -m pip install --no-cache-dir -r ../../requirements.txt pytest pytest-cov
+python -m pip check
+python -m pip show Flask pytest pytest-cov
 ```
 
-Once validated, record exact versions and add a test-only dependency file under `test/` for reproducible installation. Document additional API, UI or performance dependencies before using them.
+The requirements file is read from the application root, while the packages are installed into the active Phase 02 `.venv`. `--no-cache-dir` avoids creating a pip download cache for this installation. Do not use `--user` or `--system-site-packages` for this setup. Testing `helpers.py` alone needs pytest/pytest-cov and Python's standard library; importing/testing `app.py` also requires Flask and its dependencies.
 
-### 6.2 Script conventions and prerequisites
-
-Place scripts in the appropriate phase folder. Use pytest filenames such as `test_urgency.py` and functions named `test_*`. Keep a regression suite under `06_Automation_Regression/` and map each automated test to its original requirement/manual test ID.
-
-Pure unit tests and tests using Flask's test client do not require a live server. Tests making real HTTP requests or driving a browser require the server in another terminal, plus documented test accounts, data and browser prerequisites. Add exact tool-specific commands here when those suites exist.
-
-### 6.3 Execute Python suites
-
-All implemented pytest tests:
+Record exact installed versions after validating the setup. A future `requirements-test-lock.txt` can be kept beside the Phase 02 README. To generate it from this dedicated environment once validated:
 
 ```bash
-python -m pytest test/ -v -o cache_dir=test/.pytest_cache
+python -m pip freeze > requirements-test-lock.txt
 ```
 
-Selected white-box tests:
+Once that file exists, teammates can install the recorded dependencies with:
 
 ```bash
-python -m pytest test/02_White_Box_Coverage/ -v -o cache_dir=test/.pytest_cache
+python -m pip install --no-cache-dir -r requirements-test-lock.txt
 ```
 
-Focused regression suite:
+The lock file is not created by this documentation update. Each teammate creates their own `.venv`; do not commit or copy the environment. Exclude `.venv/`, `.pytest_cache/` and other local caches using a test-side ignore file when implementing the workspace. Keep the dependency record and submission evidence in version control.
+
+### 5.3 Start the application for manual or live-server testing
+
+From the Phase 02 folder, with its environment activated:
 
 ```bash
-python -m pytest test/06_Automation_Regression/ -v -o cache_dir=test/.pytest_cache
+python -B ../../app.py
 ```
 
-### 6.4 Collect coverage for selected code units
+Open <http://127.0.0.1:5000/>. The API base is <http://127.0.0.1:5000/api>. This startup initialises SQLite tables and default categories if needed. There is no pre-seeded login; register a dedicated test account. Stop the server with `Ctrl+C`.
 
-Before the coverage command, direct the coverage data file into the test folder.
+The environment's location does **not** relocate the application's database: the unchanged application still uses `pytodo_pro.db` beside `app.py`. Restarting the server does not reset it. Record test data and cleanup steps, and preserve data needed by teammates.
+
+### 5.4 Isolate future Flask integration tests
+
+Keep fixtures in `02_White_Box_Coverage/conftest.py`. Before database initialisation or requests, use pytest's `monkeypatch` fixture to redirect the application's module-level `DATABASE` variable to a temporary SQLite file, and initialise that test database. Enable Flask testing mode through the fixture and use Flask's test client. Restore settings and close connections during teardown. These are test-side runtime changes; do not edit the application source or replace its real database.
+
+Pure helper tests need no server or database. Use explicit `today`/`now` arguments for deterministic date/time tests. `tmp_path` test databases may live in the operating system's temporary directory; a virtual environment is dependency isolation, not a filesystem sandbox.
+
+## 6. Running Automated Tests from Phase 02
+
+**Planned instructions:** no automated scripts are currently present. These commands become usable after the corresponding tests are added. No tests collected is not a passing suite.
+
+### 6.1 Local workspace and imports
+
+Suggested layout; only the README exists at this stage:
+
+```text
+02_White_Box_Coverage/
+  README.md
+  .venv/                         # local interpreter and packages; do not commit
+  requirements-test-lock.txt     # create after dependency validation
+  conftest.py                    # future database/client fixtures, if needed
+  test_helpers.py                # future helper-function tests
+  test_app_routes.py             # future selected Flask tests
+  .pytest_cache/                 # generated local cache
+  .coverage                      # generated coverage data
+  evidences/                     # generated reports and captured evidence
+```
+
+The commands use `--rootdir=.` to anchor pytest in Phase 02 and `-o pythonpath=../..` to make the original application modules importable. Setting pytest's root directory alone does not add application modules to Python's import path. No source copying, application installation or changes to application files are required.
+
+`python -B` prevents Python bytecode files being generated beside imported application modules. Keep test filenames unique across phases when running multiple folders together.
+
+### 6.2 Execute selected white-box tests
+
+From `test/02_White_Box_Coverage/`, with its `.venv` activated:
+
+```bash
+python -B -m pytest . --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v
+```
+
+Tests of `helpers.py` and tests using Flask's test client need no running server. Tests using real HTTP requests or browser automation need a server in a separate terminal, documented test data and any additional tool dependencies.
+
+### 6.3 Collect statement and branch coverage
+
+Keep the coverage data file in the Phase 02 working directory. Set this before the coverage run to override any inherited coverage-file setting.
 
 macOS / Linux:
 
 ```bash
-export COVERAGE_FILE=test/02_White_Box_Coverage/.coverage
+export COVERAGE_FILE=.coverage
 ```
 
 Windows PowerShell:
 
 ```powershell
-$env:COVERAGE_FILE = "test/02_White_Box_Coverage/.coverage"
+$env:COVERAGE_FILE = ".coverage"
 ```
 
-Then, on either platform:
+Then run, on either platform:
 
 ```bash
-python -m pytest test/02_White_Box_Coverage/ -v -o cache_dir=test/.pytest_cache --cov=helpers --cov-branch --cov-report=term-missing --cov-report=html:test/02_White_Box_Coverage/evidences/coverage
+python -B -m pytest . --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v --cov=helpers --cov-branch --cov-report=term-missing --cov-report=html:evidences/coverage --cov-report=xml:evidences/coverage.xml --junitxml=evidences/execution-results.xml
 ```
 
-This example measures `helpers.py` only. Adjust coverage targets to match the units justified in Phase 02 and report that scope explicitly. The HTML entry point will be `test/02_White_Box_Coverage/evidences/coverage/index.html`. Explain uncovered statements/branches and coverage limitations rather than treating coverage as proof of correctness.
+The terminal shows test results and coverage. Open `evidences/coverage/index.html` for annotated source and uncovered branches. The XML files preserve machine-readable coverage and test execution results. Save a terminal screenshot/log with the command, environment, run date/time and application commit.
 
-### 6.5 Preserve execution results
+This command measures `helpers.py` only. Once selected `app.py` tests exist, add `--cov=app` alongside `--cov=helpers`. That reports coverage across the whole measured `app.py` module, even if only selected routes are tested; describe untested routes and the resulting denominator. Explain uncovered statements/branches, failing assertions and scope limitations. Do not change an assertion to match defective behaviour simply to obtain a green suite.
 
-For an implemented regression suite, this command saves a JUnit XML execution report:
+### 6.4 Run later suites using the same environment
+
+The Phase 02 environment can also execute other phase tests without installing dependencies in the application root. From Phase 02, a future focused regression run is:
 
 ```bash
-python -m pytest test/06_Automation_Regression/ -v -o cache_dir=test/.pytest_cache --junitxml=test/06_Automation_Regression/execution-results.xml
+python -B -m pytest ../06_Automation_Regression/ --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v --junitxml=../06_Automation_Regression/execution-results.xml
 ```
 
-Record the command, environment, application commit, test data, run time, summary and related defects alongside each report. pytest exit code 0 indicates success, 1 indicates test failures and 5 indicates no tests collected. Investigate other non-zero exits as execution/configuration problems. Report skipped tests separately; explain any mapping to the course's test statuses.
+To collect all implemented pytest suites under `test/`:
+
+```bash
+python -B -m pytest .. --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v
+```
+
+Install and document additional dependencies in the chosen environment before using later suites. Alternatively, a later phase can have its own dedicated environment with its own dependency record.
+
+### 6.5 Interpret and preserve results
+
+Record command, environment, application commit, test data, execution time, test totals and related defect IDs. pytest exit code 0 indicates a successful run, 1 indicates test failures and 5 indicates no tests collected. Investigate other non-zero exits as execution/configuration problems. Report skips separately and explain their mapping to the course's test statuses.
+
+A failing specification-based test can be valid evidence of an application defect. A high coverage percentage does not imply the covered behaviour is correct. Preserve failing-test output and reproduction evidence without modifying production logic.
+
+Setup references: [Python virtual environments](https://docs.python.org/3/library/venv.html), [pytest import-path configuration](https://docs.pytest.org/en/stable/reference/reference.html#confval-pythonpath), [pytest-cov report output](https://pytest-cov.readthedocs.io/en/latest/reporting.html).
 
 ## 7. Documentation and Evidence Conventions
 
