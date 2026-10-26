@@ -31,7 +31,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | Not started |
+| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - planning complete |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
 | 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
