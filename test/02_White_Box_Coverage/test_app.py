@@ -93,6 +93,20 @@ class TestDatabaseHelpers:
             ] == original
             assert db.execute("SELECT username FROM users").fetchone()[0] == "student"
 
+    def test_init_db_with_no_default_categories(self, flask_app, monkeypatch):
+        # Exercise the zero-iteration path without changing production defaults.
+        monkeypatch.setattr(app_module, "DEFAULT_CATEGORIES", [])
+        app_module.init_db()
+        with flask_app.app_context():
+            db = app_module.get_db()
+            assert db.execute("SELECT COUNT(*) FROM categories").fetchone()[0] == 0
+            tables = {
+                row["name"] for row in db.execute(
+                    "SELECT name FROM sqlite_master WHERE type = 'table'"
+                )
+            }
+            assert {"users", "categories", "tasks"} <= tables
+
     def test_category_lookups_find_seeded_category(self, initialized_app):
         with initialized_app.app_context():
             db = app_module.get_db()
