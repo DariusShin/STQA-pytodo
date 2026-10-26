@@ -4,7 +4,7 @@
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester / Lab Group | September 2026 / Wednesday Lab - Group 2 |
-| Phase status | Planning complete - execution not started |
+| Phase status | Planning complete; 54 detailed cases drafted in [test_cases.md](test_cases.md), awaiting peer review - execution not started |
 
 ## Deliverable Checklist
 
@@ -61,7 +61,7 @@ Expected results must be written before execution and must cite one of these sou
 | `TC-A11Y-` | Accessibility checks | 001-018 |
 | `DEF-` | New defects, continuing the shared defect log | from `DEF-004` |
 
-Detailed cases using the full test-case template (ID, feature, technique, objective, preconditions, test data, steps, expected, actual, status, evidence, defect ID) go in `test_cases.md` in this folder, following the Week 1 format. This README keeps the summary registers, matrices and findings.
+Detailed cases using the full test-case template (ID, feature, technique, objective, preconditions, test data, steps, expected, actual, status, evidence, defect ID) are in [test_cases.md](test_cases.md), together with the shared preconditions, fixture sets and a review sign-off table, following the Week 1 format. This README keeps the summary registers, matrices and findings.
 
 ### 0.5 Environment to record
 
@@ -98,7 +98,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | Task | Coordinator | Execution support |
 | --- | --- | --- |
 | Task 1 - GUI checklist | Mohamd Shukri Bin Abd Ajed (Test Design) | All members |
-| Task 2 - Compatibility matrix | Darius Lee Shin (Automation/Tool) | Darius Lee Shin runs C05, C06 and C08 on the Windows 11 laptop (Acer Nitro 5); another member reviews the captures |
+| Task 2 - Compatibility matrix | Darius Lee Shin (Automation/Tool) | Darius Lee Shin runs C04 on the MacBook and C05-C06 on the Windows 11 laptop (Acer Nitro 5); another member reviews the captures |
 | Task 3 - Usability | Eu Kwan Ik (QA/Test Lead) | Two or three participants who did not design the cases |
 | Task 4 - Accessibility | Darius Lee Shin (Automation/Tool) | Ameera Alysha binti Azlan (manual keyboard/screen-reader checks) |
 | Task 5 - Defects and recommendations | Ameera Alysha binti Azlan (Defect & Metrics) | Eu Kwan Ik (review and final integration) |
@@ -107,7 +107,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | --- | --- | --- |
 | 1 | Confirm the browsers and devices each member can use; fix the configuration matrix | [2.1](#21-configurations) filled in |
 | 2 | Seed the test data set; record the environment | [0.5](#05-environment-to-record) and [0.6](#06-test-data-set) |
-| 3 | Write detailed cases in `test_cases.md` with expected results before execution | Peer-reviewed cases |
+| 3 | Write detailed cases in [test_cases.md](test_cases.md) (drafted 2026-10-27) with expected results before execution | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results |
 | 5 | Run the compatibility smoke set on every other configuration | [Task 2](#task-2) matrix |
 | 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings |
@@ -129,23 +129,23 @@ Coordinators own the preparation and review of each task. Every member executes 
 | Evidence | Location | Filename pattern |
 | --- | --- | --- |
 | GUI, accessibility and usability screenshots | `evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.png`, e.g. `TC-GUI-013-delete-dialog-20261028.png` |
-| Compatibility captures | `<browser>/<viewport>/` (the existing `chrome/desktop`, `chrome/tablet` and `chrome/mobile` folders, plus folders such as `safari/desktop` and `edge/desktop`) | `<TC-ID>-<YYYYMMDD>.png` |
+| Compatibility captures | `<os>-<browser>/<viewport>/`: the existing `mac-chrome/desktop`, `mac-chrome/tablet` and `mac-chrome/mobile` folders, plus `mac-firefox/desktop`, `win-chrome/desktop` and `win-firefox/desktop` (see [2.1](#21-configurations)) | `<TC-ID>-<YYYYMMDD>.png` |
 | Lighthouse and axe reports | `evidences/a11y-reports/` | `<tool>-<page>-<YYYYMMDD>.html` or `.json` |
 | Usability session notes | `evidences/usability/` | `TC-USA-<id>-P<participant>.md` (no personal data) |
 
-The existing captures in `chrome/desktop`, `chrome/tablet` and `chrome/mobile` reuse Week 1 `TC-BB-` IDs. Map them to `TC-CMP-` scenarios in the [compatibility matrix](#22-compatibility-smoke-scenarios) and list in each cell which `TC-BB-` captures support it. Do not rename them.
+The existing captures in `mac-chrome/desktop`, `mac-chrome/tablet` and `mac-chrome/mobile` reuse Week 1 `TC-BB-` IDs. Map them to `TC-CMP-` scenarios in the [compatibility matrix](#22-compatibility-smoke-scenarios) and list in each cell which `TC-BB-` captures support it. Keep their filenames. The parent folder was renamed from `chrome/` to `mac-chrome/` on 2026-10-27 to match the `<os>-<browser>` convention.
 
-#### What the existing `chrome/` captures are, and are not
+#### What the existing `mac-chrome/` captures are, and are not
 
 | Folder | Content (checked 2026-10-27) | Counts as |
 | --- | --- | --- |
-| `chrome/desktop/` (72 files, 1440x900) | Byte-identical copy of `01_Black_Box/evidences/` | Baseline C01. Not a new Week 3 run |
-| `chrome/tablet/` (72 files, 768x1024) | Week 1 cases re-run with tablet accounts (`w1t_…`) | Compatibility evidence for C02 |
-| `chrome/mobile/` (102 files, 390x844) | Week 1 cases re-run with mobile accounts (`w1m_…`); includes extra `-full-document` captures | Compatibility evidence for C03 |
+| `mac-chrome/desktop/` (72 files, 1440x900) | Byte-identical copy of `01_Black_Box/evidences/` | Baseline C01. Not a new Week 3 run |
+| `mac-chrome/tablet/` (72 files, 768x1024) | Week 1 cases re-run with tablet accounts (`w1t_…`) | Compatibility evidence for C02 |
+| `mac-chrome/mobile/` (102 files, 390x844) | Week 1 cases re-run with mobile accounts (`w1m_…`); includes extra `-full-document` captures | Compatibility evidence for C03 |
 
 These captures were judged against **functional** expected results from Week 1, so they are compatibility and responsiveness evidence, not GUI testing. They may be cited as supporting evidence for a `TC-GUI-` case, but each GUI case still needs its own expected result and verdict.
 
-Before citing the tablet and mobile captures, the person who took them must record which DevTools mode they used: a **Responsive** window with device type Desktop, or a **device preset** such as iPhone 14 with mobile emulation. The 390 px captures show the page laid out at 390 px with normal-size text. Because the page has no viewport tag (H1), true mobile emulation or a real phone would normally lay it out at about 980 px and scale it down. The captures therefore probably came from a resized window and may not show H1. Re-check H1 with a device preset, Safari's Responsive Design Mode or a real phone (C07).
+Before citing the tablet and mobile captures, the person who took them must record which DevTools mode they used: a **Responsive** window with device type Desktop, or a **device preset** such as iPhone 14 with mobile emulation. The 390 px captures show the page laid out at 390 px with normal-size text. Because the page has no viewport tag (H1), true mobile emulation or a real phone would normally lay it out at about 980 px and scale it down. The captures therefore probably came from a resized window and may not show H1. Re-check H1 with a Chrome device preset or a real phone (C07).
 
 ### 0.10 Pre-execution inspection notes
 
@@ -162,7 +162,7 @@ The templates (`templates/*.html`) and `static/style.css` were read while planni
 | H7 | Error messages have no `role="alert"` or live region | TC-A11Y-015 |
 | H8 | No skip link before the navigation bar | TC-A11Y-009 |
 | H9 | `index.html` renders the task title with the `safe` filter | TC-GUI-020 checks only literal display; pass any script behaviour to the Week 5 STRIDE table |
-| H10 | Seen in existing evidence [`chrome/mobile/TC-BB-034.jpg`](chrome/mobile/TC-BB-034.jpg): at 390 px the navigation bar is cramped. The brand wraps to `PyTodo / Pro`, `Log out` breaks across lines, and the links sit against the brand with no gap. This follows from `.topnav`/`.nav-links` being a non-wrapping flex row with fixed `2rem` side padding and no `@media` rule | TC-GUI-005 on C03, TC-CMP-007 on C02, C03 and C07, TC-A11Y-012 reflow. If confirmed, log it as a defect with a fresh dated capture |
+| H10 | Seen in existing evidence [`mac-chrome/mobile/TC-BB-034.jpg`](mac-chrome/mobile/TC-BB-034.jpg): at 390 px the navigation bar is cramped. The brand wraps to `PyTodo / Pro`, `Log out` breaks across lines, and the links sit against the brand with no gap. This follows from `.topnav`/`.nav-links` being a non-wrapping flex row with fixed `2rem` side padding and no `@media` rule | TC-GUI-005 on C03, TC-CMP-007 on C02, C03 and C07, TC-A11Y-012 reflow. If confirmed, log it as a defect with a fresh dated capture |
 
 H10 comes from a capture taken for a functional case, so it remains a hypothesis until a `TC-GUI-` or `TC-CMP-` case reproduces it. The same capture has the mouse pointer covering the `Filter` button. Move the pointer out of the way when capturing new Week 3 evidence.
 
@@ -215,71 +215,81 @@ Confirm availability in step 1 and delete rows that cannot be run. Record a reas
 
 | Config | OS | Browser (version) | Viewport / device | Type | Available? |
 | --- | --- | --- | --- | --- | --- |
-| C01 (baseline) | macOS 26.5.2 | Chrome [version] | 1440x900 desktop | Real | Yes - existing `chrome/desktop` captures |
-| C02 | macOS 26.5.2 | Chrome [version] | Tablet preset, e.g. iPad Air 820x1180 | Emulated | Yes - existing `chrome/tablet` captures |
-| C03 | macOS 26.5.2 | Chrome [version] | Mobile preset, e.g. iPhone 14 390x844 | Emulated | Yes - existing `chrome/mobile` captures |
-| C04 | macOS 26.5.2 | Safari 26.5.2 | 1440x900 desktop; optional iPhone preset in Responsive Design Mode for H1/H10 | Real (preset is emulated) | Yes - installed on the MacBook (checked 2026-10-27) |
-| C05 | Windows 11 [build] on Acer Nitro 5 (2021) | Firefox [version] | [native resolution] desktop at [scaling]% | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-firefox-c06-edge-c08-chrome) |
-| C06 | Windows 11 [build] on Acer Nitro 5 (2021) | Microsoft Edge [version] | [native resolution] desktop at [scaling]% | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-firefox-c06-edge-c08-chrome) |
-| C07 | iOS or Android | Safari or Chrome mobile [version] | Physical phone | Real | Optional - blocked by default: `app.py` uses `app.run(debug=True)`, which listens only on 127.0.0.1, and the project does not modify the application |
-| C08 | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version] | [native resolution] desktop at [scaling]% | Real | Optional - install Chrome if not present; separates OS differences from browser differences |
+| Config | Evidence folder | OS | Browser (version) | Viewport / device | Type | Available? |
+| --- | --- | --- | --- | --- | --- | --- |
+| C01 (baseline) | `mac-chrome/desktop/` | macOS 26.5.2 | Chrome [version] | 1440x900 desktop | Real | Yes - existing captures |
+| C02 | `mac-chrome/tablet/` | macOS 26.5.2 | Chrome [version] | Tablet preset, e.g. iPad Air 820x1180 | Emulated | Yes - existing captures |
+| C03 | `mac-chrome/mobile/` | macOS 26.5.2 | Chrome [version] | Mobile preset, e.g. iPhone 14 390x844 | Emulated | Yes - existing captures |
+| C04 | `mac-firefox/desktop/` | macOS 26.5.2 | Firefox [version] | 1440x900 desktop | Real | Planned - Firefox must be installed on the MacBook (not installed as of 2026-10-27); see [2.4.1](#241-macos-firefox-run-c04) |
+| C05 | `win-chrome/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version] | [native resolution] desktop at [scaling]% | Real | Planned - install Chrome on the Windows laptop if not present; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
+| C06 | `win-firefox/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Firefox [version] | [native resolution] desktop at [scaling]% | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
+| C07 | `<os>-<browser>/mobile/` | iOS or Android | Chrome mobile [version] | Physical phone | Real | Optional - blocked by default: `app.py` uses `app.run(debug=True)`, which listens only on 127.0.0.1, and the project does not modify the application |
 
-Firefox and Edge are not installed on the MacBook (checked 2026-10-27), so they are tested only on Windows 11.
+**Selection rationale.** Exhaustive compatibility testing is not feasible, so the desktop configurations form a 2x2 design: two operating systems (macOS, Windows 11) by two browsers (Chrome on the Blink engine, Firefox on the Gecko engine). Comparing the same browser across both operating systems isolates OS effects; comparing both browsers on the same OS isolates browser effects. Chrome device mode on macOS adds tablet and mobile widths.
+
+**Excluded configurations.** The team excluded these on 2026-10-27 to keep the scope manageable:
+
+| Excluded | Reason | Residual risk |
+| --- | --- | --- |
+| Microsoft Edge on Windows 11 | Edge uses the same Blink engine as Chrome, so it adds the least new coverage for the effort | Edge-specific features and settings are untested |
+| Safari on macOS | Not needed for the 2x2 design above | The WebKit engine, which also underlies every browser on iOS, is untested |
+
+Record both exclusions as limitations in [2.5](#25-interpretation-complete-after-execution) and in the Week 8 residual-risk assessment.
 
 #### 2.2 Compatibility smoke scenarios
 
 Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic difference, `Blocked` or `Not Run`.
 
-| ID | Scenario | Expected on every configuration | C01 | C02 | C03 | C04 | C05 | C06 | C07 | C08 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | | | | | | | | |
-| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | | | | | | | | |
-| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | | | | | | | | |
-| TC-CMP-004 | Complete and reopen | Button and strikethrough update | | | | | | | | |
-| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | | | | | | | | |
-| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | | | | | | | | |
-| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | | | | | | | | |
-| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | | | | | | | | |
+| ID | Scenario | Expected on every configuration | C01 | C02 | C03 | C04 | C05 | C06 | C07 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | | | | | | | |
+| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | | | | | | | |
+| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | | | | | | | |
+| TC-CMP-004 | Complete and reopen | Button and strikethrough update | | | | | | | |
+| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | | | | | | | |
+| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | | | | | | | |
+| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | | | | | | | |
+| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | | | | | | | |
 
 #### 2.3 Execution order
 
 1. C01 baseline, using the existing captures where they cover the scenario.
-2. C02 and C03, using the existing captures after their DevTools mode is recorded ([0.9](#what-the-existing-chrome-captures-are-and-are-not)). Re-run only the scenarios they do not cover.
-3. C04 Safari on the MacBook ([2.4.1](#241-macbook-safari-run-c04)).
-4. C05, C06 and optionally C08 on Windows 11 ([2.4.2](#242-windows-11-run-c05-firefox-c06-edge-c08-chrome)).
+2. C02 and C03, using the existing captures after their DevTools mode is recorded ([0.9](#what-the-existing-mac-chrome-captures-are-and-are-not)). Re-run only the scenarios they do not cover.
+3. C04 Firefox on the MacBook ([2.4.1](#241-macos-firefox-run-c04)).
+4. C05 and C06 on Windows 11 ([2.4.2](#242-windows-11-run-c05-chrome-c06-firefox)).
 5. C07 only if a way to reach the app is found without modifying it. Otherwise mark the column `Blocked` and give the reason.
 
 #### 2.4 Platform run plans
 
-##### 2.4.1 MacBook Safari run (C04)
+##### 2.4.1 macOS Firefox run (C04)
 
-| Step | Action |
-| --- | --- |
-| 1 | In Safari -> Settings -> Advanced, turn on "Show features for web developers". This adds the Develop menu, Web Inspector and Responsive Design Mode |
-| 2 | Start the app with `python app.py` at the same commit as C01 and log in with the seeded account from [0.6](#06-test-data-set) |
-| 3 | Run TC-CMP-001 to TC-CMP-008 in a 1440x900 window. Save captures to `safari/desktop/` |
-| 4 | Optional: Develop -> Enter Responsive Design Mode (Option-Command-R), choose an iPhone preset and repeat TC-CMP-007 and TC-CMP-008 to check H1 and H10. Save to `safari/mobile/` and label the result as emulated |
-| 5 | Watch for differences from Chrome in the date picker, the `confirm()` dialog, the required-field popup, form-control styling and fonts. The CSS font stack starts with `-apple-system` |
+| Step | Action | Notes |
+| --- | --- | --- |
+| 1. Install | Install the current Firefox release on the MacBook from mozilla.org, then record its version from `about:support` | Do not update Firefox partway through the run |
+| 2. Run the app | Start `python app.py` at the same commit as C01 and log in as account A with Fixture Set A | Same database and day as C01, so TC-CMP-008 values can be compared directly |
+| 3. Execute | Run TC-CMP-001 to TC-CMP-008 in a 1440x900 window. Optional: repeat TC-CMP-007 and TC-CMP-008 at 390 px in Firefox Responsive Design Mode (Option-Command-M) to compare with C03 for H10 | Watch the date picker, the `confirm()` dialog and the validation popup; Firefox draws these differently from Chrome |
+| 4. Evidence | Save to `mac-firefox/desktop/` (and `mac-firefox/mobile/` for the optional step) as `TC-CMP-00x-YYYYMMDD.png`. Use Firefox's "Take Screenshot", or Shift-Command-4 for native dialogs and pickers | |
+| 5. Record | Fill the C04 column in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 | Estimated time: about 45 minutes |
 
-##### 2.4.2 Windows 11 run (C05 Firefox, C06 Edge, C08 Chrome)
+##### 2.4.2 Windows 11 run (C05 Chrome, C06 Firefox)
 
 | Step | Action | Notes |
 | --- | --- | --- |
 | 1. Owner and machine | Darius Lee Shin, on the Acer Nitro 5 (2021): AMD Ryzen 5, GTX 1650, 32 GB DDR4. Record the Windows build (`winver`), exact model and CPU (`msinfo32`), native resolution and display scaling (Settings -> System -> Display) | Laptops often default to 125-150% scaling, which changes the layout. If the laptop has a high-refresh or external display, run on the built-in screen and record that |
-| 2. Browsers | Firefox and Edge are already installed. Before the run, check for updates in each browser so both are on a current release. Then record the versions actually used: Edge from `edge://version`, Firefox from `about:support`. Optionally record Chrome's version from `chrome://version` for C08 | Do not update a browser partway through the run; if it updates, re-record the version |
+| 2. Browsers | Firefox is already installed; install Chrome if it is not. Before the run, check for updates in both browsers so they are on a current release. Then record the versions actually used: Chrome from `chrome://version`, Firefox from `about:support` | Do not update a browser partway through the run; if it updates, re-record the version |
 | 3. Run the app locally | Clone the repository and check out the **same commit** as the Mac runs. Then run `python -m venv venv`, `venv\Scripts\activate`, `pip install -r requirements.txt` and `python app.py` | `app.py` listens only on 127.0.0.1, so the app must run on the Windows machine itself. Serving it from the Mac would mean modifying the application, which is out of scope |
 | 4. Seed data | The Windows database starts empty. Recreate the data set from [0.6](#06-test-data-set) with accounts named like `w3<initial>_win_<ddmm>` | Use the same timezone as the Mac runs, because urgency depends on today's date |
 | 5. Locale | Record the Windows region and short-date format | The date picker displays dates in the locale's format; the saved value must still be `YYYY-MM-DD` |
-| 6. Execute | Run TC-CMP-001 to TC-CMP-008 on Edge, then Firefox, then optionally Chrome. Optional: repeat TC-CMP-007 and TC-CMP-008 at 390 px in Firefox Responsive Design Mode (Ctrl+Shift+M) | Watch the date picker, the `confirm()` dialog and the validation popup; each browser draws these differently |
-| 7. Accessibility pass | On the same machine, run NVDA for TC-A11Y-005, TC-A11Y-007 and TC-A11Y-015, and run axe DevTools in Edge | Gives Task 4 a second screen reader alongside VoiceOver |
-| 8. Evidence | Save to `edge/desktop/`, `firefox/desktop/` and `chrome-win/desktop/` as `TC-CMP-00x-YYYYMMDD.png`. Use Win+Shift+S, Firefox's "Take Screenshot" or Edge's Web Capture (Ctrl+Shift+S) | Capture the whole browser window when a browser-drawn dialog or picker is part of the result |
-| 9. Record | Fill the C05, C06 and C08 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Estimated time: 8 scenarios x 2-3 browsers, about 1.5-2.5 hours |
+| 6. Execute | Run TC-CMP-001 to TC-CMP-008 on Chrome, then on Firefox. Optional: repeat TC-CMP-007 and TC-CMP-008 at 390 px in Firefox Responsive Design Mode (Ctrl+Shift+M) | Watch the date picker, the `confirm()` dialog and the validation popup; each browser draws these differently |
+| 7. Accessibility pass | On the same machine, run NVDA for TC-A11Y-005, TC-A11Y-007 and TC-A11Y-015, and run axe DevTools in Chrome | Gives Task 4 a second screen reader alongside VoiceOver |
+| 8. Evidence | Save to `win-chrome/desktop/` and `win-firefox/desktop/` as `TC-CMP-00x-YYYYMMDD.png`. Use Win+Shift+S or Firefox's "Take Screenshot" | Capture the whole browser window when a browser-drawn dialog or picker is part of the result |
+| 9. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Estimated time: 8 scenarios x 2 browsers, about 1.5 hours |
 
 #### 2.5 Interpretation (complete after execution)
 
 - Which differences are browser-specific, and which are viewport-specific (see H1)?
 - Do any differences block a task, or are they cosmetic only?
-- Limitations: emulation vs real device, the browser versions tested, and untested configurations such as older browsers and Firefox on Android.
+- Limitations: emulation vs real device, the browser versions tested, and untested configurations: Microsoft Edge on Windows 11 and Safari/WebKit on macOS and iOS (both excluded by team decision, see [2.1](#21-configurations)), older browsers and Firefox on Android.
 
 ## Task 3
 

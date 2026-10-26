@@ -53,7 +53,7 @@ Tools marked as to be selected remain unverified.
 | Python | Application and Python test execution | Python 3.14.7 |
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
-| Browser(s) | Manual GUI and compatibility testing | Google Chrome Version 155.0.8059.85 (Official Build) (arm64) |
+| Browser(s) | Manual GUI and compatibility testing | Google Chrome Version 155.0.8059.85 (Official Build) (arm64) on macOS; Mozilla Firefox on macOS, and Google Chrome and Mozilla Firefox on Windows 11 [versions recorded in the Week 3 compatibility matrix] |
 | pytest (proposed) | Unit and regression test runner | 9.1.1 |
 | pytest-cov (proposed) | Statement and branch coverage | 7.1.0 |
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
@@ -94,7 +94,7 @@ Use the guideline's required test-case, defect-report and RTM fields. Define exp
 | Defect status | Open / Confirmed / Retest / Closed, as applicable |
 | Evidence | Store under the phase's `evidences/`; include test ID and run/date in new filenames |
 
-Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in [01_Black_Box/evidences/README.md](01_Black_Box/evidences/README.md). Update evidence links whenever replacing a run.
+Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in the [Week 1 evidence index](01_Black_Box/README.md#black-box-testing-evidence); Week 3 compatibility captures are organised by `<os>-<browser>/<viewport>/` as described in [03_Special_Testing/README.md](03_Special_Testing/README.md#09-evidence-conventions). Update evidence links whenever replacing a run.
 
 Each test case must contain its ID, feature/requirement, technique/type, objective, preconditions, test data, numbered steps, expected result, actual result, status, evidence and related defect ID. Each defect must contain its ID, title, feature, environment, preconditions, reproduction steps, expected/actual results, severity, priority, evidence and status. The RTM must connect requirements/features, scenarios, test IDs, techniques, results and defect IDs.
 
