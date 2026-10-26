@@ -43,7 +43,9 @@ Update status to `In progress`, `Ready for review` or `Completed` as supported b
 
 ## 4. Environment and Tools
 
-Record the actual environment used; proposed tools below are not yet installed or validated by this project.
+The table below records the project environment. Phase 02 dependency versions
+and reproduction commands are maintained in its [setup guide](02_White_Box_Coverage/setup.md).
+Tools marked as to be selected remain unverified.
 
 | Component | Purpose | Version / configuration |
 | --- | --- | --- |
@@ -52,8 +54,8 @@ Record the actual environment used; proposed tools below are not yet installed o
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
 | Browser(s) | Manual GUI and compatibility testing | [Name, version, viewport and zoom] |
-| pytest (proposed) | Unit and regression test runner | [Record version once adopted] |
-| pytest-cov (proposed) | Statement and branch coverage | [Record version once adopted] |
+| pytest | Unit and regression test runner | Adopted for Phase 02; see its setup guide for the verified version |
+| pytest-cov | Statement and optional branch coverage | Adopted for Phase 02; see its setup guide for the verified version |
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
 | UI automation tool (to be selected) | Selected browser regression workflows | [Tool, browser and driver versions if applicable] |
 | Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
@@ -62,172 +64,22 @@ Record the actual environment used; proposed tools below are not yet installed o
 
 Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.
 
-## 5. Application Setup Using the Phase 02 Environment
+## 5. Setup and Automated Test Execution
 
-The virtual environment and installed application/testing packages can live entirely inside `test/02_White_Box_Coverage/.venv/`. A virtual environment controls which Python interpreter and packages are used; its location does not restrict which application files the tests can import. Keep the original `app.py` and `helpers.py` in the application root.
+Use the [Phase 02 setup and reproduction guide](02_White_Box_Coverage/setup.md)
+for virtual-environment creation, dependency installation, interpreter checks,
+unit/integration test commands, HTML coverage generation, and optional manual
+application startup. Run its commands from the **repository root**. Setup
+instructions are maintained in that guide to avoid conflicting working
+folders, package records, and report destinations.
 
-No installation is performed by this README update. The commands below are setup instructions for the group. Existing environments can remain in place; do not move an existing virtual environment into this folder. Create a new one here instead.
+The [Week 2 submission report](02_White_Box_Coverage/README.md) records selected
+functions, CFGs, test-case traceability, collected test counts, and measured
+coverage. Its implemented scripts are `test_helpers.py` and `test_app.py`.
+Later phases should document any additional dependencies and their own
+execution commands in the corresponding phase guide.
 
-### 5.1 Create and activate the local virtual environment
-
-Start in the **application repository root**, containing `app.py`, `requirements.txt` and `test/`, in a terminal without another environment activated. Choose the commands for your platform.
-
-macOS / Linux:
-
-```bash
-cd test/02_White_Box_Coverage
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-Windows PowerShell:
-
-```powershell
-cd test/02_White_Box_Coverage
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-All subsequent commands in Sections 5 and 6 run from **`test/02_White_Box_Coverage/`**, with this environment activated. Use a Python version verified by the group to work with the dependencies.
-
-Confirm the interpreter before installing packages:
-
-```bash
-python -c "import sys; print(sys.executable)"
-python --version
-python -m pip --version
-```
-
-The interpreter and pip paths should point inside this folder's `.venv`. Activation is optional if the interpreter is invoked explicitly: `.venv/bin/python` on macOS/Linux or `.\.venv\Scripts\python.exe` on Windows.
-
-### 5.2 Install dependencies locally
-
-```bash
-python -m pip install --no-cache-dir -r ../../requirements.txt pytest pytest-cov
-python -m pip check
-python -m pip show Flask pytest pytest-cov
-```
-
-The requirements file is read from the application root, while the packages are installed into the active Phase 02 `.venv`. `--no-cache-dir` avoids creating a pip download cache for this installation. Do not use `--user` or `--system-site-packages` for this setup. Testing `helpers.py` alone needs pytest/pytest-cov and Python's standard library; importing/testing `app.py` also requires Flask and its dependencies.
-
-Record exact installed versions after validating the setup. A future `requirements-test-lock.txt` can be kept beside the Phase 02 README. To generate it from this dedicated environment once validated:
-
-```bash
-python -m pip freeze > requirements-test-lock.txt
-```
-
-Once that file exists, teammates can install the recorded dependencies with:
-
-```bash
-python -m pip install --no-cache-dir -r requirements-test-lock.txt
-```
-
-The lock file is not created by this documentation update. Each teammate creates their own `.venv`; do not commit or copy the environment. Exclude `.venv/`, `.pytest_cache/` and other local caches using a test-side ignore file when implementing the workspace. Keep the dependency record and submission evidence in version control.
-
-### 5.3 Start the application for manual or live-server testing
-
-From the Phase 02 folder, with its environment activated:
-
-```bash
-python -B ../../app.py
-```
-
-Open <http://127.0.0.1:5000/>. The API base is <http://127.0.0.1:5000/api>. This startup initialises SQLite tables and default categories if needed. There is no pre-seeded login; register a dedicated test account. Stop the server with `Ctrl+C`.
-
-The environment's location does **not** relocate the application's database: the unchanged application still uses `pytodo_pro.db` beside `app.py`. Restarting the server does not reset it. Record test data and cleanup steps, and preserve data needed by teammates.
-
-### 5.4 Isolate future Flask integration tests
-
-Keep fixtures in `02_White_Box_Coverage/conftest.py`. Before database initialisation or requests, use pytest's `monkeypatch` fixture to redirect the application's module-level `DATABASE` variable to a temporary SQLite file, and initialise that test database. Enable Flask testing mode through the fixture and use Flask's test client. Restore settings and close connections during teardown. These are test-side runtime changes; do not edit the application source or replace its real database.
-
-Pure helper tests need no server or database. Use explicit `today`/`now` arguments for deterministic date/time tests. `tmp_path` test databases may live in the operating system's temporary directory; a virtual environment is dependency isolation, not a filesystem sandbox.
-
-## 6. Running Automated Tests from Phase 02
-
-**Planned instructions:** no automated scripts are currently present. These commands become usable after the corresponding tests are added. No tests collected is not a passing suite.
-
-### 6.1 Local workspace and imports
-
-Suggested layout; only the README exists at this stage:
-
-```text
-02_White_Box_Coverage/
-  README.md
-  .venv/                         # local interpreter and packages; do not commit
-  requirements-test-lock.txt     # create after dependency validation
-  conftest.py                    # future database/client fixtures, if needed
-  test_helpers.py                # future helper-function tests
-  test_app_routes.py             # future selected Flask tests
-  .pytest_cache/                 # generated local cache
-  .coverage                      # generated coverage data
-  evidences/                     # generated reports and captured evidence
-```
-
-The commands use `--rootdir=.` to anchor pytest in Phase 02 and `-o pythonpath=../..` to make the original application modules importable. Setting pytest's root directory alone does not add application modules to Python's import path. No source copying, application installation or changes to application files are required.
-
-`python -B` prevents Python bytecode files being generated beside imported application modules. Keep test filenames unique across phases when running multiple folders together.
-
-### 6.2 Execute selected white-box tests
-
-From `test/02_White_Box_Coverage/`, with its `.venv` activated:
-
-```bash
-python -B -m pytest . --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v
-```
-
-Tests of `helpers.py` and tests using Flask's test client need no running server. Tests using real HTTP requests or browser automation need a server in a separate terminal, documented test data and any additional tool dependencies.
-
-### 6.3 Collect statement and branch coverage
-
-Keep the coverage data file in the Phase 02 working directory. Set this before the coverage run to override any inherited coverage-file setting.
-
-macOS / Linux:
-
-```bash
-export COVERAGE_FILE=.coverage
-```
-
-Windows PowerShell:
-
-```powershell
-$env:COVERAGE_FILE = ".coverage"
-```
-
-Then run, on either platform:
-
-```bash
-python -B -m pytest . --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v --cov=helpers --cov-branch --cov-report=term-missing --cov-report=html:evidences/coverage --cov-report=xml:evidences/coverage.xml --junitxml=evidences/execution-results.xml
-```
-
-The terminal shows test results and coverage. Open `evidences/coverage/index.html` for annotated source and uncovered branches. The XML files preserve machine-readable coverage and test execution results. Save a terminal screenshot/log with the command, environment, run date/time and application commit.
-
-This command measures `helpers.py` only. Once selected `app.py` tests exist, add `--cov=app` alongside `--cov=helpers`. That reports coverage across the whole measured `app.py` module, even if only selected routes are tested; describe untested routes and the resulting denominator. Explain uncovered statements/branches, failing assertions and scope limitations. Do not change an assertion to match defective behaviour simply to obtain a green suite.
-
-### 6.4 Run later suites using the same environment
-
-The Phase 02 environment can also execute other phase tests without installing dependencies in the application root. From Phase 02, a future focused regression run is:
-
-```bash
-python -B -m pytest ../06_Automation_Regression/ --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v --junitxml=../06_Automation_Regression/execution-results.xml
-```
-
-To collect all implemented pytest suites under `test/`:
-
-```bash
-python -B -m pytest .. --rootdir=. -o pythonpath=../.. -o cache_dir=.pytest_cache -v
-```
-
-Install and document additional dependencies in the chosen environment before using later suites. Alternatively, a later phase can have its own dedicated environment with its own dependency record.
-
-### 6.5 Interpret and preserve results
-
-Record command, environment, application commit, test data, execution time, test totals and related defect IDs. pytest exit code 0 indicates a successful run, 1 indicates test failures and 5 indicates no tests collected. Investigate other non-zero exits as execution/configuration problems. Report skips separately and explain their mapping to the course's test statuses.
-
-A failing specification-based test can be valid evidence of an application defect. A high coverage percentage does not imply the covered behaviour is correct. Preserve failing-test output and reproduction evidence without modifying production logic.
-
-Setup references: [Python virtual environments](https://docs.python.org/3/library/venv.html), [pytest import-path configuration](https://docs.pytest.org/en/stable/reference/reference.html#confval-pythonpath), [pytest-cov report output](https://pytest-cov.readthedocs.io/en/latest/reporting.html).
-
-## 7. Documentation and Evidence Conventions
+## 6. Documentation and Evidence Conventions
 
 Use the guideline's required test-case, defect-report and RTM fields. Define expected results before execution. Do not mark an unexecuted test Pass or invent actual results.
 
@@ -246,7 +98,7 @@ Link screenshots, logs and outputs from the relevant answer using relative Markd
 
 Each test case must contain its ID, feature/requirement, technique/type, objective, preconditions, test data, numbered steps, expected result, actual result, status, evidence and related defect ID. Each defect must contain its ID, title, feature, environment, preconditions, reproduction steps, expected/actual results, severity, priority, evidence and status. The RTM must connect requirements/features, scenarios, test IDs, techniques, results and defect IDs.
 
-## 8. Final Submission Readiness
+## 7. Final Submission Readiness
 
 - [ ] Replace group, member and environment placeholders with verified information.
 - [ ] Complete and review all nine phase READMEs and supporting artefacts.
@@ -257,4 +109,3 @@ Each test case must contain its ID, feature/requirement, technique/type, objecti
 - [ ] State quality limitations, untested areas, residual risks and prioritised recommendations.
 - [ ] Complete standards integration and prepare the presentation/live demonstration.
 - [ ] Exclude local environments, caches and unnecessary generated files from commits; retain reports used as submission evidence.
-##
