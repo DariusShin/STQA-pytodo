@@ -20,7 +20,7 @@ Replace the placeholders with the four group members. Roles coordinate work; eve
 | --- | --- | --- |
 | Eu Kwan Ik  | 22001674 | QA/Test Lead |
 | Mohamd Shukri Bin Abd Ajed | 22006225 | Test Design Coordinator |
-| Darius Lee Shin | 220032369 | Automation/Tool Coordinator |
+| Darius Lee Shin | 22003269 | Automation/Tool Coordinator |
 | Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator |
 
 ## 3. Deliverable Structure and Progress
@@ -29,7 +29,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 
 | Phase | Folder / deliverable instructions | Status |
 | --- | --- | --- |
-| 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | Not started |
+| 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
 | 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | Not started |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
@@ -51,8 +51,8 @@ Record the actual environment used; proposed tools below are not yet installed o
 | Python | Application and Python test execution | Python 3.14.7 |
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
-| Browser(s) | Manual GUI and compatibility testing | [Name, version, viewport and zoom] |
-| pytest (proposed) | Unit and regression test runner | [Record version once adopted] |
+| Browser(s) | Manual GUI and compatibility testing | Google Chrome Version 155.0.8059.85 (Official Build) (arm64) |
+| pytest | Unit and regression test runner | 9.1.1 |
 | pytest-cov (proposed) | Statement and branch coverage | [Record version once adopted] |
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
 | UI automation tool (to be selected) | Selected browser regression workflows | [Tool, browser and driver versions if applicable] |
@@ -242,7 +242,7 @@ Use the guideline's required test-case, defect-report and RTM fields. Define exp
 | Defect status | Open / Confirmed / Retest / Closed, as applicable |
 | Evidence | Store under the phase's `evidences/`; include test ID and run/date in new filenames |
 
-Link screenshots, logs and outputs from the relevant answer using relative Markdown links. Keep `01_Black_Box/evidences/LoginPageEvidence.png` and associate it with a test when its context is documented. Retain earlier evidence when later executions change an outcome.
+Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in [01_Black_Box/evidences/README.md](01_Black_Box/evidences/README.md). Update evidence links whenever replacing a run.
 
 Each test case must contain its ID, feature/requirement, technique/type, objective, preconditions, test data, numbered steps, expected result, actual result, status, evidence and related defect ID. Each defect must contain its ID, title, feature, environment, preconditions, reproduction steps, expected/actual results, severity, priority, evidence and status. The RTM must connect requirements/features, scenarios, test IDs, techniques, results and defect IDs.
 
