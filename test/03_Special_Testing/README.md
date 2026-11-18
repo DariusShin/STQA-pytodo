@@ -4,7 +4,7 @@
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester / Lab Group | September 2026 / Wednesday Lab - Group 2 |
-| Phase status | Planning complete; 54 detailed cases drafted in [test_cases.md](test_cases.md), awaiting peer review - execution not started |
+| Phase status | Planning complete; 53 detailed cases drafted across four technique folders, awaiting peer review - execution not started |
 
 ## Deliverable Checklist
 
@@ -15,6 +15,30 @@
 - [ ] [Task 5](#task-5) - Defects and improvement recommendations.
 
 Tick a task only after its results, evidence and peer review are complete. Every planned case below is `Not Run` until it is executed; do not record an actual result before execution.
+
+## Deliverable structure
+
+This README is the single phase report: the plan, every summary table and matrix, and the Task 5 defects and recommendations. Each technique folder holds the detailed cases and the evidence that backs up the report.
+
+```
+03_Special_Testing/
+├── README.md            ← this report
+├── fixtures.md          ← test-case template, precondition codes, accounts, Fixture Set A
+├── 1_GUI/               ← Task 1: test_cases.md (TC-GUI-001 to 022) + evidences/
+├── 2_Compatibility/     ← Task 2: test_cases.md (TC-CMP-001 to 008) + evidences/<os>-<browser>/<viewport>/
+├── 3_Usability/         ← Task 3: test_cases.md (TC-USA-001 to 005) + evidences/
+└── 4_Accessibility/     ← Task 4: test_cases.md (TC-A11Y-001 to 018) + evidences/ and evidences/reports/
+```
+
+| Deliverable (guideline) | Report section | Detailed cases | Evidence |
+| --- | --- | --- | --- |
+| GUI testing checklist/results | [Task 1](#task-1) | [1_GUI/test_cases.md](1_GUI/test_cases.md) | `1_GUI/evidences/` |
+| Compatibility/configuration matrix | [Task 2](#task-2) | [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) | `2_Compatibility/evidences/` |
+| Usability observations | [Task 3](#task-3) | [3_Usability/test_cases.md](3_Usability/test_cases.md) | `3_Usability/evidences/` |
+| Basic accessibility findings | [Task 4](#task-4) | [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md) | `4_Accessibility/evidences/` |
+| Defects and improvement recommendations | [Task 5](#task-5) | Drawn from Tasks 1-4 | Linked from each defect |
+
+Week 3 is executed manually with screenshot evidence; automated scan reports (Lighthouse, axe) are saved as files. No test scripts are written in this phase. Week 6 selects automation candidates from these manual cases.
 
 ## Task 0 - Phase plan
 
@@ -37,6 +61,7 @@ Tick a task only after its results, evidence and peer review are complete. Every
 | Selected browsers and viewports available to the group | Load and response-time measurement (Week 5) |
 | Keyboard, screen-reader and contrast checks against a WCAG 2.2 Level A/AA subset | Automated Selenium regression of GUI flows (Week 6) |
 | Re-checking DEF-001 to DEF-003 where they surface in the GUI | Full WCAG conformance audit or certification |
+| Usability by expert heuristic review | Usability testing with end-user participants |
 
 Functional correctness was established in Week 1. This phase asks a different question: does each page present that behaviour clearly, consistently and accessibly across configurations?
 
@@ -48,20 +73,20 @@ Expected results must be written before execution and must cite one of these sou
 2. The project `README.md` page and feature list.
 3. Week 1 requirements `REQ-001` to `REQ-008` and assumptions in [01_Black_Box/README.md](../01_Black_Box/README.md).
 4. WCAG 2.2 success criteria for accessibility cases.
-5. Usability heuristics introduced in class (Nielsen's 10 heuristics) for usability observations.
+5. Usability heuristics introduced in class (Nielsen's 10 heuristics) for usability cases.
 
 ### 0.4 Test case ID conventions
 
-| Prefix | Use | Planned range |
-| --- | --- | --- |
-| `TC-GUI-` | GUI checklist cases | 001-022 |
-| `TC-CMP-` | Compatibility smoke scenarios, run once per configuration | 001-008 |
-| `TC-USA-` | Usability walkthrough tasks | 001-006 |
-| `USA-OBS-` | Usability observations and heuristic findings | from 001 |
-| `TC-A11Y-` | Accessibility checks | 001-018 |
-| `DEF-` | New defects, continuing the shared defect log | from `DEF-004` |
+| Prefix | Use | Planned range | Defined in |
+| --- | --- | --- | --- |
+| `TC-GUI-` | GUI checklist cases | 001-022 | [1_GUI/test_cases.md](1_GUI/test_cases.md) |
+| `TC-CMP-` | Compatibility smoke scenarios, run once per configuration | 001-008 | [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) |
+| `TC-USA-` | Usability heuristic review, one case per guideline quality | 001-005 | [3_Usability/test_cases.md](3_Usability/test_cases.md) |
+| `USA-OBS-` | Usability observations from the heuristic review | from 001 | [3.3](#33-observation-log) |
+| `TC-A11Y-` | Accessibility checks | 001-018 | [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md) |
+| `DEF-` | New defects, continuing the shared defect log | from `DEF-004` | [Task 5](#task-5) |
 
-Detailed cases using the full test-case template (ID, feature, technique, objective, preconditions, test data, steps, expected, actual, status, evidence, defect ID) are in [test_cases.md](test_cases.md), together with the shared preconditions, fixture sets and a review sign-off table, following the Week 1 format. This README keeps the summary registers, matrices and findings.
+Each detailed case uses the full test-case template (ID, feature, technique, objective, preconditions, test data, steps, expected, actual, status, evidence, defect ID), following the Week 1 format. Each `test_cases.md` has its own review sign-off table. Shared precondition codes and test data are in [fixtures.md](fixtures.md).
 
 ### 0.5 Environment to record
 
@@ -76,12 +101,12 @@ Record these values at execution time. Do not copy versions from earlier weeks w
 | Browsers | Name, version and build for each browser in the [configuration matrix](#21-configurations) |
 | Viewports | Device-mode preset name and CSS pixel size |
 | Accessibility tools | Lighthouse (bundled with Chrome); axe DevTools or WAVE extension version; VoiceOver (macOS) / NVDA version |
-| Test accounts | Synthetic accounts named `w3<initial>_<purpose>_<ddmm>`; password `Test12345` |
+| Test accounts | Synthetic accounts listed in [fixtures.md](fixtures.md#accounts); password `Test12345` |
 | Execution date/time and timezone | Per run |
 
 ### 0.6 Test data set
 
-Prepare one account with a fixed task set so that every page is checked in a populated state:
+The exact accounts, task titles, dates and generation commands are in [fixtures.md](fixtures.md#fixture-set-a---gui-and-accessibility). Fixture Set A is designed so that every page is checked in a populated state:
 
 | Data item | Purpose |
 | --- | --- |
@@ -89,7 +114,7 @@ Prepare one account with a fixed task set so that every page is checked in a pop
 | One task in each category (Work, Personal, Study, Urgent) and one with no category | Filter and table rendering |
 | A 200-character title and a 60-character unbroken title | Layout and wrapping (TC-GUI-019) |
 | A title containing `&`, `<`, `>`, quotes and non-Latin text (e.g. `Résumé 报告`) | Literal display (TC-GUI-020) |
-| A second, empty account | Empty-state checks (TC-GUI-009) |
+| A second, empty account (account C) | Empty-state checks (TC-GUI-009) |
 
 ### 0.7 Work allocation and schedule
 
@@ -99,19 +124,19 @@ Coordinators own the preparation and review of each task. Every member executes 
 | --- | --- | --- |
 | Task 1 - GUI checklist | Mohamd Shukri Bin Abd Ajed (Test Design) | All members |
 | Task 2 - Compatibility matrix | Darius Lee Shin (Automation/Tool) | Darius Lee Shin runs C04 on the MacBook and C05-C06 on the Windows 11 laptop (Acer Nitro 5); another member reviews the captures |
-| Task 3 - Usability | Eu Kwan Ik (QA/Test Lead) | Two or three participants who did not design the cases |
+| Task 3 - Usability | Eu Kwan Ik (QA/Test Lead) | Heuristic reviewers: Eu Kwan Ik and Ameera Alysha binti Azlan, working independently, then merging |
 | Task 4 - Accessibility | Darius Lee Shin (Automation/Tool) | Ameera Alysha binti Azlan (manual keyboard/screen-reader checks) |
 | Task 5 - Defects and recommendations | Ameera Alysha binti Azlan (Defect & Metrics) | Eu Kwan Ik (review and final integration) |
 
 | Step | Activity | Output |
 | --- | --- | --- |
 | 1 | Confirm the browsers and devices each member can use; fix the configuration matrix | [2.1](#21-configurations) filled in |
-| 2 | Seed the test data set; record the environment | [0.5](#05-environment-to-record) and [0.6](#06-test-data-set) |
-| 3 | Write detailed cases in [test_cases.md](test_cases.md) (drafted 2026-10-27) with expected results before execution | Peer-reviewed cases |
+| 2 | Seed Fixture Set A; record the environment | [0.5](#05-environment-to-record) and [fixtures.md](fixtures.md) |
+| 3 | Write detailed cases with expected results before execution (drafted 2026-10-27; split into technique folders 2026-11-18), then complete each review sign-off | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results |
-| 5 | Run the compatibility smoke set on every other configuration | [Task 2](#task-2) matrix |
+| 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix |
 | 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings |
-| 7 | Run the usability walkthrough and heuristic review | [Task 3](#task-3) observations |
+| 7 | Run the two-reviewer heuristic review (TC-USA-001 to 005) and merge the findings | [Task 3](#task-3) observations |
 | 8 | Reproduce each failure once more, log defects and draft recommendations | [Task 5](#task-5) |
 | 9 | Peer review, check links, update the [phase status](../README.md#3-deliverable-structure-and-progress) and the shared defect log | Phase ready for review |
 
@@ -128,22 +153,25 @@ Coordinators own the preparation and review of each task. Every member executes 
 
 | Evidence | Location | Filename pattern |
 | --- | --- | --- |
-| GUI, accessibility and usability screenshots | `evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.png`, e.g. `TC-GUI-013-delete-dialog-20261028.png` |
-| Compatibility captures | `<os>-<browser>/<viewport>/`: the existing `mac-chrome/desktop`, `mac-chrome/tablet` and `mac-chrome/mobile` folders, plus `mac-firefox/desktop`, `win-chrome/desktop` and `win-firefox/desktop` (see [2.1](#21-configurations)) | `<TC-ID>-<YYYYMMDD>.png` |
-| Lighthouse and axe reports | `evidences/a11y-reports/` | `<tool>-<page>-<YYYYMMDD>.html` or `.json` |
-| Usability session notes | `evidences/usability/` | `TC-USA-<id>-P<participant>.md` (no personal data) |
+| GUI screenshots | `1_GUI/evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.png`, e.g. `TC-GUI-013-delete-dialog-20261028.png` |
+| Compatibility captures | `2_Compatibility/evidences/<os>-<browser>/<viewport>/`, one folder per configuration in [2.1](#21-configurations) | `TC-CMP-0xx-<YYYYMMDD>.png` |
+| Usability reviewer notes and screenshots | `3_Usability/evidences/` | `TC-USA-0xx-<reviewer-initials>-<YYYYMMDD>.md` (one notes file per reviewer); screenshots `TC-USA-0xx-<short-desc>-<YYYYMMDD>.png` |
+| Accessibility screenshots | `4_Accessibility/evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.png` |
+| Lighthouse and axe reports | `4_Accessibility/evidences/reports/` | `<tool>-<page>-<YYYYMMDD>.html` or `.json` |
 
-The existing captures in `mac-chrome/desktop`, `mac-chrome/tablet` and `mac-chrome/mobile` reuse Week 1 `TC-BB-` IDs. Map them to `TC-CMP-` scenarios in the [compatibility matrix](#22-compatibility-smoke-scenarios) and list in each cell which `TC-BB-` captures support it. Keep their filenames. The parent folder was renamed from `chrome/` to `mac-chrome/` on 2026-10-27 to match the `<os>-<browser>` convention.
+Empty evidence folders contain a `.gitkeep` placeholder so the structure is visible before execution; remove it once the folder holds evidence.
 
-#### What the existing `mac-chrome/` captures are, and are not
+#### Week 1 captures reused as supporting evidence
 
-| Folder | Content (checked 2026-10-27) | Counts as |
+Before this phase, Week 1 black-box cases were re-run in Chrome on macOS at three viewport sizes. Those captures keep their `TC-BB-` filenames and are **supporting** evidence only: they were judged against Week 1 functional expected results, not against the TC-CMP cases. Every configuration therefore still gets a fresh TC-CMP run.
+
+| Location | Content (checked 2026-11-18) | Use |
 | --- | --- | --- |
-| `mac-chrome/desktop/` (72 files, 1440x900) | Byte-identical copy of `01_Black_Box/evidences/` | Baseline C01. Not a new Week 3 run |
-| `mac-chrome/tablet/` (72 files, 768x1024) | Week 1 cases re-run with tablet accounts (`w1t_…`) | Compatibility evidence for C02 |
-| `mac-chrome/mobile/` (102 files, 390x844) | Week 1 cases re-run with mobile accounts (`w1m_…`); includes extra `-full-document` captures | Compatibility evidence for C03 |
+| [01_Black_Box/evidences/](../01_Black_Box/evidences/) (72 files, 1440x900) | Week 1 desktop captures. A byte-identical copy previously kept under this phase was removed on 2026-11-18; link to the Week 1 folder instead | Supporting evidence for C01 |
+| `2_Compatibility/evidences/mac-chrome/tablet/` (72 files, 768x1024) | Week 1 cases re-run with tablet accounts (`w1t_…`) | Supporting evidence for C02 |
+| `2_Compatibility/evidences/mac-chrome/mobile/` (102 files, 390x844) | Week 1 cases re-run with mobile accounts (`w1m_…`); includes extra `-full-document` captures | Supporting evidence for C03 |
 
-These captures were judged against **functional** expected results from Week 1, so they are compatibility and responsiveness evidence, not GUI testing. They may be cited as supporting evidence for a `TC-GUI-` case, but each GUI case still needs its own expected result and verdict.
+Fresh `TC-CMP-` captures are saved alongside the `TC-BB-` files in the same configuration folders; the filename prefix distinguishes them.
 
 Before citing the tablet and mobile captures, the person who took them must record which DevTools mode they used: a **Responsive** window with device type Desktop, or a **device preset** such as iPhone 14 with mobile emulation. The 390 px captures show the page laid out at 390 px with normal-size text. Because the page has no viewport tag (H1), true mobile emulation or a real phone would normally lay it out at about 980 px and scale it down. The captures therefore probably came from a resized window and may not show H1. Re-check H1 with a Chrome device preset or a real phone (C07).
 
@@ -158,11 +186,11 @@ The templates (`templates/*.html`) and `static/style.css` were read while planni
 | H3 | The complete/reopen button's only content is `○` or `✓` | TC-A11Y-007 |
 | H4 | The filter selects and search box have no visible labels; the search box has a placeholder only | TC-A11Y-006, TC-GUI-008 |
 | H5 | Calculated contrast: completed-task title and empty-state text `#999999` on white = 2.85:1 (WCAG 1.4.3 requires 4.5:1). Hint `#8d6e76` on white = 4.54:1 (borderline). Other text pairs checked were above 4.5:1 | TC-A11Y-004 with a contrast tool on the rendered page |
-| H6 | No success message after create, edit, delete or complete; only login and register render an error message | TC-GUI-017, usability feedback heuristic |
+| H6 | No success message after create, edit, delete or complete; only login and register render an error message | TC-GUI-017, TC-USA-002 |
 | H7 | Error messages have no `role="alert"` or live region | TC-A11Y-015 |
 | H8 | No skip link before the navigation bar | TC-A11Y-009 |
 | H9 | `index.html` renders the task title with the `safe` filter | TC-GUI-020 checks only literal display; pass any script behaviour to the Week 5 STRIDE table |
-| H10 | Seen in existing evidence [`mac-chrome/mobile/TC-BB-034.jpg`](mac-chrome/mobile/TC-BB-034.jpg): at 390 px the navigation bar is cramped. The brand wraps to `PyTodo / Pro`, `Log out` breaks across lines, and the links sit against the brand with no gap. This follows from `.topnav`/`.nav-links` being a non-wrapping flex row with fixed `2rem` side padding and no `@media` rule | TC-GUI-005 on C03, TC-CMP-007 on C02, C03 and C07, TC-A11Y-012 reflow. If confirmed, log it as a defect with a fresh dated capture |
+| H10 | Seen in existing evidence [`mac-chrome/mobile/TC-BB-034.jpg`](2_Compatibility/evidences/mac-chrome/mobile/TC-BB-034.jpg): at 390 px the navigation bar is cramped. The brand wraps to `PyTodo / Pro`, `Log out` breaks across lines, and the links sit against the brand with no gap. This follows from `.topnav`/`.nav-links` being a non-wrapping flex row with fixed `2rem` side padding and no `@media` rule | TC-GUI-005 on C03, TC-CMP-007 on C02, C03 and C07, TC-A11Y-012 reflow. If confirmed, log it as a defect with a fresh dated capture |
 
 H10 comes from a capture taken for a functional case, so it remains a hypothesis until a `TC-GUI-` or `TC-CMP-` case reproduces it. The same capture has the mouse pointer covering the `Filter` button. Move the pointer out of the way when capturing new Week 3 evidence.
 
@@ -170,32 +198,32 @@ H10 comes from a capture taken for a functional case, so it remains a hypothesis
 
 ### GUI testing checklist/results
 
-**Method.** Run the checklist on the baseline configuration (C01: Chrome on macOS at 1440x900) using the [seeded data set](#06-test-data-set). Each row is one test case with a full entry in `test_cases.md`. Technique: GUI checklist / Functional.
+**Method.** Run the checklist on the baseline configuration (C01: Chrome on macOS at 1440x900) using Fixture Set A. Each row summarises one case; the full case is in [1_GUI/test_cases.md](1_GUI/test_cases.md) and its evidence in `1_GUI/evidences/`. Technique: GUI checklist.
 
 | ID | Page / element | Check (objective) | Expected result (before execution) | Actual | Status | Evidence | Defect |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | TC-GUI-001 | Login - layout | Heading, Username and Password fields, Log in button and Register link are present and aligned | All elements visible in one card; password input is masked | | Not Run | | |
-| TC-GUI-002 | Login - error message | Invalid credentials show an error | Visible error in the red error box; user stays on `/login` | | Not Run | | |
+| TC-GUI-002 | Login - error message | Invalid credentials show an error | Visible error in a distinct box; user stays on `/login`; the message does not reveal which field was wrong | | Not Run | | |
 | TC-GUI-003 | Register - hints | Field rules are visible before input | Hints `(3-20 chars, letters/numbers/underscore)` and `(min 8 characters)` are readable next to their labels | | Not Run | | |
-| TC-GUI-004 | Register - error messages | Each invalid input produces a specific message | Message names the violated rule; entered values handled consistently (retained or cleared) | | Not Run | | DEF-001 re-check |
+| TC-GUI-004 | Register - error messages | Each invalid input produces a specific message | Each invalid submission stays on `/register` with a message naming the broken rule; an 8-character password is accepted as the hint states | | Not Run | | DEF-001 re-check |
 | TC-GUI-005 | Navigation bar | Navigation differs by login state; items stay readable at every viewport | Logged in: Tasks, Dashboard, username, Log out. Logged out: brand only. No item text broken across lines (H10) | | Not Run | | |
 | TC-GUI-006 | Brand link | Brand link goes to the right place | Logged in -> `/`; logged out -> `/login` | | Not Run | | |
 | TC-GUI-007 | Task list - header | Page heading and New Task button | `My Tasks` heading; `+ New Task` opens `/tasks/new` | | Not Run | | |
 | TC-GUI-008 | Task list - filters | Filter controls behave predictably | Category/status selects apply on change; search applies on Filter button or Enter; selected values persist after reload | | Not Run | | |
-| TC-GUI-009 | Task list - table/empty state | Columns and empty-state message | Six columns with headers; empty account shows `No tasks match your filters.` | | Not Run | | |
+| TC-GUI-009 | Task list - table/empty state | Columns and empty-state message | Title, Category, Due Date and Urgency columns have headers; control columns are identifiable; an empty result shows a single "no tasks match" message in the table area | | Not Run | | |
 | TC-GUI-010 | Urgency badges | Each urgency class has a distinct, labelled badge | Six badge texts shown; Overdue/Due Today/Due Soon/Upcoming are visually distinguishable | | Not Run | | DEF-002 re-check |
 | TC-GUI-011 | Complete/reopen button | Button state matches the task state | `○` for open and `✓` for done; done row shown with strikethrough | | Not Run | | |
 | TC-GUI-012 | Edit link | Edit opens a pre-filled form | Title, description, category and due date pre-filled with saved values | | Not Run | | |
-| TC-GUI-013 | Delete confirmation | Delete asks for confirmation | Dialog `Delete this task?`; Cancel keeps the task, OK removes it | | Not Run | | |
+| TC-GUI-013 | Delete confirmation | Delete asks for confirmation | A confirmation dialog appears; Cancel keeps the task, OK removes it | | Not Run | | |
 | TC-GUI-014 | New Task form | Fields and controls | Title, Description, Category (None + 4) and Due Date date picker; Create Task and Cancel buttons | | Not Run | | |
 | TC-GUI-015 | Edit Task form | Edit mode labelling | Heading `Edit Task` and button `Save Changes`; Cancel returns to `/` without saving | | Not Run | | |
-| TC-GUI-016 | Required title | Empty title is blocked | Browser validation message on Title; no navigation | | Not Run | | DEF-003 re-check |
-| TC-GUI-017 | Action feedback | Create, edit, delete and complete give visible confirmation | User can tell the action succeeded (message or obvious list change) | | Not Run | | |
-| TC-GUI-018 | Dashboard cards | Five counters with labels | Total, Open, Overdue, Due Soon, Completed (last 7 days); colours match the badge colours | | Not Run | | |
+| TC-GUI-016 | Required title | Empty and whitespace-only titles are blocked | Both are blocked with a visible message on Title; no task is created | | Not Run | | DEF-003 re-check |
+| TC-GUI-017 | Action feedback | Create, edit, delete and complete give visible confirmation | A confirmation message, or a visible highlight of the affected task, after each action; a failure is logged as a `USA-OBS-` item | | Not Run | | |
+| TC-GUI-018 | Dashboard cards | Five counters with labels | Total Tasks, Open, Overdue, Due Soon, Completed (last 7 days); colours match the badge colours | | Not Run | | |
 | TC-GUI-019 | Long content | Long and unbroken titles do not break layout | Table stays within the container; no horizontal page scroll at 1440 px | | Not Run | | |
 | TC-GUI-020 | Special characters | Titles display exactly as entered | `&`, `<`, `>`, quotes and non-Latin text displayed literally | | Not Run | | |
-| TC-GUI-021 | Page titles | Each browser tab title identifies the page | `Log in`, `Register`, `Tasks`, `New Task`, `Edit Task`, `Dashboard`, each followed by `— PyTodo Pro` | | Not Run | | |
-| TC-GUI-022 | Visual consistency | Primary/secondary buttons, fonts, spacing and colours are consistent across pages | One primary button style (`#1B3A5C`), one secondary style, consistent card styling | | Not Run | | |
+| TC-GUI-021 | Page titles | Each browser tab title identifies the page | Six different titles, each naming its page and including the application name | | Not Run | | |
+| TC-GUI-022 | Visual consistency | Buttons, links, headings and cards are consistent across pages | One primary button style, one secondary style, consistent text actions, headings and cards | | Not Run | | |
 
 **Results summary** (complete after execution):
 
@@ -207,23 +235,21 @@ H10 comes from a capture taken for a functional case, so it remains a hypothesis
 
 ### Compatibility/configuration matrix
 
-**Method.** Choose configurations the group actually has access to. Run the eight smoke scenarios on each configuration. Compare the result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
+**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration, saving captures to that configuration's evidence folder. Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
 
 #### 2.1 Configurations
 
-Confirm availability in step 1 and delete rows that cannot be run. Record a reason for each deleted row.
+Each configuration is a combination of OS, browser, viewport and settings. The settings columns record the configuration variations the run used, so they are part of the matrix rather than separate cases. 200% text zoom is covered separately by TC-A11Y-013.
 
-| Config | OS | Browser (version) | Viewport / device | Type | Available? |
-| --- | --- | --- | --- | --- | --- |
-| Config | Evidence folder | OS | Browser (version) | Viewport / device | Type | Available? |
-| --- | --- | --- | --- | --- | --- | --- |
-| C01 (baseline) | `mac-chrome/desktop/` | macOS 26.5.2 | Chrome [version] | 1440x900 desktop | Real | Yes - existing captures |
-| C02 | `mac-chrome/tablet/` | macOS 26.5.2 | Chrome [version] | Tablet preset, e.g. iPad Air 820x1180 | Emulated | Yes - existing captures |
-| C03 | `mac-chrome/mobile/` | macOS 26.5.2 | Chrome [version] | Mobile preset, e.g. iPhone 14 390x844 | Emulated | Yes - existing captures |
-| C04 | `mac-firefox/desktop/` | macOS 26.5.2 | Firefox [version] | 1440x900 desktop | Real | Planned - Firefox must be installed on the MacBook (not installed as of 2026-10-27); see [2.4.1](#241-macos-firefox-run-c04) |
-| C05 | `win-chrome/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version] | [native resolution] desktop at [scaling]% | Real | Planned - install Chrome on the Windows laptop if not present; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
-| C06 | `win-firefox/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Firefox [version] | [native resolution] desktop at [scaling]% | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
-| C07 | `<os>-<browser>/mobile/` | iOS or Android | Chrome mobile [version] | Physical phone | Real | Optional - blocked by default: `app.py` uses `app.run(debug=True)`, which listens only on 127.0.0.1, and the project does not modify the application |
+| Config | Evidence folder (under `2_Compatibility/`) | OS | Browser (version) | Viewport / device | Zoom / display scaling | Locale / date format | Type | Available? |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| C01 (baseline) | `evidences/mac-chrome/desktop/` | macOS 26.5.2 | Chrome [version] | 1440x900 desktop | 100% / [scaling] | [locale] | Real | Yes - fresh run needed; Week 1 captures support it |
+| C02 | `evidences/mac-chrome/tablet/` | macOS 26.5.2 | Chrome [version] | Tablet preset, e.g. iPad Air 820x1180 | 100% / [scaling] | [locale] | Emulated | Yes - fresh run needed; Week 1 tablet captures support it |
+| C03 | `evidences/mac-chrome/mobile/` | macOS 26.5.2 | Chrome [version] | Mobile preset, e.g. iPhone 14 390x844 | 100% / [scaling] | [locale] | Emulated | Yes - fresh run needed; Week 1 mobile captures support it |
+| C04 | `evidences/mac-firefox/desktop/` | macOS 26.5.2 | Firefox [version] | 1440x900 desktop | 100% / [scaling] | [locale] | Real | Planned - Firefox must be installed on the MacBook (not installed as of 2026-11-18); see [2.4.1](#241-macos-firefox-run-c04) |
+| C05 | `evidences/win-chrome/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version] | [native resolution] desktop | 100% / [scaling]% | [locale] | Real | Planned - install Chrome on the Windows laptop if not present; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
+| C06 | `evidences/win-firefox/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Firefox [version] | [native resolution] desktop | 100% / [scaling]% | [locale] | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
+| C07 | `evidences/<os>-<browser>/mobile/` | iOS or Android | Chrome mobile [version] | Physical phone | Default | [locale] | Real | Optional - blocked by default: `app.py` uses `app.run(debug=True)`, which listens only on 127.0.0.1, and the project does not modify the application |
 
 **Selection rationale.** Exhaustive compatibility testing is not feasible, so the desktop configurations form a 2x2 design: two operating systems (macOS, Windows 11) by two browsers (Chrome on the Blink engine, Firefox on the Gecko engine). Comparing the same browser across both operating systems isolates OS effects; comparing both browsers on the same OS isolates browser effects. Chrome device mode on macOS adds tablet and mobile widths.
 
@@ -238,23 +264,38 @@ Record both exclusions as limitations in [2.5](#25-interpretation-complete-after
 
 #### 2.2 Compatibility smoke scenarios
 
-Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic difference, `Blocked` or `Not Run`.
+Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic difference, `Blocked` or `Not Run`. The matrix has two sections that share the C01 baseline: cross-browser/OS at desktop size, and cross-device in Chrome on macOS.
 
-| ID | Scenario | Expected on every configuration | C01 | C02 | C03 | C04 | C05 | C06 | C07 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | | | | | | | |
-| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | | | | | | | |
-| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | | | | | | | |
-| TC-CMP-004 | Complete and reopen | Button and strikethrough update | | | | | | | |
-| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | | | | | | | |
-| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | | | | | | | |
-| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | | | | | | | |
-| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | | | | | | | |
+**Cross-browser and cross-OS (desktop)**
+
+| ID | Scenario | Expected on every configuration | C01 baseline | C04 mac-firefox | C05 win-chrome | C06 win-firefox |
+| --- | --- | --- | --- | --- | --- | --- |
+| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | | | | |
+| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | | | | |
+| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | | | | |
+| TC-CMP-004 | Complete and reopen | Button and strikethrough update | | | | |
+| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | | | | |
+| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | | | | |
+| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | | | | |
+| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | | | | |
+
+**Cross-device (Chrome on macOS; baseline is C01 above)**
+
+| ID | Scenario | C02 tablet | C03 mobile | C07 phone (optional) |
+| --- | --- | --- | --- | --- |
+| TC-CMP-001 | Register, log in, log out | | | |
+| TC-CMP-002 | Create task with date picker | | | |
+| TC-CMP-003 | Filter by category/status and search | | | |
+| TC-CMP-004 | Complete and reopen | | | |
+| TC-CMP-005 | Edit task | | | |
+| TC-CMP-006 | Delete with confirmation | | | |
+| TC-CMP-007 | Navigation bar and task table layout | | | |
+| TC-CMP-008 | Dashboard layout | | | |
 
 #### 2.3 Execution order
 
-1. C01 baseline, using the existing captures where they cover the scenario.
-2. C02 and C03, using the existing captures after their DevTools mode is recorded ([0.9](#what-the-existing-mac-chrome-captures-are-and-are-not)). Re-run only the scenarios they do not cover.
+1. C01 baseline: fresh TC-CMP run on the MacBook.
+2. C02 and C03: fresh TC-CMP runs in Chrome device mode. Record the DevTools mode used, and cite the Week 1 captures ([0.9](#week-1-captures-reused-as-supporting-evidence)) as supporting evidence where they show the same screen.
 3. C04 Firefox on the MacBook ([2.4.1](#241-macos-firefox-run-c04)).
 4. C05 and C06 on Windows 11 ([2.4.2](#242-windows-11-run-c05-chrome-c06-firefox)).
 5. C07 only if a way to reach the app is found without modifying it. Otherwise mark the column `Blocked` and give the reason.
@@ -268,7 +309,7 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 | 1. Install | Install the current Firefox release on the MacBook from mozilla.org, then record its version from `about:support` | Do not update Firefox partway through the run |
 | 2. Run the app | Start `python app.py` at the same commit as C01 and log in as account A with Fixture Set A | Same database and day as C01, so TC-CMP-008 values can be compared directly |
 | 3. Execute | Run TC-CMP-001 to TC-CMP-008 in a 1440x900 window. Optional: repeat TC-CMP-007 and TC-CMP-008 at 390 px in Firefox Responsive Design Mode (Option-Command-M) to compare with C03 for H10 | Watch the date picker, the `confirm()` dialog and the validation popup; Firefox draws these differently from Chrome |
-| 4. Evidence | Save to `mac-firefox/desktop/` (and `mac-firefox/mobile/` for the optional step) as `TC-CMP-00x-YYYYMMDD.png`. Use Firefox's "Take Screenshot", or Shift-Command-4 for native dialogs and pickers | |
+| 4. Evidence | Save to `2_Compatibility/evidences/mac-firefox/desktop/` (and `mac-firefox/mobile/` for the optional step) as `TC-CMP-00x-YYYYMMDD.png`. Use Firefox's "Take Screenshot", or Shift-Command-4 for native dialogs and pickers | |
 | 5. Record | Fill the C04 column in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 | Estimated time: about 45 minutes |
 
 ##### 2.4.2 Windows 11 run (C05 Chrome, C06 Firefox)
@@ -278,16 +319,16 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 | 1. Owner and machine | Darius Lee Shin, on the Acer Nitro 5 (2021): AMD Ryzen 5, GTX 1650, 32 GB DDR4. Record the Windows build (`winver`), exact model and CPU (`msinfo32`), native resolution and display scaling (Settings -> System -> Display) | Laptops often default to 125-150% scaling, which changes the layout. If the laptop has a high-refresh or external display, run on the built-in screen and record that |
 | 2. Browsers | Firefox is already installed; install Chrome if it is not. Before the run, check for updates in both browsers so they are on a current release. Then record the versions actually used: Chrome from `chrome://version`, Firefox from `about:support` | Do not update a browser partway through the run; if it updates, re-record the version |
 | 3. Run the app locally | Clone the repository and check out the **same commit** as the Mac runs. Then run `python -m venv venv`, `venv\Scripts\activate`, `pip install -r requirements.txt` and `python app.py` | `app.py` listens only on 127.0.0.1, so the app must run on the Windows machine itself. Serving it from the Mac would mean modifying the application, which is out of scope |
-| 4. Seed data | The Windows database starts empty. Recreate the data set from [0.6](#06-test-data-set) with accounts named like `w3<initial>_win_<ddmm>` | Use the same timezone as the Mac runs, because urgency depends on today's date |
-| 5. Locale | Record the Windows region and short-date format | The date picker displays dates in the locale's format; the saved value must still be `YYYY-MM-DD` |
+| 4. Seed data | The Windows database starts empty. Recreate Fixture Set A from [fixtures.md](fixtures.md) with accounts named like `w3<initial>_win_<ddmm>` | Use the same timezone as the Mac runs, because urgency depends on today's date |
+| 5. Locale | Record the Windows region and short-date format in the 2.1 table | The date picker displays dates in the locale's format; the saved value must still be `YYYY-MM-DD` |
 | 6. Execute | Run TC-CMP-001 to TC-CMP-008 on Chrome, then on Firefox. Optional: repeat TC-CMP-007 and TC-CMP-008 at 390 px in Firefox Responsive Design Mode (Ctrl+Shift+M) | Watch the date picker, the `confirm()` dialog and the validation popup; each browser draws these differently |
 | 7. Accessibility pass | On the same machine, run NVDA for TC-A11Y-005, TC-A11Y-007 and TC-A11Y-015, and run axe DevTools in Chrome | Gives Task 4 a second screen reader alongside VoiceOver |
-| 8. Evidence | Save to `win-chrome/desktop/` and `win-firefox/desktop/` as `TC-CMP-00x-YYYYMMDD.png`. Use Win+Shift+S or Firefox's "Take Screenshot" | Capture the whole browser window when a browser-drawn dialog or picker is part of the result |
+| 8. Evidence | Save to `2_Compatibility/evidences/win-chrome/desktop/` and `2_Compatibility/evidences/win-firefox/desktop/` as `TC-CMP-00x-YYYYMMDD.png`. Use Win+Shift+S or Firefox's "Take Screenshot" | Capture the whole browser window when a browser-drawn dialog or picker is part of the result |
 | 9. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Estimated time: 8 scenarios x 2 browsers, about 1.5 hours |
 
 #### 2.5 Interpretation (complete after execution)
 
-- Which differences are browser-specific, and which are viewport-specific (see H1)?
+- Which differences are browser-specific, which are OS-specific, and which are viewport-specific (see H1)?
 - Do any differences block a task, or are they cosmetic only?
 - Limitations: emulation vs real device, the browser versions tested, and untested configurations: Microsoft Edge on Windows 11 and Safari/WebKit on macOS and iOS (both excluded by team decision, see [2.1](#21-configurations)), older browsers and Firefox on Android.
 
@@ -295,39 +336,32 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 
 ### Usability observations
 
-**Method.** Use two techniques so that findings do not depend only on the testers' opinions:
+**Method.** Two-reviewer heuristic evaluation, with no end-user participants and no automation. Eu Kwan Ik and Ameera Alysha binti Azlan each review all six pages independently against the five qualities named in the guideline, mapped to Nielsen's heuristics, and then merge their findings and agree a severity for each one. The procedure, guiding questions and evidence names are in [3_Usability/test_cases.md](3_Usability/test_cases.md).
 
-1. **Task-based walkthrough.** Two or three participants who did not design the cases each attempt the tasks below on C01 without help. The facilitator records completion, time, errors or wrong paths, and a 1-7 ease rating (Single Ease Question), and asks participants to think aloud.
-2. **Heuristic review.** Two team members independently review every page against the five qualities named in the guideline (mapped to Nielsen heuristics) and then merge their findings.
+**Verdict rule (fixed before the review).** Severity uses Nielsen's scale: 0 not a problem, 1 cosmetic, 2 minor, 3 major, 4 catastrophic. A case **fails** if any merged observation for its quality is rated 3 or 4; otherwise it passes, even when observations rated 1 or 2 are logged.
 
-#### 3.1 Walkthrough tasks
+#### 3.1 Review cases
 
-| ID | Task given to participant | Success criterion | P1 (done / time / errors / SEQ) | P2 | P3 |
+| ID | Guideline quality | Nielsen heuristics | Observations logged | Highest severity | Status |
 | --- | --- | --- | --- | --- | --- |
-| TC-USA-001 | Create an account and log in | Reaches `My Tasks` | | | |
-| TC-USA-002 | Add a Study task due tomorrow | Task listed with category Study and the correct date | | | |
-| TC-USA-003 | Show only open Work tasks whose title contains "report" | Correct filtered list shown | | | |
-| TC-USA-004 | Mark a task as done, then undo it | Task returns to the open state | | | |
-| TC-USA-005 | Delete one specific task | Correct task removed; others intact | | | |
-| TC-USA-006 | Find how many tasks are overdue | States the correct number from the dashboard | | | |
+| TC-USA-001 | Ease of navigation | 3 User control and freedom; 6 Recognition rather than recall | | | Not Run |
+| TC-USA-002 | Feedback | 1 Visibility of system status | | | Not Run |
+| TC-USA-003 | Consistency | 4 Consistency and standards | | | Not Run |
+| TC-USA-004 | Error prevention | 5 Error prevention; 9 Help users recover from errors | | | Not Run |
+| TC-USA-005 | Understandability | 2 Match with the real world; 8 Aesthetic and minimalist design | | | Not Run |
 
-Use synthetic data only. Record participants as P1-P3 and do not record names or student IDs.
+#### 3.2 Merge record (complete after the review)
 
-#### 3.2 Heuristic checklist
-
-| Guideline quality | Heuristic | Questions to answer per page |
-| --- | --- | --- |
-| Ease of navigation | Recognition rather than recall; user control and freedom | Can every page be reached from the navigation bar? Is there always a way back or a Cancel option? |
-| Feedback | Visibility of system status | Does every action show that it succeeded or failed (H6)? |
-| Consistency | Consistency and standards | Are terms, button styles and positions the same across pages (for example `Log in` and `Log out`, `Create Task` and `Save Changes`)? |
-| Error prevention | Error prevention; help users recover from errors | Are rules shown before input? Are destructive actions confirmed? Do error messages explain how to fix the problem? |
-| Understandability | Match with the real world; aesthetic and minimalist design | Are urgency names, the `○`/`✓` control and the dashboard counters self-explanatory? |
+| Item | Value |
+| --- | --- |
+| Review dates (reviewer 1 / reviewer 2) | |
+| Observations found by reviewer 1 only / reviewer 2 only / both | |
+| Severity disagreements and how they were resolved | |
+| Reviewer notes | `3_Usability/evidences/TC-USA-0xx-<reviewer-initials>-<YYYYMMDD>.md` |
 
 #### 3.3 Observation log
 
-Severity scale: 0 not a problem, 1 cosmetic, 2 minor, 3 major, 4 catastrophic (Nielsen).
-
-| ID | Page | Heuristic | Observation | Source (walkthrough / review) | Severity 0-4 | Evidence | Recommendation |
+| ID | Case | Page | Heuristic | Observation | Severity 0-4 (agreed; R1/R2 if different) | Evidence | Recommendation |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | USA-OBS-001 | | | | | | | |
 
@@ -337,10 +371,10 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 ### Basic accessibility findings
 
-**Method.** Run three passes on each of the six pages, logged in with the seeded data set:
+**Method.** Run three passes on each of the six pages, logged in with Fixture Set A. The full cases are in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md).
 
-1. **Automated scan.** Lighthouse Accessibility audit and axe DevTools (or WAVE). Save the reports. Automated tools catch only part of the issues, so treat a clean scan as incomplete evidence.
-2. **Manual keyboard pass.** Complete TC-USA-001 to TC-USA-005 with Tab, Shift+Tab, Enter, Space and the arrow keys only.
+1. **Automated scan.** Lighthouse Accessibility audit and axe DevTools (or WAVE). Save the reports to `4_Accessibility/evidences/reports/`. Automated tools catch only part of the issues, so treat a clean scan as incomplete evidence.
+2. **Manual keyboard pass.** Complete the TC-A11Y-008 task sequence with Tab, Shift+Tab, Enter, Space, Escape and the arrow keys only.
 3. **Screen reader and zoom pass.** Use VoiceOver (macOS) or NVDA (Windows) on the login, task list and task form pages. Then check 200% zoom and a 320 CSS px width.
 
 #### 4.1 WCAG 2.2 checklist (Level A/AA subset)
@@ -354,7 +388,7 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 | TC-A11Y-005 | 1.3.1 / 4.1.2 Labels associated | Clicking a label focuses its field; screen reader reads the label | Login, register, task form | Each field announced with its label (H2) | | Not Run | | |
 | TC-A11Y-006 | 3.3.2 Labels or instructions (A) | Every input has a visible label or instruction | Task list filters | Filters and search have labels (H4) | | Not Run | | |
 | TC-A11Y-007 | 4.1.2 Name, role, value (A) | Complete/reopen button announces its purpose and state | Task list | e.g. "Mark <title> as done, button" (H3) | | Not Run | | |
-| TC-A11Y-008 | 2.1.1 Keyboard (A) | All functions work by keyboard, including the delete dialog and date picker | All | TC-USA-001 to TC-USA-005 completed by keyboard only | | Not Run | | |
+| TC-A11Y-008 | 2.1.1 Keyboard (A) | All functions work by keyboard, including the delete dialog and date picker | All | The TC-A11Y-008 task sequence completed by keyboard only, with no keyboard trap | | Not Run | | |
 | TC-A11Y-009 | 2.4.1 Bypass blocks (A) | A way to skip the navigation bar | All logged-in pages | Skip link or landmark navigation available (H8) | | Not Run | | |
 | TC-A11Y-010 | 2.4.2 Page titled (A) | Page titles are unique and descriptive | All | Same as TC-GUI-021 | | Not Run | | |
 | TC-A11Y-011 | 2.4.3 Focus order / 2.4.7 Focus visible (AA) | Tab order follows the visual order and focus is always visible | All | Logical order; visible focus indicator on every control | | Not Run | | |
@@ -405,7 +439,7 @@ State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a
 | Actual Result | Observed behaviour |
 | Severity | Critical / Major / Moderate / Minor |
 | Priority | High / Medium / Low |
-| Evidence | Relative link to screenshot or report |
+| Evidence | Relative link to screenshot or report in the technique folder's `evidences/` |
 | Status | Open / Confirmed / Retest / Closed |
 
 Severity guidance for this phase: **Major** when a task cannot be completed (for example, a keyboard or screen-reader user cannot complete or delete a task). **Moderate** when a task can be completed but is materially harder or misleading. **Minor** for cosmetic or consistency issues.
@@ -428,10 +462,10 @@ Order the recommendations by priority. Recommendations describe changes for the 
 
 | Item | Value |
 | --- | --- |
-| Cases planned / executed / passed / failed / blocked | |
+| Cases planned / executed / passed / failed / blocked | 53 planned (22 GUI, 8 compatibility, 5 usability, 18 accessibility); compatibility cases are counted once each, with per-configuration results in [2.2](#22-compatibility-smoke-scenarios) |
 | New defects (by severity) | |
 | Usability observations (by severity) | |
 | Hand-off to Week 4 | UI vs API differences seen during GUI testing (e.g. validation shown in the UI but not enforced by the server) |
 | Hand-off to Week 5 | H9 rendering of titles, and any other security-relevant behaviour seen in the UI |
 | Hand-off to Week 6 | Stable GUI cases suitable for Selenium regression (candidates: TC-CMP-001 to TC-CMP-006) |
-| Limitations | Configurations not tested, emulation vs real devices, number of usability participants, subset of WCAG covered |
+| Limitations | Configurations not tested, emulation vs real devices, usability evaluated by two-reviewer heuristic review only (no end-user participants), subset of WCAG covered |

@@ -31,7 +31,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - planning complete |
+| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - planning complete; 53 cases drafted in four technique folders, awaiting review |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
 | 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
@@ -94,7 +94,7 @@ Use the guideline's required test-case, defect-report and RTM fields. Define exp
 | Defect status | Open / Confirmed / Retest / Closed, as applicable |
 | Evidence | Store under the phase's `evidences/`; include test ID and run/date in new filenames |
 
-Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in the [Week 1 evidence index](01_Black_Box/README.md#black-box-testing-evidence); Week 3 compatibility captures are organised by `<os>-<browser>/<viewport>/` as described in [03_Special_Testing/README.md](03_Special_Testing/README.md#09-evidence-conventions). Update evidence links whenever replacing a run.
+Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in the [Week 1 evidence index](01_Black_Box/README.md#black-box-testing-evidence); Week 3 evidence is stored in each technique folder (`1_GUI/`, `2_Compatibility/`, `3_Usability/`, `4_Accessibility/`) as described in [03_Special_Testing/README.md](03_Special_Testing/README.md#09-evidence-conventions). Update evidence links whenever replacing a run.
 
 Each test case must contain its ID, feature/requirement, technique/type, objective, preconditions, test data, numbered steps, expected result, actual result, status, evidence and related defect ID. Each defect must contain its ID, title, feature, environment, preconditions, reproduction steps, expected/actual results, severity, priority, evidence and status. The RTM must connect requirements/features, scenarios, test IDs, techniques, results and defect IDs.
 
