@@ -15,7 +15,7 @@ usability review and the screen-reader parts of accessibility remain manual.
 | Playwright (Python) | 1.65.2 |
 | Flask | 3.0.3 |
 | Google Chrome (macOS, C01) | 157.0.8103.80, driven through Playwright's `chrome` channel |
-| Mozilla Firefox (macOS, C04) | 160.0.1 installed; see [Firefox note](#firefox-configurations) |
+| Firefox (macOS, C04) | Playwright build 159.0 (v1572); see [Firefox note](#firefox-configurations) |
 | axe-core (via axe-playwright-python 0.1.8) | 4.12.1 |
 | Lighthouse (via `npx`, needs Node.js) | 12.8.2; Node.js 24.19.0 verified |
 
@@ -43,7 +43,15 @@ python -m pip check
 ```
 
 Chrome configurations use the **installed Google Chrome** through Playwright's
-`chrome` channel, so no browser download is needed for them. Check the installed
+`chrome` channel, so no browser download is needed for them. Firefox
+configurations (C04, C06) need Playwright's Firefox build once:
+
+```bash
+python -m playwright install firefox
+```
+
+The `--w3-config` option selects the browser engine, so no `--browser` flag is
+needed. Check the installed
 version before a run and record it in [README 2.1](README.md#21-configurations).
 
 ## 3. Run the suites
@@ -69,7 +77,13 @@ python -m pytest test/03_Special_Testing/4_Accessibility --w3-config C01
 python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C01
 python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C02
 python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C03
+python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C04   # Firefox, macOS
+python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C05   # Chrome, Windows
+python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C06   # Firefox, Windows
 ```
+
+Before running C05/C06, set their `viewport` in `fixtures.json` to the Windows
+laptop's CSS resolution.
 
 Add `--headed` to watch the browser. Runs are headless by default.
 
@@ -108,6 +122,6 @@ a later run on the same day, and each run keeps its own results file.
 ## Firefox configurations
 
 Playwright cannot drive a normally installed Firefox; it runs its own patched
-Firefox build. Running C04/C06 through Playwright therefore tests that build,
-not the installed Firefox 160.0.1. The choice for C04/C06 is recorded in
-[README 2.1](README.md#21-configurations).
+Firefox build. The team chose on 2026-11-18 to run C04/C06 on that build, so
+C04 tested Firefox 159.0 rather than the installed 160.0.1. This is recorded as a
+limitation in [README 2.5](README.md#25-interpretation-complete-after-execution).

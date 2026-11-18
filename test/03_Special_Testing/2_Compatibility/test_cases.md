@@ -1,6 +1,6 @@
 # Week 3 - Compatibility Test Cases
 
-Detailed cases for [Task 2 - Compatibility/configuration matrix](../README.md#task-2) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed by the Playwright suite [test_compatibility.py](test_compatibility.py), once per configuration (`--w3-config <ID>`). C01, C02 and C03 were executed on 2026-11-18 (Chrome 157.0.8103.80, macOS 26.5.2, headless; C02/C03 with Chrome mobile emulation). Recorded runs: C01 [results-C01-20261118-202509.json](evidences/mac-chrome/desktop/results-C01-20261118-202509.json) (first C01 run: [results-C01-20261118-1931.json](evidences/mac-chrome/desktop/results-C01-20261118-1931.json)); C02 [results-C02-20261118-202514.json](evidences/mac-chrome/tablet/results-C02-20261118-202514.json) and [results-C02-20261118-202524.json](evidences/mac-chrome/tablet/results-C02-20261118-202524.json); C03 [results-C03-20261118-202519.json](evidences/mac-chrome/mobile/results-C03-20261118-202519.json) and [results-C03-20261118-202529.json](evidences/mac-chrome/mobile/results-C03-20261118-202529.json). Configurations not yet run stay `Not Run`.
+Detailed cases for [Task 2 - Compatibility/configuration matrix](../README.md#task-2) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed by the Playwright suite [test_compatibility.py](test_compatibility.py), once per configuration (`--w3-config <ID>`). C01, C02 and C03 were executed on 2026-11-18 (Chrome 157.0.8103.80, macOS 26.5.2, headless; C02/C03 with Chrome mobile emulation). Recorded runs: C01 [results-C01-20261118-202509.json](evidences/mac-chrome/desktop/results-C01-20261118-202509.json) (first C01 run: [results-C01-20261118-1931.json](evidences/mac-chrome/desktop/results-C01-20261118-1931.json)); C02 [results-C02-20261118-202514.json](evidences/mac-chrome/tablet/results-C02-20261118-202514.json) and [results-C02-20261118-202524.json](evidences/mac-chrome/tablet/results-C02-20261118-202524.json); C03 [results-C03-20261118-202519.json](evidences/mac-chrome/mobile/results-C03-20261118-202519.json) and [results-C03-20261118-202529.json](evidences/mac-chrome/mobile/results-C03-20261118-202529.json). C04 (Firefox 159.0 (Playwright build v1572; the installed Firefox is 160.0.1)) was executed on 2026-11-18: [results-C04-20261118-210941.json](evidences/mac-firefox/desktop/results-C04-20261118-210941.json) and [results-C04-20261118-210946.json](evidences/mac-firefox/desktop/results-C04-20261118-210946.json). Configurations not yet run stay `Not Run`.
 
 **Changes to the scripted checks on 2026-11-18.** The first C02/C03 runs passed TC-CMP-007 because the script checked wrapping and clipping but not the "readable" part of the expected result; the step 6 text-size measurement was added and C01-C03 were re-run under the same check. On emulated devices, screenshots capture the device screen rather than the whole layout. Three runs between 20:20 and 20:24 were discarded because their per-run usernames were stamped only to the minute, so runs started in the same minute shared accounts; the stamp now includes seconds.
 
@@ -43,9 +43,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"username": "w3<initial>_<config>_<ddmm>", "password": "Test12345"} |
 | Steps | 1. Open `/register` and register with the test data.<br>2. Select `Log out`.<br>3. Log in with the same data. |
 | Expected Result | Step 1 opens `My Tasks` with the username in the navigation bar. Step 2 returns to `/login`. Step 3 opens `My Tasks`. Pages render and redirect as on C01. Basis: REQ-001, REQ-002. |
-| Actual Result | C01: Registering opened `My Tasks` with the new username in the navigation bar; `Log out` returned to `/login`; logging in again opened `My Tasks`. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-001-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-001-registered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-registered-20261118.jpg)<br>[TC-CMP-001-logged-in-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-logged-in-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: Registering opened `My Tasks` with the new username in the navigation bar; `Log out` returned to `/login`; logging in again opened `My Tasks`. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-001-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-001-registered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-registered-20261118.jpg)<br>[TC-CMP-001-logged-in-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-logged-in-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-002 - Create a task with the date picker
@@ -60,9 +60,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"title": "CMP-Date", "category": "Study", "dueDate": "today+7, chosen with the picker"} |
 | Steps | 1. Open `/tasks/new`.<br>2. Enter the title and category.<br>3. Open the date control and choose the due date with it (not by typing).<br>4. Capture the open picker with an OS screenshot.<br>5. Select `Create Task`. |
 | Expected Result | A date picker opens, or a date field that accepts the date if the browser has no picker. The list shows `CMP-Date` with the due date as `YYYY-MM-DD`, whatever the browser's display format, and the badge `Upcoming`. Basis: README task fields; REQ-006. |
-| Actual Result | C01: `CMP-Date` (Study) listed with due date today+7 in `YYYY-MM-DD` and badge `Upcoming`. The date was entered by value; the native picker UI was not exercised. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-002-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-002-created-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-002-created-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: `CMP-Date` (Study) listed with due date today+7 in `YYYY-MM-DD` and badge `Upcoming`. The date was entered by value; the native picker UI was not exercised. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-002-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-002-created-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-002-created-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-003 - Filter and search
@@ -77,9 +77,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"category": "Work", "status": "Open", "q": "GUI"} |
 | Steps | 1. Open `/`.<br>2. Choose `Work`, then `Open`.<br>3. Type `GUI` and press Enter.<br>4. Record the listed titles. |
 | Expected Result | Each list change applies without selecting `Filter`. The final list contains the same titles as on C01 for the same fixture set (F1 only). Basis: REQ-005. |
-| Actual Result | C01: Category and status applied on change without `Filter`; the final list contained `GUI-Overdue` only. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-003-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-003-filtered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-003-filtered-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: Category and status applied on change without `Filter`; the final list contained `GUI-Overdue` only. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-003-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-003-filtered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-003-filtered-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-004 - Complete and reopen
@@ -94,9 +94,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"fixture": "F3"} |
 | Steps | 1. Select `○` on F3 and capture.<br>2. Select `✓` on F3 and capture. |
 | Expected Result | The same states as [TC-GUI-011](../1_GUI/test_cases.md#tc-gui-011---complete-and-reopen-button): `✓`, strikethrough and `Done` after step 1; `○`, no strikethrough and `Due Soon` after step 2. Both symbols render as symbols, not as empty boxes. Basis: REQ-004. |
-| Actual Result | C01: `✓`, strikethrough and `Done` after completing; `○`, no strikethrough and `Due Soon` after reopening; both symbols rendered as glyphs. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-004-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-004-done-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-done-20261118.jpg)<br>[TC-CMP-004-reopened-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-reopened-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: `✓`, strikethrough and `Done` after completing; `○`, no strikethrough and `Due Soon` after reopening; both symbols rendered as glyphs. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-004-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-004-done-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-done-20261118.jpg)<br>[TC-CMP-004-reopened-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-reopened-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-005 - Edit a task
@@ -111,9 +111,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"task": "CMP-Date", "newDueDate": "today+10, chosen with the picker"} |
 | Steps | 1. Select `Edit` on `CMP-Date`.<br>2. Check that the due date shows today+7.<br>3. Choose the new date with the picker and select `Save Changes`.<br>4. Open `Edit` again. |
 | Expected Result | Step 2 shows the saved date. After step 3, the list shows the new date. Step 4 shows the new date in the form. Basis: REQ-003. |
-| Actual Result | C01: The edit form showed the saved date; the new date (today+10) was saved, listed and shown again in the form. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-005-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-005-edited-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-005-edited-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: The edit form showed the saved date; the new date (today+10) was saved, listed and shown again in the form. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-005-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-005-edited-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-005-edited-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-006 - Delete with confirmation
@@ -128,9 +128,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"task": "CMP-Date"} |
 | Steps | 1. Select `Delete` on `CMP-Date` and capture the dialog with an OS screenshot.<br>2. Select `Cancel`.<br>3. Select `Delete` again and confirm. |
 | Expected Result | The dialog appears with a delete question and two choices. Cancel keeps the task; confirming removes it. Same behaviour as on C01. Basis: REQ-003. |
-| Actual Result | C01: Confirmation dialog `Delete this task?` appeared (recorded text); Cancel kept the task and OK removed it. C02 and C03: same result as C01. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-006-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-006-deleted-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-006-deleted-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: Confirmation dialog `Delete this task?` appeared (recorded text); Cancel kept the task and OK removed it. C02 and C03: same result as C01. C04: same result as C01. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-006-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-006-deleted-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-006-deleted-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |
 
 ## TC-CMP-007 - Navigation bar and task table layout
@@ -145,9 +145,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"fixtures": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9"]} |
 | Steps | 1. Open `/` with no filters.<br>2. Inspect the navigation bar.<br>3. Inspect the table, including F7 and F8.<br>4. Run the horizontal-scroll check from [TC-GUI-019](../1_GUI/test_cases.md#tc-gui-019---long-content) in the browser's console.<br>5. Capture the page.<br>6. Measure the smallest navigation and table text as rendered on the device screen (CSS font size x page scale) against the 12 px legibility threshold used by Lighthouse. |
 | Expected Result | Each navigation item fits on one line with no overlap. All six table columns are readable with no clipped text or controls. The page does not scroll horizontally, unless a scrolling table is the only cause and it is recorded. Basis: interface; H1; H10. |
-| Actual Result | C01: At 1440x900 every navigation item fits on one line within the viewport with no overlap; all six table columns are within the viewport; no horizontal page scroll. C02 and C03: navigation and table fit without wrapping or clipping, but the page is laid out at 980 CSS px and scaled down to fit the screen (H1), so the smallest navigation/table text renders at **9.8 px on C02** and **5.0 px on C03**, below the 12 px legibility threshold. Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Fail. C03: Fail. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-007-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-007-layout-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-007-layout-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: At 1440x900 every navigation item fits on one line within the viewport with no overlap; all six table columns are within the viewport; no horizontal page scroll. C02 and C03: navigation and table fit without wrapping or clipping, but the page is laid out at 980 CSS px and scaled down to fit the screen (H1), so the smallest navigation/table text renders at **9.8 px on C02** and **5.0 px on C03**, below the 12 px legibility threshold. C04: navigation and table fit and text renders at 12.5 px or more; cosmetic differences from Chrome (larger `○` glyph, due dates on one line, table about 40 px wider than its container) do not affect any check. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Fail. C03: Fail. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-007-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-007-layout-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-007-layout-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | DEF-006 (C02, C03) |
 
 ## TC-CMP-008 - Dashboard layout
@@ -162,7 +162,7 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {} |
 | Steps | 1. Open `/dashboard`.<br>2. Record the five counter values.<br>3. Capture the page. |
 | Expected Result | The five cards do not overlap and wrap into rows as the width shrinks. The counter values equal those on C01 for the same fixture set and date. Basis: REQ-007; interface. |
-| Actual Result | C01: Cards do not overlap. Counter values on 2026-11-18: Total Tasks 9, Open 8, Overdue 2, Due Soon 1, Completed (last 7 days) 1. These are the C01 reference values for same-day comparison. C02 and C03: cards do not overlap; counter values identical to C01 (9, 8, 2, 1, 1). Other configurations: recorded per configuration in README 2.2. |
-| Status | C01: Pass. C02: Pass. C03: Pass. C04-C07: Not Run |
-| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-008-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-008-dashboard-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-008-dashboard-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/) |
+| Actual Result | C01: Cards do not overlap. Counter values on 2026-11-18: Total Tasks 9, Open 8, Overdue 2, Due Soon 1, Completed (last 7 days) 1. These are the C01 reference values for same-day comparison. C02 and C03: cards do not overlap; counter values identical to C01 (9, 8, 2, 1, 1). C04: cards do not overlap; counter values identical to C01 on the same day. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02: Pass. C03: Pass. C04: Pass. C05-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-008-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-008-dashboard-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-008-dashboard-20261118.jpg)<br>C02: [mac-chrome/tablet/](evidences/mac-chrome/tablet/)<br>C03: [mac-chrome/mobile/](evidences/mac-chrome/mobile/)<br>C04: [mac-firefox/desktop/](evidences/mac-firefox/desktop/) |
 | Defect ID | — |

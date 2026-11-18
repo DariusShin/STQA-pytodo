@@ -39,6 +39,9 @@ def pytest_addoption(parser):
 
 def pytest_configure(config):
     config.w3_config_id = config.getoption("--w3-config")
+    # The configuration decides the browser engine unless --browser is given explicitly.
+    if not config.getoption("browser", default=None):
+        config.option.browser = [DATA["configurations"][config.w3_config_id]["browser"]]
 
 
 # ---------------------------------------------------------------------------
@@ -49,6 +52,12 @@ def pytest_configure(config):
 def w3_config(pytestconfig):
     config_id = pytestconfig.w3_config_id
     return {"id": config_id, **DATA["configurations"][config_id]}
+
+
+@pytest.fixture(autouse=True)
+def browser_matches_config(browser_name, w3_config):
+    if browser_name != w3_config["browser"]:
+        pytest.fail(f"--w3-config {w3_config['id']} uses {w3_config['browser']}, not {browser_name}")
 
 
 @pytest.fixture(scope="session")
