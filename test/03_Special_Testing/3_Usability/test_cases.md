@@ -22,6 +22,8 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 
 ## How to run
 
+**Review kit.** Setup, account seeding, the notes template and the GUI-suite inputs are in [review_kit.md](review_kit.md).
+
 **Method: two-reviewer heuristic evaluation.** There are no end-user participants and no automation. Each case covers one of the five usability qualities named in the project guideline, mapped to Nielsen's heuristics. Each case is applied to all six pages: `/login`, `/register`, `/` (task list), `/tasks/new`, `/tasks/<id>/edit` and `/dashboard`, together with the shared navigation bar.
 
 | Role | Member |

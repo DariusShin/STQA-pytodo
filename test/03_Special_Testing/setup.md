@@ -87,6 +87,13 @@ laptop's CSS resolution.
 
 Add `--headed` to watch the browser. Runs are headless by default.
 
+For manual sessions such as the usability review, create a seeded account without
+running a suite (`python app.py` must be running):
+
+```bash
+python test/03_Special_Testing/seed_fixtures.py --initial <letter>
+```
+
 ## 4. Outputs
 
 | Output | Location |
@@ -124,4 +131,4 @@ a later run on the same day, and each run keeps its own results file.
 Playwright cannot drive a normally installed Firefox; it runs its own patched
 Firefox build. The team chose on 2026-11-18 to run C04/C06 on that build, so
 C04 tested Firefox 159.0 rather than the installed 160.0.1. This is recorded as a
-limitation in [README 2.5](README.md#25-interpretation-complete-after-execution).
+limitation in [README 2.5](README.md#25-interpretation).

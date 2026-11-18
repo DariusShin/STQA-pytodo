@@ -25,10 +25,11 @@ This README is the single phase report: the plan, every summary table and matrix
 ├── README.md            ← this report
 ├── fixtures.md          ← test-case template, precondition codes, accounts, Fixture Set A (readable form)
 ├── fixtures.json        ← the same test data, loaded by the scripts
+├── seed_fixtures.py     ← creates a seeded account for manual sessions (usability review)
 ├── conftest.py, pytest.ini, setup.md, requirements-test-lock.txt  ← Playwright/pytest harness and run guide
 ├── 1_GUI/               ← Task 1: test_cases.md (TC-GUI-001 to 022), test_gui.py + evidences/
 ├── 2_Compatibility/     ← Task 2: test_cases.md (TC-CMP-001 to 008), test_compatibility.py + evidences/<os>-<browser>/<viewport>/
-├── 3_Usability/         ← Task 3: test_cases.md (TC-USA-001 to 005) + evidences/
+├── 3_Usability/         ← Task 3: test_cases.md (TC-USA-001 to 005), review_kit.md, notes_template.md + evidences/
 └── 4_Accessibility/     ← Task 4: test_cases.md (TC-A11Y-001 to 018), test_accessibility.py + evidences/ and evidences/reports/
 ```
 
@@ -268,7 +269,7 @@ Each configuration is a combination of OS, browser, viewport and settings. The s
 | Microsoft Edge on Windows 11 | Edge uses the same Blink engine as Chrome, so it adds the least new coverage for the effort | Edge-specific features and settings are untested |
 | Safari on macOS | Not needed for the 2x2 design above | The WebKit engine, which also underlies every browser on iOS, is untested |
 
-Record both exclusions as limitations in [2.5](#25-interpretation-complete-after-execution) and in the Week 8 residual-risk assessment.
+Record both exclusions as limitations in [2.5](#25-interpretation) and in the Week 8 residual-risk assessment.
 
 #### 2.2 Compatibility smoke scenarios
 
@@ -333,18 +334,25 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 | 7. Evidence | Saved automatically to `2_Compatibility/evidences/win-chrome/desktop/` and `win-firefox/desktop/` with a results file per run | Commit the evidence and results files, then fill the C05 and C06 columns |
 | 8. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Each scripted run takes under a minute |
 
-#### 2.5 Interpretation (complete after execution)
+#### 2.5 Interpretation
 
-- Findings so far (2026-11-18): all eight scenarios behave the same in Chrome and Firefox on macOS at desktop size (C01, C04). Firefox shows only cosmetic differences: a larger `○` glyph, due dates on one line, select styling, and a table about 40 px wider than its container. The only failure is viewport-specific: on emulated tablet and phone screens the page is laid out at desktop width and scaled down (DEF-006). OS-specific differences await C05/C06.
-- Which differences are browser-specific, which are OS-specific, and which are viewport-specific (see H1)?
-- Do any differences block a task, or are they cosmetic only?
+Based on C01-C04 as of 2026-11-18; update after C05/C06.
+
+| Question | Answer from the evidence |
+| --- | --- |
+| Browser-specific differences? | None functional. All eight scenarios give the same result in Chrome (C01) and Firefox (C04) on macOS, including the native date control, the delete confirmation and the auto-submitting filters. Firefox differs only cosmetically: a larger `○` glyph, due dates on one line, native select styling, and a table about 40 px wider than its container without causing a page scroll. |
+| OS-specific differences? | Not yet known; C05 (Chrome) and C06 (Firefox) on Windows 11 will isolate them. |
+| Viewport-specific differences? | Yes. On emulated tablet and phone screens (C02, C03) the page is laid out at 980 CSS px and scaled down, so text renders at 9.8 px and 5.0 px (DEF-006, cause consistent with H1). In a narrow desktop window the navigation wraps and pushes `Log out` off-screen (DEF-004, seen at 390 px in TC-GUI-005 and at 320 px in TC-A11Y-012). |
+| Does any difference block a task? | No task is blocked: all task flows passed on every configuration run. On phones and tablets reading needs zooming (DEF-006), and in narrow windows logging out needs horizontal scrolling (DEF-004); both make tasks materially harder, hence Moderate severity. |
+| Confidence | Results were reproduced in two runs per configuration (C01's first run used the earlier text-size check). Tablet and phone results come from Chrome's mobile emulation, not real devices, so touch behaviour and real-device rendering are untested. |
+
 - Limitations: emulation vs real device, the browser versions tested, and untested configurations: Microsoft Edge on Windows 11 and Safari/WebKit on macOS and iOS (both excluded by team decision, see [2.1](#21-configurations)), older browsers and Firefox on Android. Firefox was tested through Playwright's build (159.0), not the installed release (160.0.1).
 
 ## Task 3
 
 ### Usability observations
 
-**Method.** Two-reviewer heuristic evaluation, with no end-user participants and no automation. Eu Kwan Ik and Ameera Alysha binti Azlan each review all six pages independently against the five qualities named in the guideline, mapped to Nielsen's heuristics, and then merge their findings and agree a severity for each one. The procedure, guiding questions and evidence names are in [3_Usability/test_cases.md](3_Usability/test_cases.md).
+**Method.** Two-reviewer heuristic evaluation, with no end-user participants and no automation. Eu Kwan Ik and Ameera Alysha binti Azlan each review all six pages independently against the five qualities named in the guideline, mapped to Nielsen's heuristics, and then merge their findings and agree a severity for each one. The procedure, guiding questions and evidence names are in [3_Usability/test_cases.md](3_Usability/test_cases.md); setup, the notes template and the GUI-suite inputs are in the [review kit](3_Usability/review_kit.md).
 
 **Verdict rule (fixed before the review).** Severity uses Nielsen's scale: 0 not a problem, 1 cosmetic, 2 minor, 3 major, 4 catastrophic. A case **fails** if any merged observation for its quality is rated 3 or 4; otherwise it passes, even when observations rated 1 or 2 are logged.
 
@@ -678,14 +686,40 @@ DEF-001 to DEF-003 keep the recommendations recorded in Week 1.
 
 Order the recommendations by priority. Recommendations describe changes for the development team. This project does not modify the application.
 
-#### 5.5 Phase summary and hand-offs (complete after execution)
+#### 5.5 Phase summary and hand-offs (as of 2026-11-18; usability review and C05/C06 pending)
+
+**Execution metrics.** Each case is counted once. A compatibility case counts as Fail if it failed on any configuration run so far; its per-configuration results are in [2.2](#22-compatibility-smoke-scenarios).
+
+| Technique | Planned | Executed | Pass | Fail | Blocked | Not Run | Pass rate (of executed) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| GUI (Task 1) | 22 | 22 | 14 | 8 | 0 | 0 | 63.6% |
+| Compatibility (Task 2) | 8 | 8 | 7 | 1 | 0 | 0 | 87.5% |
+| Usability (Task 3) | 5 | 0 | 0 | 0 | 0 | 5 | - |
+| Accessibility (Task 4) | 18 | 18 | 7 | 11 | 0 | 0 | 38.9% |
+| **Total** | **53** | **48** | **28** | **20** | **0** | **5** | **58.3%** |
+
+$$
+\text{Verdict completion} = \frac{\text{Executed}}{\text{Planned}} \times 100\% = \frac{48}{53} \times 100\% \approx 90.6\%
+$$
+
+Compatibility runs per configuration: 8 cases on each of C01-C04 = 32 case runs, 30 Pass and 2 Fail (TC-CMP-007 on C02 and C03), a 93.8% run pass rate.
+
+**Defects found or re-confirmed in Week 3.**
+
+| Technique | New defects | Re-confirmed Week 1 defects |
+| --- | --- | --- |
+| GUI | DEF-004 (Moderate), DEF-005 (Moderate) | DEF-001, DEF-002, DEF-003 |
+| Compatibility | DEF-006 (Moderate) | - |
+| Accessibility | DEF-007 (Major), DEF-008 (Major), DEF-009 (Moderate), DEF-010 (Minor), DEF-011 (Moderate), DEF-012 (Minor), DEF-013 (Minor) | DEF-004 (reflow at 320 px) |
+
+Accessibility produced 7 of the 10 new defects and both Major ones, so it is the weakest quality area measured this week. The GUI and compatibility failures are concentrated in narrow viewports (DEF-004, DEF-006) and in how content is rendered (DEF-005).
 
 | Item | Value |
 | --- | --- |
-| Cases planned / executed / passed / failed / blocked | 53 planned (22 GUI, 8 compatibility, 5 usability, 18 accessibility); compatibility cases are counted once each, with per-configuration results in [2.2](#22-compatibility-smoke-scenarios). Executed so far: GUI 22 (14 Pass, 8 Fail); accessibility 18 (7 Pass, 11 Fail); compatibility 8 on C01-C03 (C01 8 Pass; C02 and C03 7 Pass, 1 Fail each); usability 0 |
+| Cases planned / executed / passed / failed / blocked | 53 / 48 / 28 / 20 / 0 (5 usability cases Not Run); see the metrics table above |
 | New defects (by severity) | 10 new so far: 2 Major (DEF-007, DEF-008), 5 Moderate (DEF-004, DEF-005, DEF-006, DEF-009, DEF-011), 3 Minor (DEF-010, DEF-012, DEF-013); DEF-001 to DEF-003 reproduced |
 | Usability observations (by severity) | So far: 4 found by the GUI suite (USA-OBS-001 to 004), severities pending the heuristic review |
-| Hand-off to Week 4 | UI vs API differences seen during GUI testing (e.g. validation shown in the UI but not enforced by the server) |
-| Hand-off to Week 5 | H9 rendering of titles, and any other security-relevant behaviour seen in the UI |
-| Hand-off to Week 6 | Stable GUI cases suitable for Selenium regression (candidates: TC-CMP-001 to TC-CMP-006) |
-| Limitations | Configurations not tested, emulation vs real devices, usability evaluated by two-reviewer heuristic review only (no end-user participants), subset of WCAG covered |
+| Hand-off to Week 4 | Compare the web forms with the API for the same inputs: whitespace-only titles (DEF-003), the 8-character password boundary (DEF-001) and due-today urgency (DEF-002). No API requests were made in Week 3 |
+| Hand-off to Week 5 | DEF-005 / H9: task titles are rendered as HTML, a likely script-injection path to assess with safe test data in the STRIDE table |
+| Hand-off to Week 6 | The three Playwright suites (`test_gui.py`, `test_compatibility.py`, `test_accessibility.py`) already run headless from one command and write per-run results files; TC-CMP-001 to 008 are stable across four configurations and are the strongest regression candidates |
+| Limitations | Windows configurations and the usability review not yet run; tablet and phone results come from emulation, not real devices; Firefox tested through Playwright's 159.0 build; all runs headless on one MacBook; native dialogs, date pickers and validation bubbles are recorded as text rather than screenshots; 200% zoom emulated through an equivalent viewport; a subset of WCAG 2.2 A/AA only; usability by two-reviewer heuristic review without end-user participants |
