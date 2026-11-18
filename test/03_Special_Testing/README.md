@@ -4,7 +4,7 @@
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester / Lab Group | September 2026 / Wednesday Lab - Group 2 |
-| Phase status | In progress - Task 1 (GUI) executed on C01, and Task 2 executed on C01-C03, on 2026-11-18 by the Playwright suites; C04-C06, usability and accessibility not yet run |
+| Phase status | In progress - Task 1 (GUI) and Task 4 (accessibility) executed on C01, and Task 2 executed on C01-C03, on 2026-11-18 by the Playwright suites; C04-C06 and the usability review not yet run |
 
 ## Deliverable Checklist
 
@@ -29,7 +29,7 @@ This README is the single phase report: the plan, every summary table and matrix
 ├── 1_GUI/               ← Task 1: test_cases.md (TC-GUI-001 to 022), test_gui.py + evidences/
 ├── 2_Compatibility/     ← Task 2: test_cases.md (TC-CMP-001 to 008), test_compatibility.py + evidences/<os>-<browser>/<viewport>/
 ├── 3_Usability/         ← Task 3: test_cases.md (TC-USA-001 to 005) + evidences/
-└── 4_Accessibility/     ← Task 4: test_cases.md (TC-A11Y-001 to 018) + evidences/ and evidences/reports/
+└── 4_Accessibility/     ← Task 4: test_cases.md (TC-A11Y-001 to 018), test_accessibility.py + evidences/ and evidences/reports/
 ```
 
 | Deliverable (guideline) | Report section | Detailed cases | Evidence |
@@ -40,7 +40,7 @@ This README is the single phase report: the plan, every summary table and matrix
 | Basic accessibility findings | [Task 4](#task-4) | [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md) | `4_Accessibility/evidences/` |
 | Defects and improvement recommendations | [Task 5](#task-5) | Drawn from Tasks 1-4 | Linked from each defect |
 
-**Execution strategy.** The GUI and compatibility cases are executed by Playwright scripts run with pytest (`1_GUI/test_gui.py`, `2_Compatibility/test_compatibility.py`), decided by the team on 2026-11-18. Each script performs the documented steps, checks the expected result written in `test_cases.md` before execution, saves `.jpg` evidence and writes a per-run results file listing every check with its actual value. Visual judgements are recorded as notes and judged from the screenshots. The usability review and the screen-reader parts of accessibility stay manual. Setup and run commands are in [setup.md](setup.md). Week 6 can reuse these scripts as regression candidates.
+**Execution strategy.** The GUI, compatibility and accessibility cases are executed by Playwright scripts run with pytest (`1_GUI/test_gui.py`, `2_Compatibility/test_compatibility.py`, `4_Accessibility/test_accessibility.py`), decided by the team on 2026-11-18. Each script performs the documented steps, checks the expected result written in `test_cases.md` before execution, saves `.jpg` evidence and writes a per-run results file listing every check with its actual value. Visual judgements are recorded as notes and judged from the screenshots. The usability review stays manual; screen-reader output is inferred from Chrome's accessibility tree. Setup and run commands are in [setup.md](setup.md). Week 6 can reuse these scripts as regression candidates.
 
 ## Task 0 - Phase plan
 
@@ -103,7 +103,7 @@ Record these values at execution time. Do not copy versions from earlier weeks w
 | Browsers | macOS: Google Chrome 157.0.8103.80 (checked 2026-11-18; Week 1 used 155.0.8059.80), Mozilla Firefox 160.0.1 (installed 2026-11-18). Windows: record in the [configuration matrix](#21-configurations) |
 | Automation | Python 3.14.7, pytest 9.1.1, pytest-playwright 0.10.0, Playwright 1.65.2 driving the installed Chrome through the `chrome` channel, headless; full set in `requirements-test-lock.txt` |
 | Viewports | Device-mode preset name and CSS pixel size |
-| Accessibility tools | Lighthouse (bundled with Chrome); axe DevTools extension (installed 2026-11-18; record its version); VoiceOver (macOS) / NVDA version |
+| Accessibility tools | Scripted: axe-core 4.12.1 (through axe-playwright-python 0.1.8) and Lighthouse 12.8.2 (through `npx`, driving the installed Chrome). Manual, optional: axe DevTools extension (installed 2026-11-18), VoiceOver (macOS), NVDA (Windows) |
 | Test accounts | Synthetic accounts listed in [fixtures.md](fixtures.md#accounts); password `Test12345` |
 | Execution date/time and timezone | Per run |
 
@@ -138,7 +138,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | 3 | Write detailed cases with expected results before execution (drafted 2026-10-27; split into technique folders 2026-11-18), then complete each review sign-off | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results - done 2026-11-18 |
 | 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01-C03 done 2026-11-18 |
-| 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings |
+| 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings - done 2026-11-18 (scripted) |
 | 7 | Run the two-reviewer heuristic review (TC-USA-001 to 005) and merge the findings | [Task 3](#task-3) observations |
 | 8 | Reproduce each failure once more, log defects and draft recommendations | [Task 5](#task-5) |
 | 9 | Peer review, check links, update the [phase status](../README.md#3-deliverable-structure-and-progress) and the shared defect log | Phase ready for review |
@@ -186,13 +186,13 @@ The templates (`templates/*.html`) and `static/style.css` were read while planni
 | # | Observation from inspecting the source | Planned check | Result (2026-11-18) |
 | --- | --- | --- | --- |
 | H1 | `base.html` has no `<meta name="viewport">` tag, and the CSS has no `@media` rules | TC-CMP mobile/tablet runs; TC-A11Y-012 reflow | Confirmed by TC-CMP-007 on C02/C03: the page is laid out at 980 CSS px and scaled down, so text renders at 9.8 px (tablet) and 5.0 px (phone) (DEF-006) |
-| H2 | Form `<label>` elements have no `for` attribute, and inputs have no `id`, so labels may not be programmatically associated | TC-A11Y-005, TC-A11Y-006 | Not yet checked (TC-A11Y-005) |
-| H3 | The complete/reopen button's only content is `○` or `✓` | TC-A11Y-007 | Not yet checked (TC-A11Y-007) |
-| H4 | The filter selects and search box have no visible labels; the search box has a placeholder only | TC-A11Y-006, TC-GUI-008 | Visible-label part confirmed by TC-GUI-008; accessible names pending TC-A11Y-006 |
-| H5 | Calculated contrast: completed-task title and empty-state text `#999999` on white = 2.85:1 (WCAG 1.4.3 requires 4.5:1). Hint `#8d6e76` on white = 4.54:1 (borderline). Other text pairs checked were above 4.5:1 | TC-A11Y-004 with a contrast tool on the rendered page | Not yet measured (TC-A11Y-004) |
+| H2 | Form `<label>` elements have no `for` attribute, and inputs have no `id`, so labels may not be programmatically associated | TC-A11Y-005, TC-A11Y-006 | Confirmed by TC-A11Y-005: labels do not focus their fields and accessible names are empty (DEF-007) |
+| H3 | The complete/reopen button's only content is `○` or `✓` | TC-A11Y-007 | Confirmed by TC-A11Y-001/007: names are `○`/`✓` only (DEF-008) |
+| H4 | The filter selects and search box have no visible labels; the search box has a placeholder only | TC-A11Y-006, TC-GUI-008 | Confirmed by TC-GUI-008 and TC-A11Y-006 (DEF-007) |
+| H5 | Calculated contrast: completed-task title and empty-state text `#999999` on white = 2.85:1 (WCAG 1.4.3 requires 4.5:1). Hint `#8d6e76` on white = 4.54:1 (borderline). Other text pairs checked were above 4.5:1 | TC-A11Y-004 with a contrast tool on the rendered page | Confirmed by TC-A11Y-004: 2.85:1 measured for both; hint 4.54:1 passes (DEF-009) |
 | H6 | No success message after create, edit, delete or complete; only login and register render an error message | TC-GUI-017, TC-USA-002 | Confirmed by TC-GUI-017 (USA-OBS-001) |
-| H7 | Error messages have no `role="alert"` or live region | TC-A11Y-015 | Not yet checked (TC-A11Y-015) |
-| H8 | No skip link before the navigation bar | TC-A11Y-009 | Not yet checked (TC-A11Y-009) |
+| H7 | Error messages have no `role="alert"` or live region | TC-A11Y-015 | Confirmed by TC-A11Y-015 (DEF-011) |
+| H8 | No skip link before the navigation bar | TC-A11Y-009 | Confirmed by TC-A11Y-009; no `main` landmark either (DEF-010) |
 | H9 | `index.html` renders the task title with the `safe` filter | TC-GUI-020 checks only literal display; pass any script behaviour to the Week 5 STRIDE table | Confirmed by TC-GUI-020: HTML tags in a title are rendered (DEF-005); hand-off to Week 5 |
 | H10 | Seen in existing evidence [`mac-chrome/mobile/TC-BB-034.jpg`](2_Compatibility/evidences/mac-chrome/mobile/TC-BB-034.jpg): at 390 px the navigation bar is cramped. The brand wraps to `PyTodo / Pro`, `Log out` breaks across lines, and the links sit against the brand with no gap. This follows from `.topnav`/`.nav-links` being a non-wrapping flex row with fixed `2rem` side padding and no `@media` rule | TC-GUI-005 on C03, TC-CMP-007 on C02, C03 and C07, TC-A11Y-012 reflow. If confirmed, log it as a defect with a fresh dated capture | Confirmed in Chrome at a 390 px viewport by TC-GUI-005 (DEF-004); `Log out` is also pushed past the viewport edge |
 
@@ -382,7 +382,7 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 ### Basic accessibility findings
 
-**Method.** Run three passes on each of the six pages, logged in with Fixture Set A. The full cases are in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md).
+**Method.** Executed on 2026-11-18 on C01 by [test_accessibility.py](4_Accessibility/test_accessibility.py), run twice (recorded run [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json)). The script performs the three passes below with programmatic equivalents of the DevTools steps; how each step was automated is described in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md). The screen-reader steps were not needed for any verdict: where they apply, Chrome's accessibility tree already shows the failure.
 
 1. **Automated scan.** Lighthouse Accessibility audit and axe DevTools (or WAVE). Save the reports to `4_Accessibility/evidences/reports/`. Automated tools catch only part of the issues, so treat a clean scan as incomplete evidence.
 2. **Manual keyboard pass.** Complete the TC-A11Y-008 task sequence with Tab, Shift+Tab, Enter, Space, Escape and the arrow keys only.
@@ -392,37 +392,41 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 | ID | WCAG SC (level) | Check | Pages | Expected | Actual | Status | Evidence | Defect |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| TC-A11Y-001 | 1.1.1 Non-text content (A) | Non-text controls and icons have a text alternative | All | Every icon-only control has an accessible name | | Not Run | | |
-| TC-A11Y-002 | 1.3.1 Info and relationships (A) | Headings, table headers and form structure are in the markup | All | One `h1` per page; `th` cells for the table | | Not Run | | |
-| TC-A11Y-003 | 1.4.1 Use of colour (A) | Urgency is not shown by colour alone | Task list, dashboard | Badge text conveys urgency | | Not Run | | |
-| TC-A11Y-004 | 1.4.3 Contrast minimum (AA) | Text contrast at least 4.5:1 (3:1 for large text) | All | Pass; see H5 for predicted failures | | Not Run | | |
-| TC-A11Y-005 | 1.3.1 / 4.1.2 Labels associated | Clicking a label focuses its field; screen reader reads the label | Login, register, task form | Each field announced with its label (H2) | | Not Run | | |
-| TC-A11Y-006 | 3.3.2 Labels or instructions (A) | Every input has a visible label or instruction | Task list filters | Filters and search have labels (H4) | | Not Run | | |
-| TC-A11Y-007 | 4.1.2 Name, role, value (A) | Complete/reopen button announces its purpose and state | Task list | e.g. "Mark <title> as done, button" (H3) | | Not Run | | |
-| TC-A11Y-008 | 2.1.1 Keyboard (A) | All functions work by keyboard, including the delete dialog and date picker | All | The TC-A11Y-008 task sequence completed by keyboard only, with no keyboard trap | | Not Run | | |
-| TC-A11Y-009 | 2.4.1 Bypass blocks (A) | A way to skip the navigation bar | All logged-in pages | Skip link or landmark navigation available (H8) | | Not Run | | |
-| TC-A11Y-010 | 2.4.2 Page titled (A) | Page titles are unique and descriptive | All | Same as TC-GUI-021 | | Not Run | | |
-| TC-A11Y-011 | 2.4.3 Focus order / 2.4.7 Focus visible (AA) | Tab order follows the visual order and focus is always visible | All | Logical order; visible focus indicator on every control | | Not Run | | |
-| TC-A11Y-012 | 1.4.10 Reflow (AA) | Content usable at 320 CSS px without two-dimensional scrolling | All | No horizontal scrolling except for the data table (H1) | | Not Run | | |
-| TC-A11Y-013 | 1.4.4 Resize text (AA) | 200% browser zoom | All | No clipped or overlapping content | | Not Run | | |
-| TC-A11Y-014 | 3.1.1 Language of page (A) | `lang` attribute present | All | `<html lang="en">` | | Not Run | | |
-| TC-A11Y-015 | 3.3.1 Error identification (A) / 4.1.3 Status messages (AA) | Errors are described in text and announced | Login, register | Screen reader announces the error without a focus change (H7) | | Not Run | | |
-| TC-A11Y-016 | 2.5.8 Target size minimum (AA, WCAG 2.2) | Pointer targets at least 24x24 CSS px | Task list (`Edit`, `Delete`, toggle) | All targets meet the minimum or its spacing exception | | Not Run | | |
-| TC-A11Y-017 | 2.4.6 Headings and labels (AA) | Headings and labels describe their purpose | All | Clear, unambiguous text | | Not Run | | |
-| TC-A11Y-018 | Automated scan summary | Lighthouse score and axe issue count per page | All | Recorded; every serious or critical axe issue triaged | | Not Run | | |
+| TC-A11Y-001 | 1.1.1 Non-text content (A) | Non-text controls and icons have a text alternative | All | Every icon-only control has an accessible name | `○`/`✓` buttons named only by the symbol | Fail | [TC-A11Y-001-names-20261118.jpg](4_Accessibility/evidences/TC-A11Y-001-names-20261118.jpg) | DEF-008 |
+| TC-A11Y-002 | 1.3.1 Info and relationships (A) | Headings, table headers and form structure are in the markup | All | One `h1` per page; `th` cells for the table | One `h1` per page and six header cells, but no `main` landmark | Fail | [TC-A11Y-002-structure-20261118.jpg](4_Accessibility/evidences/TC-A11Y-002-structure-20261118.jpg) | DEF-010 |
+| TC-A11Y-003 | 1.4.1 Use of colour (A) | Urgency is not shown by colour alone | Task list, dashboard | Badge text conveys urgency | Urgency, done state and cards identifiable in greyscale | Pass | [TC-A11Y-003-greyscale-list-20261118.jpg](4_Accessibility/evidences/TC-A11Y-003-greyscale-list-20261118.jpg) | — |
+| TC-A11Y-004 | 1.4.3 Contrast minimum (AA) | Text contrast at least 4.5:1 (3:1 for large text) | All | Pass; see H5 for predicted failures | Completed title and empty state 2.85:1; all other text passes | Fail | [TC-A11Y-004-contrast-empty-state-20261118.jpg](4_Accessibility/evidences/TC-A11Y-004-contrast-empty-state-20261118.jpg) | DEF-009 |
+| TC-A11Y-005 | 1.3.1 / 4.1.2 Labels associated | Clicking a label focuses its field; screen reader reads the label | Login, register, task form | Each field announced with its label (H2) | Labels do not focus their fields; accessible names empty | Fail | [TC-A11Y-005-labels-20261118.jpg](4_Accessibility/evidences/TC-A11Y-005-labels-20261118.jpg) | DEF-007 |
+| TC-A11Y-006 | 3.3.2 Labels or instructions (A) | Every input has a visible label or instruction | Task list filters | Filters and search have labels (H4) | No visible labels; lists unnamed; search named by placeholder only | Fail | [TC-A11Y-006-filter-labels-20261118.jpg](4_Accessibility/evidences/TC-A11Y-006-filter-labels-20261118.jpg) | DEF-007 |
+| TC-A11Y-007 | 4.1.2 Name, role, value (A) | Complete/reopen button announces its purpose and state | Task list | e.g. "Mark <title> as done, button" (H3) | Names `○` / `✓`; no action, task or state | Fail | [TC-A11Y-007-toggle-name-20261118.jpg](4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg) | DEF-008 |
+| TC-A11Y-008 | 2.1.1 Keyboard (A) | All functions work by keyboard, including the delete dialog and date picker | All | The TC-A11Y-008 task sequence completed by keyboard only, with no keyboard trap | Whole flow completed by keyboard; no trap | Pass | [TC-A11Y-008-keyboard-end-20261118.jpg](4_Accessibility/evidences/TC-A11Y-008-keyboard-end-20261118.jpg) | — |
+| TC-A11Y-009 | 2.4.1 Bypass blocks (A) | A way to skip the navigation bar | All logged-in pages | Skip link or landmark navigation available (H8) | First Tab reaches the brand link; no skip link or main landmark | Fail | [TC-A11Y-009-bypass-20261118.jpg](4_Accessibility/evidences/TC-A11Y-009-bypass-20261118.jpg) | DEF-010 |
+| TC-A11Y-010 | 2.4.2 Page titled (A) | Page titles are unique and descriptive | All | Same as TC-GUI-021 | Six unique, descriptive titles | Pass | [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json) | — |
+| TC-A11Y-011 | 2.4.3 Focus order / 2.4.7 Focus visible (AA) | Tab order follows the visual order and focus is always visible | All | Logical order; visible focus indicator on every control | Logical order; focus ring visible on every control | Pass | [TC-A11Y-011-focus-first-20261118.jpg](4_Accessibility/evidences/TC-A11Y-011-focus-first-20261118.jpg) | — |
+| TC-A11Y-012 | 1.4.10 Reflow (AA) | Content usable at 320 CSS px without two-dimensional scrolling | All | No horizontal scrolling except for the data table (H1) | Nav wraps and overflows at 320 px; form and dashboard pages scroll sideways | Fail | [TC-A11Y-012-reflow-login-20261118.jpg](4_Accessibility/evidences/TC-A11Y-012-reflow-login-20261118.jpg) | DEF-004 |
+| TC-A11Y-013 | 1.4.4 Resize text (AA) | 200% browser zoom | All | No clipped or overlapping content | No clipping or overlap at the 200% equivalent | Pass | [TC-A11Y-013-zoom-register-20261118.jpg](4_Accessibility/evidences/TC-A11Y-013-zoom-register-20261118.jpg) | — |
+| TC-A11Y-014 | 3.1.1 Language of page (A) | `lang` attribute present | All | `<html lang="en">` | `lang="en"` on every page | Pass | [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json) | — |
+| TC-A11Y-015 | 3.3.1 Error identification (A) / 4.1.3 Status messages (AA) | Errors are described in text and announced | Login, register | Screen reader announces the error without a focus change (H7) | Errors in text, but no alert role, live region or focus move | Fail | [TC-A11Y-015-error-login-20261118.jpg](4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg) | DEF-011 |
+| TC-A11Y-016 | 2.5.8 Target size minimum (AA, WCAG 2.2) | Pointer targets at least 24x24 CSS px | Task list (`Edit`, `Delete`, toggle) | All targets meet the minimum or its spacing exception | `Edit` 23x15 px and `Delete` 39x15 px, stacked too closely | Fail | [TC-A11Y-016-targets-20261118.jpg](4_Accessibility/evidences/TC-A11Y-016-targets-20261118.jpg) | DEF-012 |
+| TC-A11Y-017 | 2.4.6 Headings and labels (AA) | Headings and labels describe their purpose | All | Clear, unambiguous text | Headings and labels descriptive; control columns have empty headers | Fail | [TC-A11Y-017-headings-20261118.jpg](4_Accessibility/evidences/TC-A11Y-017-headings-20261118.jpg) | DEF-013 |
+| TC-A11Y-018 | Automated scan summary | Lighthouse score and axe issue count per page | All | Recorded; every serious or critical axe issue triaged | Reports saved for six pages; all critical/serious issues triaged | Pass | [summary-20261118.json](4_Accessibility/evidences/reports/summary-20261118.json) | — |
 
-#### 4.2 Automated scan results (complete after execution)
+#### 4.2 Automated scan results (2026-11-18; axe-core 4.12.1, Lighthouse 12.8.2)
 
 | Page | Lighthouse a11y score | axe critical | axe serious | axe moderate/minor | Report |
 | --- | --- | --- | --- | --- | --- |
-| `/login` | | | | | |
-| `/register` | | | | | |
-| `/` | | | | | |
-| `/tasks/new` | | | | | |
-| `/tasks/<id>/edit` | | | | | |
-| `/dashboard` | | | | | |
+| `/login` | 91 | 1 (`label`) | 0 | 2 (`landmark-one-main`, `region`) | [axe](4_Accessibility/evidences/reports/axe-login-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-login-20261118.report.html) |
+| `/register` | 91 | 1 (`label`) | 0 | 2 (`landmark-one-main`, `region`) | [axe](4_Accessibility/evidences/reports/axe-register-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-register-20261118.report.html) |
+| `/` | 76 | 1 (`select-name`) | 1 (`color-contrast`) | 3 (`landmark-one-main`, `region`, minor `empty-table-header`) | [axe](4_Accessibility/evidences/reports/axe-list-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-list-20261118.report.html) |
+| `/tasks/new` | 82 | 2 (`label`, `select-name`) | 0 | 2 (`landmark-one-main`, `region`) | [axe](4_Accessibility/evidences/reports/axe-new-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-new-20261118.report.html) |
+| `/tasks/<id>/edit` | 82 | 2 (`label`, `select-name`) | 0 | 2 (`landmark-one-main`, `region`) | [axe](4_Accessibility/evidences/reports/axe-edit-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-edit-20261118.report.html) |
+| `/dashboard` | 100 | 0 | 0 | 2 (`landmark-one-main`, `region`) | [axe](4_Accessibility/evidences/reports/axe-dashboard-20261118.json); [Lighthouse](4_Accessibility/evidences/reports/lighthouse-dashboard-20261118.report.html) |
 
-State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim.
+**Triage of critical and serious issues (TC-A11Y-018).** `label` -> TC-A11Y-005 (DEF-007); `select-name` -> TC-A11Y-005/006 (DEF-007); `color-contrast` -> TC-A11Y-004 (DEF-009). The moderate and minor findings also map to failed cases: `landmark-one-main`/`region` -> TC-A11Y-002/009 (DEF-010); `empty-table-header` and Lighthouse `td-has-header` -> TC-A11Y-017 (DEF-013); Lighthouse `target-size` -> TC-A11Y-016 (DEF-012). No finding was judged a false positive. Neither tool flagged the `○`/`✓` button names (DEF-008), because a symbol counts as a name; that issue was found only by the manual-equivalent check, which supports the plan's point that a clean scan is incomplete evidence.
+
+**Results summary:** 18 cases: 7 Pass, 11 Fail, 0 Blocked, 0 Not Run.
+
+State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim. Screen-reader output was inferred from Chrome's accessibility tree rather than heard through VoiceOver or NVDA, and 200% zoom was emulated through an equivalent viewport.
 
 ## Task 5
 
@@ -455,7 +459,7 @@ State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a
 
 Severity guidance for this phase: **Major** when a task cannot be completed (for example, a keyboard or screen-reader user cannot complete or delete a task). **Moderate** when a task can be completed but is materially harder or misleading. **Minor** for cosmetic or consistency issues.
 
-#### 5.3 Defect summary (as of 2026-11-18; Tasks 3-4 and C04-C06 still to run)
+#### 5.3 Defect summary (as of 2026-11-18; Task 3 and C04-C06 still to run)
 
 | Defect ID | Title | Source case(s) | Configuration | Severity | Priority | Status |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -465,6 +469,13 @@ Severity guidance for this phase: **Major** when a task cannot be completed (for
 | DEF-004 | Navigation bar wraps and pushes `Log out` off-screen at a 390 px viewport | TC-GUI-005 | C01 at 390x844 | Moderate | Medium | Open |
 | DEF-005 | HTML in a task title is rendered as markup in the task list | TC-GUI-020 | C01 | Moderate | High | Open |
 | DEF-006 | Pages render at a 980 px desktop layout on tablet and phone screens, so text is too small to read | TC-CMP-007 | C02, C03 | Moderate | Medium | Open |
+| DEF-007 | Form fields and filter controls have no programmatically associated labels | TC-A11Y-005, 006 | C01 | Major | High | Open |
+| DEF-008 | Complete/reopen button has no meaningful accessible name or state | TC-A11Y-001, 007 | C01 | Major | High | Open |
+| DEF-009 | Completed task titles and the empty-state message have insufficient contrast (2.85:1) | TC-A11Y-004 | C01 | Moderate | Medium | Open |
+| DEF-010 | No main landmark and no skip link | TC-A11Y-002, 009 | C01 | Minor | Low | Open |
+| DEF-011 | Form errors are not exposed for screen-reader announcement | TC-A11Y-015 | C01 | Moderate | Medium | Open |
+| DEF-012 | Edit and Delete targets are too small and too close together | TC-A11Y-016 | C01 | Minor | Low | Open |
+| DEF-013 | Table columns holding controls have empty headers | TC-A11Y-017 | C01 | Minor | Low | Open |
 
 #### DEF-004 - Navigation bar breaks at a narrow viewport
 
@@ -523,6 +534,127 @@ No script payloads were used in Week 3.
 
 On emulated devices the desktop-width layout hides DEF-004, which appears in narrow desktop windows. Fixing DEF-006 with a viewport tag alone would expose DEF-004 on phones, so both are covered by R2.
 
+#### DEF-007 - Form fields have no programmatic labels
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-007 |
+| Title | Form fields and filter controls have no programmatically associated labels |
+| Affected Feature | `/login`, `/register`, `/tasks/new`, `/tasks/<id>/edit` and the task-list filters; REQ-001 to REQ-003, REQ-005; WCAG 1.3.1, 3.3.2, 4.1.2 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged out for the auth pages; logged in as account A for the others |
+| Steps to Reproduce | 1. Open `/login`.<br>2. Click the `Username` label.<br>3. Inspect the field's accessible name in the accessibility tree.<br>4. Repeat on the other forms and the filter controls. |
+| Expected Result | Clicking a label focuses its field, and each field's accessible name is its visible label; filters have visible labels. Basis: WCAG 1.3.1, 3.3.2, 4.1.2; TC-A11Y-005/006 |
+| Actual Result | Focus stays on the page body; every field's accessible name is empty; the category and status lists are unnamed and the search box is named only by its placeholder. axe reports `label` and `select-name` as critical. Same result in both runs |
+| Severity | Major - a screen-reader user cannot tell which field is which, so logging in, registering and creating tasks cannot be done reliably |
+| Priority | High |
+| Evidence | [TC-A11Y-005](4_Accessibility/evidences/TC-A11Y-005-labels-20261118.jpg); [TC-A11Y-006](4_Accessibility/evidences/TC-A11Y-006-filter-labels-20261118.jpg); [axe login report](4_Accessibility/evidences/reports/axe-login-20261118.json) |
+| Status | Open |
+
+#### DEF-008 - Complete/reopen button has no meaningful name
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-008 |
+| Title | Complete/reopen button has no meaningful accessible name or state |
+| Affected Feature | Task list `/`; REQ-004; WCAG 1.1.1, 4.1.2 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged in as account A with Fixture Set A |
+| Steps to Reproduce | 1. Open `/`.<br>2. Inspect the accessibility snapshot of the `○` button on an open task and the `✓` button on a completed task. |
+| Expected Result | The name states the action and the task, and the state is conveyed, e.g. "Mark GUI-Soon as done". Basis: WCAG 1.1.1, 4.1.2; TC-A11Y-001/007 |
+| Actual Result | Snapshots read `button "○"` and `button "✓"`; no task name, action or pressed/checked state. Neither axe nor Lighthouse flags this, because a symbol counts as a name. Same result in both runs |
+| Severity | Major - a screen-reader user cannot tell what the button does or which task it affects |
+| Priority | High |
+| Evidence | [TC-A11Y-007](4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg); [run results](4_Accessibility/evidences/results-C01-20261118-205048.json) |
+| Status | Open |
+
+#### DEF-009 - Low-contrast text
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-009 |
+| Title | Completed task titles and the empty-state message have insufficient contrast (2.85:1) |
+| Affected Feature | Task list `/`; WCAG 1.4.3 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged in as account A; one completed task (F6); a search with no results |
+| Steps to Reproduce | 1. Open `/` and measure the completed task's title.<br>2. Search for `NO-SUCH-TITLE-W3` and measure the message. |
+| Expected Result | Normal-size text has at least 4.5:1 contrast. Basis: WCAG 1.4.3; TC-A11Y-004 |
+| Actual Result | Both measure 2.85:1 (`#999999` on white, 14.72 px, normal weight); axe reports `color-contrast` as serious. Same result in both runs |
+| Severity | Moderate - low-vision users may not read completed tasks or the empty-state message |
+| Priority | Medium |
+| Evidence | [list](4_Accessibility/evidences/TC-A11Y-004-contrast-list-20261118.jpg); [empty state](4_Accessibility/evidences/TC-A11Y-004-contrast-empty-state-20261118.jpg) |
+| Status | Open |
+
+#### DEF-010 - No main landmark or skip link
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-010 |
+| Title | No main landmark and no skip link |
+| Affected Feature | All pages (shared layout); WCAG 1.3.1, 2.4.1 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged in as account A |
+| Steps to Reproduce | 1. Open `/` and press Tab once.<br>2. Inspect the page's landmarks. |
+| Expected Result | A skip link on the first Tab, or a main landmark to jump to. Basis: WCAG 2.4.1; TC-A11Y-002/009 |
+| Actual Result | The first Tab focuses the brand link; only a navigation landmark exists on every page. axe reports `landmark-one-main` and `region`. Same result in both runs |
+| Severity | Minor - keyboard and screen-reader users pass four navigation links on every page; nothing is blocked |
+| Priority | Low |
+| Evidence | [TC-A11Y-009](4_Accessibility/evidences/TC-A11Y-009-bypass-20261118.jpg) |
+| Status | Open |
+
+#### DEF-011 - Errors not announced
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-011 |
+| Title | Form errors are not exposed for screen-reader announcement |
+| Affected Feature | `/login`, `/register`; REQ-001, REQ-002; WCAG 3.3.1, 4.1.3 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged out |
+| Steps to Reproduce | 1. Submit `/login` with a wrong password, or `/register` with username `ab`.<br>2. Inspect the error element's role, live-region attributes and the focused element. |
+| Expected Result | The error is described in text and announced without the user searching for it. Basis: WCAG 3.3.1, 4.1.3; TC-A11Y-015 |
+| Actual Result | The error is described in text, but it has no alert role or live region and focus is not moved to it, so a screen-reader user hears the page from the top. Same result in both runs; not yet confirmed with VoiceOver |
+| Severity | Moderate - screen-reader users may not notice why the form was rejected |
+| Priority | Medium |
+| Evidence | [login](4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg); [register](4_Accessibility/evidences/TC-A11Y-015-error-register-20261118.jpg) |
+| Status | Open |
+
+#### DEF-012 - Small, crowded targets
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-012 |
+| Title | Edit and Delete targets are too small and too close together |
+| Affected Feature | Task list `/`; REQ-003; WCAG 2.5.8 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged in as account A |
+| Steps to Reproduce | 1. Open `/`.<br>2. Measure the `Edit` and `Delete` controls in any row. |
+| Expected Result | Each target is at least 24x24 CSS px or meets the spacing exception. Basis: WCAG 2.5.8; TC-A11Y-016 |
+| Actual Result | `Edit` is 23x15 px and `Delete` 39x15 px, stacked directly above each other; neither meets the spacing exception. Lighthouse also fails `target-size`. Same result in both runs |
+| Severity | Minor - easy to tap Delete instead of Edit on touch screens; the confirmation dialog prevents accidental deletion |
+| Priority | Low |
+| Evidence | [TC-A11Y-016](4_Accessibility/evidences/TC-A11Y-016-targets-20261118.jpg) |
+| Status | Open |
+
+#### DEF-013 - Empty column headers
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-013 |
+| Title | Table columns holding controls have empty headers |
+| Affected Feature | Task list `/`; WCAG 1.3.1, 2.4.6 |
+| Environment | C01: Chrome 157.0.8103.80 on macOS 26.5.2, 1440x900, Playwright headless |
+| Preconditions | Logged in as account A |
+| Steps to Reproduce | 1. Open `/`.<br>2. Read the table's column headers. |
+| Expected Result | Every column, including those holding controls, has a header saying what it contains. Basis: WCAG 2.4.6; TC-A11Y-017 |
+| Actual Result | The first (complete/reopen) and last (Edit/Delete) column headers are empty. axe reports `empty-table-header`; Lighthouse fails `td-has-header`. Same result in both runs |
+| Severity | Minor - screen-reader users hear no column name for these controls |
+| Priority | Low |
+| Evidence | [TC-A11Y-017](4_Accessibility/evidences/TC-A11Y-017-headings-20261118.jpg) |
+| Status | Open |
+
+TC-A11Y-012 (reflow at 320 px, WCAG 1.4.10) reproduces DEF-004 rather than adding a new defect; its evidence is linked from that case.
+
 #### 5.4 Improvement recommendations (as of 2026-11-18)
 
 | # | Recommendation | Addresses | Benefit | Effort (L/M/H) | Priority |
@@ -532,6 +664,13 @@ On emulated devices the desktop-width layout hides DEF-004, which appears in nar
 | R3 | Show a confirmation message after create, edit, complete and delete | USA-OBS-001, H6 | Users can see that an action worked | L | Medium |
 | R4 | Keep the entered username after a login or registration error | USA-OBS-004 | Fewer retyping errors | L | Low |
 | R5 | Apply one style per control type (primary button, text link, heading, card) on every page | USA-OBS-002, USA-OBS-003 | Consistent look; easier to learn | M | Low |
+| R6 | Associate every label with its field (`for`/`id`) and give the filter controls visible labels | DEF-007 | Forms usable with screen readers; larger click targets | L | High |
+| R7 | Give the complete/reopen button a text name such as "Mark <title> as done" and expose its state (`aria-pressed` or a checkbox) | DEF-008 | Screen-reader users can complete tasks | L | High |
+| R8 | Darken completed-title and empty-state text to at least 4.5:1 (e.g. `#767676` on white) | DEF-009 | Readable for low-vision users | L | Medium |
+| R9 | Mark form errors with `role="alert"` or move focus to them | DEF-011 | Errors announced immediately | L | Medium |
+| R10 | Wrap page content in `<main>` and add a skip link | DEF-010 | Faster keyboard and screen-reader navigation | L | Low |
+| R11 | Make Edit/Delete at least 24x24 px or separate them | DEF-012 | Fewer mis-taps on touch screens | L | Low |
+| R12 | Give the control columns header text (visually hidden if needed) | DEF-013 | Columns announced by screen readers | L | Low |
 
 DEF-001 to DEF-003 keep the recommendations recorded in Week 1.
 
@@ -541,8 +680,8 @@ Order the recommendations by priority. Recommendations describe changes for the 
 
 | Item | Value |
 | --- | --- |
-| Cases planned / executed / passed / failed / blocked | 53 planned (22 GUI, 8 compatibility, 5 usability, 18 accessibility); compatibility cases are counted once each, with per-configuration results in [2.2](#22-compatibility-smoke-scenarios) |
-| New defects (by severity) | So far: 3 Moderate (DEF-004, DEF-005, DEF-006); DEF-001 to DEF-003 reproduced |
+| Cases planned / executed / passed / failed / blocked | 53 planned (22 GUI, 8 compatibility, 5 usability, 18 accessibility); compatibility cases are counted once each, with per-configuration results in [2.2](#22-compatibility-smoke-scenarios). Executed so far: GUI 22 (14 Pass, 8 Fail); accessibility 18 (7 Pass, 11 Fail); compatibility 8 on C01-C03 (C01 8 Pass; C02 and C03 7 Pass, 1 Fail each); usability 0 |
+| New defects (by severity) | 10 new so far: 2 Major (DEF-007, DEF-008), 5 Moderate (DEF-004, DEF-005, DEF-006, DEF-009, DEF-011), 3 Minor (DEF-010, DEF-012, DEF-013); DEF-001 to DEF-003 reproduced |
 | Usability observations (by severity) | So far: 4 found by the GUI suite (USA-OBS-001 to 004), severities pending the heuristic review |
 | Hand-off to Week 4 | UI vs API differences seen during GUI testing (e.g. validation shown in the UI but not enforced by the server) |
 | Hand-off to Week 5 | H9 rendering of titles, and any other security-relevant behaviour seen in the UI |

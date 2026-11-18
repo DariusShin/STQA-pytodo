@@ -31,7 +31,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22 cases) and compatibility C01 (8 cases) executed 2026-11-18; other configurations, usability and accessibility pending |
+| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22), accessibility (18) and compatibility on C01-C03 executed 2026-11-18; Firefox/Windows configurations and the usability review pending |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
 | 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
@@ -59,7 +59,7 @@ Tools marked as to be selected remain unverified.
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
 | UI automation tool | GUI and compatibility test execution (Week 3) | Playwright 1.65.2 with pytest-playwright 0.10.0, driving the installed Chrome through the `chrome` channel; see the [Week 3 setup guide](03_Special_Testing/setup.md) |
 | Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
-| Accessibility tools | Basic WCAG-oriented review and manual checks | Lighthouse (bundled with Chrome), axe DevTools extension [version], VoiceOver (macOS), NVDA (Windows) [version] |
+| Accessibility tools | Basic WCAG-oriented review (Week 3) | Scripted: axe-core 4.12.1 (axe-playwright-python 0.1.8) and Lighthouse 12.8.2 via `npx`. Manual, optional: axe DevTools extension, VoiceOver (macOS), NVDA (Windows) |
 | Git | Version and contribution tracking | git version 2.55.0 |
 
 Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.

@@ -16,6 +16,8 @@ usability review and the screen-reader parts of accessibility remain manual.
 | Flask | 3.0.3 |
 | Google Chrome (macOS, C01) | 157.0.8103.80, driven through Playwright's `chrome` channel |
 | Mozilla Firefox (macOS, C04) | 160.0.1 installed; see [Firefox note](#firefox-configurations) |
+| axe-core (via axe-playwright-python 0.1.8) | 4.12.1 |
+| Lighthouse (via `npx`, needs Node.js) | 12.8.2; Node.js 24.19.0 verified |
 
 The full dependency set is in `requirements-test-lock.txt`.
 
@@ -60,6 +62,9 @@ belongs to Week 2.
 # Task 1 - GUI checklist (baseline C01 only)
 python -m pytest test/03_Special_Testing/1_GUI --w3-config C01
 
+# Task 4 - accessibility (baseline C01 only; includes the axe and Lighthouse scans)
+python -m pytest test/03_Special_Testing/4_Accessibility --w3-config C01
+
 # Task 2 - compatibility smoke scenarios, once per configuration
 python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C01
 python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C02
@@ -74,6 +79,7 @@ Add `--headed` to watch the browser. Runs are headless by default.
 | --- | --- |
 | GUI screenshots | `1_GUI/evidences/TC-GUI-0xx-<desc>-<YYYYMMDD>.jpg` |
 | Compatibility screenshots | `2_Compatibility/evidences/<os>-<browser>/<viewport>/TC-CMP-0xx-<desc>-<YYYYMMDD>.jpg` |
+| Accessibility screenshots and scan reports | `4_Accessibility/evidences/`, scans in `4_Accessibility/evidences/reports/` (`axe-<page>-<YYYYMMDD>.json`, `lighthouse-<page>-<YYYYMMDD>.report.html/.json`, `summary-<YYYYMMDD>.json`) |
 | Per-run results (status, every check with its actual value, notes, evidence list) | `results-<config>-<YYYYMMDD>-<HHMMSS>.json` in the same evidence folder |
 
 A case fails if any check derived from its expected result fails; the results
@@ -92,6 +98,12 @@ a later run on the same day, and each run keeps its own results file.
   text size (TC-CMP-007).
 - On emulated mobile devices, screenshots capture the device screen, not the whole
   layout.
+- Screen readers are not run. Accessibility cases read Chrome's accessibility tree
+  (what a screen reader reads); VoiceOver/NVDA checks stay manual and optional.
+- Browser zoom cannot be set by Playwright; 200% zoom is emulated with an equivalent
+  640x400 CSS-pixel viewport at device scale 2.
+- The first Lighthouse run downloads the package through `npx`, so it needs network
+  access.
 
 ## Firefox configurations
 

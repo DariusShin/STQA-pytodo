@@ -1,0 +1,102 @@
+{
+  "/login": {
+    "axe_report": "axe-login-20261118.json",
+    "critical": [
+      "label"
+    ],
+    "serious": [],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [],
+    "lighthouse": {
+      "score": 91,
+      "final_url": "http://127.0.0.1:5000/login"
+    }
+  },
+  "/register": {
+    "axe_report": "axe-register-20261118.json",
+    "critical": [
+      "label"
+    ],
+    "serious": [],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [],
+    "lighthouse": {
+      "score": 91,
+      "final_url": "http://127.0.0.1:5000/register"
+    }
+  },
+  "/": {
+    "axe_report": "axe-list-20261118.json",
+    "critical": [
+      "select-name"
+    ],
+    "serious": [
+      "color-contrast"
+    ],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [
+      "empty-table-header"
+    ],
+    "lighthouse": {
+      "score": 76,
+      "final_url": "http://127.0.0.1:5000/"
+    }
+  },
+  "/tasks/new": {
+    "axe_report": "axe-new-20261118.json",
+    "critical": [
+      "label",
+      "select-name"
+    ],
+    "serious": [],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [],
+    "lighthouse": {
+      "score": 82,
+      "final_url": "http://127.0.0.1:5000/tasks/new"
+    }
+  },
+  "/tasks/225/edit": {
+    "axe_report": "axe-edit-20261118.json",
+    "critical": [
+      "label",
+      "select-name"
+    ],
+    "serious": [],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [],
+    "lighthouse": {
+      "score": 82,
+      "final_url": "http://127.0.0.1:5000/tasks/225/edit"
+    }
+  },
+  "/dashboard": {
+    "axe_report": "axe-dashboard-20261118.json",
+    "critical": [],
+    "serious": [],
+    "moderate": [
+      "landmark-one-main",
+      "region"
+    ],
+    "minor": [],
+    "lighthouse": {
+      "score": 100,
+      "final_url": "http://127.0.0.1:5000/dashboard"
+    }
+  }
+}
