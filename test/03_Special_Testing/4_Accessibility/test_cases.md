@@ -1,8 +1,8 @@
 # Week 3 - Accessibility Test Cases
 
-Detailed cases for [Task 4 - Basic accessibility findings](../README.md#task-4) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by the Playwright suite [test_accessibility.py](test_accessibility.py), run twice: [results-C01-20261118-205048.json](evidences/results-C01-20261118-205048.json) is the recorded run and [results-C01-20261118-204716.json](evidences/results-C01-20261118-204716.json) the first reproduction. Results were identical in both runs except TC-A11Y-008, whose first-run failure was a script error (see that case).
+Detailed cases for [Task 4 - Basic accessibility findings](../README.md#task-4) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by the Playwright suite [test_accessibility.py](test_accessibility.py), run twice: [results-C01-20261118-205048.json](evidences/results-C01-20261118-205048.json) is the recorded run and [results-C01-20261118-204716.json](evidences/results-C01-20261118-204716.json) the first reproduction. Results were identical in both runs except TC-A11Y-008, whose first-run failure was a script error (see that case).
 
-**How the steps were automated.** The script performs the DevTools steps with equivalent programmatic checks: computed styles for contrast, focus and target size; Chrome's accessibility tree (read through the DevTools protocol and Playwright accessibility snapshots) for names, roles and landmarks; Chrome's vision-deficiency emulation for TC-A11Y-003; and a 640x400 CSS-pixel viewport at device scale 2 for 200% zoom (TC-A11Y-013). The screen-reader steps (VoiceOver, NVDA) were not run: for TC-A11Y-005, 007 and 015 the accessibility tree a screen reader reads already shows the failure, so the verdict does not depend on them. The NVDA pass planned for the Windows run remains optional supporting evidence.
+**How the steps were automated.** The script performs the DevTools steps with equivalent programmatic checks: computed styles for contrast, focus and target size; Chrome's accessibility tree (read through the DevTools protocol and Playwright accessibility snapshots) for names, roles and landmarks; Chrome's vision-deficiency emulation for TC-A11Y-003; and a 640x400 CSS-pixel viewport at device scale 2 for 200% zoom (TC-A11Y-013). **Scope change on 2026-11-18.** The team removed screen-reader testing (VoiceOver, NVDA) from the Week 3 scope. The screen-reader steps were deleted from TC-A11Y-002, 005, 006, 007, 009 and 015, and their expected results now refer to Chrome's accessibility tree, which is the information a screen reader reads. No screen reader was run, and no verdict changed.
 
 ## Review sign-off
 
@@ -37,7 +37,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 
 ## How to run
 
-Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Accessibility pane, Rendering, device toolbar, colour picker contrast), Lighthouse, axe DevTools or WAVE, VoiceOver. The screen-reader steps are repeated with NVDA on Windows during the [Windows run](../README.md#242-windows-11-run-c05-chrome-c06-firefox).
+Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Accessibility pane, Rendering, device toolbar, colour picker contrast), Lighthouse, axe DevTools or WAVE. Screen readers are out of scope; accessible names, roles and landmarks are read from Chrome's accessibility tree.
 
 ## TC-A11Y-001 - Non-text content
 
@@ -66,7 +66,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Objective | Verify that headings, the task table and forms are structured in the markup, not only visually. |
 | Preconditions | P-A |
 | Test Data | {} |
-| Steps | 1. On each page, list the headings and their levels (DevTools Elements, or the VoiceOver rotor).<br>2. On `/`, check that table headers are marked up as header cells.<br>3. Check for landmarks (navigation, main). |
+| Steps | 1. On each page, list the headings and their levels (DevTools Elements or the accessibility tree).<br>2. On `/`, check that table headers are marked up as header cells.<br>3. Check for landmarks (navigation, main). |
 | Expected Result | Each page has one top-level heading that matches its visible title. The table uses header cells for its column headings. The navigation bar and main content are identifiable as regions. Basis: WCAG 1.3.1. |
 | Actual Result | Each page has one `h1` and the task table exposes six column-header cells, but no page has a `main` landmark; only the navigation landmark exists. |
 | Status | Fail |
@@ -113,13 +113,13 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | --- | --- |
 | Test Case ID | TC-A11Y-005 |
 | Feature/Requirement | WCAG 2.2 SC 1.3.1 (A) and 4.1.2 Name, Role, Value (A) - `/login`, `/register`, `/tasks/new` |
-| Technique/Test Type | Accessibility (WCAG) - inspection and screen reader |
-| Objective | Verify that each form field is announced with its visible label (H2). |
-| Preconditions | P-OUT for the auth pages; P-A for `/tasks/new`; P-VO for step 3 |
+| Technique/Test Type | Accessibility (WCAG) - inspection |
+| Objective | Verify that each form field is programmatically labelled with its visible label (H2). |
+| Preconditions | P-OUT for the auth pages; P-A for `/tasks/new` |
 | Test Data | {} |
-| Steps | 1. Click each label's text and note whether focus moves into its field.<br>2. In DevTools -> Accessibility, record each field's computed name.<br>3. With VoiceOver, Tab into each field and record what is announced. |
-| Expected Result | Clicking a label focuses its field. Each field's computed name equals its visible label (for example `Username`). VoiceOver announces the label with the field type. Basis: WCAG 1.3.1, 4.1.2. |
-| Actual Result | Clicking any label on `/login`, `/register` or `/tasks/new` leaves focus on the page body, and every field's accessible name is empty, so a screen reader announces only the field type. The VoiceOver step was not needed for the verdict: the accessibility tree a screen reader reads has no names. |
+| Steps | 1. Click each label's text and note whether focus moves into its field.<br>2. In DevTools -> Accessibility, record each field's computed name. |
+| Expected Result | Clicking a label focuses its field. Each field's computed name equals its visible label (for example `Username`). Basis: WCAG 1.3.1, 4.1.2. |
+| Actual Result | Clicking any label on `/login`, `/register` or `/tasks/new` leaves focus on the page body, and every field's accessible name is empty, so a screen reader announces only the field type. |
 | Status | Fail |
 | Evidence | [TC-A11Y-005-labels-20261118.jpg](evidences/TC-A11Y-005-labels-20261118.jpg) |
 | Defect ID | DEF-007 |
@@ -130,11 +130,11 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | --- | --- |
 | Test Case ID | TC-A11Y-006 |
 | Feature/Requirement | WCAG 2.2 SC 3.3.2 Labels or Instructions (A) - task list filters |
-| Technique/Test Type | Accessibility (WCAG) - inspection and screen reader |
+| Technique/Test Type | Accessibility (WCAG) - inspection |
 | Objective | Verify that the category list, status list and search box have labels (H4). |
-| Preconditions | P-A; P-VO for step 2 |
+| Preconditions | P-A |
 | Test Data | {} |
-| Steps | 1. Record whether each filter control has a visible label and its computed name in DevTools.<br>2. With VoiceOver, Tab to each control and record the announcement. |
+| Steps | 1. Record whether each filter control has a visible label and its computed name in DevTools. |
 | Expected Result | Each control has a visible label or instruction and a computed name that says what it filters. Placeholder text alone does not count as a label. Basis: WCAG 3.3.2. |
 | Actual Result | The filter form has no visible labels. The category and status lists have empty accessible names; the search box is named only by its placeholder `Search title...`. |
 | Status | Fail |
@@ -147,12 +147,12 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | --- | --- |
 | Test Case ID | TC-A11Y-007 |
 | Feature/Requirement | WCAG 2.2 SC 4.1.2 Name, Role, Value (A) - task list |
-| Technique/Test Type | Accessibility (WCAG) - screen reader |
-| Objective | Verify that the complete/reopen button announces what it does and the task's state (H3). |
-| Preconditions | P-A; P-VO |
+| Technique/Test Type | Accessibility (WCAG) - inspection |
+| Objective | Verify that the complete/reopen button's accessible name states what it does, for which task, and the task's state (H3). |
+| Preconditions | P-A |
 | Test Data | {"fixtures": ["F3", "F6"]} |
-| Steps | 1. With VoiceOver, Tab to the button on F3 (open) and record the announcement.<br>2. Repeat on F6 (done).<br>3. Record the computed name in DevTools. |
-| Expected Result | Each announcement identifies the action and the task, and the state is conveyed, for example "Mark GUI-Soon as done, button" and "Mark GUI-Done as not done, button". Basis: WCAG 4.1.2. |
+| Steps | 1. Record the accessible name and state of the button on F3 (open).<br>2. Repeat on F6 (done). |
+| Expected Result | Each accessible name identifies the action and the task, and the state is conveyed, for example "Mark GUI-Soon as done, button" and "Mark GUI-Done as not done, button". Basis: WCAG 4.1.2. |
 | Actual Result | Accessibility snapshots: `button "○"` (open task) and `button "✓"` (completed task). Neither name states the action or the task, and no pressed/checked state is exposed. |
 | Status | Fail |
 | Evidence | [TC-A11Y-007-toggle-name-20261118.jpg](evidences/TC-A11Y-007-toggle-name-20261118.jpg) |
@@ -181,11 +181,11 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | --- | --- |
 | Test Case ID | TC-A11Y-009 |
 | Feature/Requirement | WCAG 2.2 SC 2.4.1 Bypass Blocks (A) - logged-in pages |
-| Technique/Test Type | Accessibility (WCAG) - keyboard and screen reader |
-| Objective | Verify that keyboard and screen-reader users can skip the navigation bar (H8). |
-| Preconditions | P-A; P-VO for step 2 |
+| Technique/Test Type | Accessibility (WCAG) - keyboard and inspection |
+| Objective | Verify that keyboard and assistive-technology users can skip the navigation bar (H8). |
+| Preconditions | P-A |
 | Test Data | {} |
-| Steps | 1. Open `/`, press Tab once and record what receives focus.<br>2. With VoiceOver, open the rotor (VO-U) and check the Landmarks list for a main-content landmark. |
+| Steps | 1. Open `/`, press Tab once and record what receives focus.<br>2. Check the accessibility tree for a main-content landmark. |
 | Expected Result | A "skip to content" link appears on the first Tab, or a main landmark lets the user jump past the navigation bar. Basis: WCAG 2.4.1. |
 | Actual Result | The first Tab on `/` focuses the `PyTodo Pro` brand link; there is no skip link and no `main` landmark. |
 | Status | Fail |
@@ -283,13 +283,13 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | --- | --- |
 | Test Case ID | TC-A11Y-015 |
 | Feature/Requirement | WCAG 2.2 SC 3.3.1 Error Identification (A), 4.1.3 Status Messages (AA) - `/login`, `/register` |
-| Technique/Test Type | Accessibility (WCAG) - screen reader |
-| Objective | Verify that form errors are described in text and announced to screen-reader users (H7). |
-| Preconditions | P-OUT; P-VO |
+| Technique/Test Type | Accessibility (WCAG) - inspection |
+| Objective | Verify that form errors are described in text and exposed for announcement by assistive technology (H7). |
+| Preconditions | P-OUT |
 | Test Data | {"login": {"username": "w3<initial>_gui_<ddmm>", "password": "WrongPass1"}, "register": {"username": "ab", "password": "Test12345"}} |
-| Steps | 1. With VoiceOver on, submit the login data.<br>2. Record what VoiceOver says after the page reloads, without moving focus.<br>3. Repeat with the register data. |
-| Expected Result | Each error is described in text. VoiceOver announces the error after submission without the user having to search for it. Basis: WCAG 3.3.1, 4.1.3. |
-| Actual Result | Both errors are described in text (`Invalid username or password.`; `Username must be 3-20 characters ...`), but neither has an alert role or live region, and focus is not moved to it after the page reloads. Based on the accessibility tree; a VoiceOver confirmation can be added, but it would not change the verdict. |
+| Steps | 1. Submit the login data.<br>2. After the page reloads, record the error text, its role and live-region attributes, and where focus is.<br>3. Repeat with the register data. |
+| Expected Result | Each error is described in text and exposed for announcement without the user having to search for it (an alert role, a live region, or focus moved to it). Basis: WCAG 3.3.1, 4.1.3. |
+| Actual Result | Both errors are described in text (`Invalid username or password.`; `Username must be 3-20 characters ...`), but neither has an alert role or live region, and focus is not moved to it after the page reloads. |
 | Status | Fail |
 | Evidence | [TC-A11Y-015-error-login-20261118.jpg](evidences/TC-A11Y-015-error-login-20261118.jpg)<br>[TC-A11Y-015-error-register-20261118.jpg](evidences/TC-A11Y-015-error-register-20261118.jpg) |
 | Defect ID | DEF-011 |

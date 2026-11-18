@@ -1,10 +1,8 @@
 """Task 4 - Accessibility cases TC-A11Y-001 to 018 (see test_cases.md).
 
-Runs on the C01 baseline. Screen-reader output is approximated by Chrome's
-accessibility tree (what a screen reader reads). When that check already
-fails, the case fails; when it passes, the case is left open with the manual
-VoiceOver/NVDA step pending. Automated scans (axe-core, Lighthouse) are saved
-to evidences/reports/.
+Runs on the C01 baseline. Accessible names, roles and landmarks are read from
+Chrome's accessibility tree; screen readers are out of scope. Automated scans
+(axe-core, Lighthouse) are saved to evidences/reports/.
 """
 
 import json
@@ -51,14 +49,6 @@ def ax_nodes(page):
         name = node.get("name", {}).get("value", "")
         out.append((role, name, node))
     return out
-
-
-def finish_with_screen_reader_pending(rec, step):
-    """Fail on any failed automated check; otherwise leave the case open for the manual step."""
-    if any(not c["passed"] for c in rec.checks):
-        rec.assert_all()
-    rec.note(f"Automated checks passed; manual {step} still required before a verdict.")
-    pytest.skip(f"manual {step} pending")
 
 
 CONTRAST_JS = """el => {
@@ -201,7 +191,7 @@ def test_a11y_005_form_labels_associated(page, rec, account_a):
         rec.expect(all(any(n.startswith(t) for n in names) for t in labels),
                    f"{path}: each field's accessible name is its visible label", names)
     rec.capture(page, "labels")
-    finish_with_screen_reader_pending(rec, "VoiceOver step 3")
+    rec.assert_all()
 
 
 @pytest.mark.case("TC-A11Y-006")
@@ -219,7 +209,7 @@ def test_a11y_006_filter_and_search_labels(page, rec, account_a):
     rec.expect(all(names.values()), "each control has a programmatic label (not placeholder only)",
                {"labels": names, "accessibility tree": ax})
     rec.capture(page, "filter-labels", full_page=False)
-    finish_with_screen_reader_pending(rec, "VoiceOver step 2")
+    rec.assert_all()
 
 
 @pytest.mark.case("TC-A11Y-007")
@@ -239,7 +229,7 @@ def test_a11y_007_toggle_button_name_and_state(page, rec, account_a):
         rec.expect(pressed is not None or re.search(r"\b(done|complete|not done|open)\b", name.lower()),
                    f"{fixture_id}: the task's state is conveyed", {"name": name, "aria-pressed": pressed})
     rec.capture(page, "toggle-name", full_page=False)
-    finish_with_screen_reader_pending(rec, "VoiceOver step 1-2")
+    rec.assert_all()
 
 
 def tab_to(page, predicate, limit=80):
@@ -498,8 +488,7 @@ def test_a11y_015_error_identification(page, rec, account_a):
                    or exposure.get("focused"),
                    f"{path}: the error is exposed for announcement (alert role, live region or focus)", exposure)
         rec.capture(page, f"error-{path.strip('/')}")
-    rec.note("Whether VoiceOver/NVDA actually announce the error after the page reloads is the manual step.")
-    finish_with_screen_reader_pending(rec, "VoiceOver/NVDA announcement step")
+    rec.assert_all()
 
 
 @pytest.mark.case("TC-A11Y-016")

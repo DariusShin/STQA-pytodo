@@ -59,7 +59,7 @@ Tools marked as to be selected remain unverified.
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
 | UI automation tool | GUI and compatibility test execution (Week 3) | Playwright 1.65.2 with pytest-playwright 0.10.0, driving the installed Chrome through the `chrome` channel; see the [Week 3 setup guide](03_Special_Testing/setup.md) |
 | Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
-| Accessibility tools | Basic WCAG-oriented review (Week 3) | Scripted: axe-core 4.12.1 (axe-playwright-python 0.1.8) and Lighthouse 12.8.2 via `npx`. Manual, optional: axe DevTools extension, VoiceOver (macOS), NVDA (Windows) |
+| Accessibility tools | Basic WCAG-oriented review (Week 3) | Scripted: axe-core 4.12.1 (axe-playwright-python 0.1.8) and Lighthouse 12.8.2 via `npx`. Screen readers out of scope |
 | Git | Version and contribution tracking | git version 2.55.0 |
 
 Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.

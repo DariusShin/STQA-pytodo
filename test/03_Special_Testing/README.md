@@ -40,7 +40,7 @@ This README is the single phase report: the plan, every summary table and matrix
 | Basic accessibility findings | [Task 4](#task-4) | [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md) | `4_Accessibility/evidences/` |
 | Defects and improvement recommendations | [Task 5](#task-5) | Drawn from Tasks 1-4 | Linked from each defect |
 
-**Execution strategy.** The GUI, compatibility and accessibility cases are executed by Playwright scripts run with pytest (`1_GUI/test_gui.py`, `2_Compatibility/test_compatibility.py`, `4_Accessibility/test_accessibility.py`), decided by the team on 2026-11-18. Each script performs the documented steps, checks the expected result written in `test_cases.md` before execution, saves `.jpg` evidence and writes a per-run results file listing every check with its actual value. Visual judgements are recorded as notes and judged from the screenshots. The usability review stays manual; screen-reader output is inferred from Chrome's accessibility tree. Setup and run commands are in [setup.md](setup.md). Week 6 can reuse these scripts as regression candidates.
+**Execution strategy.** The GUI, compatibility and accessibility cases are executed by Playwright scripts run with pytest (`1_GUI/test_gui.py`, `2_Compatibility/test_compatibility.py`, `4_Accessibility/test_accessibility.py`), decided by the team on 2026-11-18. Each script performs the documented steps, checks the expected result written in `test_cases.md` before execution, saves `.jpg` evidence and writes a per-run results file listing every check with its actual value. Visual judgements are recorded as notes and judged from the screenshots. The usability review stays manual. Screen-reader testing is out of scope; accessible names are checked in Chrome's accessibility tree. Setup and run commands are in [setup.md](setup.md). Week 6 can reuse these scripts as regression candidates.
 
 ## Task 0 - Phase plan
 
@@ -61,9 +61,9 @@ This README is the single phase report: the plan, every summary table and matrix
 | The six rendered pages: `/login`, `/register`, `/` (task list), `/tasks/new`, `/tasks/<id>/edit`, `/dashboard` | JSON REST API behaviour and status codes (Week 4) |
 | Shared layout: top navigation bar, page titles, buttons, badges, messages | Script injection and other security behaviour, even when found through the UI (Week 5) |
 | Selected browsers and viewports available to the group | Load and response-time measurement (Week 5) |
-| Keyboard, screen-reader and contrast checks against a WCAG 2.2 Level A/AA subset | Regression-suite selection and CI integration (Week 6) |
+| Keyboard, accessibility-tree and contrast checks against a WCAG 2.2 Level A/AA subset | Regression-suite selection and CI integration (Week 6) |
 | Re-checking DEF-001 to DEF-003 where they surface in the GUI | Full WCAG conformance audit or certification |
-| Usability by expert heuristic review | Usability testing with end-user participants |
+| Usability by expert heuristic review | Usability testing with end-user participants; testing with screen readers (VoiceOver, NVDA), removed from scope on 2026-11-18 |
 
 Functional correctness was established in Week 1. This phase asks a different question: does each page present that behaviour clearly, consistently and accessibly across configurations?
 
@@ -103,7 +103,7 @@ Record these values at execution time. Do not copy versions from earlier weeks w
 | Browsers | macOS: Google Chrome 157.0.8103.80 (checked 2026-11-18; Week 1 used 155.0.8059.80); Playwright Firefox 159.0 build v1572 used for C04 (Mozilla Firefox 160.0.1 is also installed but not used by the scripts). Windows: record in the [configuration matrix](#21-configurations) |
 | Automation | Python 3.14.7, pytest 9.1.1, pytest-playwright 0.10.0, Playwright 1.65.2 driving the installed Chrome through the `chrome` channel, headless; full set in `requirements-test-lock.txt` |
 | Viewports | Device-mode preset name and CSS pixel size |
-| Accessibility tools | Scripted: axe-core 4.12.1 (through axe-playwright-python 0.1.8) and Lighthouse 12.8.2 (through `npx`, driving the installed Chrome). Manual, optional: axe DevTools extension (installed 2026-11-18), VoiceOver (macOS), NVDA (Windows) |
+| Accessibility tools | Scripted: axe-core 4.12.1 (through axe-playwright-python 0.1.8) and Lighthouse 12.8.2 (through `npx`, driving the installed Chrome). The axe DevTools extension (installed 2026-11-18) is available for manual cross-checks |
 | Test accounts | Synthetic accounts listed in [fixtures.md](fixtures.md#accounts); password `Test12345` |
 | Execution date/time and timezone | Per run |
 
@@ -128,7 +128,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | Task 1 - GUI checklist | Mohamd Shukri Bin Abd Ajed (Test Design) | All members |
 | Task 2 - Compatibility matrix | Darius Lee Shin (Automation/Tool) | Darius Lee Shin runs C04 on the MacBook and C05-C06 on the Windows 11 laptop (Acer Nitro 5); another member reviews the captures |
 | Task 3 - Usability | Eu Kwan Ik (QA/Test Lead) | Heuristic reviewers: Eu Kwan Ik and Ameera Alysha binti Azlan, working independently, then merging |
-| Task 4 - Accessibility | Darius Lee Shin (Automation/Tool) | Ameera Alysha binti Azlan (manual keyboard/screen-reader checks) |
+| Task 4 - Accessibility | Darius Lee Shin (Automation/Tool) | Ameera Alysha binti Azlan (reviews the scripted results and evidence) |
 | Task 5 - Defects and recommendations | Ameera Alysha binti Azlan (Defect & Metrics) | Eu Kwan Ik (review and final integration) |
 
 | Step | Activity | Output |
@@ -138,7 +138,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | 3 | Write detailed cases with expected results before execution (drafted 2026-10-27; split into technique folders 2026-11-18), then complete each review sign-off | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results - done 2026-11-18 |
 | 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01-C04 done 2026-11-18 |
-| 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings - done 2026-11-18 (scripted) |
+| 6 | Run the automated accessibility scans and the keyboard, accessibility-tree, reflow and zoom checks | [Task 4](#task-4) findings - done 2026-11-18 (scripted) |
 | 7 | Run the two-reviewer heuristic review (TC-USA-001 to 005) and merge the findings | [Task 3](#task-3) observations |
 | 8 | Reproduce each failure once more, log defects and draft recommendations | [Task 5](#task-5) |
 | 9 | Peer review, check links, update the [phase status](../README.md#3-deliverable-structure-and-progress) and the shared defect log | Phase ready for review |
@@ -330,9 +330,8 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 | 4. Configure | In `fixtures.json`, set the C05 and C06 `viewport` to the laptop's CSS resolution (screen resolution divided by the scaling factor; 1536x864 is the default for 1920x1080 at 125%) and change `tester_initial` if someone else runs it | The scripts seed their own data in the Windows database; use the same timezone as the Mac runs |
 | 5. Locale | Record the Windows region and short-date format in the 2.1 table | The date picker displays dates in the locale's format; the saved value must still be `YYYY-MM-DD` |
 | 6. Execute | `python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C05`, then `--w3-config C06`; run each twice so any failure is reproduced | TC-CMP-008 compares with C01 only on the same day; otherwise compare with C01 values recalculated for that day |
-| 7. Optional screen-reader pass | NVDA on TC-A11Y-005, 007 and 015 for a second screen reader alongside VoiceOver | Not needed for any verdict |
-| 8. Evidence | Saved automatically to `2_Compatibility/evidences/win-chrome/desktop/` and `win-firefox/desktop/` with a results file per run | Commit the evidence and results files, then fill the C05 and C06 columns |
-| 9. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Each scripted run takes under a minute |
+| 7. Evidence | Saved automatically to `2_Compatibility/evidences/win-chrome/desktop/` and `win-firefox/desktop/` with a results file per run | Commit the evidence and results files, then fill the C05 and C06 columns |
+| 8. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Each scripted run takes under a minute |
 
 #### 2.5 Interpretation (complete after execution)
 
@@ -385,11 +384,11 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 ### Basic accessibility findings
 
-**Method.** Executed on 2026-11-18 on C01 by [test_accessibility.py](4_Accessibility/test_accessibility.py), run twice (recorded run [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json)). The script performs the three passes below with programmatic equivalents of the DevTools steps; how each step was automated is described in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md). The screen-reader steps were not needed for any verdict: where they apply, Chrome's accessibility tree already shows the failure.
+**Method.** Executed on 2026-11-18 on C01 by [test_accessibility.py](4_Accessibility/test_accessibility.py), run twice (recorded run [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json)). The script performs the three passes below with programmatic equivalents of the DevTools steps; how each step was automated is described in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md). Screen-reader testing (VoiceOver, NVDA) was removed from scope on 2026-11-18; the cases check Chrome's accessibility tree instead.
 
 1. **Automated scan.** Lighthouse Accessibility audit and axe DevTools (or WAVE). Save the reports to `4_Accessibility/evidences/reports/`. Automated tools catch only part of the issues, so treat a clean scan as incomplete evidence.
 2. **Manual keyboard pass.** Complete the TC-A11Y-008 task sequence with Tab, Shift+Tab, Enter, Space, Escape and the arrow keys only.
-3. **Screen reader and zoom pass.** Use VoiceOver (macOS) or NVDA (Windows) on the login, task list and task form pages. Then check 200% zoom and a 320 CSS px width.
+3. **Accessibility-tree and zoom pass.** Check accessible names, roles, landmarks and error exposure in Chrome's accessibility tree, then check 200% zoom and a 320 CSS px width. Screen readers are out of scope.
 
 #### 4.1 WCAG 2.2 checklist (Level A/AA subset)
 
@@ -429,7 +428,7 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 **Results summary:** 18 cases: 7 Pass, 11 Fail, 0 Blocked, 0 Not Run.
 
-State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim. Screen-reader output was inferred from Chrome's accessibility tree rather than heard through VoiceOver or NVDA, and 200% zoom was emulated through an equivalent viewport.
+State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim. No screen reader was used: accessible names, roles and error exposure were checked in Chrome's accessibility tree, so actual announcements by VoiceOver or NVDA are untested. 200% zoom was emulated through an equivalent viewport.
 
 ## Task 5
 
@@ -616,7 +615,7 @@ On emulated devices the desktop-width layout hides DEF-004, which appears in nar
 | Preconditions | Logged out |
 | Steps to Reproduce | 1. Submit `/login` with a wrong password, or `/register` with username `ab`.<br>2. Inspect the error element's role, live-region attributes and the focused element. |
 | Expected Result | The error is described in text and announced without the user searching for it. Basis: WCAG 3.3.1, 4.1.3; TC-A11Y-015 |
-| Actual Result | The error is described in text, but it has no alert role or live region and focus is not moved to it, so a screen-reader user hears the page from the top. Same result in both runs; not yet confirmed with VoiceOver |
+| Actual Result | The error is described in text, but it has no alert role or live region and focus is not moved to it, so a screen-reader user hears the page from the top. Same result in both runs |
 | Severity | Moderate - screen-reader users may not notice why the form was rejected |
 | Priority | Medium |
 | Evidence | [login](4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg); [register](4_Accessibility/evidences/TC-A11Y-015-error-register-20261118.jpg) |

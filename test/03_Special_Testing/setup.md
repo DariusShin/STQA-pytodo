@@ -2,8 +2,8 @@
 
 This guide accompanies the [Week 3 report](README.md). Run all shell commands
 from the repository root on branch `w3-special-testing`. The GUI and
-compatibility cases are executed by Playwright scripts driven by pytest; the
-usability review and the screen-reader parts of accessibility remain manual.
+compatibility and accessibility cases are executed by Playwright scripts driven
+by pytest; the usability review remains manual.
 
 ## Verified environment
 
@@ -112,8 +112,8 @@ a later run on the same day, and each run keeps its own results file.
   text size (TC-CMP-007).
 - On emulated mobile devices, screenshots capture the device screen, not the whole
   layout.
-- Screen readers are not run. Accessibility cases read Chrome's accessibility tree
-  (what a screen reader reads); VoiceOver/NVDA checks stay manual and optional.
+- Screen readers are out of scope. Accessibility cases read Chrome's accessibility
+  tree instead.
 - Browser zoom cannot be set by Playwright; 200% zoom is emulated with an equivalent
   640x400 CSS-pixel viewport at device scale 2.
 - The first Lighthouse run downloads the package through `npx`, so it needs network

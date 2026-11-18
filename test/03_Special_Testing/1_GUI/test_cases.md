@@ -1,6 +1,6 @@
 # Week 3 - GUI Test Cases
 
-Detailed cases for [Task 1 - GUI checklist](../README.md#task-1) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, 1440x900, headless) by the Playwright suite [test_gui.py](test_gui.py), run twice: [results-C01-20261118-1933.json](evidences/results-C01-20261118-1933.json) is the recorded run, and `results-C01-20261118-1928.json` is the first reproduction. In the first run the TC-GUI-010 colour comparison was keyed on the expected class rather than the displayed one; the check was corrected before the recorded run.
+Detailed cases for [Task 1 - GUI checklist](../README.md#task-1) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, 1440x900, headless) by the Playwright suite [test_gui.py](test_gui.py), run twice: [results-C01-20261118-1933.json](evidences/results-C01-20261118-1933.json) is the recorded run, and `results-C01-20261118-1928.json` is the first reproduction. In the first run the TC-GUI-010 colour comparison was keyed on the expected class rather than the displayed one; the check was corrected before the recorded run.
 
 ## Review sign-off
 

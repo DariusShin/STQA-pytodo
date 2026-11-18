@@ -36,7 +36,6 @@ Every case uses the fields from the project guideline:
 | P-OUT | P-APP, and the browser is logged out (open `/logout` first) |
 | P-A | P-APP, logged in as account A with [Fixture Set A](#fixture-set-a---gui-and-accessibility) seeded on the execution day |
 | P-C | P-APP, logged in as account C, which has no tasks |
-| P-VO | VoiceOver is on (Command-F5) and Chrome is the active window |
 
 ## Fixture sets
 
