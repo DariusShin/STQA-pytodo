@@ -1,0 +1,1034 @@
+{
+  "configuration": "C01",
+  "run_started": "11181928",
+  "run_date": "2026-11-18",
+  "cases": {
+    "TC-GUI-001": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "heading is 'Log in'",
+          "passed": true,
+          "actual": "Log in"
+        },
+        {
+          "check": "'Username' label sits directly above its input",
+          "passed": true,
+          "actual": "gap 4.8px"
+        },
+        {
+          "check": "'Password' label sits directly above its input",
+          "passed": true,
+          "actual": "gap 4.8px"
+        },
+        {
+          "check": "'Log in' button present",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "'No account? Register' links to /register",
+          "passed": true,
+          "actual": "No account? Register"
+        },
+        {
+          "check": "password characters are masked",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "all elements are inside one card",
+          "passed": true,
+          "actual": 4
+        }
+      ],
+      "notes": [
+        "Spacing consistency judged from the screenshot."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-001-login-layout-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-002": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "browser stays on /login",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/login"
+        },
+        {
+          "check": "an error message is shown",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "error is above the form",
+          "passed": true,
+          "actual": "Invalid username or password."
+        },
+        {
+          "check": "error box is visually distinct from the card",
+          "passed": true,
+          "actual": "rgb(253, 236, 234)"
+        },
+        {
+          "check": "message does not reveal which field was wrong",
+          "passed": true,
+          "actual": "Invalid username or password."
+        }
+      ],
+      "notes": [
+        "Observation for Task 3: username field after the error contains ''."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-002-login-error-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-003": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "heading is 'Create an account'",
+          "passed": true,
+          "actual": "Create an account"
+        },
+        {
+          "check": "Username label shows the hint (3-20 chars, letters/numbers/underscore)",
+          "passed": true,
+          "actual": "Username (3-20 chars, letters/numbers/underscore)"
+        },
+        {
+          "check": "Password label shows the hint (min 8 characters)",
+          "passed": true,
+          "actual": "Password (min 8 characters)"
+        },
+        {
+          "check": "'Register' button present",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "'Log in' link to /login",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "notes": [
+        "Username hint font size 12.8px; readability judged from the screenshot.",
+        "Password hint font size 12.8px; readability judged from the screenshot."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-003-register-hints-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-004": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "s1: stays on /register with the username rule",
+          "passed": true,
+          "actual": "Username must be 3-20 characters (letters, numbers, underscore)."
+        },
+        {
+          "check": "s2 (7 chars): stays on /register with the 8-character minimum",
+          "passed": true,
+          "actual": "Password must be at least 8 characters."
+        },
+        {
+          "check": "s3 (8 chars): accepted and shows My Tasks",
+          "passed": false,
+          "actual": "Password must be at least 8 characters."
+        },
+        {
+          "check": "register messages use the same style as the login error",
+          "passed": true,
+          "actual": {
+            "register": {
+              "backgroundColor": "rgb(253, 236, 234)",
+              "color": "rgb(179, 38, 30)"
+            },
+            "login": {
+              "backgroundColor": "rgb(253, 236, 234)",
+              "color": "rgb(179, 38, 30)"
+            }
+          }
+        }
+      ],
+      "notes": [
+        "s1: username field kept '', password field kept 0 characters.",
+        "s2: username field kept '', password field kept 0 characters.",
+        "s3: username field kept '', password field kept 0 characters."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-004-register-errors-s1-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-004-register-errors-s2-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-004-register-errors-s3-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-005": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "logged out: brand only",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "1440px /: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "1440px /: every nav item on one line",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "1440px /: no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "1440px /tasks/new: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "1440px /tasks/new: every nav item on one line",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "1440px /tasks/new: no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "1440px /dashboard: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "1440px /dashboard: every nav item on one line",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "1440px /dashboard: no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "390px /: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "390px /: every nav item on one line",
+          "passed": false,
+          "actual": [
+            "PyTodo Pro (2 lines)",
+            "Log out (2 lines)"
+          ]
+        },
+        {
+          "check": "390px /: no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "390px /tasks/new: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "390px /tasks/new: every nav item on one line",
+          "passed": false,
+          "actual": [
+            "PyTodo Pro (2 lines)",
+            "Log out (2 lines)"
+          ]
+        },
+        {
+          "check": "390px /tasks/new: no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "390px /dashboard: nav shows ['Tasks', 'Dashboard', 'w3d_gui_11181928', 'Log out']",
+          "passed": true,
+          "actual": [
+            "Tasks",
+            "Dashboard",
+            "w3d_gui_11181928",
+            "Log out"
+          ]
+        },
+        {
+          "check": "390px /dashboard: every nav item on one line",
+          "passed": false,
+          "actual": [
+            "PyTodo Pro (2 lines)",
+            "Log out (2 lines)"
+          ]
+        },
+        {
+          "check": "390px /dashboard: no nav items overlap",
+          "passed": true,
+          "actual": []
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-005-nav-logged-out-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-005-nav-1440-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-005-nav-390-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-006": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "logged in: brand opens the task list /",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/"
+        },
+        {
+          "check": "logged out: brand stays on /login",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/login"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-006-brand-link-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-007": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "heading 'My Tasks'",
+          "passed": true,
+          "actual": "My Tasks"
+        },
+        {
+          "check": "'+ New Task' button",
+          "passed": true,
+          "actual": "+ New Task"
+        },
+        {
+          "check": "heading on the left, button on the right of the same row",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "'+ New Task' opens /tasks/new with heading 'New Task'",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/tasks/new"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-007-list-header-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-008": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "category applies on change, without Filter",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "status applies on change, without Filter",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "after Enter: only F1 is listed",
+          "passed": true,
+          "actual": [
+            "GUI-Overdue"
+          ]
+        },
+        {
+          "check": "controls still show Work / Open / GUI after reload",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "Filter button applies the search",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "category and status persist after a page reload",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "notes": [
+        "Input for TC-A11Y-006: the filter form has 0 visible <label> elements; search placeholder is 'Search title...'."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-008-filters-applied-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-009": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "Title, Category, Due Date and Urgency have headers",
+          "passed": true,
+          "actual": [
+            "",
+            "Title",
+            "Category",
+            "Due Date",
+            "Urgency",
+            ""
+          ]
+        },
+        {
+          "check": "control columns identifiable by their controls",
+          "passed": true,
+          "actual": {
+            "rows": 9,
+            "toggle buttons": 9,
+            "edit/delete cells": 9
+          }
+        },
+        {
+          "check": "no-match search shows a single 'no tasks match' message",
+          "passed": true,
+          "actual": "No tasks match your filters."
+        },
+        {
+          "check": "empty account shows a single 'no tasks match' message",
+          "passed": true,
+          "actual": "No tasks match your filters."
+        }
+      ],
+      "notes": [
+        "Header texts of the control columns: first '', last ''."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-009-empty-search-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-009-empty-account-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-010": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "F1 badge reads 'Overdue'",
+          "passed": true,
+          "actual": "Overdue"
+        },
+        {
+          "check": "F2 badge reads 'Due Today'",
+          "passed": false,
+          "actual": "Overdue"
+        },
+        {
+          "check": "F3 badge reads 'Due Soon'",
+          "passed": true,
+          "actual": "Due Soon"
+        },
+        {
+          "check": "F4 badge reads 'Upcoming'",
+          "passed": true,
+          "actual": "Upcoming"
+        },
+        {
+          "check": "F5 badge reads 'No due date'",
+          "passed": true,
+          "actual": "No due date"
+        },
+        {
+          "check": "F6 badge reads 'Done'",
+          "passed": true,
+          "actual": "Done"
+        },
+        {
+          "check": "Overdue, Due Today, Due Soon and Upcoming look different",
+          "passed": false,
+          "actual": [
+            [
+              "Overdue",
+              "Due Today"
+            ]
+          ]
+        }
+      ],
+      "notes": [
+        "Badge colours (background, text): {'Overdue': ('rgb(253, 236, 234)', 'rgb(179, 38, 30)'), 'Due Today': ('rgb(253, 236, 234)', 'rgb(179, 38, 30)'), 'Due Soon': ('rgb(255, 244, 229)', 'rgb(161, 92, 0)'), 'Upcoming': ('rgb(234, 246, 236)', 'rgb(30, 107, 52)'), 'No due date': ('rgb(238, 238, 238)', 'rgb(102, 102, 102)'), 'Done': ('rgb(238, 238, 238)', 'rgb(102, 102, 102)')}"
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-010-badges-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-011": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "after completing: ✓, struck through, Done",
+          "passed": true,
+          "actual": {
+            "button": "✓",
+            "strike": true,
+            "badge": "Done"
+          }
+        },
+        {
+          "check": "after reopening: ○, no strikethrough, Due Soon",
+          "passed": true,
+          "actual": {
+            "button": "○",
+            "strike": false,
+            "badge": "Due Soon"
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-011-toggle-done-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-011-toggle-open-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-012": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "form pre-filled with F3's saved values",
+          "passed": true,
+          "actual": {
+            "title": "GUI-Soon",
+            "description": "Week 3 GUI fixture",
+            "category": "Study",
+            "due_date": "2026-11-20"
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-012-edit-prefill-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-013": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "a confirmation dialog asks whether to delete (OK/Cancel)",
+          "passed": true,
+          "actual": [
+            {
+              "type": "confirm",
+              "message": "Delete this task?"
+            },
+            {
+              "type": "confirm",
+              "message": "Delete this task?"
+            }
+          ]
+        },
+        {
+          "check": "after Cancel the task is still listed",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "after OK the task is removed",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "all other tasks unchanged",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "notes": [
+        "Native dialog text recorded by Playwright (dialogs are not drawn in page screenshots): [{'type': 'confirm', 'message': 'Delete this task?'}, {'type': 'confirm', 'message': 'Delete this task?'}]"
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-013-before-delete-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-013-after-delete-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-014": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "heading 'New Task'",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "four labelled fields",
+          "passed": true,
+          "actual": [
+            "Title",
+            "Description",
+            "Category",
+            "Due Date"
+          ]
+        },
+        {
+          "check": "Description is multi-line",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "Category offers None plus Work, Personal, Study, Urgent",
+          "passed": true,
+          "actual": [
+            "None",
+            "Personal",
+            "Study",
+            "Urgent",
+            "Work"
+          ]
+        },
+        {
+          "check": "Due Date is a date control (opens the browser's date picker)",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "Create Task and Cancel present",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "Create Task styled as primary, Cancel as secondary",
+          "passed": true,
+          "actual": {
+            "primary": "rgb(27, 58, 92)",
+            "secondary": "rgb(238, 238, 238)"
+          }
+        },
+        {
+          "check": "Cancel returns to / without creating the task",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/"
+        }
+      ],
+      "notes": [
+        "The native date picker cannot be opened or captured by automation; the control type is checked instead."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-014-new-form-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-015": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "heading 'Edit Task'",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "'Save Changes' replaces 'Create Task'",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "after Cancel the title is unchanged",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "after Save the new title is listed",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "notes": [
+        "F4 title restored to its fixture value after the case."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-015-edit-form-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-015-after-save-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-016": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "empty title: blocked with a validation message on Title",
+          "passed": true,
+          "actual": {
+            "missing": true,
+            "message": "Please fill in this field."
+          }
+        },
+        {
+          "check": "whitespace-only title: blocked and no task created",
+          "passed": false,
+          "actual": {
+            "stayed on form": false,
+            "rows before": 9,
+            "rows after": 10
+          }
+        }
+      ],
+      "notes": [
+        "The browser's validation bubble is not drawn in page screenshots; its text is recorded instead.",
+        "Cleanup: removed blank-title task 59 created by this case."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-016-empty-title-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-016-whitespace-title-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-017": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "after create: confirmation message or highlighted task",
+          "passed": false,
+          "actual": {
+            "message": null,
+            "highlighted": false
+          }
+        },
+        {
+          "check": "after edit: confirmation message or highlighted task",
+          "passed": false,
+          "actual": {
+            "message": null,
+            "highlighted": false
+          }
+        },
+        {
+          "check": "after complete: confirmation message or highlighted task",
+          "passed": false,
+          "actual": {
+            "message": null,
+            "highlighted": false
+          }
+        },
+        {
+          "check": "after delete: confirmation message or highlighted task",
+          "passed": false,
+          "actual": {
+            "message": null,
+            "highlighted": false
+          }
+        }
+      ],
+      "notes": [
+        "No stated requirement covers this case; a failure is logged as a USA-OBS item, not a DEF."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-017-feedback-create-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-017-feedback-edit-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-017-feedback-complete-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-017-feedback-delete-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-018": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "heading 'Dashboard'",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "five cards with the expected labels",
+          "passed": true,
+          "actual": [
+            "Total Tasks",
+            "Open",
+            "Overdue",
+            "Due Soon",
+            "Completed (last 7 days)"
+          ]
+        },
+        {
+          "check": "each number sits above its label",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "'Overdue' card uses the colour of the overdue badge",
+          "passed": true,
+          "actual": {
+            "card": "rgb(179, 38, 30)",
+            "badge": "rgb(179, 38, 30)"
+          }
+        },
+        {
+          "check": "'Due Soon' card uses the colour of the due-soon badge",
+          "passed": true,
+          "actual": {
+            "card": "rgb(161, 92, 0)",
+            "badge": "rgb(161, 92, 0)"
+          }
+        },
+        {
+          "check": "'Completed (last 7 days)' card uses the colour of the done badge",
+          "passed": false,
+          "actual": {
+            "card": "rgb(30, 107, 52)",
+            "badge": "rgb(102, 102, 102)"
+          }
+        }
+      ],
+      "notes": [
+        "Counter values are not judged here (REQ-007 is covered in Week 1)."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-018-dashboard-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-019": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "F7 wraps within the Title cell",
+          "passed": true,
+          "actual": "3 lines"
+        },
+        {
+          "check": "table stays inside the page container",
+          "passed": true,
+          "actual": {
+            "table right": 1157,
+            "container right": 1156
+          }
+        },
+        {
+          "check": "no horizontal page scroll at 1440px",
+          "passed": true,
+          "actual": false
+        }
+      ],
+      "notes": [
+        "F8 title cell width 487px, 2 line(s)."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-019-long-content-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-020": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "list shows the exact title, including the literal <b>bold</b> text",
+          "passed": false,
+          "actual": "GUI-Special & bold \"double\" 'single' Résumé 报告"
+        },
+        {
+          "check": "no bold formatting applied",
+          "passed": false,
+          "actual": "1 <b> element(s)"
+        },
+        {
+          "check": "edit form shows the exact title",
+          "passed": true,
+          "actual": "GUI-Special & <b>bold</b> \"double\" 'single' Résumé 报告"
+        }
+      ],
+      "notes": [
+        "Tags rendered as markup: add to the Week 5 STRIDE table (H9). No script payloads were used."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-020-special-list-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-020-special-edit-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    },
+    "TC-GUI-021": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "six different titles",
+          "passed": true,
+          "actual": {
+            "/login": "Log in — PyTodo Pro",
+            "/register": "Register — PyTodo Pro",
+            "/": "Tasks — PyTodo Pro",
+            "/tasks/new": "New Task — PyTodo Pro",
+            "/tasks/51/edit": "Edit Task — PyTodo Pro",
+            "/dashboard": "Dashboard — PyTodo Pro"
+          }
+        },
+        {
+          "check": "/login title names its page and the application",
+          "passed": true,
+          "actual": "Log in — PyTodo Pro"
+        },
+        {
+          "check": "/register title names its page and the application",
+          "passed": true,
+          "actual": "Register — PyTodo Pro"
+        },
+        {
+          "check": "/ title names its page and the application",
+          "passed": true,
+          "actual": "Tasks — PyTodo Pro"
+        },
+        {
+          "check": "/tasks/new title names its page and the application",
+          "passed": true,
+          "actual": "New Task — PyTodo Pro"
+        },
+        {
+          "check": "/tasks/51/edit title names its page and the application",
+          "passed": true,
+          "actual": "Edit Task — PyTodo Pro"
+        },
+        {
+          "check": "/dashboard title names its page and the application",
+          "passed": true,
+          "actual": "Dashboard — PyTodo Pro"
+        }
+      ],
+      "notes": [
+        "Recorded titles: {'/login': 'Log in — PyTodo Pro', '/register': 'Register — PyTodo Pro', '/': 'Tasks — PyTodo Pro', '/tasks/new': 'New Task — PyTodo Pro', '/tasks/51/edit': 'Edit Task — PyTodo Pro', '/dashboard': 'Dashboard — PyTodo Pro'}"
+      ],
+      "evidence": [],
+      "error": null,
+      "suite": "1_GUI"
+    },
+    "TC-GUI-022": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "all primary actions share one style",
+          "passed": false,
+          "actual": {
+            "Log in button, Register button, Create Task, Save Changes": {
+              "backgroundColor": "rgb(27, 58, 92)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "15.2px"
+            },
+            "+ New Task": {
+              "backgroundColor": "rgb(27, 58, 92)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "14.4px"
+            },
+            "Filter": {
+              "backgroundColor": "rgb(44, 107, 143)",
+              "color": "rgb(255, 255, 255)",
+              "borderRadius": "6px",
+              "fontSize": "13.3333px"
+            }
+          }
+        },
+        {
+          "check": "text-style actions look alike",
+          "passed": false,
+          "actual": {
+            "Edit": "rgb(44, 107, 143)",
+            "Delete": "rgb(44, 107, 143)",
+            "Register link": "rgb(0, 0, 238)"
+          }
+        },
+        {
+          "check": "top-level headings have the same size",
+          "passed": false,
+          "actual": {
+            "login": "22.4px",
+            "task list": "32px"
+          }
+        },
+        {
+          "check": "cards share one style (corner radius)",
+          "passed": false,
+          "actual": {
+            "auth card": "12px",
+            "task form": "10px",
+            "stat card": "10px"
+          }
+        }
+      ],
+      "notes": [
+        "Only one secondary action (Cancel) exists, on both task forms, so it is consistent by construction."
+      ],
+      "evidence": [
+        "1_GUI/evidences/TC-GUI-022-consistency-login-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-022-consistency-register-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-022-consistency-list-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-022-consistency-new-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-022-consistency-edit-20261118.jpg",
+        "1_GUI/evidences/TC-GUI-022-consistency-dashboard-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:283: AssertionError",
+      "suite": "1_GUI"
+    }
+  }
+}

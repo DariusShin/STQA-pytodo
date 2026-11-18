@@ -31,7 +31,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - planning complete; 53 cases drafted in four technique folders, awaiting review |
+| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22 cases) and compatibility C01 (8 cases) executed 2026-11-18; other configurations, usability and accessibility pending |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
 | 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
@@ -53,13 +53,13 @@ Tools marked as to be selected remain unverified.
 | Python | Application and Python test execution | Python 3.14.7 |
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
-| Browser(s) | Manual GUI and compatibility testing | Google Chrome Version 155.0.8059.85 (Official Build) (arm64) on macOS; Mozilla Firefox on macOS, and Google Chrome and Mozilla Firefox on Windows 11 [versions recorded in the Week 3 compatibility matrix] |
+| Browser(s) | GUI and compatibility testing | macOS: Google Chrome 155.0.8059.80 (Week 1), Google Chrome 157.0.8103.80 and Mozilla Firefox 160.0.1 (Week 3). Windows 11: Google Chrome and Mozilla Firefox [versions recorded in the Week 3 compatibility matrix] |
 | pytest (proposed) | Unit and regression test runner | 9.1.1 |
 | pytest-cov (proposed) | Statement and branch coverage | 7.1.0 |
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
-| UI automation tool (to be selected) | Selected browser regression workflows | [Tool, browser and driver versions if applicable] |
+| UI automation tool | GUI and compatibility test execution (Week 3) | Playwright 1.65.2 with pytest-playwright 0.10.0, driving the installed Chrome through the `chrome` channel; see the [Week 3 setup guide](03_Special_Testing/setup.md) |
 | Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
-| Accessibility tools (to be selected) | Basic WCAG-oriented review and manual checks | [Tools, versions and checks] |
+| Accessibility tools | Basic WCAG-oriented review and manual checks | Lighthouse (bundled with Chrome), axe DevTools extension [version], VoiceOver (macOS), NVDA (Windows) [version] |
 | Git | Version and contribution tracking | git version 2.55.0 |
 
 Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.
@@ -78,6 +78,11 @@ functions, CFGs, test-case traceability, collected test counts, and measured
 coverage. Its implemented scripts are `test_helpers.py` and `test_app.py`.
 Later phases should document any additional dependencies and their own
 execution commands in the corresponding phase guide.
+
+Week 3 runs its Playwright suites from its own environment and `pytest.ini`;
+see the [Week 3 setup guide](03_Special_Testing/setup.md). Always pass
+`test/03_Special_Testing/...` as the test path so the repository-root
+`pytest.ini` (Week 2 coverage settings) is not used.
 
 ## 6. Documentation and Evidence Conventions
 

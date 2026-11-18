@@ -8,7 +8,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 
 | Reviewer | Date | Cases reviewed | Changes requested | Approved |
 | --- | --- | --- | --- | --- |
-| | | TC-A11Y-001 to 018 | | |
+| Team (verbal approval of execution, recorded by Darius Lee Shin) | 2026-11-18 | TC-A11Y-001 to 018 | None recorded | Yes (verbal) |
 
 ## Case index
 
@@ -51,7 +51,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every symbol-only control has a computed name that describes its purpose. Basis: WCAG 1.1.1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-001-names-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-001-names-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-002 - Info and relationships
@@ -68,7 +68,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each page has one top-level heading that matches its visible title. The table uses header cells for its column headings. The navigation bar and main content are identifiable as regions. Basis: WCAG 1.3.1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-002-structure-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-002-structure-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-003 - Use of colour
@@ -85,7 +85,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every urgency is identifiable from its badge text. Completed tasks are identifiable by more than colour (symbol and strikethrough). Dashboard cards are identifiable by their labels. Basis: WCAG 1.4.1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-003-greyscale-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-003-greyscale-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-004 - Text contrast
@@ -102,7 +102,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Normal text is at least 4.5:1; large text is at least 3:1. Planning predicted failures for the completed title and empty-state text (2.85:1, H5); these must be confirmed by measurement. Disabled or decorative text is exempt and must be identified. Basis: WCAG 1.4.3. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-004-contrast-<element>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-004-contrast-<element>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-005 - Form labels associated with fields
@@ -119,7 +119,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Clicking a label focuses its field. Each field's computed name equals its visible label (for example `Username`). VoiceOver announces the label with the field type. Basis: WCAG 1.3.1, 4.1.2. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-005-labels-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-005-labels-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-006 - Filter and search labels
@@ -136,7 +136,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each control has a visible label or instruction and a computed name that says what it filters. Placeholder text alone does not count as a label. Basis: WCAG 3.3.2. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-006-filter-labels-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-006-filter-labels-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-007 - Complete and reopen button name and state
@@ -153,7 +153,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each announcement identifies the action and the task, and the state is conveyed, for example "Mark GUI-Soon as done, button" and "Mark GUI-Done as not done, button". Basis: WCAG 4.1.2. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-007-toggle-name-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-007-toggle-name-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-008 - Keyboard operation
@@ -170,7 +170,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every step can be done with Tab, Shift-Tab, Enter, Space, Escape and the arrow keys. Focus never gets stuck in a control. Basis: WCAG 2.1.1, 2.1.2. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-008-keyboard-<step>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-008-keyboard-<step>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-009 - Bypass the navigation bar
@@ -187,7 +187,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | A "skip to content" link appears on the first Tab, or a main landmark lets the user jump past the navigation bar. Basis: WCAG 2.4.1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-009-bypass-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-009-bypass-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-010 - Page titles
@@ -221,7 +221,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Focus follows the visual reading order (left to right, top to bottom) and every focused control shows a visible indicator. Basis: WCAG 2.4.3, 2.4.7. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-011-focus-<page>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-011-focus-<page>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-012 - Reflow at 320 CSS pixels
@@ -238,7 +238,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | No horizontal scrolling except within the data table, which WCAG allows for content that needs two dimensions. No content or control is lost. The navigation bar is readable. Basis: WCAG 1.4.10. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-012-reflow-<page>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-012-reflow-<page>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-013 - Text resize to 200%
@@ -255,7 +255,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | No text is clipped, overlapping or hidden, and every function remains available. Basis: WCAG 1.4.4. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-013-zoom-<page>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-013-zoom-<page>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-014 - Language of page
@@ -272,7 +272,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every page declares English (`lang="en"`). Basis: WCAG 3.1.1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-014-lang-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-014-lang-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-015 - Error identification and announcement
@@ -289,7 +289,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each error is described in text. VoiceOver announces the error after submission without the user having to search for it. Basis: WCAG 3.3.1, 4.1.3. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-015-error-announce-<YYYYMMDD>.png` plus VoiceOver caption-panel screenshot |
+| Evidence | `evidences/TC-A11Y-015-error-announce-<YYYYMMDD>.jpg` plus VoiceOver caption-panel screenshot |
 | Defect ID | — |
 
 ## TC-A11Y-016 - Target size
@@ -306,7 +306,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each target is at least 24x24 CSS px, or meets the spacing exception (a 24 px circle centred on it does not overlap another target). Inline text links in sentences are exempt. Basis: WCAG 2.5.8. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-016-target-<element>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-016-target-<element>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-017 - Descriptive headings and labels
@@ -323,7 +323,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every heading and label is descriptive. Table columns that hold controls have headers that say what the controls do. Basis: WCAG 2.4.6. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-A11Y-017-headings-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-A11Y-017-headings-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-A11Y-018 - Automated scan summary

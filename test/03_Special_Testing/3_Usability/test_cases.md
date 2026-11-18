@@ -8,7 +8,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 
 | Reviewer | Date | Cases reviewed | Changes requested | Approved |
 | --- | --- | --- | --- | --- |
-| | | TC-USA-001 to 005 | | |
+| Team (verbal approval of execution, recorded by Darius Lee Shin) | 2026-11-18 | TC-USA-001 to 005 | None recorded | Yes (verbal) |
 
 ## Case index
 
@@ -57,7 +57,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 | Expected Result | No merged observation for this quality is rated 3 or 4. Basis: guideline activity A3 (ease of navigation); Nielsen heuristics 3 and 6. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-USA-001-<reviewer-initials>-<YYYYMMDD>.md` (one notes file per reviewer) plus screenshots `evidences/TC-USA-001-<short-desc>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-USA-001-<reviewer-initials>-<YYYYMMDD>.md` (one notes file per reviewer) plus screenshots `evidences/TC-USA-001-<short-desc>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-USA-002 - Feedback
@@ -74,7 +74,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 | Expected Result | No merged observation for this quality is rated 3 or 4. Basis: guideline activity A3 (feedback); Nielsen heuristic 1. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-USA-002-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-002-<short-desc>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-USA-002-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-002-<short-desc>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-USA-003 - Consistency
@@ -91,7 +91,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 | Expected Result | No merged observation for this quality is rated 3 or 4. Basis: guideline activity A3 (consistency); Nielsen heuristic 4. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-USA-003-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-003-<short-desc>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-USA-003-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-003-<short-desc>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-USA-004 - Error prevention
@@ -108,7 +108,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 | Expected Result | No merged observation for this quality is rated 3 or 4. Basis: guideline activity A3 (error prevention); Nielsen heuristics 5 and 9. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-USA-004-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-004-<short-desc>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-USA-004-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-004-<short-desc>-<YYYYMMDD>.jpg` |
 | Defect ID | — |
 
 ## TC-USA-005 - Understandability
@@ -125,5 +125,5 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 | Expected Result | No merged observation for this quality is rated 3 or 4. Basis: guideline activity A3 (understandability); Nielsen heuristics 2 and 8. |
 | Actual Result | Not executed. |
 | Status | Not Run |
-| Evidence | `evidences/TC-USA-005-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-005-<short-desc>-<YYYYMMDD>.png` |
+| Evidence | `evidences/TC-USA-005-<reviewer-initials>-<YYYYMMDD>.md` plus screenshots `evidences/TC-USA-005-<short-desc>-<YYYYMMDD>.jpg` |
 | Defect ID | — |

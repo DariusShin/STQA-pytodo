@@ -40,15 +40,20 @@ Every case uses the fields from the project guideline:
 
 ## Fixture sets
 
-Relative dates such as `today+2` are calculated on the execution day and entered as `YYYY-MM-DD`. Seed through the web UI or `POST /api/tasks`, and record which method was used.
+**Source of truth:** [fixtures.json](fixtures.json) holds the machine-readable data loaded by `conftest.py`: accounts, Fixture Set A, the browser configurations and each case's test data. This page describes the same data for readers. Change the JSON first, then this page.
+
+Relative dates such as `today+2` are calculated on the execution day and entered as `YYYY-MM-DD`. The automated suites seed accounts and tasks through the JSON API (`POST /api/register`, `POST /api/tasks`, `PUT /api/tasks/<id>` for F6). Manual runs may seed through the web UI; record which method was used.
 
 ### Accounts
 
 | Account | Username | Password | Tasks |
 | --- | --- | --- | --- |
-| A | `w3<initial>_gui_<ddmm>` | `Test12345` | Fixture Set A |
-| C | `w3<initial>_empty_<ddmm>` | `Test12345` | None |
-| Per configuration | `w3<initial>_<config>_<ddmm>`, e.g. `w3d_c04_2810` | `Test12345` | Created during TC-CMP-001 |
+| A | `w3<initial>_gui_<mmddHHMM>`, e.g. `w3d_gui_11181933` | `Test12345` | Fixture Set A |
+| C | `w3<initial>_empty_<mmddHHMM>` | `Test12345` | None |
+| Per configuration | `w3<initial>_<config>_<mmddHHMM>`, e.g. `w3d_c01_11181931` | `Test12345` | Created during TC-CMP-001 |
+| TC-GUI-004 submissions 2 and 3 | `w3<initial>_short_<mmddHHMM>`, `w3<initial>_p8_<mmddHHMM>` | As in the case | Created only if the submission is accepted |
+
+The registration form does not reject duplicate usernames, and login uses the first match, so every run stamps its usernames with the run's start time (`<mmddHHMM>`) to stay unique. Usernames stay within the 20-character rule.
 
 ### Fixture Set A - GUI and accessibility
 
@@ -64,7 +69,7 @@ Relative dates such as `today+2` are calculated on the execution day and entered
 | F8 | 60-character unbroken title, see below | (empty) | None | (empty) | Open |
 | F9 | `GUI-Special & <b>bold</b> "double" 'single' Résumé 报告` | (empty) | Study | (empty) | Open |
 
-Generate the F7 and F8 titles exactly:
+The F7 and F8 titles are stored literally in `fixtures.json`; they were generated with:
 
 ```bash
 python3 -c "print(('GUI-Long ' + 'quarterly report review ' * 9)[:200])"   # F7, 200 characters

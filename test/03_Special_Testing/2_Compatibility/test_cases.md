@@ -1,6 +1,6 @@
 # Week 3 - Compatibility Test Cases
 
-Detailed cases for [Task 2 - Compatibility/configuration matrix](../README.md#task-2) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Every case is `Not Run` until executed; fill in Actual Result, Status, Evidence and Defect ID only after execution, and replace `<YYYYMMDD>` in evidence filenames with the execution date.
+Detailed cases for [Task 2 - Compatibility/configuration matrix](../README.md#task-2) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C, P-VO), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed by the Playwright suite [test_compatibility.py](test_compatibility.py), once per configuration (`--w3-config <ID>`). C01 was executed on 2026-11-18 (Chrome 157.0.8103.80, macOS 26.5.2, 1440x900, headless); its run file is [results-C01-20261118-1931.json](evidences/mac-chrome/desktop/results-C01-20261118-1931.json). Configurations not yet run stay `Not Run`.
 
 ## Review sign-off
 
@@ -8,7 +8,7 @@ Expected results must be reviewed before execution (plan step 3). The reviewer c
 
 | Reviewer | Date | Cases reviewed | Changes requested | Approved |
 | --- | --- | --- | --- | --- |
-| | | TC-CMP-001 to 008 | | |
+| Team (verbal approval of execution, recorded by Darius Lee Shin) | 2026-11-18 | TC-CMP-001 to 008 | None recorded | Yes (verbal) |
 
 ## Case index
 
@@ -41,9 +41,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"username": "w3<initial>_<config>_<ddmm>", "password": "Test12345"} |
 | Steps | 1. Open `/register` and register with the test data.<br>2. Select `Log out`.<br>3. Log in with the same data. |
 | Expected Result | Step 1 opens `My Tasks` with the username in the navigation bar. Step 2 returns to `/login`. Step 3 opens `My Tasks`. Pages render and redirect as on C01. Basis: REQ-001, REQ-002. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-001-<YYYYMMDD>.png` |
+| Actual Result | C01: Registering opened `My Tasks` with the new username in the navigation bar; `Log out` returned to `/login`; logging in again opened `My Tasks`. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-001-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-001-registered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-registered-20261118.jpg)<br>[TC-CMP-001-logged-in-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-001-logged-in-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-002 - Create a task with the date picker
@@ -58,9 +58,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"title": "CMP-Date", "category": "Study", "dueDate": "today+7, chosen with the picker"} |
 | Steps | 1. Open `/tasks/new`.<br>2. Enter the title and category.<br>3. Open the date control and choose the due date with it (not by typing).<br>4. Capture the open picker with an OS screenshot.<br>5. Select `Create Task`. |
 | Expected Result | A date picker opens, or a date field that accepts the date if the browser has no picker. The list shows `CMP-Date` with the due date as `YYYY-MM-DD`, whatever the browser's display format, and the badge `Upcoming`. Basis: README task fields; REQ-006. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-002-<YYYYMMDD>.png` |
+| Actual Result | C01: `CMP-Date` (Study) listed with due date today+7 in `YYYY-MM-DD` and badge `Upcoming`. The date was entered by value; the native picker UI was not exercised. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-002-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-002-created-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-002-created-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-003 - Filter and search
@@ -75,9 +75,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"category": "Work", "status": "Open", "q": "GUI"} |
 | Steps | 1. Open `/`.<br>2. Choose `Work`, then `Open`.<br>3. Type `GUI` and press Enter.<br>4. Record the listed titles. |
 | Expected Result | Each list change applies without selecting `Filter`. The final list contains the same titles as on C01 for the same fixture set (F1 only). Basis: REQ-005. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-003-<YYYYMMDD>.png` |
+| Actual Result | C01: Category and status applied on change without `Filter`; the final list contained `GUI-Overdue` only. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-003-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-003-filtered-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-003-filtered-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-004 - Complete and reopen
@@ -92,9 +92,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"fixture": "F3"} |
 | Steps | 1. Select `○` on F3 and capture.<br>2. Select `✓` on F3 and capture. |
 | Expected Result | The same states as [TC-GUI-011](../1_GUI/test_cases.md#tc-gui-011---complete-and-reopen-button): `✓`, strikethrough and `Done` after step 1; `○`, no strikethrough and `Due Soon` after step 2. Both symbols render as symbols, not as empty boxes. Basis: REQ-004. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-004-<YYYYMMDD>.png` |
+| Actual Result | C01: `✓`, strikethrough and `Done` after completing; `○`, no strikethrough and `Due Soon` after reopening; both symbols rendered as glyphs. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-004-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-004-done-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-done-20261118.jpg)<br>[TC-CMP-004-reopened-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-004-reopened-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-005 - Edit a task
@@ -109,9 +109,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"task": "CMP-Date", "newDueDate": "today+10, chosen with the picker"} |
 | Steps | 1. Select `Edit` on `CMP-Date`.<br>2. Check that the due date shows today+7.<br>3. Choose the new date with the picker and select `Save Changes`.<br>4. Open `Edit` again. |
 | Expected Result | Step 2 shows the saved date. After step 3, the list shows the new date. Step 4 shows the new date in the form. Basis: REQ-003. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-005-<YYYYMMDD>.png` |
+| Actual Result | C01: The edit form showed the saved date; the new date (today+10) was saved, listed and shown again in the form. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-005-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-005-edited-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-005-edited-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-006 - Delete with confirmation
@@ -126,9 +126,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"task": "CMP-Date"} |
 | Steps | 1. Select `Delete` on `CMP-Date` and capture the dialog with an OS screenshot.<br>2. Select `Cancel`.<br>3. Select `Delete` again and confirm. |
 | Expected Result | The dialog appears with a delete question and two choices. Cancel keeps the task; confirming removes it. Same behaviour as on C01. Basis: REQ-003. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-006-<YYYYMMDD>.png` |
+| Actual Result | C01: Confirmation dialog `Delete this task?` appeared (recorded text); Cancel kept the task and OK removed it. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-006-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-006-deleted-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-006-deleted-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-007 - Navigation bar and task table layout
@@ -143,9 +143,9 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {"fixtures": ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9"]} |
 | Steps | 1. Open `/` with no filters.<br>2. Inspect the navigation bar.<br>3. Inspect the table, including F7 and F8.<br>4. Run the horizontal-scroll check from [TC-GUI-019](../1_GUI/test_cases.md#tc-gui-019---long-content) in the browser's console.<br>5. Capture the full page. |
 | Expected Result | Each navigation item fits on one line with no overlap. All six table columns are readable with no clipped text or controls. The page does not scroll horizontally, unless a scrolling table is the only cause and it is recorded. Basis: interface; H1; H10. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-007-<YYYYMMDD>.png` |
+| Actual Result | C01: At 1440x900 every navigation item fits on one line within the viewport with no overlap; all six table columns are within the viewport; no horizontal page scroll. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-007-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-007-layout-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-007-layout-20261118.jpg) |
 | Defect ID | — |
 
 ## TC-CMP-008 - Dashboard layout
@@ -160,7 +160,7 @@ Shared preconditions for every TC-CMP case: P-APP on the configuration under tes
 | Test Data | {} |
 | Steps | 1. Open `/dashboard`.<br>2. Record the five counter values.<br>3. Capture the page. |
 | Expected Result | The five cards do not overlap and wrap into rows as the width shrinks. The counter values equal those on C01 for the same fixture set and date. Basis: REQ-007; interface. |
-| Actual Result | Recorded per configuration in README 2.2. |
-| Status | Not Run |
-| Evidence | `evidences/<os>-<browser>/<viewport>/TC-CMP-008-<YYYYMMDD>.png` |
+| Actual Result | C01: Cards do not overlap. Counter values on 2026-11-18: Total Tasks 9, Open 8, Overdue 2, Due Soon 1, Completed (last 7 days) 1. These are the C01 reference values for same-day comparison. Other configurations: recorded per configuration in README 2.2. |
+| Status | C01: Pass. C02-C07: Not Run |
+| Evidence | Pattern `evidences/<os>-<browser>/<viewport>/TC-CMP-008-<desc>-<YYYYMMDD>.jpg`. C01: [TC-CMP-008-dashboard-20261118.jpg](evidences/mac-chrome/desktop/TC-CMP-008-dashboard-20261118.jpg) |
 | Defect ID | — |
