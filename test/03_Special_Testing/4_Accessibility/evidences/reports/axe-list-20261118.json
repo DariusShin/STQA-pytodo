@@ -13,7 +13,7 @@
     "orientationAngle": 0,
     "orientationType": "landscape-primary"
   },
-  "timestamp": "2026-11-18T12:50:57.787Z",
+  "timestamp": "2026-11-18T13:33:56.469Z",
   "url": "http://127.0.0.1:5000/",
   "toolOptions": {
     "resultTypes": [
@@ -2006,7 +2006,7 @@
           "impact": "serious",
           "html": "<button type=\"submit\" class=\"check-btn\">\u25cb</button>",
           "target": [
-            "form[action=\"/tasks/231/toggle\"] > .check-btn"
+            "form[action=\"/tasks/271/toggle\"] > .check-btn"
           ],
           "failureSummary": "Fix any of the following:\n  Element content contains only non-text characters"
         }
@@ -2371,7 +2371,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/231/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/271/edit\">Edit</a>",
           "target": [
             "tr:nth-child(1) > .actions > a[href$=\"edit\"]"
           ],
@@ -2476,7 +2476,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/230/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/270/edit\">Edit</a>",
           "target": [
             "tr:nth-child(2) > .actions > a[href$=\"edit\"]"
           ],
@@ -2581,7 +2581,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/229/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/269/edit\">Edit</a>",
           "target": [
             "tr:nth-child(3) > .actions > a[href$=\"edit\"]"
           ],
@@ -2686,7 +2686,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/228/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/268/edit\">Edit</a>",
           "target": [
             ".done > .actions > a[href$=\"edit\"]"
           ],
@@ -2791,7 +2791,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/227/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/267/edit\">Edit</a>",
           "target": [
             "tr:nth-child(5) > .actions > a[href$=\"edit\"]"
           ],
@@ -2896,7 +2896,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/226/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/266/edit\">Edit</a>",
           "target": [
             "tr:nth-child(6) > .actions > a[href$=\"edit\"]"
           ],
@@ -3001,7 +3001,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/225/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/265/edit\">Edit</a>",
           "target": [
             "tr:nth-child(7) > .actions > a[href$=\"edit\"]"
           ],
@@ -3106,7 +3106,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/224/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/264/edit\">Edit</a>",
           "target": [
             "tr:nth-child(8) > .actions > a[href$=\"edit\"]"
           ],
@@ -3211,7 +3211,7 @@
           "all": [],
           "none": [],
           "impact": "moderate",
-          "html": "<a href=\"/tasks/223/edit\">Edit</a>",
+          "html": "<a href=\"/tasks/263/edit\">Edit</a>",
           "target": [
             "tr:nth-child(9) > .actions > a[href$=\"edit\"]"
           ],

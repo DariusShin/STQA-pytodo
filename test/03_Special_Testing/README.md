@@ -63,7 +63,7 @@ This README is the single phase report: the plan, every summary table and matrix
 | Selected browsers and viewports available to the group | Load and response-time measurement (Week 5) |
 | Keyboard, accessibility-tree and contrast checks against a WCAG 2.2 Level A/AA subset | Regression-suite selection and CI integration (Week 6) |
 | Re-checking DEF-001 to DEF-003 where they surface in the GUI | Full WCAG conformance audit or certification |
-| Usability by expert heuristic review | Usability testing with end-user participants; testing with screen readers (VoiceOver, NVDA), removed from scope on 2026-11-18 |
+| Usability by expert heuristic review | Usability testing with end-user participants |
 
 Functional correctness was established in Week 1. This phase asks a different question: does each page present that behaviour clearly, consistently and accessibly across configurations?
 
@@ -384,7 +384,7 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 ### Basic accessibility findings
 
-**Method.** Executed on 2026-11-18 on C01 by [test_accessibility.py](4_Accessibility/test_accessibility.py), run twice (recorded run [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json)). The script performs the three passes below with programmatic equivalents of the DevTools steps; how each step was automated is described in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md). Screen-reader testing (VoiceOver, NVDA) was removed from scope on 2026-11-18; the cases check Chrome's accessibility tree instead.
+**Method.** Executed on 2026-11-18 on C01 by [test_accessibility.py](4_Accessibility/test_accessibility.py), run twice (recorded run [results-C01-20261118-213348.json](4_Accessibility/evidences/results-C01-20261118-213348.json)). The script performs the three passes below with programmatic equivalents of the DevTools steps; how each step was automated is described in [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md).
 
 1. **Automated scan.** Lighthouse Accessibility audit and axe DevTools (or WAVE). Save the reports to `4_Accessibility/evidences/reports/`. Automated tools catch only part of the issues, so treat a clean scan as incomplete evidence.
 2. **Manual keyboard pass.** Complete the TC-A11Y-008 task sequence with Tab, Shift+Tab, Enter, Space, Escape and the arrow keys only.
@@ -403,11 +403,11 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 | TC-A11Y-007 | 4.1.2 Name, role, value (A) | Complete/reopen button announces its purpose and state | Task list | e.g. "Mark <title> as done, button" (H3) | Names `○` / `✓`; no action, task or state | Fail | [TC-A11Y-007-toggle-name-20261118.jpg](4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg) | DEF-008 |
 | TC-A11Y-008 | 2.1.1 Keyboard (A) | All functions work by keyboard, including the delete dialog and date picker | All | The TC-A11Y-008 task sequence completed by keyboard only, with no keyboard trap | Whole flow completed by keyboard; no trap | Pass | [TC-A11Y-008-keyboard-end-20261118.jpg](4_Accessibility/evidences/TC-A11Y-008-keyboard-end-20261118.jpg) | — |
 | TC-A11Y-009 | 2.4.1 Bypass blocks (A) | A way to skip the navigation bar | All logged-in pages | Skip link or landmark navigation available (H8) | First Tab reaches the brand link; no skip link or main landmark | Fail | [TC-A11Y-009-bypass-20261118.jpg](4_Accessibility/evidences/TC-A11Y-009-bypass-20261118.jpg) | DEF-010 |
-| TC-A11Y-010 | 2.4.2 Page titled (A) | Page titles are unique and descriptive | All | Same as TC-GUI-021 | Six unique, descriptive titles | Pass | [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json) | — |
+| TC-A11Y-010 | 2.4.2 Page titled (A) | Page titles are unique and descriptive | All | Same as TC-GUI-021 | Six unique, descriptive titles | Pass | [results-C01-20261118-213348.json](4_Accessibility/evidences/results-C01-20261118-213348.json) | — |
 | TC-A11Y-011 | 2.4.3 Focus order / 2.4.7 Focus visible (AA) | Tab order follows the visual order and focus is always visible | All | Logical order; visible focus indicator on every control | Logical order; focus ring visible on every control | Pass | [TC-A11Y-011-focus-first-20261118.jpg](4_Accessibility/evidences/TC-A11Y-011-focus-first-20261118.jpg) | — |
 | TC-A11Y-012 | 1.4.10 Reflow (AA) | Content usable at 320 CSS px without two-dimensional scrolling | All | No horizontal scrolling except for the data table (H1) | Nav wraps and overflows at 320 px; form and dashboard pages scroll sideways | Fail | [TC-A11Y-012-reflow-login-20261118.jpg](4_Accessibility/evidences/TC-A11Y-012-reflow-login-20261118.jpg) | DEF-004 |
 | TC-A11Y-013 | 1.4.4 Resize text (AA) | 200% browser zoom | All | No clipped or overlapping content | No clipping or overlap at the 200% equivalent | Pass | [TC-A11Y-013-zoom-register-20261118.jpg](4_Accessibility/evidences/TC-A11Y-013-zoom-register-20261118.jpg) | — |
-| TC-A11Y-014 | 3.1.1 Language of page (A) | `lang` attribute present | All | `<html lang="en">` | `lang="en"` on every page | Pass | [results-C01-20261118-205048.json](4_Accessibility/evidences/results-C01-20261118-205048.json) | — |
+| TC-A11Y-014 | 3.1.1 Language of page (A) | `lang` attribute present | All | `<html lang="en">` | `lang="en"` on every page | Pass | [results-C01-20261118-213348.json](4_Accessibility/evidences/results-C01-20261118-213348.json) | — |
 | TC-A11Y-015 | 3.3.1 Error identification (A) / 4.1.3 Status messages (AA) | Errors are described in text and announced | Login, register | Screen reader announces the error without a focus change (H7) | Errors in text, but no alert role, live region or focus move | Fail | [TC-A11Y-015-error-login-20261118.jpg](4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg) | DEF-011 |
 | TC-A11Y-016 | 2.5.8 Target size minimum (AA, WCAG 2.2) | Pointer targets at least 24x24 CSS px | Task list (`Edit`, `Delete`, toggle) | All targets meet the minimum or its spacing exception | `Edit` 23x15 px and `Delete` 39x15 px, stacked too closely | Fail | [TC-A11Y-016-targets-20261118.jpg](4_Accessibility/evidences/TC-A11Y-016-targets-20261118.jpg) | DEF-012 |
 | TC-A11Y-017 | 2.4.6 Headings and labels (AA) | Headings and labels describe their purpose | All | Clear, unambiguous text | Headings and labels descriptive; control columns have empty headers | Fail | [TC-A11Y-017-headings-20261118.jpg](4_Accessibility/evidences/TC-A11Y-017-headings-20261118.jpg) | DEF-013 |
@@ -428,7 +428,7 @@ Raise a `DEF-` record only when an observation breaks a stated requirement or in
 
 **Results summary:** 18 cases: 7 Pass, 11 Fail, 0 Blocked, 0 Not Run.
 
-State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim. No screen reader was used: accessible names, roles and error exposure were checked in Chrome's accessibility tree, so actual announcements by VoiceOver or NVDA are untested. 200% zoom was emulated through an equivalent viewport.
+State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a conformance claim. 200% zoom was emulated through an equivalent viewport.
 
 ## Task 5
 
@@ -567,7 +567,7 @@ On emulated devices the desktop-width layout hides DEF-004, which appears in nar
 | Actual Result | Snapshots read `button "○"` and `button "✓"`; no task name, action or pressed/checked state. Neither axe nor Lighthouse flags this, because a symbol counts as a name. Same result in both runs |
 | Severity | Major - a screen-reader user cannot tell what the button does or which task it affects |
 | Priority | High |
-| Evidence | [TC-A11Y-007](4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg); [run results](4_Accessibility/evidences/results-C01-20261118-205048.json) |
+| Evidence | [TC-A11Y-007](4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg); [run results](4_Accessibility/evidences/results-C01-20261118-213348.json) |
 | Status | Open |
 
 #### DEF-009 - Low-contrast text

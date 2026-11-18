@@ -68,7 +68,7 @@
       "final_url": "http://127.0.0.1:5000/tasks/new"
     }
   },
-  "/tasks/225/edit": {
+  "/tasks/265/edit": {
     "axe_report": "axe-edit-20261118.json",
     "critical": [
       "label",
@@ -82,7 +82,7 @@
     "minor": [],
     "lighthouse": {
       "score": 82,
-      "final_url": "http://127.0.0.1:5000/tasks/225/edit"
+      "final_url": "http://127.0.0.1:5000/tasks/265/edit"
     }
   },
   "/dashboard": {

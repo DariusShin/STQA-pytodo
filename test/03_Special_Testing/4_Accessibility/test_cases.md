@@ -1,8 +1,8 @@
 # Week 3 - Accessibility Test Cases
 
-Detailed cases for [Task 4 - Basic accessibility findings](../README.md#task-4) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by the Playwright suite [test_accessibility.py](test_accessibility.py), run twice: [results-C01-20261118-205048.json](evidences/results-C01-20261118-205048.json) is the recorded run and [results-C01-20261118-204716.json](evidences/results-C01-20261118-204716.json) the first reproduction. Results were identical in both runs except TC-A11Y-008, whose first-run failure was a script error (see that case).
+Detailed cases for [Task 4 - Basic accessibility findings](../README.md#task-4) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by the Playwright suite [test_accessibility.py](test_accessibility.py), run twice: [results-C01-20261118-213348.json](evidences/results-C01-20261118-213348.json) is the recorded run and [results-C01-20261118-213235.json](evidences/results-C01-20261118-213235.json) the first reproduction. Results were identical in both runs.
 
-**How the steps were automated.** The script performs the DevTools steps with equivalent programmatic checks: computed styles for contrast, focus and target size; Chrome's accessibility tree (read through the DevTools protocol and Playwright accessibility snapshots) for names, roles and landmarks; Chrome's vision-deficiency emulation for TC-A11Y-003; and a 640x400 CSS-pixel viewport at device scale 2 for 200% zoom (TC-A11Y-013). **Scope change on 2026-11-18.** The team removed screen-reader testing (VoiceOver, NVDA) from the Week 3 scope. The screen-reader steps were deleted from TC-A11Y-002, 005, 006, 007, 009 and 015, and their expected results now refer to Chrome's accessibility tree, which is the information a screen reader reads. No screen reader was run, and no verdict changed.
+**How the steps were automated.** The script performs the DevTools steps with equivalent programmatic checks: computed styles for contrast, focus and target size; Chrome's accessibility tree (read through the DevTools protocol and Playwright accessibility snapshots) for names, roles and landmarks; Chrome's vision-deficiency emulation for TC-A11Y-003; and a 640x400 CSS-pixel viewport at device scale 2 for 200% zoom (TC-A11Y-013).
 
 ## Review sign-off
 
@@ -170,7 +170,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Test Data | {"title": "A11Y-Keyboard", "category": "Work", "dueDate": "today+3"} |
 | Steps | 1. Log in as account A.<br>2. Create the test task, including choosing the category and the date with the keyboard.<br>3. Filter to Work and search `A11Y`.<br>4. Complete and reopen the task.<br>5. Edit and save it.<br>6. Delete it, answering the dialog with the keyboard.<br>7. Open the dashboard and log out. |
 | Expected Result | Every step can be done with Tab, Shift-Tab, Enter, Space, Escape and the arrow keys. Focus never gets stuck in a control. Basis: WCAG 2.1.1, 2.1.2. |
-| Actual Result | Every step was completed with the keyboard only: log in, create a task (Work chosen by typing `W`, date typed into the segmented date control), filter, search, complete, reopen, edit, save, delete, open the dashboard and log out. No keyboard trap. The native delete dialog was answered by Playwright. The first run failed because the script typed the title before tabbing into the Title field; that script error was fixed, and this result is from the second run. |
+| Actual Result | Every step was completed with the keyboard only: log in, create a task (Work chosen by typing `W`, date typed into the segmented date control), filter, search, complete, reopen, edit, save, delete, open the dashboard and log out. No keyboard trap. The native delete dialog was answered by Playwright. |
 | Status | Pass |
 | Evidence | [TC-A11Y-008-keyboard-end-20261118.jpg](evidences/TC-A11Y-008-keyboard-end-20261118.jpg) |
 | Defect ID | — |
@@ -206,7 +206,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Each title describes the page's topic or purpose. Basis: WCAG 2.4.2. May share evidence with [TC-GUI-021](../1_GUI/test_cases.md#tc-gui-021---page-titles). |
 | Actual Result | Six unique titles, each naming its page and the application (same evidence as TC-GUI-021). |
 | Status | Pass |
-| Evidence | [TC-GUI-021 results](../1_GUI/evidences/results-C01-20261118-1933.json); [this run](evidences/results-C01-20261118-205048.json) |
+| Evidence | [TC-GUI-021 results](../1_GUI/evidences/results-C01-20261118-1933.json); [this run](evidences/results-C01-20261118-213348.json) |
 | Defect ID | — |
 
 ## TC-A11Y-011 - Focus order and visible focus
@@ -274,7 +274,7 @@ Run on C01 unless the case says otherwise. Tools: Chrome DevTools (Elements, Acc
 | Expected Result | Every page declares English (`lang="en"`). Basis: WCAG 3.1.1. |
 | Actual Result | Every page declares `lang="en"`. |
 | Status | Pass |
-| Evidence | [results-C01-20261118-205048.json](evidences/results-C01-20261118-205048.json) (recorded values) |
+| Evidence | [results-C01-20261118-213348.json](evidences/results-C01-20261118-213348.json) (recorded values) |
 | Defect ID | — |
 
 ## TC-A11Y-015 - Error identification and announcement

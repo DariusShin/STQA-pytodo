@@ -1,6 +1,6 @@
 {
   "configuration": "C01",
-  "run_started": "1118204716",
+  "run_started": "1118213235",
   "run_date": "2026-11-18",
   "cases": {
     "TC-A11Y-001": {
@@ -36,7 +36,7 @@
           "actual": []
         },
         {
-          "check": "/tasks/216/edit: every symbol-only control or image has a name describing its purpose",
+          "check": "/tasks/255/edit: every symbol-only control or image has a name describing its purpose",
           "passed": true,
           "actual": []
         },
@@ -50,7 +50,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-001-names-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-002": {
@@ -117,12 +117,12 @@
           ]
         },
         {
-          "check": "/tasks/216/edit: one top-level heading",
+          "check": "/tasks/255/edit: one top-level heading",
           "passed": true,
           "actual": 1
         },
         {
-          "check": "/tasks/216/edit: navigation and main content are identifiable regions",
+          "check": "/tasks/255/edit: navigation and main content are identifiable regions",
           "passed": false,
           "actual": [
             "navigation"
@@ -145,7 +145,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-002-structure-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-003": {
@@ -280,7 +280,7 @@
         "4_Accessibility/evidences/TC-A11Y-004-contrast-empty-state-20261118.jpg",
         "4_Accessibility/evidences/TC-A11Y-004-contrast-list-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-005": {
@@ -356,7 +356,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-005-labels-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-006": {
@@ -397,7 +397,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-006-filter-labels-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-007": {
@@ -437,11 +437,11 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-008": {
-      "status": "Fail",
+      "status": "Pass",
       "checks": [
         {
           "check": "keyboard: reach Username",
@@ -459,29 +459,114 @@
           "actual": null
         },
         {
+          "check": "keyboard: reach Title",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Category",
+          "passed": true,
+          "actual": null
+        },
+        {
           "check": "keyboard: choose a category by keyboard",
-          "passed": false,
-          "actual": "None"
+          "passed": true,
+          "actual": "Work"
+        },
+        {
+          "check": "keyboard: reach Due Date",
+          "passed": true,
+          "actual": null
         },
         {
           "check": "keyboard: enter the due date by keyboard",
-          "passed": false,
-          "actual": ""
+          "passed": true,
+          "actual": "2026-11-21"
+        },
+        {
+          "check": "keyboard: reach Create Task",
+          "passed": true,
+          "actual": null
         },
         {
           "check": "keyboard: create the task",
-          "passed": false,
+          "passed": true,
           "actual": null
         },
         {
           "check": "keyboard: reach the category filter",
-          "passed": false,
+          "passed": true,
           "actual": null
+        },
+        {
+          "check": "keyboard: reach the search box",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: filter and search",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach the complete button",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: complete the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reopen the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Edit",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Save Changes",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Delete",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: delete the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Dashboard",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Log out",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: log out",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/login"
         }
       ],
-      "notes": [],
-      "evidence": [],
-      "error": "test/03_Special_Testing/.venv/lib/python3.14/site-packages/playwright/_impl/utils/tasks.py:131: TimeoutError",
+      "notes": [
+        "The native confirm dialog was answered by Playwright; browsers make it keyboard-operable (Enter/Escape), which page automation cannot exercise.",
+        "Keyboard steps: {'reach Username': True, 'log in': True, 'reach + New Task': True, 'reach Title': True, 'reach Category': True, 'choose a category by keyboard': True, 'reach Due Date': True, 'enter the due date by keyboard': True, 'reach Create Task': True, 'create the task': True, 'reach the category filter': True, 'reach the search box': True, 'filter and search': True, 'reach the complete button': True, 'complete the task': True, 'reopen the task': True, 'reach Edit': True, 'reach Save Changes': True, 'reach Delete': True, 'delete the task': True, 'reach Dashboard': True, 'reach Log out': True, 'log out': True}"
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-008-keyboard-end-20261118.jpg"
+      ],
+      "error": null,
       "suite": "4_Accessibility"
     },
     "TC-A11Y-009": {
@@ -503,7 +588,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-009-bypass-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-010": {
@@ -517,7 +602,7 @@
             "/register": "Register — PyTodo Pro",
             "/": "Tasks — PyTodo Pro",
             "/tasks/new": "New Task — PyTodo Pro",
-            "/tasks/216/edit": "Edit Task — PyTodo Pro",
+            "/tasks/255/edit": "Edit Task — PyTodo Pro",
             "/dashboard": "Dashboard — PyTodo Pro"
           }
         },
@@ -529,7 +614,7 @@
             "/register": "Register — PyTodo Pro",
             "/": "Tasks — PyTodo Pro",
             "/tasks/new": "New Task — PyTodo Pro",
-            "/tasks/216/edit": "Edit Task — PyTodo Pro",
+            "/tasks/255/edit": "Edit Task — PyTodo Pro",
             "/dashboard": "Dashboard — PyTodo Pro"
           }
         }
@@ -585,12 +670,12 @@
           "actual": []
         },
         {
-          "check": "/tasks/216/edit: every focused control shows a focus indicator",
+          "check": "/tasks/255/edit: every focused control shows a focus indicator",
           "passed": true,
           "actual": []
         },
         {
-          "check": "/tasks/216/edit: focus follows the visual reading order",
+          "check": "/tasks/255/edit: focus follows the visual reading order",
           "passed": true,
           "actual": []
         },
@@ -658,7 +743,7 @@
               "Log out"
             ],
             "off-screen": [
-              "w3d_gui_1118204716",
+              "w3d_gui_1118213235",
               "Log out"
             ],
             "overlaps": []
@@ -681,7 +766,7 @@
               "Log out"
             ],
             "off-screen": [
-              "w3d_gui_1118204716",
+              "w3d_gui_1118213235",
               "Log out"
             ],
             "overlaps": []
@@ -696,7 +781,7 @@
           }
         },
         {
-          "check": "320px /tasks/216/edit: navigation readable and on screen",
+          "check": "320px /tasks/255/edit: navigation readable and on screen",
           "passed": false,
           "actual": {
             "wrapped": [
@@ -704,14 +789,14 @@
               "Log out"
             ],
             "off-screen": [
-              "w3d_gui_1118204716",
+              "w3d_gui_1118213235",
               "Log out"
             ],
             "overlaps": []
           }
         },
         {
-          "check": "320px /tasks/216/edit: no horizontal scrolling except caused by the data table",
+          "check": "320px /tasks/255/edit: no horizontal scrolling except caused by the data table",
           "passed": false,
           "actual": {
             "page scrolls": true,
@@ -727,7 +812,7 @@
               "Log out"
             ],
             "off-screen": [
-              "w3d_gui_1118204716",
+              "w3d_gui_1118213235",
               "Log out"
             ],
             "overlaps": []
@@ -749,7 +834,7 @@
         "4_Accessibility/evidences/TC-A11Y-012-reflow-list-20261118.jpg",
         "4_Accessibility/evidences/TC-A11Y-012-reflow-dashboard-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-013": {
@@ -834,7 +919,7 @@
           }
         },
         {
-          "check": "200% /tasks/216/edit: navigation readable and on screen",
+          "check": "200% /tasks/255/edit: navigation readable and on screen",
           "passed": true,
           "actual": {
             "wrapped": [],
@@ -843,7 +928,7 @@
           }
         },
         {
-          "check": "200% /tasks/216/edit: no horizontal scrolling except caused by the data table",
+          "check": "200% /tasks/255/edit: no horizontal scrolling except caused by the data table",
           "passed": true,
           "actual": {
             "page scrolls": false,
@@ -889,7 +974,7 @@
             "/register": "en",
             "/": "en",
             "/tasks/new": "en",
-            "/tasks/216/edit": "en",
+            "/tasks/255/edit": "en",
             "/dashboard": "en"
           }
         }
@@ -931,14 +1016,12 @@
           }
         }
       ],
-      "notes": [
-        "Whether VoiceOver/NVDA actually announce the error after the page reloads is the manual step."
-      ],
+      "notes": [],
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg",
         "4_Accessibility/evidences/TC-A11Y-015-error-register-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-016": {
@@ -959,7 +1042,7 @@
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-016-targets-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-017": {
@@ -1016,7 +1099,7 @@
                 "Due Date"
               ]
             },
-            "/tasks/216/edit": {
+            "/tasks/255/edit": {
               "headings": [
                 "Edit Task"
               ],
@@ -1037,12 +1120,12 @@
         }
       ],
       "notes": [
-        "Headings and labels for review: {'/login': {'headings': ['Log in'], 'labels': ['Username', 'Password']}, '/register': {'headings': ['Create an account'], 'labels': ['Username (3-20 chars, letters/numbers/underscore)', 'Password (min 8 characters)']}, '/': {'headings': ['My Tasks'], 'labels': []}, '/tasks/new': {'headings': ['New Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/tasks/216/edit': {'headings': ['Edit Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/dashboard': {'headings': ['Dashboard'], 'labels': []}}"
+        "Headings and labels for review: {'/login': {'headings': ['Log in'], 'labels': ['Username', 'Password']}, '/register': {'headings': ['Create an account'], 'labels': ['Username (3-20 chars, letters/numbers/underscore)', 'Password (min 8 characters)']}, '/': {'headings': ['My Tasks'], 'labels': []}, '/tasks/new': {'headings': ['New Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/tasks/255/edit': {'headings': ['Edit Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/dashboard': {'headings': ['Dashboard'], 'labels': []}}"
       ],
       "evidence": [
         "4_Accessibility/evidences/TC-A11Y-017-headings-20261118.jpg"
       ],
-      "error": "test/03_Special_Testing/conftest.py:285: AssertionError",
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
       "suite": "4_Accessibility"
     },
     "TC-A11Y-018": {
@@ -1154,7 +1237,7 @@
           "actual": "/tasks/new"
         },
         {
-          "check": "/tasks/216/edit: axe and Lighthouse reports saved",
+          "check": "/tasks/255/edit: axe and Lighthouse reports saved",
           "passed": true,
           "actual": {
             "axe_report": "axe-edit-20261118.json",
@@ -1170,14 +1253,14 @@
             "minor": [],
             "lighthouse": {
               "score": 82,
-              "final_url": "http://127.0.0.1:5000/tasks/216/edit"
+              "final_url": "http://127.0.0.1:5000/tasks/255/edit"
             }
           }
         },
         {
-          "check": "/tasks/216/edit: Lighthouse audited the intended page (not a redirect)",
+          "check": "/tasks/255/edit: Lighthouse audited the intended page (not a redirect)",
           "passed": true,
-          "actual": "/tasks/216/edit"
+          "actual": "/tasks/255/edit"
         },
         {
           "check": "/dashboard: axe and Lighthouse reports saved",
@@ -1204,7 +1287,7 @@
         }
       ],
       "notes": [
-        "Scan summary: {'/login': {'axe_report': 'axe-login-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/login'}}, '/register': {'axe_report': 'axe-register-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/register'}}, '/': {'axe_report': 'axe-list-20261118.json', 'critical': ['select-name'], 'serious': ['color-contrast'], 'moderate': ['landmark-one-main', 'region'], 'minor': ['empty-table-header'], 'lighthouse': {'score': 76, 'final_url': 'http://127.0.0.1:5000/'}}, '/tasks/new': {'axe_report': 'axe-new-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/new'}}, '/tasks/216/edit': {'axe_report': 'axe-edit-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/216/edit'}}, '/dashboard': {'axe_report': 'axe-dashboard-20261118.json', 'critical': [], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 100, 'final_url': 'http://127.0.0.1:5000/dashboard'}}}"
+        "Scan summary: {'/login': {'axe_report': 'axe-login-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/login'}}, '/register': {'axe_report': 'axe-register-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/register'}}, '/': {'axe_report': 'axe-list-20261118.json', 'critical': ['select-name'], 'serious': ['color-contrast'], 'moderate': ['landmark-one-main', 'region'], 'minor': ['empty-table-header'], 'lighthouse': {'score': 76, 'final_url': 'http://127.0.0.1:5000/'}}, '/tasks/new': {'axe_report': 'axe-new-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/new'}}, '/tasks/255/edit': {'axe_report': 'axe-edit-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/255/edit'}}, '/dashboard': {'axe_report': 'axe-dashboard-20261118.json', 'critical': [], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 100, 'final_url': 'http://127.0.0.1:5000/dashboard'}}}"
       ],
       "evidence": [],
       "error": null,
