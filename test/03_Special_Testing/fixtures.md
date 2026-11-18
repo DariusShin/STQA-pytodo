@@ -48,12 +48,12 @@ Relative dates such as `today+2` are calculated on the execution day and entered
 
 | Account | Username | Password | Tasks |
 | --- | --- | --- | --- |
-| A | `w3<initial>_gui_<mmddHHMM>`, e.g. `w3d_gui_11181933` | `Test12345` | Fixture Set A |
-| C | `w3<initial>_empty_<mmddHHMM>` | `Test12345` | None |
-| Per configuration | `w3<initial>_<config>_<mmddHHMM>`, e.g. `w3d_c01_11181931` | `Test12345` | Created during TC-CMP-001 |
-| TC-GUI-004 submissions 2 and 3 | `w3<initial>_short_<mmddHHMM>`, `w3<initial>_p8_<mmddHHMM>` | As in the case | Created only if the submission is accepted |
+| A | `w3<initial>_gui_<mmddHHMMSS>`, e.g. `w3d_gui_1118202509` | `Test12345` | Fixture Set A |
+| C | `w3<initial>_empty_<mmddHHMMSS>` | `Test12345` | None |
+| Per configuration | `w3<initial>_<config>_<mmddHHMMSS>`, e.g. `w3d_c01_1118202509` | `Test12345` | Created during TC-CMP-001 |
+| TC-GUI-004 submissions 2 and 3 | `w3<initial>_short_<mmddHHMMSS>`, `w3<initial>_p8_<mmddHHMMSS>` | As in the case | Created only if the submission is accepted |
 
-The registration form does not reject duplicate usernames, and login uses the first match, so every run stamps its usernames with the run's start time (`<mmddHHMM>`) to stay unique. Usernames stay within the 20-character rule.
+The registration form does not reject duplicate usernames, and login uses the first match, so every run stamps its usernames with the run's start time to the second (`<mmddHHMMSS>`) to stay unique. Usernames stay within the 20-character rule.
 
 ### Fixture Set A - GUI and accessibility
 

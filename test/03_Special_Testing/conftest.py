@@ -22,7 +22,7 @@ PHASE_DIR = Path(__file__).resolve().parent
 REPO_ROOT = PHASE_DIR.parents[1]
 DATA = json.loads((PHASE_DIR / "fixtures.json").read_text(encoding="utf-8"))
 RUN_DATE = date.today()
-RUN_STAMP = datetime.now().strftime("%m%d%H%M")
+RUN_STAMP = datetime.now().strftime("%m%d%H%M%S")
 BASE_URL = DATA["base_url"]
 
 _results = {}
@@ -256,9 +256,10 @@ class Recorder:
     mismatch, not only the first.
     """
 
-    def __init__(self, case_id, evidence_dir):
+    def __init__(self, case_id, evidence_dir, full_page=True):
         self.case_id = case_id
         self.evidence_dir = evidence_dir
+        self.full_page = full_page
         self.checks = []
         self.notes = []
         self.evidence = []
@@ -270,7 +271,8 @@ class Recorder:
     def note(self, text):
         self.notes.append(text)
 
-    def capture(self, page, desc=None, full_page=True):
+    def capture(self, page, desc=None, full_page=None):
+        full_page = self.full_page if full_page is None else full_page
         name = "-".join(p for p in (self.case_id, desc, RUN_DATE.strftime("%Y%m%d")) if p)
         path = self.evidence_dir / f"{name}.jpg"
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -290,7 +292,9 @@ def rec(request, w3_config):
     evidence_dir = suite_dir / "evidences"
     if suite_dir.name == "2_Compatibility":
         evidence_dir = evidence_dir / w3_config["folder"]
-    recorder = Recorder(case_id, evidence_dir)
+    # On emulated mobile devices a full-page capture renders the whole layout viewport, not what
+    # the device screen shows, so those configurations capture the screen instead.
+    recorder = Recorder(case_id, evidence_dir, full_page=not w3_config.get("is_mobile", False))
     request.node.w3_recorder = recorder
     return recorder
 
@@ -327,7 +331,7 @@ def pytest_sessionfinish(session):
         by_dir.setdefault(result.pop("evidence_dir"), {})[case_id] = result
     for evidence_dir, cases in by_dir.items():
         evidence_dir.mkdir(parents=True, exist_ok=True)
-        out = evidence_dir / f"results-{config_id}-{RUN_DATE:%Y%m%d}-{RUN_STAMP[-4:]}.json"
+        out = evidence_dir / f"results-{config_id}-{RUN_DATE:%Y%m%d}-{RUN_STAMP[-6:]}.json"
         out.write_text(json.dumps({
             "configuration": config_id,
             "run_started": RUN_STAMP,

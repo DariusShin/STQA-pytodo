@@ -4,7 +4,7 @@
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester / Lab Group | September 2026 / Wednesday Lab - Group 2 |
-| Phase status | In progress - Task 1 (GUI) executed on C01 and Task 2 executed on C01 on 2026-11-18 by the Playwright suites; C02-C06, usability and accessibility not yet run |
+| Phase status | In progress - Task 1 (GUI) executed on C01, and Task 2 executed on C01-C03, on 2026-11-18 by the Playwright suites; C04-C06, usability and accessibility not yet run |
 
 ## Deliverable Checklist
 
@@ -137,7 +137,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | 2 | Seed Fixture Set A; record the environment | [0.5](#05-environment-to-record) and [fixtures.md](fixtures.md) |
 | 3 | Write detailed cases with expected results before execution (drafted 2026-10-27; split into technique folders 2026-11-18), then complete each review sign-off | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results - done 2026-11-18 |
-| 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01 done 2026-11-18 |
+| 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01-C03 done 2026-11-18 |
 | 6 | Run automated accessibility scans, then the manual keyboard, screen-reader and zoom checks | [Task 4](#task-4) findings |
 | 7 | Run the two-reviewer heuristic review (TC-USA-001 to 005) and merge the findings | [Task 3](#task-3) observations |
 | 8 | Reproduce each failure once more, log defects and draft recommendations | [Task 5](#task-5) |
@@ -157,11 +157,11 @@ Coordinators own the preparation and review of each task. Every member executes 
 | Evidence | Location | Filename pattern |
 | --- | --- | --- |
 | GUI screenshots | `1_GUI/evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.jpg`, e.g. `TC-GUI-013-before-delete-20261118.jpg` |
-| Compatibility captures | `2_Compatibility/evidences/<os>-<browser>/<viewport>/`, one folder per configuration in [2.1](#21-configurations) | `TC-CMP-0xx-<short-desc>-<YYYYMMDD>.jpg` |
+| Compatibility captures | `2_Compatibility/evidences/<os>-<browser>/<viewport>/`, one folder per configuration in [2.1](#21-configurations) | `TC-CMP-0xx-<short-desc>-<YYYYMMDD>.jpg`; on emulated devices the capture shows the device screen |
 | Usability reviewer notes and screenshots | `3_Usability/evidences/` | `TC-USA-0xx-<reviewer-initials>-<YYYYMMDD>.md` (one notes file per reviewer); screenshots `TC-USA-0xx-<short-desc>-<YYYYMMDD>.jpg` |
 | Accessibility screenshots | `4_Accessibility/evidences/` | `<TC-ID>-<short-desc>-<YYYYMMDD>.jpg` |
 | Lighthouse and axe reports | `4_Accessibility/evidences/reports/` | `<tool>-<page>-<YYYYMMDD>.html` or `.json` |
-| Automated run results | The suite's evidence folder (configuration folder for compatibility) | `results-<config>-<YYYYMMDD>-<HHMM>.json` |
+| Automated run results | The suite's evidence folder (configuration folder for compatibility) | `results-<config>-<YYYYMMDD>-<HHMMSS>.json` (runs before 20:25 on 2026-11-18 used `<HHMM>`) |
 
 All screenshots use `.jpg`, matching the Week 1 evidence. Empty evidence folders contain a `.gitkeep` placeholder so the structure is visible before execution; remove it once the folder holds evidence.
 
@@ -185,7 +185,7 @@ The templates (`templates/*.html`) and `static/style.css` were read while planni
 
 | # | Observation from inspecting the source | Planned check | Result (2026-11-18) |
 | --- | --- | --- | --- |
-| H1 | `base.html` has no `<meta name="viewport">` tag, and the CSS has no `@media` rules | TC-CMP mobile/tablet runs; TC-A11Y-012 reflow | Not yet checked; needs C03 with mobile emulation or C07 |
+| H1 | `base.html` has no `<meta name="viewport">` tag, and the CSS has no `@media` rules | TC-CMP mobile/tablet runs; TC-A11Y-012 reflow | Confirmed by TC-CMP-007 on C02/C03: the page is laid out at 980 CSS px and scaled down, so text renders at 9.8 px (tablet) and 5.0 px (phone) (DEF-006) |
 | H2 | Form `<label>` elements have no `for` attribute, and inputs have no `id`, so labels may not be programmatically associated | TC-A11Y-005, TC-A11Y-006 | Not yet checked (TC-A11Y-005) |
 | H3 | The complete/reopen button's only content is `○` or `✓` | TC-A11Y-007 | Not yet checked (TC-A11Y-007) |
 | H4 | The filter selects and search box have no visible labels; the search box has a placeholder only | TC-A11Y-006, TC-GUI-008 | Visible-label part confirmed by TC-GUI-008; accessible names pending TC-A11Y-006 |
@@ -241,7 +241,7 @@ The eight failures map to three re-checked Week 1 defects (DEF-001 to DEF-003), 
 
 ### Compatibility/configuration matrix
 
-**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01 was executed on 2026-11-18: [results-C01-20261118-1931.json](2_Compatibility/evidences/mac-chrome/desktop/results-C01-20261118-1931.json). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
+**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01-C03 were executed on 2026-11-18; the run files are listed in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
 
 #### 2.1 Configurations
 
@@ -250,8 +250,8 @@ Each configuration is a combination of OS, browser, viewport and settings. The s
 | Config | Evidence folder (under `2_Compatibility/`) | OS | Browser (version) | Viewport / device | Zoom / display scaling | Locale / date format | Type | Available? |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | C01 (baseline) | `evidences/mac-chrome/desktop/` | macOS 26.5.2 | Chrome 157.0.8103.80 (Playwright `chrome` channel, headless) | 1440x900 desktop | 100% / device pixel ratio 1 | en-GB; timezone Asia/Kuala_Lumpur | Real | Executed 2026-11-18 - 8/8 Pass |
-| C02 | `evidences/mac-chrome/tablet/` | macOS 26.5.2 | Chrome [version] | Tablet preset, e.g. iPad Air 820x1180 | 100% / [scaling] | [locale] | Emulated | Yes - fresh run needed; Week 1 tablet captures support it |
-| C03 | `evidences/mac-chrome/mobile/` | macOS 26.5.2 | Chrome [version] | Mobile preset, e.g. iPhone 14 390x844 | 100% / [scaling] | [locale] | Emulated | Yes - fresh run needed; Week 1 mobile captures support it |
+| C02 | `evidences/mac-chrome/tablet/` | macOS 26.5.2 | Chrome 157.0.8103.80 (Playwright `chrome` channel, headless, mobile emulation) | 768x1024 tablet, device pixel ratio 2, touch | 100% | en-GB; timezone Asia/Kuala_Lumpur | Emulated | Executed 2026-11-18 - 7/8 Pass (TC-CMP-007 Fail, DEF-006) |
+| C03 | `evidences/mac-chrome/mobile/` | macOS 26.5.2 | Chrome 157.0.8103.80 (Playwright `chrome` channel, headless, mobile emulation) | 390x844 phone, device pixel ratio 3, touch | 100% | en-GB; timezone Asia/Kuala_Lumpur | Emulated | Executed 2026-11-18 - 7/8 Pass (TC-CMP-007 Fail, DEF-006) |
 | C04 | `evidences/mac-firefox/desktop/` | macOS 26.5.2 | Firefox 160.0.1 installed | 1440x900 desktop | 100% / [scaling] | [locale] | Real | Planned - execution method to be decided: Playwright drives its own Firefox build, not the installed 160.0.1 (see [setup.md](setup.md#firefox-configurations)); see [2.4.1](#241-macos-firefox-run-c04) |
 | C05 | `evidences/win-chrome/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version] | [native resolution] desktop | 100% / [scaling]% | [locale] | Real | Planned - install Chrome on the Windows laptop if not present; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
 | C06 | `evidences/win-firefox/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Firefox [version] | [native resolution] desktop | 100% / [scaling]% | [locale] | Real | Yes - installed on the Windows laptop; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
@@ -289,19 +289,19 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 
 | ID | Scenario | C02 tablet | C03 mobile | C07 phone (optional) |
 | --- | --- | --- | --- | --- |
-| TC-CMP-001 | Register, log in, log out | | | |
-| TC-CMP-002 | Create task with date picker | | | |
-| TC-CMP-003 | Filter by category/status and search | | | |
-| TC-CMP-004 | Complete and reopen | | | |
-| TC-CMP-005 | Edit task | | | |
-| TC-CMP-006 | Delete with confirmation | | | |
-| TC-CMP-007 | Navigation bar and task table layout | | | |
-| TC-CMP-008 | Dashboard layout | | | |
+| TC-CMP-001 | Register, log in, log out | Pass | Pass | |
+| TC-CMP-002 | Create task with date picker | Pass | Pass | |
+| TC-CMP-003 | Filter by category/status and search | Pass | Pass | |
+| TC-CMP-004 | Complete and reopen | Pass | Pass | |
+| TC-CMP-005 | Edit task | Pass | Pass | |
+| TC-CMP-006 | Delete with confirmation | Pass | Pass | |
+| TC-CMP-007 | Navigation bar and task table layout | Fail (DEF-006) | Fail (DEF-006) | |
+| TC-CMP-008 | Dashboard layout | Pass | Pass | |
 
 #### 2.3 Execution order
 
 1. C01 baseline: fresh TC-CMP run on the MacBook.
-2. C02 and C03: fresh TC-CMP runs in Chrome device mode. Record the DevTools mode used, and cite the Week 1 captures ([0.9](#week-1-captures-reused-as-supporting-evidence)) as supporting evidence where they show the same screen.
+2. C02 and C03: fresh TC-CMP runs with Chrome mobile emulation (done 2026-11-18). The Week 1 captures ([0.9](#week-1-captures-reused-as-supporting-evidence)) remain supporting evidence only.
 3. C04 Firefox on the MacBook ([2.4.1](#241-macos-firefox-run-c04)).
 4. C05 and C06 on Windows 11 ([2.4.2](#242-windows-11-run-c05-chrome-c06-firefox)).
 5. C07 only if a way to reach the app is found without modifying it. Otherwise mark the column `Blocked` and give the reason.
@@ -455,7 +455,7 @@ State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a
 
 Severity guidance for this phase: **Major** when a task cannot be completed (for example, a keyboard or screen-reader user cannot complete or delete a task). **Moderate** when a task can be completed but is materially harder or misleading. **Minor** for cosmetic or consistency issues.
 
-#### 5.3 Defect summary (as of 2026-11-18; Tasks 3-4 and C02-C06 still to run)
+#### 5.3 Defect summary (as of 2026-11-18; Tasks 3-4 and C04-C06 still to run)
 
 | Defect ID | Title | Source case(s) | Configuration | Severity | Priority | Status |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -464,6 +464,7 @@ Severity guidance for this phase: **Major** when a task cannot be completed (for
 | DEF-003 | A whitespace-only title creates a task (Week 1) | TC-GUI-016 | C01 | Moderate | Medium | Open - reproduced in Week 3 |
 | DEF-004 | Navigation bar wraps and pushes `Log out` off-screen at a 390 px viewport | TC-GUI-005 | C01 at 390x844 | Moderate | Medium | Open |
 | DEF-005 | HTML in a task title is rendered as markup in the task list | TC-GUI-020 | C01 | Moderate | High | Open |
+| DEF-006 | Pages render at a 980 px desktop layout on tablet and phone screens, so text is too small to read | TC-CMP-007 | C02, C03 | Moderate | Medium | Open |
 
 #### DEF-004 - Navigation bar breaks at a narrow viewport
 
@@ -503,12 +504,31 @@ Behaviour with true mobile emulation or a phone (H1) is still to be checked in C
 
 No script payloads were used in Week 3.
 
+#### DEF-006 - Desktop layout scaled down on tablets and phones
+
+| Field | Required Information |
+| --- | --- |
+| Defect ID | DEF-006 |
+| Title | Pages render at a 980 px desktop layout on tablet and phone screens, so text is too small to read |
+| Affected Feature | Every page (shared layout); observed on the task list, REQ-003 |
+| Environment | C02: Chrome 157.0.8103.80 mobile emulation, 768x1024, device pixel ratio 2. C03: same browser, 390x844, device pixel ratio 3. macOS 26.5.2, Playwright headless |
+| Preconditions | Logged in as account A with Fixture Set A |
+| Steps to Reproduce | 1. Open the app with Chrome mobile emulation for a 390x844 phone or a 768x1024 tablet.<br>2. Log in and open `/`.<br>3. Compare `window.innerWidth` with the device width and measure the smallest navigation/table text. |
+| Expected Result | All six table columns and the navigation are readable without zooming; text renders at 12 px or more on the device screen. Basis: TC-CMP-007 |
+| Actual Result | The page is laid out at 980 CSS px and scaled to 0.784 (tablet) or 0.398 (phone) of its size. The smallest navigation/table text renders at 9.8 px on the tablet and 5.0 px on the phone, so users must zoom in to read it. Same result in two runs per configuration. Consistent with H1 (no viewport meta tag) |
+| Severity | Moderate - all content is present but needs zooming on tablets and phones |
+| Priority | Medium |
+| Evidence | [Tablet](2_Compatibility/evidences/mac-chrome/tablet/TC-CMP-007-layout-20261118.jpg); [phone](2_Compatibility/evidences/mac-chrome/mobile/TC-CMP-007-layout-20261118.jpg) |
+| Status | Open |
+
+On emulated devices the desktop-width layout hides DEF-004, which appears in narrow desktop windows. Fixing DEF-006 with a viewport tag alone would expose DEF-004 on phones, so both are covered by R2.
+
 #### 5.4 Improvement recommendations (as of 2026-11-18)
 
 | # | Recommendation | Addresses | Benefit | Effort (L/M/H) | Priority |
 | --- | --- | --- | --- | --- | --- |
 | R1 | Escape task titles when rendering the task list instead of inserting them as HTML | DEF-005, H9 | Titles display as entered; removes a likely injection path | L | High |
-| R2 | Add a viewport meta tag and a narrow-screen navigation layout (wrapping or a menu) | DEF-004, H1, H10 | Navigation, including Log out, usable on phones | M | Medium |
+| R2 | Add a viewport meta tag and a narrow-screen navigation layout (wrapping or a menu) | DEF-004, DEF-006, H1, H10 | Navigation, including Log out, usable on phones | M | Medium |
 | R3 | Show a confirmation message after create, edit, complete and delete | USA-OBS-001, H6 | Users can see that an action worked | L | Medium |
 | R4 | Keep the entered username after a login or registration error | USA-OBS-004 | Fewer retyping errors | L | Low |
 | R5 | Apply one style per control type (primary button, text link, heading, card) on every page | USA-OBS-002, USA-OBS-003 | Consistent look; easier to learn | M | Low |
@@ -522,7 +542,7 @@ Order the recommendations by priority. Recommendations describe changes for the 
 | Item | Value |
 | --- | --- |
 | Cases planned / executed / passed / failed / blocked | 53 planned (22 GUI, 8 compatibility, 5 usability, 18 accessibility); compatibility cases are counted once each, with per-configuration results in [2.2](#22-compatibility-smoke-scenarios) |
-| New defects (by severity) | So far: 2 Moderate (DEF-004, DEF-005); DEF-001 to DEF-003 reproduced |
+| New defects (by severity) | So far: 3 Moderate (DEF-004, DEF-005, DEF-006); DEF-001 to DEF-003 reproduced |
 | Usability observations (by severity) | So far: 4 found by the GUI suite (USA-OBS-001 to 004), severities pending the heuristic review |
 | Hand-off to Week 4 | UI vs API differences seen during GUI testing (e.g. validation shown in the UI but not enforced by the server) |
 | Hand-off to Week 5 | H9 rendering of titles, and any other security-relevant behaviour seen in the UI |

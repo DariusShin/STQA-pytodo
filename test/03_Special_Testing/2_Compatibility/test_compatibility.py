@@ -180,7 +180,12 @@ def test_cmp_007_nav_and_table_layout(page, rec, account_a):
     login(page, account_a)
     page.goto("/")
     layout, overlaps = nav_layout(page)
-    viewport_width = page.viewport_size["width"]
+    # With mobile emulation and no viewport meta tag (H1) the layout viewport is wider than the
+    # device, so element positions are compared with the page's own layout width.
+    viewport_width = page.evaluate("() => window.innerWidth")
+    if viewport_width != page.viewport_size["width"]:
+        rec.note(f"Device width {page.viewport_size['width']} CSS px, but the page is laid out at "
+                 f"{viewport_width} CSS px and scaled down to fit (H1: no viewport meta tag).")
     wrapped = [f"{i['text']} ({i['lines']} lines)" for i in layout if i["lines"] > 1]
     offscreen = [i["text"] for i in layout if i["box"]["x"] + i["box"]["width"] > viewport_width + 1]
     rec.expect(not wrapped, "each nav item fits on one line", wrapped)
@@ -193,6 +198,15 @@ def test_cmp_007_nav_and_table_layout(page, rec, account_a):
         if box["x"] < 0 or box["x"] + box["width"] > viewport_width + 1:
             clipped.append(headers.nth(i).inner_text().strip() or f"column {i + 1}")
     rec.expect(not clipped, "all six table columns are within the viewport", clipped)
+    # "Readable" is measured as the smallest nav/table text size as rendered on the device screen,
+    # against Lighthouse's 12 px legibility threshold.
+    scale = page.viewport_size["width"] / viewport_width
+    smallest = page.evaluate("""() => Math.min(...[...document.querySelectorAll(
+        'nav.topnav a, nav.topnav span, table.task-table th, table.task-table td, table.task-table .badge')]
+        .filter(e => e.innerText.trim()).map(e => parseFloat(getComputedStyle(e).fontSize)))""")
+    effective = round(smallest * scale, 1)
+    rec.expect(effective >= 12, "smallest nav and table text renders at 12 px or more on the device screen",
+               f"{effective} px ({smallest} px CSS x {round(scale, 3)} page scale)")
     scroll = has_horizontal_scroll(page)
     table_wider = page.evaluate(
         "() => document.querySelector('table.task-table').scrollWidth > document.querySelector('.container').clientWidth")

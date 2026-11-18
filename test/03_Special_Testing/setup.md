@@ -49,7 +49,7 @@ version before a run and record it in [README 2.1](README.md#21-configurations).
 The suites start `python app.py` automatically if nothing is serving
 `http://127.0.0.1:5000`, and stop it afterwards. They use the existing
 development database and register new accounts named
-`w3<initial>_<purpose>_<mmddHHMM>` for each run, so earlier data is not changed.
+`w3<initial>_<purpose>_<mmddHHMMSS>` for each run, so earlier data is not changed.
 Test data is loaded from [fixtures.json](fixtures.json).
 
 Always pass the Week 3 folder as the path so pytest uses
@@ -74,7 +74,7 @@ Add `--headed` to watch the browser. Runs are headless by default.
 | --- | --- |
 | GUI screenshots | `1_GUI/evidences/TC-GUI-0xx-<desc>-<YYYYMMDD>.jpg` |
 | Compatibility screenshots | `2_Compatibility/evidences/<os>-<browser>/<viewport>/TC-CMP-0xx-<desc>-<YYYYMMDD>.jpg` |
-| Per-run results (status, every check with its actual value, notes, evidence list) | `results-<config>-<YYYYMMDD>-<HHMM>.json` in the same evidence folder |
+| Per-run results (status, every check with its actual value, notes, evidence list) | `results-<config>-<YYYYMMDD>-<HHMMSS>.json` in the same evidence folder |
 
 A case fails if any check derived from its expected result fails; the results
 file lists every failed check, not only the first. Screenshots are overwritten by
@@ -87,8 +87,11 @@ a later run on the same day, and each run keeps its own results file.
   record the dialog text and the validation message instead.
 - Date fields are filled by value, so the usability of each browser's date
   picker is not exercised.
-- Visual judgements (spacing, readability) are recorded as notes and judged from
-  the screenshots.
+- Visual judgements (spacing, colour consistency) are recorded as notes and judged
+  from the screenshots. Readability on emulated devices is measured as the rendered
+  text size (TC-CMP-007).
+- On emulated mobile devices, screenshots capture the device screen, not the whole
+  layout.
 
 ## Firefox configurations
 
