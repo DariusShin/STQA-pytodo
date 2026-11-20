@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="65" time="32.934" timestamp="2026-11-20T21:38:44.676363+08:00" hostname="ouioui"><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-001-len2]" time="3.030" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-002-len3]" time="0.354" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-003-len4]" time="0.320" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-004-len19]" time="0.338" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-005-len20]" time="0.337" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-006-len21]" time="0.236" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-007-len7]" time="0.231" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-008-len8]" time="0.223"><failure message="AssertionError: expected the task list after registration, browser is on /register (error shown: 'Password must be at least 8 characters.')&#10;assert '/register' == '/'&#10;  &#10;  #x1B[0m#x1B[91m- /#x1B[39;49;00m#x1B[90m#x1B[39;49;00m&#10;  #x1B[92m+ /register#x1B[39;49;00m#x1B[90m#x1B[39;49;00m">ui = &lt;pages.PyTodoUI object at 0x0000018af93c2be0&gt;, password = 'Test1234', accepted = True
+
+    @pytest.mark.auto("TC-AUT-002")
+    @pytest.mark.req("REQ-001")
+    @pytest.mark.parametrize("password, accepted", [
+        pytest.param("Test123", False, marks=pytest.mark.manual("TC-BB-007"), id="TC-BB-007-len7"),
+        pytest.param("Test1234", True, marks=[pytest.mark.manual("TC-BB-008", "TC-GUI-004"),
+                                              pytest.mark.known_defect("DEF-001")], id="TC-BB-008-len8"),
+        pytest.param("Test12345", True, marks=pytest.mark.manual("TC-BB-009"), id="TC-BB-009-len9"),
+    ])
+    def test_password_length_boundaries(ui, password, accepted):
+        username = username_of_length(12)
+        ui.register(username, password)
+        if accepted:
+&gt;           assert_registered(ui, username)
+
+test_01_auth.py:70: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+ui = &lt;pages.PyTodoUI object at 0x0000018af93c2be0&gt;, username = 'r2138448aaaa'
+
+    def assert_registered(ui, username):
+&gt;       assert ui.path == "/", f"expected the task list after registration, browser is on {ui.path} " \
+                               f"(error shown: {ui.error_text()!r})"
+E       AssertionError: expected the task list after registration, browser is on /register (error shown: 'Password must be at least 8 characters.')
+E       assert '/register' == '/'
+E         
+E         #x1B[0m#x1B[91m- /#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+E         #x1B[92m+ /register#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+
+test_01_auth.py:24: AssertionError</failure></testcase><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-009-len9]" time="0.326" /><testcase classname="test_01_auth" name="test_valid_registration_opens_task_list" time="0.342" /><testcase classname="test_01_auth" name="test_username_with_hyphen_is_rejected" time="0.231" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-012-empty-username]" time="0.179" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-013-empty-password]" time="0.311" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-014-rule1-valid]" time="0.513" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-015-rule2-wrong-pw]" time="0.452" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-016-rule3-unknown-user]" time="0.380" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-017-rule4-both-wrong]" time="0.377" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[list]" time="0.094" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[dashboard]" time="0.096" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[new-task]" time="0.087" /><testcase classname="test_01_auth" name="test_logout_revokes_protected_page_access" time="0.561" /><testcase classname="test_02_tasks" name="test_create_full_field_task_persists" time="0.933" /><testcase classname="test_02_tasks" name="test_create_title_only_task" time="0.590" /><testcase classname="test_02_tasks" name="test_empty_title_blocked_by_browser" time="0.577" /><testcase classname="test_02_tasks" name="test_whitespace_only_title_rejected" time="0.668"><failure message="AssertionError: whitespace-only title created 1 task(s): ['']&#10;assert [{'category':...562441', ...}] == []&#10;  &#10;[+2 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x0000018af94d9390&gt;
+logged_in = {'username': 'w6_ui_21384420', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x0000018af955cd50&gt;}
+
+    @pytest.mark.auto("TC-AUT-012")
+    @pytest.mark.manual("TC-BB-023", "TC-GUI-016")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.known_defect("DEF-003")
+    def test_whitespace_only_title_rejected(ui, logged_in):
+        ui.open("/tasks/new")
+        ui.fill_task_form(title="   ")
+        ui.submit_form_if_accepted()
+        created = logged_in["api"].tasks()
+&gt;       assert created == [], f"whitespace-only title created {len(created)} task(s): " \
+                              f"{[t['title'] for t in created]!r}"
+E       AssertionError: whitespace-only title created 1 task(s): ['']
+E       assert [{'category':...562441', ...}] == []
+E         
+E         Left contains one more item: #x1B[0m{#x1B[33m'#x1B[39;49;00m#x1B[33mcategory#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m: #x1B[94mNone#x1B[39;49;00m, #x1B[33m'#x1B[39;49;00m#x1B[33mcategory_id#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m: #x1B[94mNone#x1B[39;49;00m, #x1B[33m'#x1B[39;49;00m#x1B[33mcompleted_at#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m: #x1B[94mNone#x1B[39;49;00m, #x1B[33m'#x1B[39;49;00m#x1B[33mcreated_at#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m: #x1B[33m'#x1B[39;49;00m#x1B[33m2026-11-20T21:38:56.562441#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m, ...}#x1B[90m#x1B[39;49;00m
+E         Use -v to get more diff
+
+test_02_tasks.py:62: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_edit_persists_all_fields" time="1.038" /><testcase classname="test_02_tasks" name="test_cancel_edit_preserves_saved_data" time="1.017" /><testcase classname="test_02_tasks" name="test_cancel_deletion_retains_task" time="0.631" /><testcase classname="test_02_tasks" name="test_confirm_deletion_removes_only_that_task" time="0.757" /><testcase classname="test_02_tasks" name="test_complete_then_reopen_task" time="0.811" /><testcase classname="test_02_tasks" name="test_special_characters_preserved_in_edit_form" time="0.621" /><testcase classname="test_02_tasks" name="test_special_characters_displayed_literally_in_list" time="0.515"><failure message="AssertionError: list shows ['GUI-Special &amp; bold &quot;double&quot; \'single\' Résumé 报告'] instead of the saved title&#10;assert [&quot;GUI-Special...e' Résumé 报告&quot;] == [&quot;GUI-Special...e' Résumé 报告&quot;]&#10;  &#10;[+2 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x0000018af95888f0&gt;
+logged_in = {'username': 'w6_ui_21384427', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x0000018af94e5fd0&gt;}
+
+    @pytest.mark.auto("TC-AUT-019")
+    @pytest.mark.manual("TC-GUI-020")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.known_defect("DEF-005")
+    def test_special_characters_displayed_literally_in_list(ui, logged_in):
+        logged_in["api"].create_task(SPECIAL_TITLE)
+        ui.open("/")
+        shown = ui.titles()
+&gt;       assert shown == [SPECIAL_TITLE], f"list shows {shown!r} instead of the saved title"
+E       AssertionError: list shows ['GUI-Special &amp; bold "double" \'single\' Résumé 报告'] instead of the saved title
+E       assert ["GUI-Special...e' Résumé 报告"] == ["GUI-Special...e' Résumé 报告"]
+E         
+E         At index 0 diff: #x1B[0m#x1B[33m'#x1B[39;49;00m#x1B[33mGUI-Special &amp; bold #x1B[39;49;00m#x1B[33m"#x1B[39;49;00m#x1B[33mdouble#x1B[39;49;00m#x1B[33m"#x1B[39;49;00m#x1B[33m #x1B[39;49;00m#x1B[33m\'#x1B[39;49;00m#x1B[33msingle#x1B[39;49;00m#x1B[33m\'#x1B[39;49;00m#x1B[33m Résumé 报告#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m#x1B[90m#x1B[39;49;00m != #x1B[0m#x1B[33m'#x1B[39;49;00m#x1B[33mGUI-Special &amp; &lt;b&gt;bold&lt;/b&gt; #x1B[39;49;00m#x1B[33m"#x1B[39;49;00m#x1B[33mdouble#x1B[39;49;00m#x1B[33m"#x1B[39;49;00m#x1B[33m #x1B[39;49;00m#x1B[33m\'#x1B[39;49;00m#x1B[33msingle#x1B[39;49;00m#x1B[33m\'#x1B[39;49;00m#x1B[33m Résumé 报告#x1B[39;49;00m#x1B[33m'#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+E         Use -v to get more diff
+
+test_02_tasks.py:168: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_each_account_sees_only_its_own_tasks" time="1.020" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-030-category-work]" time="0.948" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-031-status-open]" time="0.910" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-032-status-done]" time="0.871" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-033-search-match]" time="0.930" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-034-search-nomatch]" time="0.875" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-035-combined]" time="1.070" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-036-no-date]" time="1.167" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-037-yesterday]" time="0.702" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-038-today]" time="0.711"><failure message="AssertionError: BB-TODAY due 2026-11-20 shows 'Overdue'&#10;assert 'Overdue' == 'Due Today'&#10;  &#10;  #x1B[0m#x1B[91m- Due Today#x1B[39;49;00m#x1B[90m#x1B[39;49;00m&#10;  #x1B[92m+ Overdue#x1B[39;49;00m#x1B[90m#x1B[39;49;00m">on_task_list = &lt;pages.PyTodoUI object at 0x0000018af958a4b0&gt;, title = 'BB-TODAY', expected = 'Due Today'
+
+    @pytest.mark.auto("TC-AUT-022")
+    @pytest.mark.req("REQ-006")
+    @pytest.mark.parametrize("title, expected", [
+        pytest.param("BB-NO-DATE", "No due date", marks=pytest.mark.manual("TC-BB-036"), id="TC-BB-036-no-date"),
+        pytest.param("BB-YESTERDAY", "Overdue", marks=pytest.mark.manual("TC-BB-037"), id="TC-BB-037-yesterday"),
+        pytest.param("BB-TODAY", "Due Today", marks=[pytest.mark.manual("TC-BB-038", "TC-GUI-010"),
+                                                     pytest.mark.known_defect("DEF-002")], id="TC-BB-038-today"),
+        pytest.param("BB-TOMORROW", "Due Soon", marks=pytest.mark.manual("TC-BB-039"), id="TC-BB-039-tomorrow"),
+        pytest.param("BB-PLUS-TWO", "Due Soon", marks=pytest.mark.manual("TC-BB-040"), id="TC-BB-040-plus-two"),
+        pytest.param("BB-PLUS-THREE", "Upcoming", marks=pytest.mark.manual("TC-BB-041"), id="TC-BB-041-plus-three"),
+    ])
+    def test_urgency_label(on_task_list, title, expected):
+        row = on_task_list.row(title)
+&gt;       assert row["urgency"] == expected, f"{title} due {row['due_date']} shows {row['urgency']!r}"
+E       AssertionError: BB-TODAY due 2026-11-20 shows 'Overdue'
+E       assert 'Overdue' == 'Due Today'
+E         
+E         #x1B[0m#x1B[91m- Due Today#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+E         #x1B[92m+ Overdue#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+
+test_04_urgency_dashboard.py:60: AssertionError</failure></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-039-tomorrow]" time="0.704" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-040-plus-two]" time="0.738" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-041-plus-three]" time="0.722" /><testcase classname="test_04_urgency_dashboard" name="test_completion_overrides_overdue" time="0.666" /><testcase classname="test_04_urgency_dashboard" name="test_dashboard_counters_unaffected_by_def002" time="0.611" /><testcase classname="test_04_urgency_dashboard" name="test_dashboard_overdue_counter" time="0.595"><failure message="AssertionError: Overdue counter is 2, expected 1 (only BB-YESTERDAY is overdue)&#10;assert 2 == 1&#10; +  where 2 = &lt;built-in method get of dict object at 0x0000018afa971500&gt;('Overdue')&#10; +    where &lt;built-in method get of dict object at 0x0000018afa971500&gt; = {'Total Tasks': 7, 'Open': 6, 'Overdue': 2, 'Due Soon': 2, ...}.get">on_task_list = &lt;pages.PyTodoUI object at 0x0000018af958b290&gt;
+
+    @pytest.mark.auto("TC-AUT-025")
+    @pytest.mark.manual("TC-BB-043")
+    @pytest.mark.req("REQ-007")
+    @pytest.mark.known_defect("DEF-002")
+    def test_dashboard_overdue_counter(on_task_list):
+        counters = on_task_list.dashboard_counters()
+&gt;       assert counters.get("Overdue") == 1, f"Overdue counter is {counters.get('Overdue')}, expected 1 " \
+                                             "(only BB-YESTERDAY is overdue)"
+E       AssertionError: Overdue counter is 2, expected 1 (only BB-YESTERDAY is overdue)
+E       assert 2 == 1
+E        +  where 2 = &lt;built-in method get of dict object at 0x0000018afa971500&gt;('Overdue')
+E        +    where &lt;built-in method get of dict object at 0x0000018afa971500&gt; = {'Total Tasks': 7, 'Open': 6, 'Overdue': 2, 'Due Soon': 2, ...}.get
+
+test_04_urgency_dashboard.py:86: AssertionError</failure></testcase><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-001-len2]" time="0.001" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-002-len3]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-003-len4]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-004-len19]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-005-len20]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-006-len21]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-011-hyphen]" time="0.001" /><testcase classname="test_05_rules_unit" name="test_username_rule[TC-BB-010-valid]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_password_rule[TC-BB-007-len7]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_password_rule[TC-BB-008-len8]" time="0.001"><failure message="AssertionError: assert False is True&#10; +  where False = is_valid_password('Test1234')">password = 'Test1234', valid = True
+
+    @pytest.mark.auto("TC-AUT-027")
+    @pytest.mark.req("REQ-001")
+    @pytest.mark.parametrize("password, valid", [
+        pytest.param("Test123", False, marks=pytest.mark.manual("TC-BB-007"), id="TC-BB-007-len7"),
+        pytest.param("Test1234", True, marks=[pytest.mark.manual("TC-BB-008"), pytest.mark.known_defect("DEF-001")],
+                     id="TC-BB-008-len8"),
+        pytest.param("Test12345", True, marks=pytest.mark.manual("TC-BB-009"), id="TC-BB-009-len9"),
+    ])
+    def test_password_rule(password, valid):
+&gt;       assert is_valid_password(password) is valid
+E       AssertionError: assert False is True
+E        +  where False = is_valid_password('Test1234')
+
+test_05_rules_unit.py:46: AssertionError</failure></testcase><testcase classname="test_05_rules_unit" name="test_password_rule[TC-BB-009-len9]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-036-none]" time="0.000" /><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-037-minus1]" time="0.002" /><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-038-today]" time="0.001"><failure message="AssertionError: assert 'Overdue' == 'Due Today'&#10;  &#10;  #x1B[0m#x1B[91m- Due Today#x1B[39;49;00m#x1B[90m#x1B[39;49;00m&#10;  #x1B[92m+ Overdue#x1B[39;49;00m#x1B[90m#x1B[39;49;00m">due = '2026-11-20', expected = 'Due Today'
+
+    @pytest.mark.auto("TC-AUT-028")
+    @pytest.mark.req("REQ-006")
+    @pytest.mark.parametrize("due, expected", [
+        pytest.param(None, "No due date", marks=pytest.mark.manual("TC-BB-036"), id="TC-BB-036-none"),
+        pytest.param("2026-11-19", "Overdue", marks=pytest.mark.manual("TC-BB-037"), id="TC-BB-037-minus1"),
+        pytest.param("2026-11-20", "Due Today", marks=[pytest.mark.manual("TC-BB-038"),
+                                                       pytest.mark.known_defect("DEF-002")], id="TC-BB-038-today"),
+        pytest.param("2026-11-21", "Due Soon", marks=pytest.mark.manual("TC-BB-039"), id="TC-BB-039-plus1"),
+        pytest.param("2026-11-22", "Due Soon", marks=pytest.mark.manual("TC-BB-040"), id="TC-BB-040-plus2"),
+        pytest.param("2026-11-23", "Upcoming", marks=pytest.mark.manual("TC-BB-041"), id="TC-BB-041-plus3"),
+    ])
+    def test_urgency_rule(due, expected):
+&gt;       assert compute_urgency(due, today=TODAY) == expected
+E       AssertionError: assert 'Overdue' == 'Due Today'
+E         
+E         #x1B[0m#x1B[91m- Due Today#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+E         #x1B[92m+ Overdue#x1B[39;49;00m#x1B[90m#x1B[39;49;00m
+
+test_05_rules_unit.py:61: AssertionError</failure></testcase><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-039-plus1]" time="0.001" /><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-040-plus2]" time="0.001" /><testcase classname="test_05_rules_unit" name="test_urgency_rule[TC-BB-041-plus3]" time="2.115" /></testsuite></testsuites>

@@ -1,0 +1,817 @@
+{
+  "meta": {
+    "run_started": "2026-11-20T21:00:04",
+    "run_finished": "2026-11-20T21:00:40",
+    "wall_time_s": 35.2,
+    "timezone": "Malay Peninsula Standard Time",
+    "execution_date_used_for_due_dates": "2026-11-20",
+    "app_commit": "9cc1f34",
+    "browser": "MicrosoftEdge 157.0.4341.60",
+    "headless": true,
+    "selenium": "4.53.0",
+    "pytest": "9.2.0",
+    "python": "3.14.7",
+    "os": "Windows 11 (10.0.26200)",
+    "target": "http://127.0.0.1:5106",
+    "run_label": "mutant-M5",
+    "marker_expression": "not unit",
+    "defects_as_failures": false,
+    "pytest_exit_status": 1,
+    "counts": {
+      "Pass": 40,
+      "Fail (known defect)": 5,
+      "Fail": 3
+    }
+  },
+  "results": [
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-001-len2]",
+      "manual": [
+        "TC-BB-001"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.34,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-002-len3]",
+      "manual": [
+        "TC-BB-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.47,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-003-len4]",
+      "manual": [
+        "TC-BB-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.36,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-004-len19]",
+      "manual": [
+        "TC-BB-004"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.35,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-005-len20]",
+      "manual": [
+        "TC-BB-005"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.41,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-001",
+      "nodeid": "test_01_auth.py::test_username_length_boundaries[TC-BB-006-len21]",
+      "manual": [
+        "TC-BB-006"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.25,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-002",
+      "nodeid": "test_01_auth.py::test_password_length_boundaries[TC-BB-007-len7]",
+      "manual": [
+        "TC-BB-007"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.24,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-002",
+      "nodeid": "test_01_auth.py::test_password_length_boundaries[TC-BB-008-len8]",
+      "manual": [
+        "TC-BB-008",
+        "TC-GUI-004"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [
+        "DEF-001"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.29,
+      "message": "AssertionError: expected the task list after registration, browser is on /register (error shown: 'Password must be at least 8 characters.')",
+      "screenshot": "screenshots/test_password_length_boundaries_TC-BB-008-len8_.png"
+    },
+    {
+      "auto_id": "TC-AUT-002",
+      "nodeid": "test_01_auth.py::test_password_length_boundaries[TC-BB-009-len9]",
+      "manual": [
+        "TC-BB-009"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.43,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-003",
+      "nodeid": "test_01_auth.py::test_valid_registration_opens_task_list",
+      "manual": [
+        "TC-BB-010"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.47,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-004",
+      "nodeid": "test_01_auth.py::test_username_with_hyphen_is_rejected",
+      "manual": [
+        "TC-BB-011"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.23,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-005",
+      "nodeid": "test_01_auth.py::test_empty_registration_field_blocked_by_browser[TC-BB-012-empty-username]",
+      "manual": [
+        "TC-BB-012"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.16,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-005",
+      "nodeid": "test_01_auth.py::test_empty_registration_field_blocked_by_browser[TC-BB-013-empty-password]",
+      "manual": [
+        "TC-BB-013"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.17,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-006",
+      "nodeid": "test_01_auth.py::test_login_decision_table[TC-BB-014-rule1-valid]",
+      "manual": [
+        "TC-BB-014"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.61,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-006",
+      "nodeid": "test_01_auth.py::test_login_decision_table[TC-BB-015-rule2-wrong-pw]",
+      "manual": [
+        "TC-BB-015"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.52,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-006",
+      "nodeid": "test_01_auth.py::test_login_decision_table[TC-BB-016-rule3-unknown-user]",
+      "manual": [
+        "TC-BB-016"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.41,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-006",
+      "nodeid": "test_01_auth.py::test_login_decision_table[TC-BB-017-rule4-both-wrong]",
+      "manual": [
+        "TC-BB-017"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.45,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[list]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.05,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[dashboard]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.05,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[new-task]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.06,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-008",
+      "nodeid": "test_01_auth.py::test_logout_revokes_protected_page_access",
+      "manual": [
+        "TC-BB-019"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.14,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-009",
+      "nodeid": "test_02_tasks.py::test_create_full_field_task_persists",
+      "manual": [
+        "TC-BB-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Fail",
+      "duration_s": 0.39,
+      "message": "AssertionError: assert ('Work', '202...', 'Due Soon') == ('Work', '202...', 'Upcoming')",
+      "screenshot": "screenshots/test_create_full_field_task_persists.png"
+    },
+    {
+      "auto_id": "TC-AUT-010",
+      "nodeid": "test_02_tasks.py::test_create_title_only_task",
+      "manual": [
+        "TC-BB-021"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.21,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-011",
+      "nodeid": "test_02_tasks.py::test_empty_title_blocked_by_browser",
+      "manual": [
+        "TC-BB-022"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.2,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-012",
+      "nodeid": "test_02_tasks.py::test_whitespace_only_title_rejected",
+      "manual": [
+        "TC-BB-023",
+        "TC-GUI-016"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-003"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.18,
+      "message": "AssertionError: whitespace-only title created 1 task(s): ['']",
+      "screenshot": "screenshots/test_whitespace_only_title_rejected.png"
+    },
+    {
+      "auto_id": "TC-AUT-013",
+      "nodeid": "test_02_tasks.py::test_edit_persists_all_fields",
+      "manual": [
+        "TC-BB-024",
+        "TC-GUI-012",
+        "TC-GUI-015"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.67,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-014",
+      "nodeid": "test_02_tasks.py::test_cancel_edit_preserves_saved_data",
+      "manual": [
+        "TC-BB-025"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.61,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-015",
+      "nodeid": "test_02_tasks.py::test_cancel_deletion_retains_task",
+      "manual": [
+        "TC-BB-026",
+        "TC-GUI-013"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.19,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-016",
+      "nodeid": "test_02_tasks.py::test_confirm_deletion_removes_only_that_task",
+      "manual": [
+        "TC-BB-027",
+        "TC-GUI-013"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.37,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-017",
+      "nodeid": "test_02_tasks.py::test_complete_then_reopen_task",
+      "manual": [
+        "TC-BB-028",
+        "TC-BB-029",
+        "TC-GUI-011"
+      ],
+      "req": [
+        "REQ-004"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.39,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-018",
+      "nodeid": "test_02_tasks.py::test_special_characters_preserved_in_edit_form",
+      "manual": [
+        "TC-GUI-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.32,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-019",
+      "nodeid": "test_02_tasks.py::test_special_characters_displayed_literally_in_list",
+      "manual": [
+        "TC-GUI-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-005"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.1,
+      "message": "AssertionError: list shows ['GUI-Special & bold \"double\" \\'single\\' Résumé 报告'] instead of the saved title",
+      "screenshot": "screenshots/test_special_characters_displayed_literally_in_list.png"
+    },
+    {
+      "auto_id": "TC-AUT-020",
+      "nodeid": "test_02_tasks.py::test_each_account_sees_only_its_own_tasks",
+      "manual": [
+        "TC-BB-044"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 1.08,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-030-category-work]",
+      "manual": [
+        "TC-BB-030"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.33,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-031-status-open]",
+      "manual": [
+        "TC-BB-031"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.3,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-032-status-done]",
+      "manual": [
+        "TC-BB-032"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.17,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-033-search-match]",
+      "manual": [
+        "TC-BB-033"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.35,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-034-search-nomatch]",
+      "manual": [
+        "TC-BB-034"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.19,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-035-combined]",
+      "manual": [
+        "TC-BB-035",
+        "TC-GUI-008"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Pass",
+      "duration_s": 0.44,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-036-no-date]",
+      "manual": [
+        "TC-BB-036"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.23,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-037-yesterday]",
+      "manual": [
+        "TC-BB-037"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.24,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-038-today]",
+      "manual": [
+        "TC-BB-038",
+        "TC-GUI-010"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-002"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.21,
+      "message": "AssertionError: BB-TODAY due 2026-11-20 shows 'Overdue'",
+      "screenshot": "screenshots/test_urgency_label_TC-BB-038-today_.png"
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-039-tomorrow]",
+      "manual": [
+        "TC-BB-039"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.27,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-040-plus-two]",
+      "manual": [
+        "TC-BB-040"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.21,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-022",
+      "nodeid": "test_04_urgency_dashboard.py::test_urgency_label[TC-BB-041-plus-three]",
+      "manual": [
+        "TC-BB-041"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.2,
+      "message": "AssertionError: BB-PLUS-THREE due 2026-11-23 shows 'Due Soon'",
+      "screenshot": "screenshots/test_urgency_label_TC-BB-041-plus-three_.png"
+    },
+    {
+      "auto_id": "TC-AUT-023",
+      "nodeid": "test_04_urgency_dashboard.py::test_completion_overrides_overdue",
+      "manual": [
+        "TC-BB-042"
+      ],
+      "req": [
+        "REQ-004",
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.21,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-024",
+      "nodeid": "test_04_urgency_dashboard.py::test_dashboard_counters_unaffected_by_def002",
+      "manual": [
+        "TC-BB-043"
+      ],
+      "req": [
+        "REQ-007"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.13,
+      "message": "AssertionError: assert {'Total Tasks...t 7 days)': 1} == {'Total Tasks...t 7 days)': 1}",
+      "screenshot": "screenshots/test_dashboard_counters_unaffected_by_def002.png"
+    },
+    {
+      "auto_id": "TC-AUT-025",
+      "nodeid": "test_04_urgency_dashboard.py::test_dashboard_overdue_counter",
+      "manual": [
+        "TC-BB-043"
+      ],
+      "req": [
+        "REQ-007"
+      ],
+      "defect": [
+        "DEF-002"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.13,
+      "message": "AssertionError: Overdue counter is 2, expected 1 (only BB-YESTERDAY is overdue)",
+      "screenshot": "screenshots/test_dashboard_overdue_counter.png"
+    }
+  ]
+}

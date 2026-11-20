@@ -1,0 +1,303 @@
+{
+  "meta": {
+    "run_started": "2026-11-20T21:04:33",
+    "run_finished": "2026-11-20T21:04:33",
+    "wall_time_s": 0.2,
+    "timezone": "Malay Peninsula Standard Time",
+    "execution_date_used_for_due_dates": "2026-11-20",
+    "app_commit": "9cc1f34",
+    "browser": "edge",
+    "headless": true,
+    "selenium": "4.53.0",
+    "pytest": "9.2.0",
+    "python": "3.14.7",
+    "os": "Windows 11 (10.0.26200)",
+    "target": "isolated server on port 5006",
+    "run_label": "unit",
+    "marker_expression": "unit",
+    "defects_as_failures": false,
+    "pytest_exit_status": 0,
+    "counts": {
+      "Pass": 15,
+      "Fail (known defect)": 2
+    }
+  },
+  "results": [
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-001-len2]",
+      "manual": [
+        "TC-BB-001"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-002-len3]",
+      "manual": [
+        "TC-BB-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-003-len4]",
+      "manual": [
+        "TC-BB-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-004-len19]",
+      "manual": [
+        "TC-BB-004"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-005-len20]",
+      "manual": [
+        "TC-BB-005"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-006-len21]",
+      "manual": [
+        "TC-BB-006"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-011-hyphen]",
+      "manual": [
+        "TC-BB-011"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-026",
+      "nodeid": "test_05_rules_unit.py::test_username_rule[TC-BB-010-valid]",
+      "manual": [
+        "TC-BB-010"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-027",
+      "nodeid": "test_05_rules_unit.py::test_password_rule[TC-BB-007-len7]",
+      "manual": [
+        "TC-BB-007"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-027",
+      "nodeid": "test_05_rules_unit.py::test_password_rule[TC-BB-008-len8]",
+      "manual": [
+        "TC-BB-008"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [
+        "DEF-001"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.0,
+      "message": "AssertionError: assert False is True",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-027",
+      "nodeid": "test_05_rules_unit.py::test_password_rule[TC-BB-009-len9]",
+      "manual": [
+        "TC-BB-009"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-036-none]",
+      "manual": [
+        "TC-BB-036"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-037-minus1]",
+      "manual": [
+        "TC-BB-037"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-038-today]",
+      "manual": [
+        "TC-BB-038"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-002"
+      ],
+      "smoke": false,
+      "status": "Fail (known defect)",
+      "duration_s": 0.0,
+      "message": "AssertionError: assert 'Overdue' == 'Due Today'",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-039-plus1]",
+      "manual": [
+        "TC-BB-039"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-040-plus2]",
+      "manual": [
+        "TC-BB-040"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-028",
+      "nodeid": "test_05_rules_unit.py::test_urgency_rule[TC-BB-041-plus3]",
+      "manual": [
+        "TC-BB-041"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    }
+  ]
+}

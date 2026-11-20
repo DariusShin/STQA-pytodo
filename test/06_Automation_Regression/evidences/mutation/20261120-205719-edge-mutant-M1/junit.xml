@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="5" tests="48" time="34.529" timestamp="2026-11-20T20:57:19.257496+08:00" hostname="ouioui"><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-001-len2]" time="1.549" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-002-len3]" time="0.405" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-003-len4]" time="0.410" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-004-len19]" time="0.400" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-005-len20]" time="0.400" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-006-len21]" time="0.299" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-007-len7]" time="0.281" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-008-len8]" time="0.310"><skipped type="pytest.xfail" message="known open defect DEF-001" /></testcase><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-009-len9]" time="0.427" /><testcase classname="test_01_auth" name="test_valid_registration_opens_task_list" time="0.490" /><testcase classname="test_01_auth" name="test_username_with_hyphen_is_rejected" time="0.352" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-012-empty-username]" time="0.183" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-013-empty-password]" time="0.270" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-014-rule1-valid]" time="0.477" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-015-rule2-wrong-pw]" time="0.452" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-016-rule3-unknown-user]" time="0.419" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-017-rule4-both-wrong]" time="0.432" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[list]" time="0.104" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[dashboard]" time="0.104" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[new-task]" time="0.114" /><testcase classname="test_01_auth" name="test_logout_revokes_protected_page_access" time="0.617" /><testcase classname="test_02_tasks" name="test_create_full_field_task_persists" time="1.072" /><testcase classname="test_02_tasks" name="test_create_title_only_task" time="0.662" /><testcase classname="test_02_tasks" name="test_empty_title_blocked_by_browser" time="0.628" /><testcase classname="test_02_tasks" name="test_whitespace_only_title_rejected" time="0.571"><skipped type="pytest.xfail" message="known open defect DEF-003" /></testcase><testcase classname="test_02_tasks" name="test_edit_persists_all_fields" time="1.143" /><testcase classname="test_02_tasks" name="test_cancel_edit_preserves_saved_data" time="1.060" /><testcase classname="test_02_tasks" name="test_cancel_deletion_retains_task" time="0.622" /><testcase classname="test_02_tasks" name="test_confirm_deletion_removes_only_that_task" time="0.767" /><testcase classname="test_02_tasks" name="test_complete_then_reopen_task" time="0.788" /><testcase classname="test_02_tasks" name="test_special_characters_preserved_in_edit_form" time="0.646" /><testcase classname="test_02_tasks" name="test_special_characters_displayed_literally_in_list" time="0.525"><skipped type="pytest.xfail" message="known open defect DEF-005" /></testcase><testcase classname="test_02_tasks" name="test_each_account_sees_only_its_own_tasks" time="1.097" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-030-category-work]" time="0.969" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-031-status-open]" time="0.974" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-032-status-done]" time="0.929"><failure message="AssertionError: filters category=None status=Done q=None listed ['BB-OTHER-WORK-OPEN', 'BB-MATCH-STUDY-OPEN', 'BB-MATCH-WORK-DONE', 'BB-MATCH-WORK-OPEN']&#10;assert ({'BB-MATCH-ST...ER-WORK-OPEN'} == {'BB-MATCH-WORK-DONE'}&#10;  &#10;  Extra items in the left set:&#10;  'BB-OTHER-WORK-OPEN'&#10;  'BB-MATCH-STUDY-OPEN'&#10;  'BB-MATCH-WORK-OPEN'&#10;  Use -v to get more diff)">ui = &lt;pages.PyTodoUI object at 0x00000199edc63bf0&gt;
+filter_account = {'username': 'w6_ui_20571932', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x00000199edd28f50&gt;}
+category = None, status = 'Done', query = None
+expected = {'BB-MATCH-WORK-DONE'}
+
+    @pytest.mark.auto("TC-AUT-021")
+    @pytest.mark.req("REQ-005")
+    @pytest.mark.parametrize("category, status, query, expected", [
+        pytest.param("Work", None, None, {F1, F2, F4}, marks=pytest.mark.manual("TC-BB-030"),
+                     id="TC-BB-030-category-work"),
+        pytest.param(None, "Open", None, {F1, F3, F4}, marks=pytest.mark.manual("TC-BB-031"),
+                     id="TC-BB-031-status-open"),
+        pytest.param(None, "Done", None, {F2}, marks=pytest.mark.manual("TC-BB-032"),
+                     id="TC-BB-032-status-done"),
+        pytest.param(None, None, "MATCH", {F1, F2, F3}, marks=pytest.mark.manual("TC-BB-033"),
+                     id="TC-BB-033-search-match"),
+        pytest.param(None, None, "NO-SUCH-TITLE-881", set(), marks=pytest.mark.manual("TC-BB-034"),
+                     id="TC-BB-034-search-nomatch"),
+        pytest.param("Work", "Open", "MATCH", {F1},
+                     marks=[pytest.mark.manual("TC-BB-035", "TC-GUI-008"), pytest.mark.smoke],
+                     id="TC-BB-035-combined"),
+    ])
+    def test_filters_return_only_matching_tasks(ui, filter_account, category, status, query, expected):
+        if category:
+            ui.filter_category(category)
+        if status:
+            ui.filter_status(status)
+        if query:
+            ui.search(query)
+    
+        shown = ui.titles()
+&gt;       assert set(shown) == expected and len(shown) == len(expected), \
+            f"filters category={category} status={status} q={query} listed {shown}"
+E       AssertionError: filters category=None status=Done q=None listed ['BB-OTHER-WORK-OPEN', 'BB-MATCH-STUDY-OPEN', 'BB-MATCH-WORK-DONE', 'BB-MATCH-WORK-OPEN']
+E       assert ({'BB-MATCH-ST...ER-WORK-OPEN'} == {'BB-MATCH-WORK-DONE'}
+E         
+E         Extra items in the left set:
+E         'BB-OTHER-WORK-OPEN'
+E         'BB-MATCH-STUDY-OPEN'
+E         'BB-MATCH-WORK-OPEN'
+E         Use -v to get more diff)
+
+test_03_filters.py:61: AssertionError</failure></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-033-search-match]" time="0.963" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-034-search-nomatch]" time="1.034" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-035-combined]" time="1.254" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-036-no-date]" time="0.988" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-037-yesterday]" time="0.814" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-038-today]" time="0.771"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-039-tomorrow]" time="0.692" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-040-plus-two]" time="0.994" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-041-plus-three]" time="1.165" /><testcase classname="test_04_urgency_dashboard" name="test_completion_overrides_overdue" time="0.887" /><testcase classname="test_04_urgency_dashboard" name="test_dashboard_counters_unaffected_by_def002" time="0.723" /><testcase classname="test_04_urgency_dashboard" name="test_dashboard_overdue_counter" time="2.838"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase></testsuite></testsuites>
