@@ -1,0 +1,206 @@
+{
+  "meta": {
+    "run_started": "2026-11-20T21:30:39",
+    "run_finished": "2026-11-20T21:32:04",
+    "wall_time_s": 85.3,
+    "timezone": "Malay Peninsula Standard Time",
+    "execution_date_used_for_due_dates": "2026-11-20",
+    "app_commit": "9cc1f34",
+    "browser": "chrome",
+    "headless": true,
+    "selenium": "4.53.0",
+    "pytest": "9.2.0",
+    "python": "3.14.7",
+    "os": "Windows 11 (10.0.26200)",
+    "target": "isolated server on port 5006",
+    "run_label": "-",
+    "marker_expression": "smoke",
+    "defects_as_failures": false,
+    "pytest_exit_status": 1,
+    "counts": {
+      "Blocked": 11
+    }
+  },
+  "results": [
+    {
+      "auto_id": "TC-AUT-003",
+      "nodeid": "test_01_auth.py::test_valid_registration_opens_task_list",
+      "manual": [
+        "TC-BB-010"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 84.9,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-006",
+      "nodeid": "test_01_auth.py::test_login_decision_table[TC-BB-014-rule1-valid]",
+      "manual": [
+        "TC-BB-014"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[list]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[dashboard]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-007",
+      "nodeid": "test_01_auth.py::test_protected_page_redirects_when_logged_out[new-task]",
+      "manual": [
+        "TC-BB-018"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-008",
+      "nodeid": "test_01_auth.py::test_logout_revokes_protected_page_access",
+      "manual": [
+        "TC-BB-019"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-009",
+      "nodeid": "test_02_tasks.py::test_create_full_field_task_persists",
+      "manual": [
+        "TC-BB-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-016",
+      "nodeid": "test_02_tasks.py::test_confirm_deletion_removes_only_that_task",
+      "manual": [
+        "TC-BB-027",
+        "TC-GUI-013"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-017",
+      "nodeid": "test_02_tasks.py::test_complete_then_reopen_task",
+      "manual": [
+        "TC-BB-028",
+        "TC-BB-029",
+        "TC-GUI-011"
+      ],
+      "req": [
+        "REQ-004"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-020",
+      "nodeid": "test_02_tasks.py::test_each_account_sees_only_its_own_tasks",
+      "manual": [
+        "TC-BB-044"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-021",
+      "nodeid": "test_03_filters.py::test_filters_return_only_matching_tasks[TC-BB-035-combined]",
+      "manual": [
+        "TC-BB-035",
+        "TC-GUI-008"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": true,
+      "status": "Blocked",
+      "duration_s": 0.0,
+      "message": "selenium.common.exceptions.WebDriverException: Message: Unsuccessful command executed: C:\\Users\\mredw\\STQA-pytodo\\.venv\\lib\\python3.14\\site-packages\\selenium\\webdriver\\common\\windows\\selenium-manager.exe --browser chrome --language-binding python --output json; code: 65",
+      "screenshot": null
+    }
+  ]
+}

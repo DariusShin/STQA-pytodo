@@ -1,0 +1,63 @@
+21:04:22 INFO  w6.ui: UI register username='w6_a_r2104191' (len 13), password len 9
+21:04:22 INFO  w6.ui: UI open /register
+21:04:23 INFO  w6.api: API POST /api/register -> 201
+21:04:23 INFO  w6.ui: UI login username='w6_dt_2104192'
+21:04:23 INFO  w6.ui: UI open /login
+21:04:23 INFO  w6.ui: UI open /
+21:04:23 INFO  w6.ui: UI open /dashboard
+21:04:23 INFO  w6.ui: UI open /tasks/new
+21:04:23 INFO  w6.api: API POST /api/register -> 201
+21:04:23 INFO  w6.ui: UI login username='w6_ui_2104193'
+21:04:23 INFO  w6.ui: UI open /login
+21:04:24 INFO  w6.ui: UI logout via navigation bar
+21:04:24 INFO  w6.ui: UI open /
+21:04:24 INFO  w6.api: API POST /api/register -> 201
+21:04:24 INFO  w6.ui: UI login username='w6_ui_2104194'
+21:04:24 INFO  w6.ui: UI open /login
+21:04:25 INFO  w6.ui: UI create task title='BB-CRUD-Original' category='Work' due='2026-11-23'
+21:04:25 INFO  w6.ui: UI open /tasks/new
+21:04:25 INFO  w6.ui: UI open edit form for 'BB-CRUD-Original'
+21:04:25 INFO  w6.api: API POST /api/register -> 201
+21:04:25 INFO  w6.ui: UI login username='w6_ui_2104195'
+21:04:25 INFO  w6.ui: UI open /login
+21:04:26 INFO  w6.api: API POST /api/tasks -> 201
+21:04:26 INFO  w6.api: API POST /api/tasks -> 201
+21:04:26 INFO  w6.ui: UI open /
+21:04:26 INFO  w6.ui: UI delete 'BB-MINIMAL', confirm=True
+21:04:26 INFO  w6.api: API GET /api/tasks?per_page=1000 -> 200
+21:04:26 INFO  w6.api: API POST /api/register -> 201
+21:04:26 INFO  w6.ui: UI login username='w6_ui_2104196'
+21:04:26 INFO  w6.ui: UI open /login
+21:04:27 INFO  w6.api: API GET /api/categories -> 200
+21:04:27 INFO  w6.api: API POST /api/tasks -> 201
+21:04:27 INFO  w6.ui: UI open /
+21:04:27 INFO  w6.ui: UI toggle complete/reopen for 'BB-CRUD-Edited'
+21:04:27 INFO  w6.ui: UI toggle complete/reopen for 'BB-CRUD-Edited'
+21:04:28 INFO  w6.api: API POST /api/register -> 201
+21:04:28 INFO  w6.api: API POST /api/register -> 201
+21:04:28 INFO  w6.api: API GET /api/categories -> 200
+21:04:28 INFO  w6.api: API POST /api/tasks -> 201
+21:04:28 INFO  w6.api: API POST /api/tasks -> 201
+21:04:28 INFO  w6.api: API GET /api/categories -> 200
+21:04:28 INFO  w6.api: API POST /api/tasks -> 201
+21:04:28 INFO  w6.ui: UI login username='w6_b_2104198'
+21:04:28 INFO  w6.ui: UI open /login
+21:04:28 INFO  w6.ui: UI logout via navigation bar
+21:04:29 INFO  w6.ui: UI login username='w6_a_2104197'
+21:04:29 INFO  w6.ui: UI open /login
+21:04:29 INFO  w6.api: API POST /api/register -> 201
+21:04:29 INFO  w6.ui: UI login username='w6_ui_2104199'
+21:04:29 INFO  w6.ui: UI open /login
+21:04:30 INFO  w6.api: API GET /api/categories -> 200
+21:04:30 INFO  w6.api: API POST /api/tasks -> 201
+21:04:30 INFO  w6.api: API GET /api/categories -> 200
+21:04:30 INFO  w6.api: API POST /api/tasks -> 201
+21:04:30 INFO  w6.api: API PUT /api/tasks/9 -> 200
+21:04:30 INFO  w6.api: API GET /api/categories -> 200
+21:04:30 INFO  w6.api: API POST /api/tasks -> 201
+21:04:30 INFO  w6.api: API GET /api/categories -> 200
+21:04:30 INFO  w6.api: API POST /api/tasks -> 201
+21:04:30 INFO  w6.ui: UI open /
+21:04:30 INFO  w6.ui: UI filter category='Work'
+21:04:30 INFO  w6.ui: UI filter status='Open'
+21:04:30 INFO  w6.ui: UI search q='MATCH'

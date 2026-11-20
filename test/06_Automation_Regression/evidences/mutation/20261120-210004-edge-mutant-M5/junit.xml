@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="5" tests="48" time="35.181" timestamp="2026-11-20T21:00:05.044705+08:00" hostname="ouioui"><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-001-len2]" time="1.607" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-002-len3]" time="0.526" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-003-len4]" time="0.452" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-004-len19]" time="0.400" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-005-len20]" time="0.464" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-006-len21]" time="0.293" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-007-len7]" time="0.289" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-008-len8]" time="0.335"><skipped type="pytest.xfail" message="known open defect DEF-001" /></testcase><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-009-len9]" time="0.463" /><testcase classname="test_01_auth" name="test_valid_registration_opens_task_list" time="0.516" /><testcase classname="test_01_auth" name="test_username_with_hyphen_is_rejected" time="0.274" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-012-empty-username]" time="0.206" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-013-empty-password]" time="0.290" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-014-rule1-valid]" time="0.685" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-015-rule2-wrong-pw]" time="0.595" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-016-rule3-unknown-user]" time="0.445" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-017-rule4-both-wrong]" time="0.500" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[list]" time="0.088" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[dashboard]" time="0.085" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[new-task]" time="0.092" /><testcase classname="test_01_auth" name="test_logout_revokes_protected_page_access" time="0.606" /><testcase classname="test_02_tasks" name="test_create_full_field_task_persists" time="0.811"><failure message="AssertionError: assert ('Work', '202...', 'Due Soon') == ('Work', '202...', 'Upcoming')&#10;  &#10;  At index 2 diff: 'Due Soon' != 'Upcoming'&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001b50449f410&gt;
+logged_in = {'username': 'w6_ui_21000417', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001b5045e5370&gt;}
+
+    @pytest.mark.smoke
+    @pytest.mark.auto("TC-AUT-009")
+    @pytest.mark.manual("TC-BB-020")
+    @pytest.mark.req("REQ-003")
+    def test_create_full_field_task_persists(ui, logged_in):
+        due = iso_in(3)
+        ui.create_task("BB-CRUD-Original", "Week 1 full-field task", "Work", due)
+        assert ui.path == "/"
+        row = ui.row("BB-CRUD-Original")
+&gt;       assert (row["category"], row["due_date"], row["urgency"]) == ("Work", due, "Upcoming")
+E       AssertionError: assert ('Work', '202...', 'Due Soon') == ('Work', '202...', 'Upcoming')
+E         
+E         At index 2 diff: 'Due Soon' != 'Upcoming'
+E         Use -v to get more diff
+
+test_02_tasks.py:25: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_create_title_only_task" time="0.648" /><testcase classname="test_02_tasks" name="test_empty_title_blocked_by_browser" time="0.702" /><testcase classname="test_02_tasks" name="test_whitespace_only_title_rejected" time="0.579"><skipped type="pytest.xfail" message="known open defect DEF-003" /></testcase><testcase classname="test_02_tasks" name="test_edit_persists_all_fields" time="1.089" /><testcase classname="test_02_tasks" name="test_cancel_edit_preserves_saved_data" time="1.061" /><testcase classname="test_02_tasks" name="test_cancel_deletion_retains_task" time="0.636" /><testcase classname="test_02_tasks" name="test_confirm_deletion_removes_only_that_task" time="0.795" /><testcase classname="test_02_tasks" name="test_complete_then_reopen_task" time="0.825" /><testcase classname="test_02_tasks" name="test_special_characters_preserved_in_edit_form" time="0.829" /><testcase classname="test_02_tasks" name="test_special_characters_displayed_literally_in_list" time="0.582"><skipped type="pytest.xfail" message="known open defect DEF-005" /></testcase><testcase classname="test_02_tasks" name="test_each_account_sees_only_its_own_tasks" time="1.121" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-030-category-work]" time="1.081" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-031-status-open]" time="1.097" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-032-status-done]" time="0.983" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-033-search-match]" time="1.115" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-034-search-nomatch]" time="0.870" /><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-035-combined]" time="1.189" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-036-no-date]" time="1.212" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-037-yesterday]" time="0.830" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-038-today]" time="0.823"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-039-tomorrow]" time="0.798" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-040-plus-two]" time="0.787" /><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-041-plus-three]" time="0.736"><failure message="AssertionError: BB-PLUS-THREE due 2026-11-23 shows 'Due Soon'&#10;assert 'Due Soon' == 'Upcoming'&#10;  &#10;  - Upcoming&#10;  + Due Soon">on_task_list = &lt;pages.PyTodoUI object at 0x000001b504675e50&gt;
+title = 'BB-PLUS-THREE', expected = 'Upcoming'
+
+    @pytest.mark.auto("TC-AUT-022")
+    @pytest.mark.req("REQ-006")
+    @pytest.mark.parametrize("title, expected", [
+        pytest.param("BB-NO-DATE", "No due date", marks=pytest.mark.manual("TC-BB-036"), id="TC-BB-036-no-date"),
+        pytest.param("BB-YESTERDAY", "Overdue", marks=pytest.mark.manual("TC-BB-037"), id="TC-BB-037-yesterday"),
+        pytest.param("BB-TODAY", "Due Today", marks=[pytest.mark.manual("TC-BB-038", "TC-GUI-010"),
+                                                     pytest.mark.known_defect("DEF-002")], id="TC-BB-038-today"),
+        pytest.param("BB-TOMORROW", "Due Soon", marks=pytest.mark.manual("TC-BB-039"), id="TC-BB-039-tomorrow"),
+        pytest.param("BB-PLUS-TWO", "Due Soon", marks=pytest.mark.manual("TC-BB-040"), id="TC-BB-040-plus-two"),
+        pytest.param("BB-PLUS-THREE", "Upcoming", marks=pytest.mark.manual("TC-BB-041"), id="TC-BB-041-plus-three"),
+    ])
+    def test_urgency_label(on_task_list, title, expected):
+        row = on_task_list.row(title)
+&gt;       assert row["urgency"] == expected, f"{title} due {row['due_date']} shows {row['urgency']!r}"
+E       AssertionError: BB-PLUS-THREE due 2026-11-23 shows 'Due Soon'
+E       assert 'Due Soon' == 'Upcoming'
+E         
+E         - Upcoming
+E         + Due Soon
+
+test_04_urgency_dashboard.py:60: AssertionError</failure></testcase><testcase classname="test_04_urgency_dashboard" name="test_completion_overrides_overdue" time="0.752" /><testcase classname="test_04_urgency_dashboard" name="test_dashboard_counters_unaffected_by_def002" time="0.706"><failure message="AssertionError: assert {'Total Tasks...t 7 days)': 1} == {'Total Tasks...t 7 days)': 1}&#10;  &#10;  Omitting 3 identical items, use -vv to show&#10;  Differing items:&#10;  {'Due Soon': 3} != {'Due Soon': 2}&#10;  Use -v to get more diff">on_task_list = &lt;pages.PyTodoUI object at 0x000001b504675d30&gt;
+
+    @pytest.mark.auto("TC-AUT-024")
+    @pytest.mark.manual("TC-BB-043")
+    @pytest.mark.req("REQ-007")
+    def test_dashboard_counters_unaffected_by_def002(on_task_list):
+        counters = on_task_list.dashboard_counters()
+        observed = {k: counters.get(k) for k in ("Total Tasks", "Open", "Due Soon", "Completed (last 7 days)")}
+&gt;       assert observed == {"Total Tasks": 7, "Open": 6, "Due Soon": 2, "Completed (last 7 days)": 1}
+E       AssertionError: assert {'Total Tasks...t 7 days)': 1} == {'Total Tasks...t 7 days)': 1}
+E         
+E         Omitting 3 identical items, use -vv to show
+E         Differing items:
+E         {'Due Soon': 3} != {'Due Soon': 2}
+E         Use -v to get more diff
+
+test_04_urgency_dashboard.py:77: AssertionError</failure></testcase><testcase classname="test_04_urgency_dashboard" name="test_dashboard_overdue_counter" time="2.786"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase></testsuite></testsuites>
