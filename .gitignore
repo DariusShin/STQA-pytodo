@@ -13,3 +13,9 @@ __pycache__/
 .coverage.*
 htmlcov/
 coverage.xml
+
+# Course brief kept locally, not part of the submission repository
+STQA Group Project.pdf
+
+# macOS Finder metadata
+.DS_Store

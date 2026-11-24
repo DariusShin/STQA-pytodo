@@ -1,0 +1,251 @@
+{
+  "_comment": "Week 3 test data loaded by conftest.py. Human-readable description: fixtures.md. Dates are offsets in days from the execution day; usernames are made unique per run with a <mmddHHMMSS> stamp. C05/C06 viewports assume a 1920x1080 screen at 125% scaling (1536x864 CSS px); set them to the Windows laptop's actual CSS resolution before running.",
+  "base_url": "http://127.0.0.1:5000",
+  "password": "Test12345",
+  "tester_initial": "d",
+  "accounts": {
+    "A": {
+      "purpose": "gui",
+      "fixture_set": "A"
+    },
+    "C": {
+      "purpose": "empty",
+      "fixture_set": null
+    }
+  },
+  "fixture_set_A": [
+    {
+      "id": "F1",
+      "title": "GUI-Overdue",
+      "description": "Fixture overdue",
+      "category": "Work",
+      "due_offset_days": -3,
+      "done": false
+    },
+    {
+      "id": "F2",
+      "title": "GUI-Today",
+      "description": "Fixture due today",
+      "category": "Personal",
+      "due_offset_days": 0,
+      "done": false
+    },
+    {
+      "id": "F3",
+      "title": "GUI-Soon",
+      "description": "Week 3 GUI fixture",
+      "category": "Study",
+      "due_offset_days": 2,
+      "done": false
+    },
+    {
+      "id": "F4",
+      "title": "GUI-Upcoming",
+      "description": "",
+      "category": "Urgent",
+      "due_offset_days": 7,
+      "done": false
+    },
+    {
+      "id": "F5",
+      "title": "GUI-NoDate",
+      "description": "",
+      "category": null,
+      "due_offset_days": null,
+      "done": false
+    },
+    {
+      "id": "F6",
+      "title": "GUI-Done",
+      "description": "",
+      "category": "Work",
+      "due_offset_days": 1,
+      "done": true
+    },
+    {
+      "id": "F7",
+      "title": "GUI-Long quarterly report review quarterly report review quarterly report review quarterly report review quarterly report review quarterly report review quarterly report review quarterly report review",
+      "description": "",
+      "category": "Personal",
+      "due_offset_days": null,
+      "done": false
+    },
+    {
+      "id": "F8",
+      "title": "GUI-Unbroken-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+      "description": "",
+      "category": null,
+      "due_offset_days": null,
+      "done": false
+    },
+    {
+      "id": "F9",
+      "title": "GUI-Special & <b>bold</b> \"double\" 'single' Résumé 报告",
+      "description": "",
+      "category": "Study",
+      "due_offset_days": null,
+      "done": false
+    }
+  ],
+  "configurations": {
+    "C01": {
+      "folder": "mac-chrome/desktop",
+      "browser": "chromium",
+      "channel": "chrome",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "is_mobile": false
+    },
+    "C02": {
+      "folder": "mac-chrome/tablet",
+      "browser": "chromium",
+      "channel": "chrome",
+      "viewport": {
+        "width": 768,
+        "height": 1024
+      },
+      "is_mobile": true,
+      "device_scale_factor": 2,
+      "has_touch": true
+    },
+    "C03": {
+      "folder": "mac-chrome/mobile",
+      "browser": "chromium",
+      "channel": "chrome",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "is_mobile": true,
+      "device_scale_factor": 3,
+      "has_touch": true
+    },
+    "C04": {
+      "folder": "mac-firefox/desktop",
+      "browser": "firefox",
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      }
+    },
+    "C05": {
+      "folder": "win-chrome/desktop",
+      "browser": "chromium",
+      "channel": "chrome",
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      }
+    },
+    "C06": {
+      "folder": "win-firefox/desktop",
+      "browser": "firefox",
+      "viewport": {
+        "width": 1536,
+        "height": 864
+      }
+    }
+  },
+  "cases": {
+    "TC-GUI-001": {
+      "password": "abc"
+    },
+    "TC-GUI-002": {
+      "password": "WrongPass1"
+    },
+    "TC-GUI-004": {
+      "submission1": {
+        "username": "ab",
+        "password": "Test12345"
+      },
+      "submission2": {
+        "username_purpose": "short",
+        "password": "Test123"
+      },
+      "submission3": {
+        "username_purpose": "p8",
+        "password": "Test1234"
+      }
+    },
+    "TC-GUI-005": {
+      "narrow_viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    "TC-GUI-008": {
+      "category": "Work",
+      "status": "open",
+      "q": "GUI",
+      "expected_titles": [
+        "GUI-Overdue"
+      ]
+    },
+    "TC-GUI-009": {
+      "q": "NO-SUCH-TITLE-W3"
+    },
+    "TC-GUI-010": {
+      "expected": {
+        "F1": "Overdue",
+        "F2": "Due Today",
+        "F3": "Due Soon",
+        "F4": "Upcoming",
+        "F5": "No due date",
+        "F6": "Done"
+      }
+    },
+    "TC-GUI-013": {
+      "title": "GUI-DeleteMe"
+    },
+    "TC-GUI-014": {
+      "title": "GUI-CancelMe",
+      "expected_categories": [
+        "Personal",
+        "Study",
+        "Urgent",
+        "Work"
+      ]
+    },
+    "TC-GUI-015": {
+      "fixture": "F4",
+      "new_title": "GUI-Upcoming-edited"
+    },
+    "TC-GUI-016": {
+      "titles": [
+        "",
+        "   "
+      ]
+    },
+    "TC-GUI-017": {
+      "title": "GUI-Feedback",
+      "edited_title": "GUI-Feedback-2"
+    },
+    "TC-GUI-018": {
+      "labels": [
+        "Total Tasks",
+        "Open",
+        "Overdue",
+        "Due Soon",
+        "Completed (last 7 days)"
+      ]
+    },
+    "TC-CMP-002": {
+      "title": "CMP-Date",
+      "category": "Study",
+      "due_offset_days": 7
+    },
+    "TC-CMP-003": {
+      "category": "Work",
+      "status": "open",
+      "q": "GUI",
+      "expected_titles": [
+        "GUI-Overdue"
+      ]
+    },
+    "TC-CMP-005": {
+      "new_due_offset_days": 10
+    }
+  }
+}

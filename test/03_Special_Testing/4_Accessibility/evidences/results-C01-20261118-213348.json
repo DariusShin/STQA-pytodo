@@ -1,0 +1,1297 @@
+{
+  "configuration": "C01",
+  "run_started": "1118213348",
+  "run_date": "2026-11-18",
+  "cases": {
+    "TC-A11Y-001": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "/login: every symbol-only control or image has a name describing its purpose",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/register: every symbol-only control or image has a name describing its purpose",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/: every symbol-only control or image has a name describing its purpose",
+          "passed": false,
+          "actual": [
+            [
+              "button",
+              "○"
+            ],
+            [
+              "button",
+              "✓"
+            ]
+          ]
+        },
+        {
+          "check": "/tasks/new: every symbol-only control or image has a name describing its purpose",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/tasks/265/edit: every symbol-only control or image has a name describing its purpose",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/dashboard: every symbol-only control or image has a name describing its purpose",
+          "passed": true,
+          "actual": []
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-001-names-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-002": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "/login: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/login: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        },
+        {
+          "check": "/register: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/register: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        },
+        {
+          "check": "/: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        },
+        {
+          "check": "/: table column headings are header cells",
+          "passed": true,
+          "actual": [
+            "",
+            "Title",
+            "Category",
+            "Due Date",
+            "Urgency",
+            ""
+          ]
+        },
+        {
+          "check": "/tasks/new: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/tasks/new: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        },
+        {
+          "check": "/tasks/265/edit: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/tasks/265/edit: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        },
+        {
+          "check": "/dashboard: one top-level heading",
+          "passed": true,
+          "actual": 1
+        },
+        {
+          "check": "/dashboard: navigation and main content are identifiable regions",
+          "passed": false,
+          "actual": [
+            "navigation"
+          ]
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-002-structure-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-003": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "F1: urgency identifiable from its badge text",
+          "passed": true,
+          "actual": "Overdue"
+        },
+        {
+          "check": "F3: urgency identifiable from its badge text",
+          "passed": true,
+          "actual": "Due Soon"
+        },
+        {
+          "check": "F4: urgency identifiable from its badge text",
+          "passed": true,
+          "actual": "Upcoming"
+        },
+        {
+          "check": "F5: urgency identifiable from its badge text",
+          "passed": true,
+          "actual": "No due date"
+        },
+        {
+          "check": "F6: urgency identifiable from its badge text",
+          "passed": true,
+          "actual": "Done"
+        },
+        {
+          "check": "completed task identifiable by symbol and strikethrough, not colour alone",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "dashboard cards identifiable by their labels",
+          "passed": true,
+          "actual": [
+            "Total Tasks",
+            "Open",
+            "Overdue",
+            "Due Soon",
+            "Completed (last 7 days)"
+          ]
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-003-greyscale-list-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-003-greyscale-dashboard-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-004": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "registration hint: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "4.54:1 at 12.8px weight 400"
+        },
+        {
+          "check": "muted text (auth card): contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.74:1 at 14.4px weight 400"
+        },
+        {
+          "check": "navigation link: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "8.79:1 at 16px weight 400"
+        },
+        {
+          "check": "navigation username: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.18:1 at 14.4px weight 400"
+        },
+        {
+          "check": "completed task title: contrast at least 4.5:1",
+          "passed": false,
+          "actual": "2.85:1 at 14.72px weight 400"
+        },
+        {
+          "check": "Edit link: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.82:1 at 13.6px weight 400"
+        },
+        {
+          "check": "Delete button: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.82:1 at 13.6px weight 400"
+        },
+        {
+          "check": "badge overdue: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.72:1 at 12.48px weight 600"
+        },
+        {
+          "check": "badge due-soon: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "4.78:1 at 12.48px weight 600"
+        },
+        {
+          "check": "badge upcoming: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.89:1 at 12.48px weight 600"
+        },
+        {
+          "check": "badge no-due-date: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "4.95:1 at 12.48px weight 600"
+        },
+        {
+          "check": "badge done: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "4.95:1 at 12.48px weight 600"
+        },
+        {
+          "check": "empty-state message: contrast at least 4.5:1",
+          "passed": false,
+          "actual": "2.85:1 at 14.72px weight 400"
+        },
+        {
+          "check": "dashboard label: contrast at least 4.5:1",
+          "passed": true,
+          "actual": "5.74:1 at 13.6px weight 400"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-004-contrast-empty-state-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-004-contrast-list-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-005": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "/login: clicking 'Username' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/login: clicking 'Password' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/login: each field's accessible name is its visible label",
+          "passed": false,
+          "actual": [
+            "",
+            ""
+          ]
+        },
+        {
+          "check": "/register: clicking 'Username' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/register: clicking 'Password' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/register: each field's accessible name is its visible label",
+          "passed": false,
+          "actual": [
+            "",
+            ""
+          ]
+        },
+        {
+          "check": "/tasks/new: clicking 'Title' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/tasks/new: clicking 'Description' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/tasks/new: clicking 'Category' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/tasks/new: clicking 'Due Date' focuses its field",
+          "passed": false,
+          "actual": "focus on <body>"
+        },
+        {
+          "check": "/tasks/new: each field's accessible name is its visible label",
+          "passed": false,
+          "actual": [
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-005-labels-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-006": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "category, status and search each have a visible label",
+          "passed": false,
+          "actual": "0 visible labels"
+        },
+        {
+          "check": "each control has a programmatic label (not placeholder only)",
+          "passed": false,
+          "actual": {
+            "labels": {
+              "select[name=category]": "",
+              "select[name=status]": "",
+              "input[name=q]": ""
+            },
+            "accessibility tree": [
+              [
+                "combobox",
+                ""
+              ],
+              [
+                "combobox",
+                ""
+              ],
+              [
+                "textbox",
+                "Search title..."
+              ]
+            ]
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-006-filter-labels-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-007": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "F3: the button's name states the action and the task",
+          "passed": false,
+          "actual": "○"
+        },
+        {
+          "check": "F3: the task's state is conveyed",
+          "passed": false,
+          "actual": {
+            "name": "○",
+            "aria-pressed": null
+          }
+        },
+        {
+          "check": "F6: the button's name states the action and the task",
+          "passed": false,
+          "actual": "✓"
+        },
+        {
+          "check": "F6: the task's state is conveyed",
+          "passed": false,
+          "actual": {
+            "name": "✓",
+            "aria-pressed": null
+          }
+        }
+      ],
+      "notes": [
+        "F3 accessibility snapshot: - button \"○\"",
+        "F6 accessibility snapshot: - button \"✓\""
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-007-toggle-name-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-008": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "keyboard: reach Username",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: log in",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/"
+        },
+        {
+          "check": "keyboard: reach + New Task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Title",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Category",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: choose a category by keyboard",
+          "passed": true,
+          "actual": "Work"
+        },
+        {
+          "check": "keyboard: reach Due Date",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: enter the due date by keyboard",
+          "passed": true,
+          "actual": "2026-11-21"
+        },
+        {
+          "check": "keyboard: reach Create Task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: create the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach the category filter",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach the search box",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: filter and search",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach the complete button",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: complete the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reopen the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Edit",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Save Changes",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Delete",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: delete the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Dashboard",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: reach Log out",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "keyboard: log out",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/login"
+        }
+      ],
+      "notes": [
+        "The native confirm dialog was answered by Playwright; browsers make it keyboard-operable (Enter/Escape), which page automation cannot exercise.",
+        "Keyboard steps: {'reach Username': True, 'log in': True, 'reach + New Task': True, 'reach Title': True, 'reach Category': True, 'choose a category by keyboard': True, 'reach Due Date': True, 'enter the due date by keyboard': True, 'reach Create Task': True, 'create the task': True, 'reach the category filter': True, 'reach the search box': True, 'filter and search': True, 'reach the complete button': True, 'complete the task': True, 'reopen the task': True, 'reach Edit': True, 'reach Save Changes': True, 'reach Delete': True, 'delete the task': True, 'reach Dashboard': True, 'reach Log out': True, 'log out': True}"
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-008-keyboard-end-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-009": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "a skip link on the first Tab, or a main landmark",
+          "passed": false,
+          "actual": {
+            "first focus": {
+              "text": "PyTodo Pro",
+              "href": "/"
+            },
+            "main landmark": false
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-009-bypass-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-010": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "each page title is unique",
+          "passed": true,
+          "actual": {
+            "/login": "Log in — PyTodo Pro",
+            "/register": "Register — PyTodo Pro",
+            "/": "Tasks — PyTodo Pro",
+            "/tasks/new": "New Task — PyTodo Pro",
+            "/tasks/265/edit": "Edit Task — PyTodo Pro",
+            "/dashboard": "Dashboard — PyTodo Pro"
+          }
+        },
+        {
+          "check": "each title names the page's topic and the application",
+          "passed": true,
+          "actual": {
+            "/login": "Log in — PyTodo Pro",
+            "/register": "Register — PyTodo Pro",
+            "/": "Tasks — PyTodo Pro",
+            "/tasks/new": "New Task — PyTodo Pro",
+            "/tasks/265/edit": "Edit Task — PyTodo Pro",
+            "/dashboard": "Dashboard — PyTodo Pro"
+          }
+        }
+      ],
+      "notes": [
+        "Shares evidence with TC-GUI-021."
+      ],
+      "evidence": [],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-011": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "/login: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/login: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/register: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/register: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/tasks/new: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/tasks/new: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/tasks/265/edit: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/tasks/265/edit: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/dashboard: every focused control shows a focus indicator",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "/dashboard: focus follows the visual reading order",
+          "passed": true,
+          "actual": []
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-011-focus-first-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-012": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "320px /login: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /login: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "320px /register: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /register: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "320px /: navigation readable and on screen",
+          "passed": false,
+          "actual": {
+            "wrapped": [
+              "PyTodo Pro",
+              "Log out"
+            ],
+            "off-screen": [
+              "w3d_gui_1118213348",
+              "Log out"
+            ],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": true,
+            "table wider than viewport": true
+          }
+        },
+        {
+          "check": "320px /tasks/new: navigation readable and on screen",
+          "passed": false,
+          "actual": {
+            "wrapped": [
+              "PyTodo Pro",
+              "Log out"
+            ],
+            "off-screen": [
+              "w3d_gui_1118213348",
+              "Log out"
+            ],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /tasks/new: no horizontal scrolling except caused by the data table",
+          "passed": false,
+          "actual": {
+            "page scrolls": true,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "320px /tasks/265/edit: navigation readable and on screen",
+          "passed": false,
+          "actual": {
+            "wrapped": [
+              "PyTodo Pro",
+              "Log out"
+            ],
+            "off-screen": [
+              "w3d_gui_1118213348",
+              "Log out"
+            ],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /tasks/265/edit: no horizontal scrolling except caused by the data table",
+          "passed": false,
+          "actual": {
+            "page scrolls": true,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "320px /dashboard: navigation readable and on screen",
+          "passed": false,
+          "actual": {
+            "wrapped": [
+              "PyTodo Pro",
+              "Log out"
+            ],
+            "off-screen": [
+              "w3d_gui_1118213348",
+              "Log out"
+            ],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "320px /dashboard: no horizontal scrolling except caused by the data table",
+          "passed": false,
+          "actual": {
+            "page scrolls": true,
+            "table wider than viewport": false
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-012-reflow-login-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-012-reflow-register-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-012-reflow-list-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-012-reflow-dashboard-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-013": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "200% /login: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /login: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "200% /login: submit button available",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "200% /register: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /register: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "200% /register: submit button available",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "200% /: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": true,
+            "table wider than viewport": true
+          }
+        },
+        {
+          "check": "200% /tasks/new: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /tasks/new: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "200% /tasks/265/edit: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /tasks/265/edit: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        },
+        {
+          "check": "200% /dashboard: navigation readable and on screen",
+          "passed": true,
+          "actual": {
+            "wrapped": [],
+            "off-screen": [],
+            "overlaps": []
+          }
+        },
+        {
+          "check": "200% /dashboard: no horizontal scrolling except caused by the data table",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than viewport": false
+          }
+        }
+      ],
+      "notes": [
+        "200% zoom emulated as a 640x400 CSS-pixel viewport at device scale 2 (equivalent layout to zooming a 1280x800 window); browser zoom itself cannot be set by Playwright."
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-013-zoom-register-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-013-zoom-list-20261118.jpg"
+      ],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-014": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "every page declares lang=\"en\"",
+          "passed": true,
+          "actual": {
+            "/login": "en",
+            "/register": "en",
+            "/": "en",
+            "/tasks/new": "en",
+            "/tasks/265/edit": "en",
+            "/dashboard": "en"
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [],
+      "error": null,
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-015": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "/login: the error is described in text",
+          "passed": true,
+          "actual": "Invalid username or password."
+        },
+        {
+          "check": "/login: the error is exposed for announcement (alert role, live region or focus)",
+          "passed": false,
+          "actual": {
+            "role": null,
+            "live": null,
+            "focused": false
+          }
+        },
+        {
+          "check": "/register: the error is described in text",
+          "passed": true,
+          "actual": "Username must be 3-20 characters (letters, numbers, underscore)."
+        },
+        {
+          "check": "/register: the error is exposed for announcement (alert role, live region or focus)",
+          "passed": false,
+          "actual": {
+            "role": null,
+            "live": null,
+            "focused": false
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-015-error-login-20261118.jpg",
+        "4_Accessibility/evidences/TC-A11Y-015-error-register-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-016": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "each target is at least 24x24 px or meets the spacing exception",
+          "passed": false,
+          "actual": [
+            "'Delete' 39x15 too close to 'Edit'",
+            "'Edit' 23x15 too close to 'Delete'"
+          ]
+        }
+      ],
+      "notes": [
+        "Undersized targets measured: Dashboard 78x18, Delete 39x15, Edit 23x15, Log out 53x18, PyTodo Pro 106x22, Tasks 41x18"
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-016-targets-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-017": {
+      "status": "Fail",
+      "checks": [
+        {
+          "check": "every table column, including control columns, has a header",
+          "passed": false,
+          "actual": [
+            "",
+            "Title",
+            "Category",
+            "Due Date",
+            "Urgency",
+            ""
+          ]
+        },
+        {
+          "check": "every page has a heading",
+          "passed": true,
+          "actual": {
+            "/login": {
+              "headings": [
+                "Log in"
+              ],
+              "labels": [
+                "Username",
+                "Password"
+              ]
+            },
+            "/register": {
+              "headings": [
+                "Create an account"
+              ],
+              "labels": [
+                "Username (3-20 chars, letters/numbers/underscore)",
+                "Password (min 8 characters)"
+              ]
+            },
+            "/": {
+              "headings": [
+                "My Tasks"
+              ],
+              "labels": []
+            },
+            "/tasks/new": {
+              "headings": [
+                "New Task"
+              ],
+              "labels": [
+                "Title",
+                "Description",
+                "Category",
+                "Due Date"
+              ]
+            },
+            "/tasks/265/edit": {
+              "headings": [
+                "Edit Task"
+              ],
+              "labels": [
+                "Title",
+                "Description",
+                "Category",
+                "Due Date"
+              ]
+            },
+            "/dashboard": {
+              "headings": [
+                "Dashboard"
+              ],
+              "labels": []
+            }
+          }
+        }
+      ],
+      "notes": [
+        "Headings and labels for review: {'/login': {'headings': ['Log in'], 'labels': ['Username', 'Password']}, '/register': {'headings': ['Create an account'], 'labels': ['Username (3-20 chars, letters/numbers/underscore)', 'Password (min 8 characters)']}, '/': {'headings': ['My Tasks'], 'labels': []}, '/tasks/new': {'headings': ['New Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/tasks/265/edit': {'headings': ['Edit Task'], 'labels': ['Title', 'Description', 'Category', 'Due Date']}, '/dashboard': {'headings': ['Dashboard'], 'labels': []}}"
+      ],
+      "evidence": [
+        "4_Accessibility/evidences/TC-A11Y-017-headings-20261118.jpg"
+      ],
+      "error": "test/03_Special_Testing/conftest.py:294: AssertionError",
+      "suite": "4_Accessibility"
+    },
+    "TC-A11Y-018": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "/login: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-login-20261118.json",
+            "critical": [
+              "label"
+            ],
+            "serious": [],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [],
+            "lighthouse": {
+              "score": 91,
+              "final_url": "http://127.0.0.1:5000/login"
+            }
+          }
+        },
+        {
+          "check": "/login: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/login"
+        },
+        {
+          "check": "/register: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-register-20261118.json",
+            "critical": [
+              "label"
+            ],
+            "serious": [],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [],
+            "lighthouse": {
+              "score": 91,
+              "final_url": "http://127.0.0.1:5000/register"
+            }
+          }
+        },
+        {
+          "check": "/register: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/register"
+        },
+        {
+          "check": "/: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-list-20261118.json",
+            "critical": [
+              "select-name"
+            ],
+            "serious": [
+              "color-contrast"
+            ],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [
+              "empty-table-header"
+            ],
+            "lighthouse": {
+              "score": 76,
+              "final_url": "http://127.0.0.1:5000/"
+            }
+          }
+        },
+        {
+          "check": "/: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/"
+        },
+        {
+          "check": "/tasks/new: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-new-20261118.json",
+            "critical": [
+              "label",
+              "select-name"
+            ],
+            "serious": [],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [],
+            "lighthouse": {
+              "score": 82,
+              "final_url": "http://127.0.0.1:5000/tasks/new"
+            }
+          }
+        },
+        {
+          "check": "/tasks/new: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/tasks/new"
+        },
+        {
+          "check": "/tasks/265/edit: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-edit-20261118.json",
+            "critical": [
+              "label",
+              "select-name"
+            ],
+            "serious": [],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [],
+            "lighthouse": {
+              "score": 82,
+              "final_url": "http://127.0.0.1:5000/tasks/265/edit"
+            }
+          }
+        },
+        {
+          "check": "/tasks/265/edit: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/tasks/265/edit"
+        },
+        {
+          "check": "/dashboard: axe and Lighthouse reports saved",
+          "passed": true,
+          "actual": {
+            "axe_report": "axe-dashboard-20261118.json",
+            "critical": [],
+            "serious": [],
+            "moderate": [
+              "landmark-one-main",
+              "region"
+            ],
+            "minor": [],
+            "lighthouse": {
+              "score": 100,
+              "final_url": "http://127.0.0.1:5000/dashboard"
+            }
+          }
+        },
+        {
+          "check": "/dashboard: Lighthouse audited the intended page (not a redirect)",
+          "passed": true,
+          "actual": "/dashboard"
+        }
+      ],
+      "notes": [
+        "Scan summary: {'/login': {'axe_report': 'axe-login-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/login'}}, '/register': {'axe_report': 'axe-register-20261118.json', 'critical': ['label'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 91, 'final_url': 'http://127.0.0.1:5000/register'}}, '/': {'axe_report': 'axe-list-20261118.json', 'critical': ['select-name'], 'serious': ['color-contrast'], 'moderate': ['landmark-one-main', 'region'], 'minor': ['empty-table-header'], 'lighthouse': {'score': 76, 'final_url': 'http://127.0.0.1:5000/'}}, '/tasks/new': {'axe_report': 'axe-new-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/new'}}, '/tasks/265/edit': {'axe_report': 'axe-edit-20261118.json', 'critical': ['label', 'select-name'], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 82, 'final_url': 'http://127.0.0.1:5000/tasks/265/edit'}}, '/dashboard': {'axe_report': 'axe-dashboard-20261118.json', 'critical': [], 'serious': [], 'moderate': ['landmark-one-main', 'region'], 'minor': [], 'lighthouse': {'score': 100, 'final_url': 'http://127.0.0.1:5000/dashboard'}}}"
+      ],
+      "evidence": [],
+      "error": null,
+      "suite": "4_Accessibility"
+    }
+  }
+}

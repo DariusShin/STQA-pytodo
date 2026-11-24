@@ -1,0 +1,247 @@
+{
+  "configuration": "C05",
+  "run_started": "1124215412",
+  "run_date": "2026-11-24",
+  "cases": {
+    "TC-CMP-001": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "register opens My Tasks with the username in the navigation bar",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/"
+        },
+        {
+          "check": "log out returns to /login",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/login"
+        },
+        {
+          "check": "log in opens My Tasks",
+          "passed": true,
+          "actual": "http://127.0.0.1:5000/"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-001-registered-20261124.jpg",
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-001-logged-in-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-002": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "due date is a native date control",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "CMP-Date listed with due date 2026-12-01 and badge Upcoming",
+          "passed": true,
+          "actual": {
+            "due": "2026-12-01",
+            "badge": "Upcoming"
+          }
+        }
+      ],
+      "notes": [
+        "Automation enters the date through the control's value; the native picker UI cannot be driven or captured by Playwright, so picker usability is not covered by this run."
+      ],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-002-created-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-003": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "category and status apply on change without Filter",
+          "passed": true,
+          "actual": [
+            true,
+            true
+          ]
+        },
+        {
+          "check": "final list equals the C01 result (F1 only)",
+          "passed": true,
+          "actual": [
+            "GUI-Overdue"
+          ]
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-003-filtered-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-004": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "after completing: ✓, struck through, Done",
+          "passed": true,
+          "actual": {
+            "button": "✓",
+            "strike": true,
+            "badge": "Done"
+          }
+        },
+        {
+          "check": "after reopening: ○, no strikethrough, Due Soon",
+          "passed": true,
+          "actual": {
+            "button": "○",
+            "strike": false,
+            "badge": "Due Soon"
+          }
+        },
+        {
+          "check": "the ○/✓ symbols render as glyphs",
+          "passed": true,
+          "actual": "glyph width 8.1px"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-004-done-20261124.jpg",
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-004-reopened-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-005": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "edit form shows the saved date",
+          "passed": true,
+          "actual": "2026-12-01"
+        },
+        {
+          "check": "list shows the new date 2026-12-04",
+          "passed": true,
+          "actual": "2026-12-04"
+        },
+        {
+          "check": "edit form shows the new date",
+          "passed": true,
+          "actual": "2026-12-04"
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-005-edited-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-006": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "a confirmation dialog appears",
+          "passed": true,
+          "actual": [
+            {
+              "type": "confirm",
+              "message": "Delete this task?"
+            },
+            {
+              "type": "confirm",
+              "message": "Delete this task?"
+            }
+          ]
+        },
+        {
+          "check": "Cancel keeps the task",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "check": "confirming removes the task",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "notes": [
+        "Native dialog text recorded by Playwright (not drawn in page screenshots): [{'type': 'confirm', 'message': 'Delete this task?'}, {'type': 'confirm', 'message': 'Delete this task?'}]"
+      ],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-006-deleted-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-007": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "each nav item fits on one line",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "no nav items overlap",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "no nav item extends past the viewport",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "all six table columns are within the viewport",
+          "passed": true,
+          "actual": []
+        },
+        {
+          "check": "smallest nav and table text renders at 12 px or more on the device screen",
+          "passed": true,
+          "actual": "12.5 px (12.48 px CSS x 1.0 page scale)"
+        },
+        {
+          "check": "no horizontal page scroll, unless the table alone causes it",
+          "passed": true,
+          "actual": {
+            "page scrolls": false,
+            "table wider than container": false
+          }
+        }
+      ],
+      "notes": [],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-007-layout-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    },
+    "TC-CMP-008": {
+      "status": "Pass",
+      "checks": [
+        {
+          "check": "the five cards do not overlap",
+          "passed": true,
+          "actual": []
+        }
+      ],
+      "notes": [
+        "Counter values on 2026-11-24: {'Total Tasks': '9', 'Open': '8', 'Overdue': '2', 'Due Soon': '1', 'Completed (last 7 days)': '1'}",
+        "No same-day C01 result found; compare with C01 values recalculated for this date."
+      ],
+      "evidence": [
+        "2_Compatibility/evidences/win-chrome/desktop/TC-CMP-008-dashboard-20261124.jpg"
+      ],
+      "error": null,
+      "suite": "2_Compatibility"
+    }
+  }
+}
