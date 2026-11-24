@@ -31,7 +31,7 @@ The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standa
 | --- | --- | --- |
 | 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
 | 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22), accessibility (18) and compatibility on C01-C04 executed 2026-11-18; Windows configurations and the usability review pending |
+| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22), accessibility (18) and compatibility on C01-C04 executed 2026-11-18; compatibility on Windows (C05, C06) executed 2026-11-24; usability review pending |
 | 04 | [Web and API testing](04_Web_API/README.md) | Not started |
 | 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
 | 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
@@ -53,7 +53,7 @@ Tools marked as to be selected remain unverified.
 | Python | Application and Python test execution | Python 3.14.7 |
 | Flask | Web application framework | 3.0.3, specified in the application requirements |
 | SQLite | Application database | `pytodo_pro.db` in the application root |
-| Browser(s) | GUI and compatibility testing | macOS: Google Chrome 155.0.8059.80 (Week 1); Google Chrome 157.0.8103.80 and Playwright's Firefox 159.0 build (Week 3). Windows 11: Google Chrome and Mozilla Firefox [versions recorded in the Week 3 compatibility matrix] |
+| Browser(s) | GUI and compatibility testing | macOS: Google Chrome 155.0.8059.80 (Week 1); Google Chrome 157.0.8103.80 and Playwright's Firefox 159.0 build (Week 3). Windows 11: Google Chrome 124.0.6367.119 and Playwright's Firefox 159.0 build (Week 3, see the compatibility matrix) |
 | pytest (proposed) | Unit and regression test runner | 9.1.1 |
 | pytest-cov (proposed) | Statement and branch coverage | 7.1.0 |
 | API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |

@@ -4,7 +4,7 @@
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester / Lab Group | September 2026 / Wednesday Lab - Group 2 |
-| Phase status | In progress - Task 1 (GUI) and Task 4 (accessibility) executed on C01, and Task 2 executed on C01-C04, on 2026-11-18 by the Playwright suites; Windows configurations (C05, C06) and the usability review not yet run |
+| Phase status | In progress - Task 1 (GUI) and Task 4 (accessibility) executed on C01, and Task 2 executed on C01-C04, on 2026-11-18 by the Playwright suites; Task 2 executed on the Windows configurations (C05, C06) on 2026-11-24; usability review not yet run |
 
 ## Deliverable Checklist
 
@@ -98,11 +98,11 @@ Record these values at execution time. Do not copy versions from earlier weeks w
 
 | Component | Value |
 | --- | --- |
-| Application commit | `git rev-parse --short HEAD` at execution |
+| Application commit | `git rev-parse --short HEAD` at execution; C05/C06 ran at `b3d879e` |
 | Target | `python app.py` development server at `http://127.0.0.1:5000` |
-| Operating systems | macOS 26.5.2 (build 25F84, checked 2026-10-27 with `sw_vers`); Windows 11 (record the build with `winver`) |
-| Windows hardware | Acer Nitro 5 (2021) owned by Darius Lee Shin: AMD Ryzen 5 CPU, NVIDIA GTX 1650 GPU, 32 GB DDR4 RAM. Record the exact model number, CPU model, screen size and native resolution from `msinfo32` and Settings -> System -> Display |
-| Browsers | macOS: Google Chrome 157.0.8103.80 (checked 2026-11-18; Week 1 used 155.0.8059.80); Playwright Firefox 159.0 build v1572 used for C04 (Mozilla Firefox 160.0.1 is also installed but not used by the scripts). Windows: record in the [configuration matrix](#21-configurations) |
+| Operating systems | macOS 26.5.2 (build 25F84, checked 2026-10-27 with `sw_vers`); Windows 11 Home Single Language 25H2 (build 26200, checked 2026-11-24 with `Get-ComputerInfo`) |
+| Windows hardware | Acer Nitro 5 (2021) owned by Darius Lee Shin: model AN515-45, AMD Ryzen 5 5600H CPU, NVIDIA GTX 1650 GPU (plus integrated Radeon graphics), 32 GB DDR4 RAM; built-in 15.6-inch screen, native 1920x1080 at 125% scaling; no external monitor (checked 2026-11-24) |
+| Browsers | macOS: Google Chrome 157.0.8103.80 (checked 2026-11-18; Week 1 used 155.0.8059.80); Playwright Firefox 159.0 build v1572 used for C04 (Mozilla Firefox 160.0.1 is also installed but not used by the scripts). Windows: Google Chrome 124.0.6367.119 (C05) and Playwright Firefox 159.0 build v1572 (C06), checked 2026-11-24; see the [configuration matrix](#21-configurations) |
 | Automation | Python 3.14.7, pytest 9.1.1, pytest-playwright 0.10.0, Playwright 1.65.2 driving the installed Chrome through the `chrome` channel, headless; full set in `requirements-test-lock.txt` |
 | Viewports | Device-mode preset name and CSS pixel size |
 | Accessibility tools | Scripted: axe-core 4.12.1 (through axe-playwright-python 0.1.8) and Lighthouse 12.8.2 (through `npx`, driving the installed Chrome). The axe DevTools extension (installed 2026-11-18) is available for manual cross-checks |
@@ -139,7 +139,7 @@ Coordinators own the preparation and review of each task. Every member executes 
 | 2 | Seed Fixture Set A; record the environment | [0.5](#05-environment-to-record) and [fixtures.md](fixtures.md) |
 | 3 | Write detailed cases with expected results before execution (drafted 2026-10-27; split into technique folders 2026-11-18), then complete each review sign-off | Peer-reviewed cases |
 | 4 | Execute GUI cases on the baseline configuration (C01) | [Task 1](#task-1) results - done 2026-11-18 |
-| 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01-C04 done 2026-11-18 |
+| 5 | Run the compatibility smoke set on every configuration | [Task 2](#task-2) matrix - C01-C04 done 2026-11-18; C05-C06 done 2026-11-24 |
 | 6 | Run the automated accessibility scans and the keyboard, accessibility-tree, reflow and zoom checks | [Task 4](#task-4) findings - done 2026-11-18 (scripted) |
 | 7 | Run the two-reviewer heuristic review (TC-USA-001 to 005) and merge the findings | [Task 3](#task-3) observations |
 | 8 | Reproduce each failure once more, log defects and draft recommendations | [Task 5](#task-5) |
@@ -243,7 +243,7 @@ The eight failures map to three re-checked Week 1 defects (DEF-001 to DEF-003), 
 
 ### Compatibility/configuration matrix
 
-**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01-C04 were executed on 2026-11-18; the run files are listed in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
+**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01-C04 were executed on 2026-11-18 and C05-C06 on 2026-11-24; the run files are listed in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
 
 #### 2.1 Configurations
 
@@ -255,8 +255,8 @@ Each configuration is a combination of OS, browser, viewport and settings. The s
 | C02 | `evidences/mac-chrome/tablet/` | macOS 26.5.2 | Chrome 157.0.8103.80 (Playwright `chrome` channel, headless, mobile emulation) | 768x1024 tablet, device pixel ratio 2, touch | 100% | en-GB; timezone Asia/Kuala_Lumpur | Emulated | Executed 2026-11-18 - 7/8 Pass (TC-CMP-007 Fail, DEF-006) |
 | C03 | `evidences/mac-chrome/mobile/` | macOS 26.5.2 | Chrome 157.0.8103.80 (Playwright `chrome` channel, headless, mobile emulation) | 390x844 phone, device pixel ratio 3, touch | 100% | en-GB; timezone Asia/Kuala_Lumpur | Emulated | Executed 2026-11-18 - 7/8 Pass (TC-CMP-007 Fail, DEF-006) |
 | C04 | `evidences/mac-firefox/desktop/` | macOS 26.5.2 | Firefox 159.0 (Playwright build v1572; the installed Firefox is 160.0.1), headless | 1440x900 desktop | 100% / device pixel ratio 1 | Playwright default; timezone Asia/Kuala_Lumpur | Real | Executed 2026-11-18 - 8/8 Pass |
-| C05 | `evidences/win-chrome/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Chrome [version], Playwright `chrome` channel | [CSS resolution, set in fixtures.json] desktop | 100% / [scaling]% | [locale] | Real | Planned - install Chrome on the Windows laptop if not present; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
-| C06 | `evidences/win-firefox/desktop/` | Windows 11 [build] on Acer Nitro 5 (2021) | Playwright Firefox build [version] | [CSS resolution, set in fixtures.json] desktop | 100% / [scaling]% | [locale] | Real | Planned - Playwright Firefox build, installed with `python -m playwright install firefox`; see [2.4.2](#242-windows-11-run-c05-chrome-c06-firefox) |
+| C05 | `evidences/win-chrome/desktop/` | Windows 11 Home Single Language 25H2 (build 26200) on Acer Nitro 5 AN515-45 | Chrome 124.0.6367.119 (Playwright `chrome` channel, headless) | 1536x864 desktop (1920x1080 native screen) | 100% / 125% display scaling (page rendered at device pixel ratio 1) | en-US, short date `dd/MM/yy`; timezone Singapore Standard Time (UTC+08:00) | Real | Executed 2026-11-24 - 8/8 Pass |
+| C06 | `evidences/win-firefox/desktop/` | Windows 11 Home Single Language 25H2 (build 26200) on Acer Nitro 5 AN515-45 | Firefox 159.0 (Playwright build v1572), headless | 1536x864 desktop (1920x1080 native screen) | 100% / 125% display scaling (page rendered at device pixel ratio 1) | en-US, short date `dd/MM/yy`; timezone Singapore Standard Time (UTC+08:00) | Real | Executed 2026-11-24 - 8/8 Pass |
 | C07 | `evidences/<os>-<browser>/mobile/` | iOS or Android | Chrome mobile [version] | Physical phone | Default | [locale] | Real | Optional - blocked by default: `app.py` uses `app.run(debug=True)`, which listens only on 127.0.0.1, and the project does not modify the application |
 
 **Firefox build.** Playwright cannot drive a normally installed Firefox; it runs its own lightly patched Firefox build. The team chose on 2026-11-18 to run C04 and C06 on that build so that every configuration is executed by the same scripts. C04 therefore tested Firefox 159.0 (Gecko engine), one release behind the installed 160.0.1; this is recorded as a limitation.
@@ -280,14 +280,14 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 
 | ID | Scenario | Expected on every configuration | C01 baseline | C04 mac-firefox | C05 win-chrome | C06 win-firefox |
 | --- | --- | --- | --- | --- | --- | --- |
-| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | Pass | Pass | | |
-| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | Pass | Pass | | |
-| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | Pass | Pass | | |
-| TC-CMP-004 | Complete and reopen | Button and strikethrough update | Pass | Pass | | |
-| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | Pass | Pass | | |
-| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | Pass | Pass | | |
-| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | Pass | Pass | | |
-| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | Pass | Pass | | |
+| TC-CMP-001 | Register, log in, log out | Pages render; forms submit; redirects match C01 | Pass | Pass | Pass | Pass |
+| TC-CMP-002 | Create task with date picker | Native date picker opens; selected date saved as `YYYY-MM-DD` whatever the display format | Pass | Pass | Pass | Pass |
+| TC-CMP-003 | Filter by category/status and search | Auto-submit on select change works; results match C01 | Pass | Pass | Pass | Pass |
+| TC-CMP-004 | Complete and reopen | Button and strikethrough update | Pass | Pass | Pass | Pass |
+| TC-CMP-005 | Edit task | Pre-filled values, including the date, shown and saved | Pass | Pass | Pass | Pass |
+| TC-CMP-006 | Delete with confirmation | Native confirm dialog shown; Cancel/OK behave as on C01 | Pass | Pass | Pass | Pass |
+| TC-CMP-007 | Navigation bar and task table layout | Nav items readable on one line each (H10); all six columns readable; no clipped text or controls | Pass | Pass | Pass | Pass |
+| TC-CMP-008 | Dashboard layout | Cards reflow without overlap | Pass | Pass | Pass | Pass |
 
 **Cross-device (Chrome on macOS; baseline is C01 above)**
 
@@ -307,7 +307,7 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 1. C01 baseline: fresh TC-CMP run on the MacBook.
 2. C02 and C03: fresh TC-CMP runs with Chrome mobile emulation (done 2026-11-18). The Week 1 captures ([0.9](#week-1-captures-reused-as-supporting-evidence)) remain supporting evidence only.
 3. C04 Firefox on the MacBook ([2.4.1](#241-macos-firefox-run-c04)) (done 2026-11-18).
-4. C05 and C06 on Windows 11 ([2.4.2](#242-windows-11-run-c05-chrome-c06-firefox)).
+4. C05 and C06 on Windows 11 ([2.4.2](#242-windows-11-run-c05-chrome-c06-firefox)) (done 2026-11-24).
 5. C07 only if a way to reach the app is found without modifying it. Otherwise mark the column `Blocked` and give the reason.
 
 #### 2.4 Platform run plans
@@ -333,23 +333,23 @@ Step-by-step PowerShell commands for this plan, from a clean machine to committe
 | 3. Set up the test environment | Pull `w3-special-testing`, then follow [setup.md](setup.md): create `test/03_Special_Testing/.venv` and install `requirements-test-lock.txt` | The scripts start `python app.py` themselves; it listens only on 127.0.0.1, so the app runs on the Windows machine itself |
 | 4. Configure | In `fixtures.json`, set the C05 and C06 `viewport` to the laptop's CSS resolution (screen resolution divided by the scaling factor; 1536x864 is the default for 1920x1080 at 125%) and change `tester_initial` if someone else runs it | The scripts seed their own data in the Windows database; use the same timezone as the Mac runs |
 | 5. Locale | Record the Windows region and short-date format in the 2.1 table | The date picker displays dates in the locale's format; the saved value must still be `YYYY-MM-DD` |
-| 6. Execute | `python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C05`, then `--w3-config C06`; run each twice so any failure is reproduced | TC-CMP-008 compares with C01 only on the same day; otherwise compare with C01 values recalculated for that day |
+| 6. Execute | `python -m pytest test/03_Special_Testing/2_Compatibility --w3-config C05`, then `--w3-config C06`; run each twice so any failure is reproduced (done twice each on 2026-11-24, 8/8 Pass every time) | TC-CMP-008 compares with C01 only on the same day; otherwise compare with C01 values recalculated for that day |
 | 7. Evidence | Saved automatically to `2_Compatibility/evidences/win-chrome/desktop/` and `win-firefox/desktop/` with a results file per run | Commit the evidence and results files, then fill the C05 and C06 columns |
 | 8. Record | Fill the C05 and C06 columns in [2.2](#22-compatibility-smoke-scenarios). Log only differences from C01 as `DEF-` or `USA-OBS-` items | Each scripted run takes under a minute |
 
 #### 2.5 Interpretation
 
-Based on C01-C04 as of 2026-11-18; update after C05/C06.
+Based on C01-C06 as of 2026-11-24.
 
 | Question | Answer from the evidence |
 | --- | --- |
-| Browser-specific differences? | None functional. All eight scenarios give the same result in Chrome (C01) and Firefox (C04) on macOS, including the native date control, the delete confirmation and the auto-submitting filters. Firefox differs only cosmetically: a larger `○` glyph, due dates on one line, native select styling, and a table about 40 px wider than its container without causing a page scroll. |
-| OS-specific differences? | Not yet known; C05 (Chrome) and C06 (Firefox) on Windows 11 will isolate them. |
+| Browser-specific differences? | None functional. All eight scenarios give the same result in Chrome and Firefox on both macOS (C01, C04) and Windows 11 (C05, C06), including the native date control, the delete confirmation and the auto-submitting filters. Firefox differs only cosmetically: due dates on one line and native select styling on both systems; on macOS also a larger `○` glyph and a table about 40 px wider than its container without causing a page scroll. |
+| OS-specific differences? | None functional. Chrome on Windows (C05) gives the same results as on macOS (C01), and Firefox on Windows (C06) the same as on macOS (C04); dashboard counters match C01's values recalculated for 2026-11-24 (9, 8, 2, 1, 1). Differences are cosmetic and come from the font stack (`-apple-system, Segoe UI, ...`): Windows renders in Segoe UI rather than the macOS system font, giving slightly taller table rows, and Firefox's `○` glyph is the same size as Chrome's on Windows. Smallest text is 12.5 px on every desktop configuration. The Windows runs used a 1536x864 viewport (the laptop's CSS resolution) rather than 1440x900, and an older Chrome (124 vs 157), so these comparisons are not exact like-for-like. |
 | Viewport-specific differences? | Yes. On emulated tablet and phone screens (C02, C03) the page is laid out at 980 CSS px and scaled down, so text renders at 9.8 px and 5.0 px (DEF-006, cause consistent with H1). In a narrow desktop window the navigation wraps and pushes `Log out` off-screen (DEF-004, seen at 390 px in TC-GUI-005 and at 320 px in TC-A11Y-012). |
 | Does any difference block a task? | No task is blocked: all task flows passed on every configuration run. On phones and tablets reading needs zooming (DEF-006), and in narrow windows logging out needs horizontal scrolling (DEF-004); both make tasks materially harder, hence Moderate severity. |
 | Confidence | Results were reproduced in two runs per configuration (C01's first run used the earlier text-size check). Tablet and phone results come from Chrome's mobile emulation, not real devices, so touch behaviour and real-device rendering are untested. |
 
-- Limitations: emulation vs real device, the browser versions tested, and untested configurations: Microsoft Edge on Windows 11 and Safari/WebKit on macOS and iOS (both excluded by team decision, see [2.1](#21-configurations)), older browsers and Firefox on Android. Firefox was tested through Playwright's build (159.0), not the installed release (160.0.1).
+- Limitations: emulation vs real device, the browser versions tested, and untested configurations: Microsoft Edge on Windows 11 and Safari/WebKit on macOS and iOS (both excluded by team decision, see [2.1](#21-configurations)), older browsers and Firefox on Android. Firefox was tested through Playwright's build (159.0), not the installed release (160.0.1). Chrome on the Windows laptop (C05) was 124.0.6367.119, the version installed there and far behind the macOS Chrome 157; current Chrome on Windows is untested. The Windows runs (2026-11-24) were six days after the macOS runs, so TC-CMP-008 was compared with recalculated C01 values rather than same-day values.
 
 ## Task 3
 
@@ -472,7 +472,7 @@ State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a
 
 Severity guidance for this phase: **Major** when a task cannot be completed (for example, a keyboard or screen-reader user cannot complete or delete a task). **Moderate** when a task can be completed but is materially harder or misleading. **Minor** for cosmetic or consistency issues.
 
-#### 5.3 Defect summary (as of 2026-11-18; Task 3 and C05-C06 still to run)
+#### 5.3 Defect summary (as of 2026-11-24; Task 3 still to run; C05-C06 found no new defects)
 
 | Defect ID | Title | Source case(s) | Configuration | Severity | Priority | Status |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -689,7 +689,7 @@ DEF-001 to DEF-003 keep the recommendations recorded in Week 1.
 
 Order the recommendations by priority. Recommendations describe changes for the development team. This project does not modify the application.
 
-#### 5.5 Phase summary and hand-offs (as of 2026-11-18; usability review and C05/C06 pending)
+#### 5.5 Phase summary and hand-offs (as of 2026-11-24; usability review pending)
 
 **Execution metrics.** Each case is counted once. A compatibility case counts as Fail if it failed on any configuration run so far; its per-configuration results are in [2.2](#22-compatibility-smoke-scenarios).
 
@@ -705,7 +705,7 @@ $$
 \text{Verdict completion} = \frac{\text{Executed}}{\text{Planned}} \times 100\% = \frac{48}{53} \times 100\% \approx 90.6\%
 $$
 
-Compatibility runs per configuration: 8 cases on each of C01-C04 = 32 case runs, 30 Pass and 2 Fail (TC-CMP-007 on C02 and C03), a 93.8% run pass rate.
+Compatibility runs per configuration: 8 cases x 6 configurations (C01-C06) = 48 case runs, 46 Pass and 2 Fail (TC-CMP-007 on C02 and C03), a 95.8% run pass rate.
 
 **Defects found or re-confirmed in Week 3.**
 
@@ -724,5 +724,5 @@ Accessibility produced 7 of the 10 new defects and both Major ones, so it is the
 | Usability observations (by severity) | So far: 4 found by the GUI suite (USA-OBS-001 to 004), severities pending the heuristic review |
 | Hand-off to Week 4 | Compare the web forms with the API for the same inputs: whitespace-only titles (DEF-003), the 8-character password boundary (DEF-001) and due-today urgency (DEF-002). No API requests were made in Week 3 |
 | Hand-off to Week 5 | DEF-005 / H9: task titles are rendered as HTML, a likely script-injection path to assess with safe test data in the STRIDE table |
-| Hand-off to Week 6 | The three Playwright suites (`test_gui.py`, `test_compatibility.py`, `test_accessibility.py`) already run headless from one command and write per-run results files; TC-CMP-001 to 008 are stable across four configurations and are the strongest regression candidates |
-| Limitations | Windows configurations and the usability review not yet run; tablet and phone results come from emulation, not real devices; Firefox tested through Playwright's 159.0 build; all runs headless on one MacBook; native dialogs, date pickers and validation bubbles are recorded as text rather than screenshots; 200% zoom emulated through an equivalent viewport; a subset of WCAG 2.2 A/AA only; usability by two-reviewer heuristic review without end-user participants |
+| Hand-off to Week 6 | The three Playwright suites (`test_gui.py`, `test_compatibility.py`, `test_accessibility.py`) already run headless from one command and write per-run results files; TC-CMP-001 to 008 are stable across six configurations on macOS and Windows 11 and are the strongest regression candidates |
+| Limitations | Usability review not yet run; tablet and phone results come from emulation, not real devices; Firefox tested through Playwright's 159.0 build; Chrome on Windows was the older 124.0.6367.119; all runs headless on one MacBook and one Windows 11 laptop; native dialogs, date pickers and validation bubbles are recorded as text rather than screenshots; 200% zoom emulated through an equivalent viewport; a subset of WCAG 2.2 A/AA only; usability by two-reviewer heuristic review without end-user participants |

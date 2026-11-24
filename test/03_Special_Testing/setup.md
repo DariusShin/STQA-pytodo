@@ -16,6 +16,8 @@ by pytest; the usability review remains manual.
 | Flask | 3.0.3 |
 | Google Chrome (macOS, C01) | 157.0.8103.80, driven through Playwright's `chrome` channel |
 | Firefox (macOS, C04) | Playwright build 159.0 (v1572); see [Firefox note](#firefox-configurations) |
+| Google Chrome (Windows 11, C05) | 124.0.6367.119, driven through Playwright's `chrome` channel (checked 2026-11-24) |
+| Firefox (Windows 11, C06) | Playwright build 159.0 (v1572) (checked 2026-11-24) |
 | axe-core (via axe-playwright-python 0.1.8) | 4.12.1 |
 | Lighthouse (via `npx`, needs Node.js) | 12.8.2; Node.js 24.19.0 verified |
 
