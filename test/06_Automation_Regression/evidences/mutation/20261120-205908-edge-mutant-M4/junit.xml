@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="13" failures="5" skipped="5" tests="48" time="55.115" timestamp="2026-11-20T20:59:08.720500+08:00" hostname="ouioui"><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-001-len2]" time="1.623" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-002-len3]" time="0.362" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-003-len4]" time="0.353" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-004-len19]" time="0.401" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-005-len20]" time="0.435" /><testcase classname="test_01_auth" name="test_username_length_boundaries[TC-BB-006-len21]" time="0.314" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-007-len7]" time="0.250" /><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-008-len8]" time="0.246"><skipped type="pytest.xfail" message="known open defect DEF-001" /></testcase><testcase classname="test_01_auth" name="test_password_length_boundaries[TC-BB-009-len9]" time="0.379" /><testcase classname="test_01_auth" name="test_valid_registration_opens_task_list" time="0.347" /><testcase classname="test_01_auth" name="test_username_with_hyphen_is_rejected" time="0.248" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-012-empty-username]" time="0.179" /><testcase classname="test_01_auth" name="test_empty_registration_field_blocked_by_browser[TC-BB-013-empty-password]" time="0.245" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-014-rule1-valid]" time="0.430" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-015-rule2-wrong-pw]" time="0.500" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-016-rule3-unknown-user]" time="0.401" /><testcase classname="test_01_auth" name="test_login_decision_table[TC-BB-017-rule4-both-wrong]" time="0.373" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[list]" time="0.087" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[dashboard]" time="0.095" /><testcase classname="test_01_auth" name="test_protected_page_redirects_when_logged_out[new-task]" time="0.091" /><testcase classname="test_01_auth" name="test_logout_revokes_protected_page_access" time="0.619" /><testcase classname="test_02_tasks" name="test_create_full_field_task_persists" time="0.971" /><testcase classname="test_02_tasks" name="test_create_title_only_task" time="0.652" /><testcase classname="test_02_tasks" name="test_empty_title_blocked_by_browser" time="0.593" /><testcase classname="test_02_tasks" name="test_whitespace_only_title_rejected" time="0.641"><skipped type="pytest.xfail" message="known open defect DEF-003" /></testcase><testcase classname="test_02_tasks" name="test_edit_persists_all_fields" time="1.104"><failure message="AssertionError: assert ['BB-CRUD-Edi...RUD-Original'] == ['BB-CRUD-Edited']&#10;  &#10;  Left contains 3 more items, first extra item: ''&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001d70c66ba10&gt;
+logged_in = {'username': 'w6_ui_20590821', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c5ab750&gt;}
+
+    @pytest.mark.auto("TC-AUT-013")
+    @pytest.mark.manual("TC-BB-024", "TC-GUI-012", "TC-GUI-015")
+    @pytest.mark.req("REQ-003")
+    def test_edit_persists_all_fields(ui, logged_in):
+        original_due, new_due = iso_in(3), iso_in(2)
+        logged_in["api"].create_task("BB-CRUD-Original", "Week 1 full-field task", "Work", original_due)
+        ui.open("/")
+        ui.open_edit("BB-CRUD-Original")
+        assert ui.heading() == "Edit Task"
+        assert ui.task_form_values()["due_date"] == original_due  # pre-filled (TC-GUI-012)
+        ui.fill_task_form("BB-CRUD-Edited", "Week 1 edited description", "Study", new_due)
+        ui.submit_form()
+&gt;       assert ui.titles() == ["BB-CRUD-Edited"]
+E       AssertionError: assert ['BB-CRUD-Edi...RUD-Original'] == ['BB-CRUD-Edited']
+E         
+E         Left contains 3 more items, first extra item: ''
+E         Use -v to get more diff
+
+test_02_tasks.py:79: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_cancel_edit_preserves_saved_data" time="1.173"><failure message="AssertionError: assert ['BB-CRUD-Edi...RUD-Original'] == ['BB-CRUD-Edited']&#10;  &#10;  Left contains 4 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001d70c5f2a50&gt;
+logged_in = {'username': 'w6_ui_20590822', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6988c0&gt;}
+
+    @pytest.mark.auto("TC-AUT-014")
+    @pytest.mark.manual("TC-BB-025")
+    @pytest.mark.req("REQ-003")
+    def test_cancel_edit_preserves_saved_data(ui, logged_in):
+        logged_in["api"].create_task("BB-CRUD-Edited", "Week 1 edited description", "Study", iso_in(2))
+        ui.open("/")
+        ui.open_edit("BB-CRUD-Edited")
+        saved = ui.task_form_values()
+        ui.fill_task_form("BB-UNSAVED-DRAFT", "unsaved draft", "Urgent", iso_in(9))
+        ui.cancel_task_form()
+        assert ui.path == "/"
+&gt;       assert ui.titles() == ["BB-CRUD-Edited"]
+E       AssertionError: assert ['BB-CRUD-Edi...RUD-Original'] == ['BB-CRUD-Edited']
+E         
+E         Left contains 4 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_02_tasks.py:98: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_cancel_deletion_retains_task" time="0.927"><failure message="AssertionError: assert ['BB-MINIMAL'...RUD-Original'] == ['BB-MINIMAL']&#10;  &#10;  Left contains 5 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001d70c5f3230&gt;
+logged_in = {'username': 'w6_ui_20590823', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6994f0&gt;}
+
+    @pytest.mark.auto("TC-AUT-015")
+    @pytest.mark.manual("TC-BB-026", "TC-GUI-013")
+    @pytest.mark.req("REQ-003")
+    def test_cancel_deletion_retains_task(ui, logged_in):
+        logged_in["api"].create_task("BB-MINIMAL")
+        ui.open("/")
+        dialog = ui.delete("BB-MINIMAL", confirm=False)
+        assert dialog == "Delete this task?"
+        ui.open("/")
+&gt;       assert ui.titles() == ["BB-MINIMAL"]
+E       AssertionError: assert ['BB-MINIMAL'...RUD-Original'] == ['BB-MINIMAL']
+E         
+E         Left contains 5 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_02_tasks.py:112: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_confirm_deletion_removes_only_that_task" time="1.069"><failure message="AssertionError: assert ['BB-KEEP', '...MINIMAL', ...] == ['BB-KEEP']&#10;  &#10;  Left contains 6 more items, first extra item: 'BB-MINIMAL'&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001d70c5f36b0&gt;
+logged_in = {'username': 'w6_ui_20590824', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6b92b0&gt;}
+
+    @pytest.mark.smoke
+    @pytest.mark.auto("TC-AUT-016")
+    @pytest.mark.manual("TC-BB-027", "TC-GUI-013")
+    @pytest.mark.req("REQ-003")
+    def test_confirm_deletion_removes_only_that_task(ui, logged_in):
+        api = logged_in["api"]
+        api.create_task("BB-KEEP")
+        api.create_task("BB-MINIMAL")
+        ui.open("/")
+        ui.delete("BB-MINIMAL", confirm=True)
+&gt;       assert ui.titles() == ["BB-KEEP"]
+E       AssertionError: assert ['BB-KEEP', '...MINIMAL', ...] == ['BB-KEEP']
+E         
+E         Left contains 6 more items, first extra item: 'BB-MINIMAL'
+E         Use -v to get more diff
+
+test_02_tasks.py:125: AssertionError</failure></testcase><testcase classname="test_02_tasks" name="test_complete_then_reopen_task" time="1.804" /><testcase classname="test_02_tasks" name="test_special_characters_preserved_in_edit_form" time="1.288" /><testcase classname="test_02_tasks" name="test_special_characters_displayed_literally_in_list" time="0.796"><skipped type="pytest.xfail" message="known open defect DEF-005" /></testcase><testcase classname="test_02_tasks" name="test_each_account_sees_only_its_own_tasks" time="0.972"><failure message="AssertionError: assert ['BB-ACCOUNT-...-Edited', ...] == ['BB-ACCOUNT-B-ONLY']&#10;  &#10;  Left contains 12 more items, first extra item: 'BB-ACCOUNT-A-SECOND'&#10;  Use -v to get more diff">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d4050&gt;
+new_account = &lt;function new_account.&lt;locals&gt;._create at 0x000001d70c6bcbf0&gt;
+
+    @pytest.mark.smoke
+    @pytest.mark.auto("TC-AUT-020")
+    @pytest.mark.manual("TC-BB-044")
+    @pytest.mark.req("REQ-008")
+    def test_each_account_sees_only_its_own_tasks(ui, new_account):
+        account_a, account_b = new_account("a"), new_account("b")
+        account_a["api"].create_task("BB-ACCOUNT-A-ONLY", category="Work")
+        account_a["api"].create_task("BB-ACCOUNT-A-SECOND")
+        account_b["api"].create_task("BB-ACCOUNT-B-ONLY", category="Personal")
+    
+        ui.login(account_b["username"], account_b["password"])
+&gt;       assert ui.titles() == ["BB-ACCOUNT-B-ONLY"]
+E       AssertionError: assert ['BB-ACCOUNT-...-Edited', ...] == ['BB-ACCOUNT-B-ONLY']
+E         
+E         Left contains 12 more items, first extra item: 'BB-ACCOUNT-A-SECOND'
+E         Use -v to get more diff
+
+test_02_tasks.py:182: AssertionError</failure></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-030-category-work]" time="1.131"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 13 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d4770&gt;
+logged_in = {'username': 'w6_ui_20590830', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6bda70&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 13 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-031-status-open]" time="1.663"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 17 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d46b0&gt;
+logged_in = {'username': 'w6_ui_20590831', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6cd1d0&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 17 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-032-status-done]" time="1.943"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 21 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d5910&gt;
+logged_in = {'username': 'w6_ui_20590832', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6cd9f0&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 21 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-033-search-match]" time="1.506"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 25 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d6450&gt;
+logged_in = {'username': 'w6_ui_20590833', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6d8b90&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 25 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-034-search-nomatch]" time="1.521"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 29 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d67b0&gt;
+logged_in = {'username': 'w6_ui_20590834', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6e5fd0&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 29 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_03_filters" name="test_filters_return_only_matching_tasks[TC-BB-035-combined]" time="1.770"><error message="failed on setup with &quot;AssertionError: precondition: fixtures not listed&#10;assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']&#10;  &#10;  At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'&#10;  Left contains 33 more items, first extra item: 'BB-CRUD-Edited'&#10;  Use -v to get more diff&quot;">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d6e10&gt;
+logged_in = {'username': 'w6_ui_20590835', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6e4450&gt;}
+
+    @pytest.fixture
+    def filter_account(ui, logged_in):
+        for title, category, done in FIXTURES:
+            logged_in["api"].create_task(title, category=category, done=done)
+        ui.open("/")
+&gt;       assert sorted(ui.titles()) == sorted([F1, F2, F3, F4]), "precondition: fixtures not listed"
+E       AssertionError: precondition: fixtures not listed
+E       assert ['', 'BB-ACCO...-Edited', ...] == ['BB-MATCH-ST...ER-WORK-OPEN']
+E         
+E         At index 0 diff: '' != 'BB-MATCH-STUDY-OPEN'
+E         Left contains 33 more items, first extra item: 'BB-CRUD-Edited'
+E         Use -v to get more diff
+
+test_03_filters.py:31: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-036-no-date]" time="4.055"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d5af0&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70c6d5af0&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-037-yesterday]" time="3.224"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70da10950&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70da10950&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-038-today]" time="1.848"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-039-tomorrow]" time="2.000"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70c6d4110&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70c6d4110&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-040-plus-two]" time="3.217"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70da11f70&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70da11f70&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_urgency_label[TC-BB-041-plus-three]" time="2.169"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70da13950&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70da13950&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_completion_overrides_overdue" time="2.065"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70da2cc50&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70da2cc50&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_dashboard_counters_unaffected_by_def002" time="1.961"><error message="failed on setup with &quot;AssertionError: precondition: dataset not complete&#10;assert 44 == 7&#10; +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])&#10;[+3 more lines; full report in element text]">ui = &lt;pages.PyTodoUI object at 0x000001d70da2e570&gt;
+dashboard_account = {'username': 'w6_dash_20590836', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x000001d70c6a9400&gt;}
+
+    @pytest.fixture
+    def on_task_list(ui, dashboard_account):
+        ui.login(dashboard_account["username"], dashboard_account["password"])
+&gt;       assert len(ui.rows()) == len(DATASET), "precondition: dataset not complete"
+E       AssertionError: precondition: dataset not complete
+E       assert 44 == 7
+E        +  where 44 = len([{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...])
+E        +    where [{'title': 'BB-COMPLETED', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Done', ...}, {'title': 'BB-PLUS-...erdue', ...}, {'title': 'BB-YESTERDAY', 'category': 'Study', 'due_date': '2026-11-19', 'urgency': 'Overdue', ...}, ...] = rows()
+E        +      where rows = &lt;pages.PyTodoUI object at 0x000001d70da2e570&gt;.rows
+E        +  and   7 = len([('BB-NO-DATE', None, False), ('BB-YESTERDAY', -1, False), ('BB-TODAY', 0, False), ('BB-TOMORROW', 1, False), ('BB-PLUS-TWO', 2, False), ('BB-PLUS-THREE', 3, False), ...])
+
+test_04_urgency_dashboard.py:43: AssertionError</error></testcase><testcase classname="test_04_urgency_dashboard" name="test_dashboard_overdue_counter" time="4.461"><skipped type="pytest.xfail" message="known open defect DEF-002" /></testcase></testsuite></testsuites>
