@@ -27,6 +27,7 @@ This README is the single phase report: the plan, every summary table and matrix
 ├── fixtures.json        ← the same test data, loaded by the scripts
 ├── seed_fixtures.py     ← creates a seeded account for manual sessions (usability review)
 ├── conftest.py, pytest.ini, setup.md, requirements-test-lock.txt  ← Playwright/pytest harness and run guide
+├── windows_runbook.md   ← step-by-step PowerShell guide for the Windows 11 runs (C05, C06)
 ├── 1_GUI/               ← Task 1: test_cases.md (TC-GUI-001 to 022), test_gui.py + evidences/
 ├── 2_Compatibility/     ← Task 2: test_cases.md (TC-CMP-001 to 008), test_compatibility.py + evidences/<os>-<browser>/<viewport>/
 ├── 3_Usability/         ← Task 3: test_cases.md (TC-USA-001 to 005), review_kit.md, notes_template.md + evidences/
@@ -242,7 +243,7 @@ The eight failures map to three re-checked Week 1 defects (DEF-001 to DEF-003), 
 
 ### Compatibility/configuration matrix
 
-**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01-C03 were executed on 2026-11-18; the run files are listed in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
+**Method.** Run the eight smoke scenarios in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) on each configuration with [test_compatibility.py](2_Compatibility/test_compatibility.py) (`--w3-config <ID>`), saving captures to that configuration's evidence folder. C01-C04 were executed on 2026-11-18; the run files are listed in [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md). Compare each result with C01 and record only differences in layout or behaviour. Chrome DevTools device mode is an emulation; label it so and do not present it as a real-device result.
 
 #### 2.1 Configurations
 
@@ -322,6 +323,8 @@ Result per cell: `Pass`, `Fail (DEF-xxx)`, `Diff (USA-OBS-xxx)` for a cosmetic d
 | 5. Record | C04 column filled in [2.2](#22-compatibility-smoke-scenarios) | |
 
 ##### 2.4.2 Windows 11 run (C05 Chrome, C06 Firefox)
+
+Step-by-step PowerShell commands for this plan, from a clean machine to committed evidence, are in [windows_runbook.md](windows_runbook.md).
 
 | Step | Action | Notes |
 | --- | --- | --- |
@@ -469,7 +472,7 @@ State the limitation: this is a basic review of a subset of WCAG 2.2 A/AA, not a
 
 Severity guidance for this phase: **Major** when a task cannot be completed (for example, a keyboard or screen-reader user cannot complete or delete a task). **Moderate** when a task can be completed but is materially harder or misleading. **Minor** for cosmetic or consistency issues.
 
-#### 5.3 Defect summary (as of 2026-11-18; Task 3 and C04-C06 still to run)
+#### 5.3 Defect summary (as of 2026-11-18; Task 3 and C05-C06 still to run)
 
 | Defect ID | Title | Source case(s) | Configuration | Severity | Priority | Status |
 | --- | --- | --- | --- | --- | --- | --- |
