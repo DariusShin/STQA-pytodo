@@ -1,0 +1,6797 @@
+{
+	"id": "a8805d7a-aab1-419b-8f97-f9e8fbbb5980",
+	"name": "PyTodo Pro - Week 4 Web and API",
+	"timestamp": "2026-11-24T05:41:43.712Z",
+	"collection_id": "60388917-99b1e6d8-1fc2-4406-8337-8d1123a16b89",
+	"folder_id": 0,
+	"environment_id": "60388917-6d226910-1339-405d-82f0-802f5ed1c787",
+	"totalPass": 276,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2026-11-24T05:41:20.573Z",
+	"totalFail": 63,
+	"results": [
+		{
+			"id": "2e645e74-ee3b-4b39-9372-df789778f73a",
+			"name": "TC-API-001 Register user A (valid)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 186,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-001: status is 201": true,
+				"TC-API-001: id is a number": true,
+				"TC-API-001: username is echoed back": true
+			},
+			"testPassFailCounts": {
+				"TC-API-001: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-001: id is a number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-001: username is echoed back": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				186
+			],
+			"allTests": [
+				{
+					"TC-API-001: status is 201": true,
+					"TC-API-001: id is a number": true,
+					"TC-API-001: username is echoed back": true
+				}
+			]
+		},
+		{
+			"id": "49ba7ced-293e-4a35-add1-ade289a314b2",
+			"name": "TC-API-002a Username 3 chars (minimum) accepted",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 176,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-002a: status is 201": true
+			},
+			"testPassFailCounts": {
+				"TC-API-002a: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				176
+			],
+			"allTests": [
+				{
+					"TC-API-002a: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "ef65e275-9403-4302-866b-0b8dff021d7d",
+			"name": "TC-API-002b Username 20 chars (maximum) accepted",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 168,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-002b: status is 201": true
+			},
+			"testPassFailCounts": {
+				"TC-API-002b: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				168
+			],
+			"allTests": [
+				{
+					"TC-API-002b: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "afd394d4-0f02-4d0b-bbc2-4ab29c7abf15",
+			"name": "TC-API-003a Username 2 chars rejected",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-003a: status is 400": true,
+				"TC-API-003a: response body is JSON (not an HTML error page)": true,
+				"TC-API-003a: error message is \"invalid username\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-003a: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003a: error message is \"invalid username\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-003a: status is 400": true,
+					"TC-API-003a: response body is JSON (not an HTML error page)": true,
+					"TC-API-003a: error message is \"invalid username\"": true
+				}
+			]
+		},
+		{
+			"id": "b258142a-03a4-489b-b4b3-43a93c8a3c3e",
+			"name": "TC-API-003b Username 21 chars rejected",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-003b: status is 400": true,
+				"TC-API-003b: response body is JSON (not an HTML error page)": true,
+				"TC-API-003b: error message is \"invalid username\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-003b: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003b: error message is \"invalid username\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-003b: status is 400": true,
+					"TC-API-003b: response body is JSON (not an HTML error page)": true,
+					"TC-API-003b: error message is \"invalid username\"": true
+				}
+			]
+		},
+		{
+			"id": "6bc127d3-3454-41e2-b70b-1cb6adbf4ed5",
+			"name": "TC-API-003c Username with illegal character rejected",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-003c: status is 400": true,
+				"TC-API-003c: response body is JSON (not an HTML error page)": true,
+				"TC-API-003c: error message is \"invalid username\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-003c: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003c: error message is \"invalid username\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-003c: status is 400": true,
+					"TC-API-003c: response body is JSON (not an HTML error page)": true,
+					"TC-API-003c: error message is \"invalid username\"": true
+				}
+			]
+		},
+		{
+			"id": "b6fcb4dd-1272-4996-96e6-9be0b6c1ddef",
+			"name": "TC-API-003d Username missing",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-003d: status is 400": true,
+				"TC-API-003d: response body is JSON (not an HTML error page)": true,
+				"TC-API-003d: error message is \"invalid username\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-003d: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003d: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-003d: error message is \"invalid username\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-003d: status is 400": true,
+					"TC-API-003d: response body is JSON (not an HTML error page)": true,
+					"TC-API-003d: error message is \"invalid username\"": true
+				}
+			]
+		},
+		{
+			"id": "23a6dfa7-bfdd-44f4-9fe6-614e6fef86f7",
+			"name": "TC-API-004 Password 7 chars rejected",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-004: status is 400": true,
+				"TC-API-004: response body is JSON (not an HTML error page)": true,
+				"TC-API-004: error message is \"invalid password\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-004: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-004: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-004: error message is \"invalid password\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-004: status is 400": true,
+					"TC-API-004: response body is JSON (not an HTML error page)": true,
+					"TC-API-004: error message is \"invalid password\"": true
+				}
+			]
+		},
+		{
+			"id": "be6d9497-8cd8-41af-8d30-1195ded5ff71",
+			"name": "TC-API-005 Password 8 chars (stated minimum) accepted",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-005: status is 201": false
+			},
+			"testPassFailCounts": {
+				"TC-API-005: status is 201": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-005: status is 201": false
+				}
+			]
+		},
+		{
+			"id": "f0ef5ec0-76bb-4b88-901f-24a283eca76a",
+			"name": "TC-API-006 Password missing",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-006: status is 400": true,
+				"TC-API-006: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-006: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-006: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-006: status is 400": true,
+					"TC-API-006: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "f2346ebf-0373-4dbb-90b3-e4ef1a65a93a",
+			"name": "TC-API-007 Username of the wrong type (number)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 14,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-007: status is 400": false,
+				"TC-API-007: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-007: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-007: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"TC-API-007: status is 400": false,
+					"TC-API-007: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "0101280b-d9b7-4154-bc93-1fe5b162ecdb",
+			"name": "TC-API-008a Duplicate username rejected",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 169,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-008a: status is 409 or 400 (username already taken)": false,
+				"TC-API-008a: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-008a: status is 409 or 400 (username already taken)": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-008a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				169
+			],
+			"allTests": [
+				{
+					"TC-API-008a: status is 409 or 400 (username already taken)": false,
+					"TC-API-008a: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "873edd99-5da2-4b4a-87be-815d52c35c3d",
+			"name": "TC-API-008b Original account still logs in",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 171,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-008b: status is 200": true
+			},
+			"testPassFailCounts": {
+				"TC-API-008b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				171
+			],
+			"allTests": [
+				{
+					"TC-API-008b: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "ca66d408-2ff8-4bdf-8eb3-03015d90db84",
+			"name": "TC-API-009 Login with valid credentials",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 163,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-009: status is 200": true,
+				"TC-API-009: username is returned": true
+			},
+			"testPassFailCounts": {
+				"TC-API-009: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-009: username is returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				163
+			],
+			"allTests": [
+				{
+					"TC-API-009: status is 200": true,
+					"TC-API-009: username is returned": true
+				}
+			]
+		},
+		{
+			"id": "f36fae41-13cf-40e7-929a-a56922dba0c4",
+			"name": "TC-API-010a Login with wrong password",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 182,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-010a: status is 401": true,
+				"TC-API-010a: response body is JSON (not an HTML error page)": true,
+				"TC-API-010a: error message is \"invalid credentials\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-010a: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010a: error message is \"invalid credentials\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				182
+			],
+			"allTests": [
+				{
+					"TC-API-010a: status is 401": true,
+					"TC-API-010a: response body is JSON (not an HTML error page)": true,
+					"TC-API-010a: error message is \"invalid credentials\"": true
+				}
+			]
+		},
+		{
+			"id": "0a6a054b-18b1-4670-8c91-f41c67e001a1",
+			"name": "TC-API-010b Login with unknown username",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-010b: status is 401": true,
+				"TC-API-010b: response body is JSON (not an HTML error page)": true,
+				"TC-API-010b: error message is \"invalid credentials\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-010b: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010b: error message is \"invalid credentials\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-010b: status is 401": true,
+					"TC-API-010b: response body is JSON (not an HTML error page)": true,
+					"TC-API-010b: error message is \"invalid credentials\"": true
+				}
+			]
+		},
+		{
+			"id": "4b55c881-c2d3-4e80-8335-ea03bc7e76eb",
+			"name": "TC-API-010c Login with empty body",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-010c: status is 401": true,
+				"TC-API-010c: response body is JSON (not an HTML error page)": true,
+				"TC-API-010c: error message is \"invalid credentials\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-010c: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-010c: error message is \"invalid credentials\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-010c: status is 401": true,
+					"TC-API-010c: response body is JSON (not an HTML error page)": true,
+					"TC-API-010c: error message is \"invalid credentials\"": true
+				}
+			]
+		},
+		{
+			"id": "c96d8334-8ab2-4129-99de-f7ea9e114c04",
+			"name": "TC-API-011a GET /api/tasks without login",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 4,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011a: status is 401": true,
+				"TC-API-011a: response body is JSON (not an HTML error page)": true,
+				"TC-API-011a: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011a: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011a: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-011a: status is 401": true,
+					"TC-API-011a: response body is JSON (not an HTML error page)": true,
+					"TC-API-011a: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "78c345e8-d956-41da-86f5-5515529ceb76",
+			"name": "TC-API-011b POST /api/tasks without login",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 3,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011b: status is 401": true,
+				"TC-API-011b: response body is JSON (not an HTML error page)": true,
+				"TC-API-011b: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011b: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011b: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"TC-API-011b: status is 401": true,
+					"TC-API-011b: response body is JSON (not an HTML error page)": true,
+					"TC-API-011b: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "b9f18e56-da6c-4f15-9c3f-59a57513b4c2",
+			"name": "TC-API-011c GET /api/tasks/1 without login",
+			"url": "http://127.0.0.1:5000/api/tasks/1",
+			"time": 4,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011c: status is 401": true,
+				"TC-API-011c: response body is JSON (not an HTML error page)": true,
+				"TC-API-011c: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011c: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011c: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-011c: status is 401": true,
+					"TC-API-011c: response body is JSON (not an HTML error page)": true,
+					"TC-API-011c: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "d30f96e3-51ac-4007-8ff7-13cc7cf843d4",
+			"name": "TC-API-011d PUT /api/tasks/1 without login",
+			"url": "http://127.0.0.1:5000/api/tasks/1",
+			"time": 3,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011d: status is 401": true,
+				"TC-API-011d: response body is JSON (not an HTML error page)": true,
+				"TC-API-011d: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011d: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011d: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011d: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"TC-API-011d: status is 401": true,
+					"TC-API-011d: response body is JSON (not an HTML error page)": true,
+					"TC-API-011d: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "3836feae-6ae3-4826-955d-598cfc3eb51d",
+			"name": "TC-API-011e DELETE /api/tasks/1 without login",
+			"url": "http://127.0.0.1:5000/api/tasks/1",
+			"time": 4,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011e: status is 401": true,
+				"TC-API-011e: response body is JSON (not an HTML error page)": true,
+				"TC-API-011e: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011e: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011e: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011e: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-011e: status is 401": true,
+					"TC-API-011e: response body is JSON (not an HTML error page)": true,
+					"TC-API-011e: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "a1d5048c-292e-4ca7-85ec-477745315aad",
+			"name": "TC-API-011f GET /api/dashboard without login",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 4,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"TC-API-011f: status is 401": true,
+				"TC-API-011f: response body is JSON (not an HTML error page)": true,
+				"TC-API-011f: error message is \"authentication required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-011f: status is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011f: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-011f: error message is \"authentication required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-011f: status is 401": true,
+					"TC-API-011f: response body is JSON (not an HTML error page)": true,
+					"TC-API-011f: error message is \"authentication required\"": true
+				}
+			]
+		},
+		{
+			"id": "4fe27ebf-5b11-43fb-9ede-50fd920c7c90",
+			"name": "TC-API-012 GET /api/categories without login",
+			"url": "http://127.0.0.1:5000/api/categories",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-012: status is 401 (README: every endpoint except register/login needs a session)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-012: status is 401 (README: every endpoint except register/login needs a session)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-012: status is 401 (README: every endpoint except register/login needs a session)": false
+				}
+			]
+		},
+		{
+			"id": "f6aad155-0fef-40b9-9176-80670d97abdb",
+			"name": "TC-API-013 GET /api/categories (logged in)",
+			"url": "http://127.0.0.1:5000/api/categories",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-013: status is 200": true,
+				"TC-API-013: the four seeded categories, sorted by name": true
+			},
+			"testPassFailCounts": {
+				"TC-API-013: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-013: the four seeded categories, sorted by name": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-013: status is 200": true,
+					"TC-API-013: the four seeded categories, sorted by name": true
+				}
+			]
+		},
+		{
+			"id": "20d2536b-f53e-49c4-924b-bf63bb73536f",
+			"name": "TC-API-014 Create task with all fields",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 16,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-014: status is 201": true,
+				"TC-API-014: title is 'Prepare W4 report'": true,
+				"TC-API-014: description is 'API section'": true,
+				"TC-API-014: category_id is the Work id": true,
+				"TC-API-014: category is 'Work'": true,
+				"TC-API-014: due_date is today+5": true,
+				"TC-API-014: done is false": true,
+				"TC-API-014: completed_at is null": true,
+				"TC-API-014: urgency is 'Upcoming'": true
+			},
+			"testPassFailCounts": {
+				"TC-API-014: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: title is 'Prepare W4 report'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: description is 'API section'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: category_id is the Work id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: category is 'Work'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: due_date is today+5": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: done is false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: completed_at is null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-014: urgency is 'Upcoming'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"TC-API-014: status is 201": true,
+					"TC-API-014: title is 'Prepare W4 report'": true,
+					"TC-API-014: description is 'API section'": true,
+					"TC-API-014: category_id is the Work id": true,
+					"TC-API-014: category is 'Work'": true,
+					"TC-API-014: due_date is today+5": true,
+					"TC-API-014: done is false": true,
+					"TC-API-014: completed_at is null": true,
+					"TC-API-014: urgency is 'Upcoming'": true
+				}
+			]
+		},
+		{
+			"id": "df7f966e-9e93-4966-bcb8-d4a122a1a568",
+			"name": "TC-API-015 Create task with title only",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-015: status is 201": true,
+				"TC-API-015: description is ''": true,
+				"TC-API-015: category_id is null": true,
+				"TC-API-015: category is null": true,
+				"TC-API-015: due_date is null": true,
+				"TC-API-015: urgency is 'No due date'": true
+			},
+			"testPassFailCounts": {
+				"TC-API-015: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-015: description is ''": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-015: category_id is null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-015: category is null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-015: due_date is null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-015: urgency is 'No due date'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-015: status is 201": true,
+					"TC-API-015: description is ''": true,
+					"TC-API-015: category_id is null": true,
+					"TC-API-015: category is null": true,
+					"TC-API-015: due_date is null": true,
+					"TC-API-015: urgency is 'No due date'": true
+				}
+			]
+		},
+		{
+			"id": "d73a418b-9adb-41fd-9b3c-39c9154f85ad",
+			"name": "TC-API-016a Title missing",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-016a: status is 400": true,
+				"TC-API-016a: response body is JSON (not an HTML error page)": true,
+				"TC-API-016a: error message is \"title is required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-016a: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016a: error message is \"title is required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-016a: status is 400": true,
+					"TC-API-016a: response body is JSON (not an HTML error page)": true,
+					"TC-API-016a: error message is \"title is required\"": true
+				}
+			]
+		},
+		{
+			"id": "698e8262-ecbb-4bf5-95c0-a5d0375bab08",
+			"name": "TC-API-016b Title empty",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-016b: status is 400": true,
+				"TC-API-016b: response body is JSON (not an HTML error page)": true,
+				"TC-API-016b: error message is \"title is required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-016b: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016b: error message is \"title is required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-016b: status is 400": true,
+					"TC-API-016b: response body is JSON (not an HTML error page)": true,
+					"TC-API-016b: error message is \"title is required\"": true
+				}
+			]
+		},
+		{
+			"id": "1aad65eb-b120-4c3b-8161-777ea11ade30",
+			"name": "TC-API-016c Title only spaces",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-016c: status is 400": true,
+				"TC-API-016c: response body is JSON (not an HTML error page)": true,
+				"TC-API-016c: error message is \"title is required\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-016c: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-016c: error message is \"title is required\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-016c: status is 400": true,
+					"TC-API-016c: response body is JSON (not an HTML error page)": true,
+					"TC-API-016c: error message is \"title is required\"": true
+				}
+			]
+		},
+		{
+			"id": "c8b00053-5c93-4f18-a70c-8cde8b0b25da",
+			"name": "TC-API-017 Form-encoded body instead of JSON",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 4,
+			"responseCode": {
+				"code": 400,
+				"name": "BAD REQUEST"
+			},
+			"tests": {
+				"TC-API-017: status is 400": true,
+				"TC-API-017: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-017: status is 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-017: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-017: status is 400": true,
+					"TC-API-017: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "d979f650-93bf-4506-b32a-197621fee9a9",
+			"name": "TC-API-018a Title is a number",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 11,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-018a: status is 400": false,
+				"TC-API-018a: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-018a: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-018a: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"TC-API-018a: status is 400": false,
+					"TC-API-018a: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "0e7098c5-2a86-41ba-bbbe-e8e46b18c286",
+			"name": "TC-API-018b Title is a list",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 11,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-018b: status is 400": false,
+				"TC-API-018b: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-018b: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-018b: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"TC-API-018b: status is 400": false,
+					"TC-API-018b: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "fcdceb76-9dfe-43a0-b615-567d568c77ad",
+			"name": "TC-API-018c Description is an object",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 14,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-018c: status is 400": false,
+				"TC-API-018c: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-018c: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-018c: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"TC-API-018c: status is 400": false,
+					"TC-API-018c: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "eaa94efa-8faa-42b9-8e15-b3b42b472089",
+			"name": "TC-API-020a Category id that does not exist",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-020a: status is 400": false,
+				"TC-API-020a: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-020a: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-020a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-020a: status is 400": false,
+					"TC-API-020a: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "d5f4b358-ad75-409b-8d50-ea7f6619238a",
+			"name": "TC-API-020b Category id that is text",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-020b: status is 400": false,
+				"TC-API-020b: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-020b: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-020b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-020b: status is 400": false,
+					"TC-API-020b: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "9f954aea-c82c-44b3-b818-6d50385e7ebf",
+			"name": "TC-API-021a Urgency for a task due yesterday",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-021a: status is 201": true,
+				"TC-API-021a: urgency is \"Overdue\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-021a: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-021a: urgency is \"Overdue\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-API-021a: status is 201": true,
+					"TC-API-021a: urgency is \"Overdue\"": true
+				}
+			]
+		},
+		{
+			"id": "74551c9c-b0f2-4f45-a8d6-dc6c515f19c9",
+			"name": "TC-API-021b Urgency for a task due today",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-021b: status is 201": true,
+				"TC-API-021b: urgency is \"Due Today\"": false
+			},
+			"testPassFailCounts": {
+				"TC-API-021b: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-021b: urgency is \"Due Today\"": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-021b: status is 201": true,
+					"TC-API-021b: urgency is \"Due Today\"": false
+				}
+			]
+		},
+		{
+			"id": "baf35293-08a9-4974-8567-9fdb5f2631d6",
+			"name": "TC-API-021c Urgency for a task due plus1",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-021c: status is 201": true,
+				"TC-API-021c: urgency is \"Due Soon\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-021c: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-021c: urgency is \"Due Soon\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-021c: status is 201": true,
+					"TC-API-021c: urgency is \"Due Soon\"": true
+				}
+			]
+		},
+		{
+			"id": "bfc241ec-8ebb-435c-9857-fe09ba0efe52",
+			"name": "TC-API-021d Urgency for a task due plus2",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-021d: status is 201": true,
+				"TC-API-021d: urgency is \"Due Soon\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-021d: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-021d: urgency is \"Due Soon\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-021d: status is 201": true,
+					"TC-API-021d: urgency is \"Due Soon\"": true
+				}
+			]
+		},
+		{
+			"id": "673750b8-088e-4237-b042-c55735ef31a5",
+			"name": "TC-API-021e Urgency for a task due plus3",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"TC-API-021e: status is 201": true,
+				"TC-API-021e: urgency is \"Upcoming\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-021e: status is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-021e: urgency is \"Upcoming\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-021e: status is 201": true,
+					"TC-API-021e: urgency is \"Upcoming\"": true
+				}
+			]
+		},
+		{
+			"id": "c071597b-2cde-4b7c-b142-663aa01ae8a8",
+			"name": "TC-API-022 Read own task by id",
+			"url": "http://127.0.0.1:5000/api/tasks/1",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-022: status is 200": true,
+				"TC-API-022: same task id": true,
+				"TC-API-022: title is 'Prepare W4 report'": true
+			},
+			"testPassFailCounts": {
+				"TC-API-022: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-022: same task id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-022: title is 'Prepare W4 report'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-022: status is 200": true,
+					"TC-API-022: same task id": true,
+					"TC-API-022: title is 'Prepare W4 report'": true
+				}
+			]
+		},
+		{
+			"id": "93dfcc26-ae96-42cc-abc6-7850dbd02836",
+			"name": "TC-API-023 Read a task id that does not exist",
+			"url": "http://127.0.0.1:5000/api/tasks/999999999",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-023: status is 404": true,
+				"TC-API-023: response body is JSON (not an HTML error page)": true,
+				"TC-API-023: error message is \"not found\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-023: status is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-023: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-023: error message is \"not found\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-023: status is 404": true,
+					"TC-API-023: response body is JSON (not an HTML error page)": true,
+					"TC-API-023: error message is \"not found\"": true
+				}
+			]
+		},
+		{
+			"id": "b0f49ca3-07d9-462f-9107-1ecf45c06cdd",
+			"name": "TC-API-025 Read with a non-numeric id",
+			"url": "http://127.0.0.1:5000/api/tasks/abc",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-025: status is 404": true
+			},
+			"testPassFailCounts": {
+				"TC-API-025: status is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-025: status is 404": true
+				}
+			]
+		},
+		{
+			"id": "26d5c0e7-0bde-4644-9ba0-b2fd9468d73d",
+			"name": "SETUP register fresh user list_user (now logged in as list_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 163,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				163
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "b19aca45-3729-45b2-a8a8-a74dcfa0727f",
+			"name": "SETUP create task -> l_work_open",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "89aa84bb-f51a-4043-83d9-43feabd87727",
+			"name": "SETUP create task -> l_work_done",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "d33b3b9a-6df1-4913-a309-aaa7ccae8249",
+			"name": "SETUP create task -> l_personal",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "2e9911cb-9455-4831-9852-da31b98cdc0c",
+			"name": "SETUP create task -> l_none",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "fe367465-b7fc-48a7-8037-5497ea6a5ff3",
+			"name": "SETUP create task -> l_obrien",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "b9a4147a-61f1-4ef7-ad47-08a062973e17",
+			"name": "SETUP mark Report archive as done",
+			"url": "http://127.0.0.1:5000/api/tasks/11",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "3b0757c8-a8ce-4393-9cb5-29013b30cd73",
+			"name": "TC-API-026 Filter category=Work",
+			"url": "http://127.0.0.1:5000/api/tasks?category=Work",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-026: status is 200": true,
+				"TC-API-026: exactly the two Work tasks": true
+			},
+			"testPassFailCounts": {
+				"TC-API-026: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-026: exactly the two Work tasks": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-026: status is 200": true,
+					"TC-API-026: exactly the two Work tasks": true
+				}
+			]
+		},
+		{
+			"id": "a90b0706-4559-429b-b354-9bcf002bedcc",
+			"name": "TC-API-027a Filter status=open",
+			"url": "http://127.0.0.1:5000/api/tasks?status=open",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-027a: status is 200": true,
+				"TC-API-027a: exactly the four open tasks": true
+			},
+			"testPassFailCounts": {
+				"TC-API-027a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-027a: exactly the four open tasks": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-027a: status is 200": true,
+					"TC-API-027a: exactly the four open tasks": true
+				}
+			]
+		},
+		{
+			"id": "043cf880-bf55-42cc-8d17-2fd37a26bfd4",
+			"name": "TC-API-027b Filter status=done",
+			"url": "http://127.0.0.1:5000/api/tasks?status=done",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-027b: status is 200": true,
+				"TC-API-027b: exactly the one done task": true
+			},
+			"testPassFailCounts": {
+				"TC-API-027b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-027b: exactly the one done task": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-027b: status is 200": true,
+					"TC-API-027b: exactly the one done task": true
+				}
+			]
+		},
+		{
+			"id": "e3c3eaf8-affe-4c88-a91e-4b10b6ef9842",
+			"name": "TC-API-028 Search q=report",
+			"url": "http://127.0.0.1:5000/api/tasks?q=report",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-028: status is 200": true,
+				"TC-API-028: both titles containing 'report'": true
+			},
+			"testPassFailCounts": {
+				"TC-API-028: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-028: both titles containing 'report'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-028: status is 200": true,
+					"TC-API-028: both titles containing 'report'": true
+				}
+			]
+		},
+		{
+			"id": "3c6ab5bc-df98-4f45-89b5-aacea4ef0104",
+			"name": "TC-API-029 Combined category + status + search",
+			"url": "http://127.0.0.1:5000/api/tasks?category=Work&status=open&q=report",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-029: status is 200": true,
+				"TC-API-029: only 'Weekly report' matches all three": true
+			},
+			"testPassFailCounts": {
+				"TC-API-029: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-029: only 'Weekly report' matches all three": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-029: status is 200": true,
+					"TC-API-029: only 'Weekly report' matches all three": true
+				}
+			]
+		},
+		{
+			"id": "a96ec153-ac83-4bf2-8146-7ba62e4f3b3d",
+			"name": "TC-API-030 Search text with an apostrophe",
+			"url": "http://127.0.0.1:5000/api/tasks?q=O%27Brien",
+			"time": 11,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-030: status is 200": false,
+				"TC-API-030: returns 'Call O'Brien'": false
+			},
+			"testPassFailCounts": {
+				"TC-API-030: status is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-030: returns 'Call O'Brien'": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"TC-API-030: status is 200": false,
+					"TC-API-030: returns 'Call O'Brien'": false
+				}
+			]
+		},
+		{
+			"id": "dae4bdea-c969-4ee3-a199-7f161338e00d",
+			"name": "TC-API-031a Paging per_page=2 page=0",
+			"url": "http://127.0.0.1:5000/api/tasks?per_page=2&page=0",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-031a: status is 200": true,
+				"TC-API-031a: two newest tasks, newest first": true
+			},
+			"testPassFailCounts": {
+				"TC-API-031a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-031a: two newest tasks, newest first": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-031a: status is 200": true,
+					"TC-API-031a: two newest tasks, newest first": true
+				}
+			]
+		},
+		{
+			"id": "4436454b-2e3b-4fe1-a6cd-2a968b5e9097",
+			"name": "TC-API-031b Paging per_page=2 page=1",
+			"url": "http://127.0.0.1:5000/api/tasks?per_page=2&page=1",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-031b: status is 200": true,
+				"TC-API-031b: next two tasks": true
+			},
+			"testPassFailCounts": {
+				"TC-API-031b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-031b: next two tasks": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-031b: status is 200": true,
+					"TC-API-031b: next two tasks": true
+				}
+			]
+		},
+		{
+			"id": "85d20ae4-a8dc-4745-b6ce-d98cc11971b0",
+			"name": "TC-API-031c Paging per_page=2 page=2",
+			"url": "http://127.0.0.1:5000/api/tasks?per_page=2&page=2",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-031c: status is 200": true,
+				"TC-API-031c: last task": true
+			},
+			"testPassFailCounts": {
+				"TC-API-031c: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-031c: last task": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-031c: status is 200": true,
+					"TC-API-031c: last task": true
+				}
+			]
+		},
+		{
+			"id": "9e427b2e-16f6-41b0-ab4d-9ef426997573",
+			"name": "TC-API-031d Default paging",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-031d: status is 200": true,
+				"TC-API-031d: all five tasks, newest first": true
+			},
+			"testPassFailCounts": {
+				"TC-API-031d: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-031d: all five tasks, newest first": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-031d: status is 200": true,
+					"TC-API-031d: all five tasks, newest first": true
+				}
+			]
+		},
+		{
+			"id": "63d7d2bf-65ee-45d8-abc0-555ccf86d723",
+			"name": "TC-API-032a per_page=-1",
+			"url": "http://127.0.0.1:5000/api/tasks?per_page=-1",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-032a: status is 400": false,
+				"TC-API-032a: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-032a: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-032a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-032a: status is 400": false,
+					"TC-API-032a: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "43c7551c-e7fa-4f92-ae54-0f31bd337806",
+			"name": "TC-API-032b page=-1",
+			"url": "http://127.0.0.1:5000/api/tasks?page=-1",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-032b: status is 400": false,
+				"TC-API-032b: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-032b: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-032b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-032b: status is 400": false,
+					"TC-API-032b: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "450fe2c3-bac7-43b2-9b1a-ae419edaa854",
+			"name": "TC-API-032c page=abc",
+			"url": "http://127.0.0.1:5000/api/tasks?page=abc",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-032c: status is 400": false,
+				"TC-API-032c: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-032c: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-032c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-032c: status is 400": false,
+					"TC-API-032c: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "6508a3f1-80d3-4e39-8789-a8582b0bdc67",
+			"name": "SETUP create task -> u_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "7a7c4bd9-d83d-47aa-9d6d-4efda211b590",
+			"name": "TC-API-034 Partial update changes only the title",
+			"url": "http://127.0.0.1:5000/api/tasks/15",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-034: status is 200": true,
+				"TC-API-034: title is 'New'": true,
+				"TC-API-034: description unchanged": true,
+				"TC-API-034: category unchanged": true,
+				"TC-API-034: due date unchanged": true,
+				"TC-API-034: done is false": true
+			},
+			"testPassFailCounts": {
+				"TC-API-034: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-034: title is 'New'": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-034: description unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-034: category unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-034: due date unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-034: done is false": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-API-034: status is 200": true,
+					"TC-API-034: title is 'New'": true,
+					"TC-API-034: description unchanged": true,
+					"TC-API-034: category unchanged": true,
+					"TC-API-034: due date unchanged": true,
+					"TC-API-034: done is false": true
+				}
+			]
+		},
+		{
+			"id": "86c144e1-87f9-4fe5-beb4-5ae0da357974",
+			"name": "SETUP create task -> c_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "b44973f4-7d6c-41e5-973d-66750282dfb7",
+			"name": "TC-API-035a Complete a task",
+			"url": "http://127.0.0.1:5000/api/tasks/16",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-035a: status is 200": true,
+				"TC-API-035a: done is true": true,
+				"TC-API-035a: completed_at is set": true,
+				"TC-API-035a: urgency is 'Done'": true
+			},
+			"testPassFailCounts": {
+				"TC-API-035a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035a: done is true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035a: completed_at is set": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035a: urgency is 'Done'": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-035a: status is 200": true,
+					"TC-API-035a: done is true": true,
+					"TC-API-035a: completed_at is set": true,
+					"TC-API-035a: urgency is 'Done'": true
+				}
+			]
+		},
+		{
+			"id": "96f07036-59d3-48d5-952f-f7a464fa131a",
+			"name": "TC-API-035b Reopen the task",
+			"url": "http://127.0.0.1:5000/api/tasks/16",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-035b: status is 200": true,
+				"TC-API-035b: done is false": true,
+				"TC-API-035b: completed_at is null": true,
+				"TC-API-035b: urgency recomputed (Overdue)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-035b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035b: done is false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035b: completed_at is null": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-035b: urgency recomputed (Overdue)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-035b: status is 200": true,
+					"TC-API-035b: done is false": true,
+					"TC-API-035b: completed_at is null": true,
+					"TC-API-035b: urgency recomputed (Overdue)": true
+				}
+			]
+		},
+		{
+			"id": "3056cb1f-2864-4063-af98-0c739d5fb4c7",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "f3296f74-e5b8-4cc2-862d-84a9987f6e1b",
+			"name": "TC-API-036a Update with empty title",
+			"url": "http://127.0.0.1:5000/api/tasks/17",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036a: status is 400": false,
+				"TC-API-036a: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036a: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-036a: status is 400": false,
+					"TC-API-036a: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "31384612-b715-4ab9-abe1-334e3c2d59bb",
+			"name": "TC-API-036a-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/17",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036a-check: status is 200": true,
+				"TC-API-036a-check: title unchanged": false,
+				"TC-API-036a-check: still open": true,
+				"TC-API-036a-check: category unchanged": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036a-check: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036a-check: title unchanged": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036a-check: still open": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036a-check: category unchanged": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-036a-check: status is 200": true,
+					"TC-API-036a-check: title unchanged": false,
+					"TC-API-036a-check: still open": true,
+					"TC-API-036a-check: category unchanged": true
+				}
+			]
+		},
+		{
+			"id": "795da6cf-df76-4212-844e-609cf3dc0e8a",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "73398203-3ed1-4fd7-aeb4-527a7308070e",
+			"name": "TC-API-036b Update with title only spaces",
+			"url": "http://127.0.0.1:5000/api/tasks/18",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036b: status is 400": false,
+				"TC-API-036b: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036b: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036b: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-036b: status is 400": false,
+					"TC-API-036b: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "4d622698-6622-4d10-a70b-13649549b6b3",
+			"name": "TC-API-036b-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/18",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036b-check: status is 200": true,
+				"TC-API-036b-check: title unchanged": false,
+				"TC-API-036b-check: still open": true,
+				"TC-API-036b-check: category unchanged": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036b-check: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036b-check: title unchanged": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036b-check: still open": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036b-check: category unchanged": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-036b-check: status is 200": true,
+					"TC-API-036b-check: title unchanged": false,
+					"TC-API-036b-check: still open": true,
+					"TC-API-036b-check: category unchanged": true
+				}
+			]
+		},
+		{
+			"id": "8acb281e-59c8-4608-a6e0-bde27d49b997",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "ef44ad13-6d41-4b9e-8ada-c0e2066cf39a",
+			"name": "TC-API-036c Update with done as the text \"false\"",
+			"url": "http://127.0.0.1:5000/api/tasks/19",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036c: status is 400": false,
+				"TC-API-036c: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036c: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036c: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-036c: status is 400": false,
+					"TC-API-036c: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "631ea3a7-2255-4179-8cac-326fd421900b",
+			"name": "TC-API-036c-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/19",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036c-check: status is 200": true,
+				"TC-API-036c-check: title unchanged": true,
+				"TC-API-036c-check: still open": false,
+				"TC-API-036c-check: category unchanged": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036c-check: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036c-check: title unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036c-check: still open": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036c-check: category unchanged": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-036c-check: status is 200": true,
+					"TC-API-036c-check: title unchanged": true,
+					"TC-API-036c-check: still open": false,
+					"TC-API-036c-check: category unchanged": true
+				}
+			]
+		},
+		{
+			"id": "8da85608-6c9c-45f4-bcf1-481beeb468de",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 7,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "4381a0ca-4628-4ae2-811e-07147d174d9f",
+			"name": "TC-API-036d Update with title null",
+			"url": "http://127.0.0.1:5000/api/tasks/20",
+			"time": 14,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-036d: status is 400": false,
+				"TC-API-036d: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-036d: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036d: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"TC-API-036d: status is 400": false,
+					"TC-API-036d: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "249c44a2-b0cc-4dfc-bab3-b96281cf5602",
+			"name": "TC-API-036d-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/20",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036d-check: status is 200": true,
+				"TC-API-036d-check: title unchanged": true,
+				"TC-API-036d-check: still open": true,
+				"TC-API-036d-check: category unchanged": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036d-check: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036d-check: title unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036d-check: still open": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036d-check: category unchanged": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-036d-check: status is 200": true,
+					"TC-API-036d-check: title unchanged": true,
+					"TC-API-036d-check: still open": true,
+					"TC-API-036d-check: category unchanged": true
+				}
+			]
+		},
+		{
+			"id": "a6a16704-683d-4388-94d8-be3a68df26cd",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "34dc82cd-9686-4430-9729-790e7832162a",
+			"name": "TC-API-036e Update with category id that does not exist",
+			"url": "http://127.0.0.1:5000/api/tasks/21",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036e: status is 400": false,
+				"TC-API-036e: response body is JSON (not an HTML error page)": true
+			},
+			"testPassFailCounts": {
+				"TC-API-036e: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036e: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-API-036e: status is 400": false,
+					"TC-API-036e: response body is JSON (not an HTML error page)": true
+				}
+			]
+		},
+		{
+			"id": "4df550b1-76a8-47e6-933f-b5ed64726950",
+			"name": "TC-API-036e-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/21",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-036e-check: status is 200": true,
+				"TC-API-036e-check: title unchanged": true,
+				"TC-API-036e-check: still open": true,
+				"TC-API-036e-check: category unchanged": false
+			},
+			"testPassFailCounts": {
+				"TC-API-036e-check: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036e-check: title unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036e-check: still open": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-036e-check: category unchanged": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-036e-check: status is 200": true,
+					"TC-API-036e-check: title unchanged": true,
+					"TC-API-036e-check: still open": true,
+					"TC-API-036e-check: category unchanged": false
+				}
+			]
+		},
+		{
+			"id": "87b2da86-302e-4676-a506-e12300066ba3",
+			"name": "TC-API-038 Update a task id that does not exist",
+			"url": "http://127.0.0.1:5000/api/tasks/999999999",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-038: status is 404": true,
+				"TC-API-038: response body is JSON (not an HTML error page)": true,
+				"TC-API-038: error message is \"not found\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-038: status is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-038: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-038: error message is \"not found\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-038: status is 404": true,
+					"TC-API-038: response body is JSON (not an HTML error page)": true,
+					"TC-API-038: error message is \"not found\"": true
+				}
+			]
+		},
+		{
+			"id": "b460954e-0176-487a-860b-de1381253e0f",
+			"name": "SETUP create task -> d_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "eeb9db48-f713-47f7-a864-70272e0d7ada",
+			"name": "TC-API-039a Delete own task",
+			"url": "http://127.0.0.1:5000/api/tasks/22",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-039a: status is 200": true,
+				"TC-API-039a: body is {\"result\": \"ok\"}": true
+			},
+			"testPassFailCounts": {
+				"TC-API-039a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-039a: body is {\"result\": \"ok\"}": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-API-039a: status is 200": true,
+					"TC-API-039a: body is {\"result\": \"ok\"}": true
+				}
+			]
+		},
+		{
+			"id": "aeb51194-0a90-4755-b050-b76de896f5f8",
+			"name": "TC-API-039b Deleted task is gone",
+			"url": "http://127.0.0.1:5000/api/tasks/22",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-039b: status is 404": true
+			},
+			"testPassFailCounts": {
+				"TC-API-039b: status is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-API-039b: status is 404": true
+				}
+			]
+		},
+		{
+			"id": "ccb4ac09-f419-43f4-a1ac-d02437363b93",
+			"name": "TC-API-041 Delete a task id that does not exist",
+			"url": "http://127.0.0.1:5000/api/tasks/999999999",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-041: status is 404": false,
+				"TC-API-041: response body is JSON (not an HTML error page)": true,
+				"TC-API-041: error message is \"not found\"": false
+			},
+			"testPassFailCounts": {
+				"TC-API-041: status is 404": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-041: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-041: error message is \"not found\"": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-041: status is 404": false,
+					"TC-API-041: response body is JSON (not an HTML error page)": true,
+					"TC-API-041: error message is \"not found\"": false
+				}
+			]
+		},
+		{
+			"id": "b7755f89-395c-4b14-be4d-abde7a60fecd",
+			"name": "SETUP register fresh user owner (now logged in as owner)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 168,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				168
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "60d43e6e-68cb-4ec7-aef3-9c3958976de5",
+			"name": "SETUP create task -> x_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "5cbe04ba-86c4-4ec9-83d9-86bcd4d5b649",
+			"name": "SETUP register fresh user intruder (now logged in as intruder)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 193,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				193
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "1ef126e7-5584-43b0-b4b5-40f54031c5fd",
+			"name": "TC-API-024 Intruder reads owner's task",
+			"url": "http://127.0.0.1:5000/api/tasks/23",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-024: status is 404": true,
+				"TC-API-024: response body is JSON (not an HTML error page)": true,
+				"TC-API-024: error message is \"not found\"": true,
+				"TC-API-024: owner's title is not disclosed": true
+			},
+			"testPassFailCounts": {
+				"TC-API-024: status is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-024: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-024: error message is \"not found\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-024: owner's title is not disclosed": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-024: status is 404": true,
+					"TC-API-024: response body is JSON (not an HTML error page)": true,
+					"TC-API-024: error message is \"not found\"": true,
+					"TC-API-024: owner's title is not disclosed": true
+				}
+			]
+		},
+		{
+			"id": "f41d5df8-18bb-49bd-b821-60320f5d4ec2",
+			"name": "TC-API-033 Intruder's task list",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-033: status is 200": true,
+				"TC-API-033: intruder sees an empty list": true
+			},
+			"testPassFailCounts": {
+				"TC-API-033: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-033: intruder sees an empty list": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-033: status is 200": true,
+					"TC-API-033: intruder sees an empty list": true
+				}
+			]
+		},
+		{
+			"id": "b5313fc5-0f1c-4cc8-b84a-dcbedfbd7902",
+			"name": "TC-API-044 Intruder's dashboard",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-044: status is 200": true,
+				"TC-API-044: all counters are zero": true
+			},
+			"testPassFailCounts": {
+				"TC-API-044: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-044: all counters are zero": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-044: status is 200": true,
+					"TC-API-044: all counters are zero": true
+				}
+			]
+		},
+		{
+			"id": "47c7c78d-25d3-41f5-b443-e43ce5e211b9",
+			"name": "TC-API-037a Intruder updates owner's task",
+			"url": "http://127.0.0.1:5000/api/tasks/23",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-037a: status is 404": true,
+				"TC-API-037a: response body is JSON (not an HTML error page)": true,
+				"TC-API-037a: error message is \"not found\"": true
+			},
+			"testPassFailCounts": {
+				"TC-API-037a: status is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-037a: response body is JSON (not an HTML error page)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-037a: error message is \"not found\"": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-037a: status is 404": true,
+					"TC-API-037a: response body is JSON (not an HTML error page)": true,
+					"TC-API-037a: error message is \"not found\"": true
+				}
+			]
+		},
+		{
+			"id": "4452055c-87b8-4b9b-94d4-e812e9ec6cea",
+			"name": "SETUP log in as owner",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 193,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				193
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "9c1c3ba7-2451-4877-a6c4-d6628d7f4ac2",
+			"name": "TC-API-037b Owner's task unchanged",
+			"url": "http://127.0.0.1:5000/api/tasks/23",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-037b: status is 200": true,
+				"TC-API-037b: title unchanged": true
+			},
+			"testPassFailCounts": {
+				"TC-API-037b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-037b: title unchanged": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-037b: status is 200": true,
+					"TC-API-037b: title unchanged": true
+				}
+			]
+		},
+		{
+			"id": "9fc20973-6218-4822-a23f-148e9d243916",
+			"name": "SETUP log in as intruder",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				200
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "bd688d1b-7acf-4647-93ce-12622377bb38",
+			"name": "TC-API-040a Intruder deletes owner's task",
+			"url": "http://127.0.0.1:5000/api/tasks/23",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-040a: status is 404 (not the intruder's task)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-040a: status is 404 (not the intruder's task)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-API-040a: status is 404 (not the intruder's task)": false
+				}
+			]
+		},
+		{
+			"id": "66d96b0a-d3ae-4d2c-8d9a-d832514bf81d",
+			"name": "SETUP log in as owner",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 199,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				199
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "f3e2a2bf-dbb9-4ef6-b414-337741246e66",
+			"name": "TC-API-040b Owner's task still exists",
+			"url": "http://127.0.0.1:5000/api/tasks/23",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-API-040b: status is 200 (task was not deleted)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-040b: status is 200 (task was not deleted)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-API-040b: status is 200 (task was not deleted)": false
+				}
+			]
+		},
+		{
+			"id": "43ce7eb6-9410-467e-82c5-2ddc7cf8bb80",
+			"name": "SETUP register fresh user dash_user (now logged in as dash_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 202,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "c6d09556-c503-4a51-89a4-150bf5809cc1",
+			"name": "SETUP create task -> g1",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "c3811694-12b3-46f8-87bc-c5675cfe0f83",
+			"name": "SETUP create task -> g2",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "f68c9a43-3a4e-4f42-936f-d628df974111",
+			"name": "SETUP create task -> g3",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "eedd56fb-6d0a-4bee-87fe-6200dd82f71a",
+			"name": "SETUP create task -> g4",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "1d2873a8-44b5-4d38-959d-316ee5419886",
+			"name": "SETUP create task -> g5",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "52226c5b-3fd2-416e-b67a-ce1da3d25182",
+			"name": "SETUP complete the finished task",
+			"url": "http://127.0.0.1:5000/api/tasks/28",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "02b1cc8f-11ee-4568-9f01-3e8350807b95",
+			"name": "TC-API-042 Dashboard counts for the controlled dataset",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-042: status is 200": true,
+				"TC-API-042: total 5, open 4, overdue 1, due_soon 1, completed_this_week 1": true
+			},
+			"testPassFailCounts": {
+				"TC-API-042: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-042: total 5, open 4, overdue 1, due_soon 1, completed_this_week 1": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-API-042: status is 200": true,
+					"TC-API-042: total 5, open 4, overdue 1, due_soon 1, completed_this_week 1": true
+				}
+			]
+		},
+		{
+			"id": "c8e16968-f995-436d-a380-52c3c2238e03",
+			"name": "SETUP create task -> g6",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "ea5e23a3-f0c0-4f23-9c42-8cedcb4c812e",
+			"name": "TC-API-043 A task due today is not counted as overdue",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-API-043: status is 200": true,
+				"TC-API-043: total is 6": true,
+				"TC-API-043: overdue is still 1": false
+			},
+			"testPassFailCounts": {
+				"TC-API-043: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-043: total is 6": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-API-043: overdue is still 1": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-API-043: status is 200": true,
+					"TC-API-043: total is 6": true,
+					"TC-API-043: overdue is still 1": false
+				}
+			]
+		},
+		{
+			"id": "461ef3d8-eb57-4252-9d24-301976571fa7",
+			"name": "SETUP create task -> p_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "2dddd03c-c70b-4df0-8038-9c7cbb2c02c4",
+			"name": "TC-API-045 PATCH is not supported",
+			"url": "http://127.0.0.1:5000/api/tasks/30",
+			"time": 4,
+			"responseCode": {
+				"code": 405,
+				"name": "METHOD NOT ALLOWED"
+			},
+			"tests": {
+				"TC-API-045: status is 405": true
+			},
+			"testPassFailCounts": {
+				"TC-API-045: status is 405": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-API-045: status is 405": true
+				}
+			]
+		},
+		{
+			"id": "fd93ca66-b823-4ba9-8368-dbb20c3b249f",
+			"name": "TC-WEB-001a Register through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 216,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-001a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-001a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				216
+			],
+			"allTests": [
+				{
+					"TC-WEB-001a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "0ea643d3-927e-4412-ba3f-798414b513bf",
+			"name": "TC-WEB-001b Task list opens for the new user",
+			"url": "http://127.0.0.1:5000/",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-001b: status is 200": true,
+				"TC-WEB-001b: page contains \"My Tasks\"": true,
+				"TC-WEB-001b: page shows the username": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-001b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-001b: page contains \"My Tasks\"": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-001b: page shows the username": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				43
+			],
+			"allTests": [
+				{
+					"TC-WEB-001b: status is 200": true,
+					"TC-WEB-001b: page contains \"My Tasks\"": true,
+					"TC-WEB-001b: page shows the username": true
+				}
+			]
+		},
+		{
+			"id": "458e04d9-51f8-4ee4-a6c0-c57494603529",
+			"name": "TC-WEB-002a Empty username posted directly (browser 'required' bypassed)",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-002a: status is 200": true,
+				"TC-WEB-002a: server shows the username error": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-002a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-002a: server shows the username error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"TC-WEB-002a: status is 200": true,
+					"TC-WEB-002a: server shows the username error": true
+				}
+			]
+		},
+		{
+			"id": "3273bc0b-7c1e-4218-98f0-1116fc7cb25b",
+			"name": "TC-WEB-002b Username with illegal character",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-002b: status is 200": true,
+				"TC-WEB-002b: server shows the username error": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-002b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-002b: server shows the username error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-002b: status is 200": true,
+					"TC-WEB-002b: server shows the username error": true
+				}
+			]
+		},
+		{
+			"id": "c525619b-9998-4673-8a21-cb4aafe70380",
+			"name": "TC-WEB-002c Password of 7 chars",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-002c: status is 200": true,
+				"TC-WEB-002c: server shows the password error": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-002c: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-002c: server shows the password error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"TC-WEB-002c: status is 200": true,
+					"TC-WEB-002c: server shows the password error": true
+				}
+			]
+		},
+		{
+			"id": "53c3f90b-f151-4b37-ac27-7a0976f19727",
+			"name": "TC-WEB-003a Login through the web form",
+			"url": "http://127.0.0.1:5000/login",
+			"time": 197,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-003a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-003a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				197
+			],
+			"allTests": [
+				{
+					"TC-WEB-003a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "f6d9bde5-59f4-4aab-9689-c653ce920308",
+			"name": "TC-WEB-003b Wrong password on the web form",
+			"url": "http://127.0.0.1:5000/login",
+			"time": 204,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-003b: status is 200": true,
+				"TC-WEB-003b: server shows the login error": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-003b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-003b: server shows the login error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"TC-WEB-003b: status is 200": true,
+					"TC-WEB-003b: server shows the login error": true
+				}
+			]
+		},
+		{
+			"id": "feb83069-7456-4e6f-ab9c-c48204e07dca",
+			"name": "TC-WEB-004a GET / when logged out",
+			"url": "http://127.0.0.1:5000/",
+			"time": 4,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004a: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004a: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"TC-WEB-004a: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "c79cf508-0f31-4049-a18a-f1497da766ec",
+			"name": "TC-WEB-004b GET /tasks/new when logged out",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004b: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004b: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-004b: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "c574f3da-e57b-4cde-acc3-13667725fc0f",
+			"name": "TC-WEB-004c GET /tasks/1/edit when logged out",
+			"url": "http://127.0.0.1:5000/tasks/1/edit",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004c: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004c: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-004c: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "e4c7cc6e-e740-4c41-bfc0-4cf9bf918387",
+			"name": "TC-WEB-004d GET /dashboard when logged out",
+			"url": "http://127.0.0.1:5000/dashboard",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004d: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004d: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-004d: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "49293c77-21bd-471a-a3ee-696a3b56989d",
+			"name": "TC-WEB-004e POST /tasks/1/toggle when logged out",
+			"url": "http://127.0.0.1:5000/tasks/1/toggle",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004e: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004e: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-004e: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "8070b4a6-755b-4188-80a5-b7860fbf3d45",
+			"name": "TC-WEB-004f POST /tasks/1/delete when logged out",
+			"url": "http://127.0.0.1:5000/tasks/1/delete",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-004f: redirects (302) to /login": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-004f: redirects (302) to /login": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-004f: redirects (302) to /login": true
+				}
+			]
+		},
+		{
+			"id": "55d5f6d4-df29-4a0f-9950-003e83d87872",
+			"name": "TC-WEB-005a Create a task through the web form",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 9,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-005a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-005a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"TC-WEB-005a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "26dba03f-5c6a-43b8-800b-3817783ac793",
+			"name": "TC-WEB-005b API returns the web-created task unchanged",
+			"url": "http://127.0.0.1:5000/api/tasks?q=Web-created",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-005b: status is 200": true,
+				"TC-WEB-005b: one task with the same title, description, category, date": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-005b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-005b: one task with the same title, description, category, date": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-005b: status is 200": true,
+					"TC-WEB-005b: one task with the same title, description, category, date": true
+				}
+			]
+		},
+		{
+			"id": "ac0c664f-1ab8-48a9-ab40-095d0c09135e",
+			"name": "SETUP create task -> w_api",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 9,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "f1d47c1d-7651-4f0e-9afd-e3c84fb23e86",
+			"name": "TC-WEB-006 Web list shows the API-created task",
+			"url": "http://127.0.0.1:5000/",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-006: status is 200": true,
+				"TC-WEB-006: the task's row shows category Study and urgency Due Soon": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-006: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-006: the task's row shows category Study and urgency Due Soon": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-WEB-006: status is 200": true,
+					"TC-WEB-006: the task's row shows category Study and urgency Due Soon": true
+				}
+			]
+		},
+		{
+			"id": "31244e50-2ac6-4909-b33c-b16b4f3394fb",
+			"name": "TC-WEB-007a Edit the task through the web form",
+			"url": "http://127.0.0.1:5000/tasks/31/edit",
+			"time": 10,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-007a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-007a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-WEB-007a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "5858ca7e-ce31-4631-836d-efd54a5b71eb",
+			"name": "TC-WEB-007b API returns the edited values",
+			"url": "http://127.0.0.1:5000/api/tasks/31",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-007b: status is 200": true,
+				"TC-WEB-007b: title, description, category and date match the edit": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-007b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-007b: title, description, category and date match the edit": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-007b: status is 200": true,
+					"TC-WEB-007b: title, description, category and date match the edit": true
+				}
+			]
+		},
+		{
+			"id": "3af21b6c-0fc6-46f5-b2dd-6714c09a6d43",
+			"name": "TC-WEB-008a Complete the task on the web",
+			"url": "http://127.0.0.1:5000/tasks/31/toggle",
+			"time": 8,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-008a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-008a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-WEB-008a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "a73b0b3a-f53b-43f5-9e80-a4422455d989",
+			"name": "TC-WEB-008b API shows it done",
+			"url": "http://127.0.0.1:5000/api/tasks/31",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-008b: status is 200": true,
+				"TC-WEB-008b: done is true": true,
+				"TC-WEB-008b: completed_at is set": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-008b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-008b: done is true": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-008b: completed_at is set": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-008b: status is 200": true,
+					"TC-WEB-008b: done is true": true,
+					"TC-WEB-008b: completed_at is set": true
+				}
+			]
+		},
+		{
+			"id": "ce34593b-c1b6-4dda-815a-438a078bad38",
+			"name": "TC-WEB-008c Reopen the task on the web",
+			"url": "http://127.0.0.1:5000/tasks/31/toggle",
+			"time": 8,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-008c: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-008c: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-WEB-008c: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "74bfa90a-9830-4f55-a5a2-97bc42d786af",
+			"name": "TC-WEB-008d API shows it open again",
+			"url": "http://127.0.0.1:5000/api/tasks/31",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-008d: status is 200": true,
+				"TC-WEB-008d: done is false": true,
+				"TC-WEB-008d: completed_at is null": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-008d: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-008d: done is false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-008d: completed_at is null": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-008d: status is 200": true,
+					"TC-WEB-008d: done is false": true,
+					"TC-WEB-008d: completed_at is null": true
+				}
+			]
+		},
+		{
+			"id": "3f7520db-4992-45c7-bf3d-9d48d3397a8c",
+			"name": "TC-WEB-009a Delete the task on the web",
+			"url": "http://127.0.0.1:5000/tasks/31/delete",
+			"time": 7,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-009a: redirects (302) to /": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-009a: redirects (302) to /": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-009a: redirects (302) to /": true
+				}
+			]
+		},
+		{
+			"id": "a3bb77e8-5529-4738-aa8f-e32d61bdad0f",
+			"name": "TC-WEB-009b API no longer finds it",
+			"url": "http://127.0.0.1:5000/api/tasks/31",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"TC-WEB-009b: status is 404": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-009b: status is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-009b: status is 404": true
+				}
+			]
+		},
+		{
+			"id": "6507f55e-de28-45c8-a84c-7d1b6733db85",
+			"name": "SETUP register fresh user blank_user through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 198,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"SETUP: redirected after registration (302)": true
+			},
+			"testPassFailCounts": {
+				"SETUP: redirected after registration (302)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				198
+			],
+			"allTests": [
+				{
+					"SETUP: redirected after registration (302)": true
+				}
+			]
+		},
+		{
+			"id": "f34f90fa-1fad-4adb-ba8e-30e28dbd92ae",
+			"name": "TC-WEB-010a Title empty posted directly (browser check bypassed)",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 12,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-010a: server does not accept it (no redirect to the task list)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-010a: server does not accept it (no redirect to the task list)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"TC-WEB-010a: server does not accept it (no redirect to the task list)": false
+				}
+			]
+		},
+		{
+			"id": "cf522785-f727-4989-bb91-d7f45e9e168f",
+			"name": "TC-WEB-010a-check No task was saved",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-010a-check: no task was saved": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-010a-check: no task was saved": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-010a-check: no task was saved": false
+				}
+			]
+		},
+		{
+			"id": "20752c67-1eae-477b-918e-4e51726661e9",
+			"name": "SETUP register fresh user blank_user through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 203,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"SETUP: redirected after registration (302)": true
+			},
+			"testPassFailCounts": {
+				"SETUP: redirected after registration (302)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"SETUP: redirected after registration (302)": true
+				}
+			]
+		},
+		{
+			"id": "aae46fe6-f718-4af4-b7d1-ca629d080d08",
+			"name": "TC-WEB-010b Title of spaces posted directly (browser check bypassed)",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 10,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-010b: server does not accept it (no redirect to the task list)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-010b: server does not accept it (no redirect to the task list)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-WEB-010b: server does not accept it (no redirect to the task list)": false
+				}
+			]
+		},
+		{
+			"id": "eac0ea2c-4cdf-413d-99cd-c7830c76b3ac",
+			"name": "TC-WEB-010b-check No task was saved",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-010b-check: no task was saved": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-010b-check: no task was saved": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"TC-WEB-010b-check: no task was saved": false
+				}
+			]
+		},
+		{
+			"id": "069104c7-9c9c-48fa-a33e-1f0884015a99",
+			"name": "SETUP register fresh user cat_user through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 199,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"SETUP: redirected after registration (302)": true
+			},
+			"testPassFailCounts": {
+				"SETUP: redirected after registration (302)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				199
+			],
+			"allTests": [
+				{
+					"SETUP: redirected after registration (302)": true
+				}
+			]
+		},
+		{
+			"id": "3d01f8aa-b7f9-4c01-86b1-d5f5b85adeba",
+			"name": "TC-WEB-012a Category id 999 posted directly (not in the select)",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 11,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-012a: server does not accept it (no redirect to the task list)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-012a: server does not accept it (no redirect to the task list)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"TC-WEB-012a: server does not accept it (no redirect to the task list)": false
+				}
+			]
+		},
+		{
+			"id": "82b701a6-741b-4a8d-85ea-9d8d50d581aa",
+			"name": "TC-WEB-012b-check No task was saved",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-012b-check: no task was saved": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-012b-check: no task was saved": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-WEB-012b-check: no task was saved": false
+				}
+			]
+		},
+		{
+			"id": "6d9d6cdd-1f4d-4cd6-b666-31643ab6ac66",
+			"name": "SETUP register fresh user web_owner (now logged in as web_owner)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 202,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "4c7533b0-2e5d-4dc4-b93d-70bea22c7fcd",
+			"name": "SETUP create task -> o_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "773c85a3-5ff8-4297-b8a2-73cceed398f3",
+			"name": "SETUP register fresh user web_intruder (now logged in as web_intruder)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 202,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				202
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "5d25f22d-d93b-44ad-8751-eb16c227d54b",
+			"name": "TC-WEB-013a Intruder submits the edit form for owner's task",
+			"url": "http://127.0.0.1:5000/tasks/36/edit",
+			"time": 7,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "725a3b08-c433-4517-bd5e-e4b11f75259f",
+			"name": "TC-WEB-013b Intruder toggles owner's task",
+			"url": "http://127.0.0.1:5000/tasks/36/toggle",
+			"time": 6,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "cc59abae-df17-4a93-9da1-f67bf517c9ae",
+			"name": "TC-WEB-013c Intruder deletes owner's task",
+			"url": "http://127.0.0.1:5000/tasks/36/delete",
+			"time": 5,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c80426dc-b78d-4e2f-8501-cb2e55f4465d",
+			"name": "SETUP log in as web_owner",
+			"url": "http://127.0.0.1:5000/api/login",
+			"time": 203,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"SETUP: status is 200": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"SETUP: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "c5027d8c-d62a-4620-b6ca-bff845a1def0",
+			"name": "TC-WEB-013d Owner's task is unchanged",
+			"url": "http://127.0.0.1:5000/api/tasks/36",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-013d: status is 200": true,
+				"TC-WEB-013d: title unchanged": true,
+				"TC-WEB-013d: still open": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-013d: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-013d: title unchanged": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-013d: still open": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-013d: status is 200": true,
+					"TC-WEB-013d: title unchanged": true,
+					"TC-WEB-013d: still open": true
+				}
+			]
+		},
+		{
+			"id": "d7dd93a5-d44d-45ea-89bc-a2b4ed4aaa72",
+			"name": "SETUP register fresh user wd_user (now logged in as wd_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 205,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "c370ec93-94d5-4b75-bc79-4da6b3b8968f",
+			"name": "SETUP create task -> h1",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 12,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "375e0fc7-3086-4866-90c0-1d62b5f8fa8c",
+			"name": "SETUP create task -> h2",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "4f846dc5-0c8c-4304-9c66-319360700fd3",
+			"name": "SETUP create task -> h3",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "47531033-56f6-4d47-9281-03f3f2b3c40b",
+			"name": "SETUP create task -> h4",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "e62a9ed1-35fd-49c5-b3b8-ba1a282dc740",
+			"name": "TC-WEB-014a Read the web dashboard",
+			"url": "http://127.0.0.1:5000/dashboard",
+			"time": 23,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-014a: status is 200": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-014a: status is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"TC-WEB-014a: status is 200": true
+				}
+			]
+		},
+		{
+			"id": "268f8e1b-1816-4330-ad11-2b646be96863",
+			"name": "TC-WEB-014b API dashboard equals the web dashboard",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-014b: status is 200": true,
+				"TC-WEB-014b: same five numbers as the web page": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-014b: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-014b: same five numbers as the web page": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"TC-WEB-014b: status is 200": true,
+					"TC-WEB-014b: same five numbers as the web page": true
+				}
+			]
+		},
+		{
+			"id": "e3e03dca-9431-4b71-86a4-b29ca5ebd024",
+			"name": "SETUP create task -> h5",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 8,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "b5321880-4d4d-43a5-b0f5-c91027c3e27d",
+			"name": "TC-WEB-015 Web search for O'Brien",
+			"url": "http://127.0.0.1:5000/?q=O%27Brien",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"TC-WEB-015: status is 200": true,
+				"TC-WEB-015: the matching task is listed": true,
+				"TC-WEB-015: the other task is filtered out": true
+			},
+			"testPassFailCounts": {
+				"TC-WEB-015: status is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-015: the matching task is listed": {
+					"pass": 1,
+					"fail": 0
+				},
+				"TC-WEB-015: the other task is filtered out": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"TC-WEB-015: status is 200": true,
+					"TC-WEB-015: the matching task is listed": true,
+					"TC-WEB-015: the other task is filtered out": true
+				}
+			]
+		},
+		{
+			"id": "d69c979e-178f-40e7-968d-9a5c38b3f7d7",
+			"name": "TC-WEB-016 Existing username on the web registration form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 213,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-016: form is shown again with an error (200, not a 302 login)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-016: form is shown again with an error (200, not a 302 login)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				213
+			],
+			"allTests": [
+				{
+					"TC-WEB-016: form is shown again with an error (200, not a 302 login)": false
+				}
+			]
+		},
+		{
+			"id": "428c8240-29ef-4fc2-8738-849decc2121f",
+			"name": "SETUP register fresh user bad_date_user (now logged in as bad_date_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 206,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				206
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "5eb0c1cf-039c-4961-aeff-7a7bcb36ee2b",
+			"name": "TC-API-019a Create task with due_date 31/12/2026",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 42,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019a: status is 400": false,
+				"TC-API-019a: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019a: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-019a: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				42
+			],
+			"allTests": [
+				{
+					"TC-API-019a: status is 400": false,
+					"TC-API-019a: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "1a947fa3-b904-480a-8748-8ec2b974e78a",
+			"name": "TC-API-019a-check1 Task list still loads",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 22,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019a-check1: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019a-check1: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"TC-API-019a-check1: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "57e9c16c-fd51-4c2a-8656-391ca65331d2",
+			"name": "TC-API-019a-check2 Dashboard still loads",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 20,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019a-check2: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019a-check2: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"TC-API-019a-check2: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "1de33ef4-6b3c-4148-bf72-519587a07a76",
+			"name": "SETUP register fresh user bad_date_user (now logged in as bad_date_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 204,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				204
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "66a88edf-8d91-4b74-bb84-616bd2afed96",
+			"name": "TC-API-019b Create task with due_date 2026-02-30",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 25,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019b: status is 400": false,
+				"TC-API-019b: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019b: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-019b: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"TC-API-019b: status is 400": false,
+					"TC-API-019b: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "2d846fa0-4273-4c98-8b70-97beb9fcda52",
+			"name": "TC-API-019b-check1 Task list still loads",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 22,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019b-check1: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019b-check1: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"TC-API-019b-check1: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "7334d557-50ed-4b26-8b73-5e0e35054def",
+			"name": "TC-API-019b-check2 Dashboard still loads",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 22,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019b-check2: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019b-check2: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"TC-API-019b-check2: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "6a285439-fbdd-496b-807c-ee1d59e5fa14",
+			"name": "SETUP register fresh user bad_date_user (now logged in as bad_date_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 201,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				201
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "a841926c-3a6e-42f8-b2db-edc307affc79",
+			"name": "TC-API-019c Create task with due_date tomorrow",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 26,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019c: status is 400": false,
+				"TC-API-019c: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019c: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-019c: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"TC-API-019c: status is 400": false,
+					"TC-API-019c: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "9ef068fd-df7c-4aff-b689-c8104225e361",
+			"name": "TC-API-019c-check1 Task list still loads",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 19,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019c-check1: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019c-check1: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"TC-API-019c-check1: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "82e0517c-d6dd-4de1-be55-78aa2471aa18",
+			"name": "TC-API-019c-check2 Dashboard still loads",
+			"url": "http://127.0.0.1:5000/api/dashboard",
+			"time": 20,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-019c-check2: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-API-019c-check2: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"TC-API-019c-check2: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "2aaffff9-ec2d-4439-a01b-0b888827bd33",
+			"name": "SETUP register fresh user bad_date_user (now logged in as bad_date_user)",
+			"url": "http://127.0.0.1:5000/api/register",
+			"time": 209,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				209
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "b660e162-a4ab-4f03-b28b-e6314ca1d5e5",
+			"name": "SETUP create task -> s_id",
+			"url": "http://127.0.0.1:5000/api/tasks",
+			"time": 10,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"SETUP: status is 201": true
+			},
+			"testPassFailCounts": {
+				"SETUP: status is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"SETUP: status is 201": true
+				}
+			]
+		},
+		{
+			"id": "2891e922-a214-47cc-94ea-30f2a76e98e8",
+			"name": "TC-API-036f Update with due_date 31/12/2026",
+			"url": "http://127.0.0.1:5000/api/tasks/45",
+			"time": 23,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-036f: status is 400": false,
+				"TC-API-036f: response body is JSON (not an HTML error page)": false
+			},
+			"testPassFailCounts": {
+				"TC-API-036f: status is 400": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036f: response body is JSON (not an HTML error page)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"TC-API-036f: status is 400": false,
+					"TC-API-036f: response body is JSON (not an HTML error page)": false
+				}
+			]
+		},
+		{
+			"id": "5cc0047b-1876-49df-8336-02bff3909eec",
+			"name": "TC-API-036f-check Task unchanged after the rejected update",
+			"url": "http://127.0.0.1:5000/api/tasks/45",
+			"time": 21,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-API-036f-check: status is 200": false,
+				"TC-API-036f-check: due date unchanged": false
+			},
+			"testPassFailCounts": {
+				"TC-API-036f-check: status is 200": {
+					"pass": 0,
+					"fail": 1
+				},
+				"TC-API-036f-check: due date unchanged": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"TC-API-036f-check: status is 200": false,
+					"TC-API-036f-check: due date unchanged": false
+				}
+			]
+		},
+		{
+			"id": "a4572079-2285-4f58-b50c-4444c4bb5d73",
+			"name": "SETUP register fresh user bad_date_web through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 205,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"SETUP: redirected after registration (302)": true
+			},
+			"testPassFailCounts": {
+				"SETUP: redirected after registration (302)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				205
+			],
+			"allTests": [
+				{
+					"SETUP: redirected after registration (302)": true
+				}
+			]
+		},
+		{
+			"id": "6207529a-ccd6-4b6e-895a-de8682fd6583",
+			"name": "TC-WEB-011a Due date 31/12/2026 posted directly (date picker bypassed)",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 10,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-011a: server does not accept it (no redirect to the task list)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011a: server does not accept it (no redirect to the task list)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"TC-WEB-011a: server does not accept it (no redirect to the task list)": false
+				}
+			]
+		},
+		{
+			"id": "9c1c5108-8372-46fd-b135-1e60da23b70a",
+			"name": "TC-WEB-011a-check1 Task list page still loads",
+			"url": "http://127.0.0.1:5000/",
+			"time": 21,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-WEB-011a-check1: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011a-check1: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"TC-WEB-011a-check1: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "57257ea0-5117-46b7-b7e6-3d2616fbefb5",
+			"name": "TC-WEB-011a-check2 Dashboard page still loads",
+			"url": "http://127.0.0.1:5000/dashboard",
+			"time": 20,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-WEB-011a-check2: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011a-check2: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"TC-WEB-011a-check2: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "d03aef42-912c-411d-a998-5ffcbfb2b1d5",
+			"name": "SETUP register fresh user bad_date_web through the web form",
+			"url": "http://127.0.0.1:5000/register",
+			"time": 203,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"SETUP: redirected after registration (302)": true
+			},
+			"testPassFailCounts": {
+				"SETUP: redirected after registration (302)": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				203
+			],
+			"allTests": [
+				{
+					"SETUP: redirected after registration (302)": true
+				}
+			]
+		},
+		{
+			"id": "ed84a32f-dd09-4c47-8818-004e945e90fd",
+			"name": "TC-WEB-011b Due date not-a-date posted directly (date picker bypassed)",
+			"url": "http://127.0.0.1:5000/tasks/new",
+			"time": 11,
+			"responseCode": {
+				"code": 302,
+				"name": "FOUND"
+			},
+			"tests": {
+				"TC-WEB-011b: server does not accept it (no redirect to the task list)": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011b: server does not accept it (no redirect to the task list)": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"TC-WEB-011b: server does not accept it (no redirect to the task list)": false
+				}
+			]
+		},
+		{
+			"id": "44ce810f-d4b3-47d1-9365-571440732ee1",
+			"name": "TC-WEB-011b-check1 Task list page still loads",
+			"url": "http://127.0.0.1:5000/",
+			"time": 21,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-WEB-011b-check1: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011b-check1: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"TC-WEB-011b-check1: status is 200": false
+				}
+			]
+		},
+		{
+			"id": "e4654c88-4b2d-403f-98ac-f019f20798ca",
+			"name": "TC-WEB-011b-check2 Dashboard page still loads",
+			"url": "http://127.0.0.1:5000/dashboard",
+			"time": 22,
+			"responseCode": {
+				"code": 500,
+				"name": "INTERNAL SERVER ERROR"
+			},
+			"tests": {
+				"TC-WEB-011b-check2: status is 200": false
+			},
+			"testPassFailCounts": {
+				"TC-WEB-011b-check2: status is 200": {
+					"pass": 0,
+					"fail": 1
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"TC-WEB-011b-check2: status is 200": false
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 7458,
+	"collection": {
+		"requests": [
+			{
+				"id": "2e645e74-ee3b-4b39-9372-df789778f73a",
+				"method": "POST"
+			},
+			{
+				"id": "49ba7ced-293e-4a35-add1-ade289a314b2",
+				"method": "POST"
+			},
+			{
+				"id": "ef65e275-9403-4302-866b-0b8dff021d7d",
+				"method": "POST"
+			},
+			{
+				"id": "afd394d4-0f02-4d0b-bbc2-4ab29c7abf15",
+				"method": "POST"
+			},
+			{
+				"id": "b258142a-03a4-489b-b4b3-43a93c8a3c3e",
+				"method": "POST"
+			},
+			{
+				"id": "6bc127d3-3454-41e2-b70b-1cb6adbf4ed5",
+				"method": "POST"
+			},
+			{
+				"id": "b6fcb4dd-1272-4996-96e6-9be0b6c1ddef",
+				"method": "POST"
+			},
+			{
+				"id": "23a6dfa7-bfdd-44f4-9fe6-614e6fef86f7",
+				"method": "POST"
+			},
+			{
+				"id": "be6d9497-8cd8-41af-8d30-1195ded5ff71",
+				"method": "POST"
+			},
+			{
+				"id": "f0ef5ec0-76bb-4b88-901f-24a283eca76a",
+				"method": "POST"
+			},
+			{
+				"id": "f2346ebf-0373-4dbb-90b3-e4ef1a65a93a",
+				"method": "POST"
+			},
+			{
+				"id": "0101280b-d9b7-4154-bc93-1fe5b162ecdb",
+				"method": "POST"
+			},
+			{
+				"id": "873edd99-5da2-4b4a-87be-815d52c35c3d",
+				"method": "POST"
+			},
+			{
+				"id": "ca66d408-2ff8-4bdf-8eb3-03015d90db84",
+				"method": "POST"
+			},
+			{
+				"id": "f36fae41-13cf-40e7-929a-a56922dba0c4",
+				"method": "POST"
+			},
+			{
+				"id": "0a6a054b-18b1-4670-8c91-f41c67e001a1",
+				"method": "POST"
+			},
+			{
+				"id": "4b55c881-c2d3-4e80-8335-ea03bc7e76eb",
+				"method": "POST"
+			},
+			{
+				"id": "c96d8334-8ab2-4129-99de-f7ea9e114c04",
+				"method": "GET"
+			},
+			{
+				"id": "78c345e8-d956-41da-86f5-5515529ceb76",
+				"method": "POST"
+			},
+			{
+				"id": "b9f18e56-da6c-4f15-9c3f-59a57513b4c2",
+				"method": "GET"
+			},
+			{
+				"id": "d30f96e3-51ac-4007-8ff7-13cc7cf843d4",
+				"method": "PUT"
+			},
+			{
+				"id": "3836feae-6ae3-4826-955d-598cfc3eb51d",
+				"method": "DELETE"
+			},
+			{
+				"id": "a1d5048c-292e-4ca7-85ec-477745315aad",
+				"method": "GET"
+			},
+			{
+				"id": "4fe27ebf-5b11-43fb-9ede-50fd920c7c90",
+				"method": "GET"
+			},
+			{
+				"id": "f6aad155-0fef-40b9-9176-80670d97abdb",
+				"method": "GET"
+			},
+			{
+				"id": "20d2536b-f53e-49c4-924b-bf63bb73536f",
+				"method": "POST"
+			},
+			{
+				"id": "df7f966e-9e93-4966-bcb8-d4a122a1a568",
+				"method": "POST"
+			},
+			{
+				"id": "d73a418b-9adb-41fd-9b3c-39c9154f85ad",
+				"method": "POST"
+			},
+			{
+				"id": "698e8262-ecbb-4bf5-95c0-a5d0375bab08",
+				"method": "POST"
+			},
+			{
+				"id": "1aad65eb-b120-4c3b-8161-777ea11ade30",
+				"method": "POST"
+			},
+			{
+				"id": "c8b00053-5c93-4f18-a70c-8cde8b0b25da",
+				"method": "POST"
+			},
+			{
+				"id": "d979f650-93bf-4506-b32a-197621fee9a9",
+				"method": "POST"
+			},
+			{
+				"id": "0e7098c5-2a86-41ba-bbbe-e8e46b18c286",
+				"method": "POST"
+			},
+			{
+				"id": "fcdceb76-9dfe-43a0-b615-567d568c77ad",
+				"method": "POST"
+			},
+			{
+				"id": "eaa94efa-8faa-42b9-8e15-b3b42b472089",
+				"method": "POST"
+			},
+			{
+				"id": "d5f4b358-ad75-409b-8d50-ea7f6619238a",
+				"method": "POST"
+			},
+			{
+				"id": "9f954aea-c82c-44b3-b818-6d50385e7ebf",
+				"method": "POST"
+			},
+			{
+				"id": "74551c9c-b0f2-4f45-a8d6-dc6c515f19c9",
+				"method": "POST"
+			},
+			{
+				"id": "baf35293-08a9-4974-8567-9fdb5f2631d6",
+				"method": "POST"
+			},
+			{
+				"id": "bfc241ec-8ebb-435c-9857-fe09ba0efe52",
+				"method": "POST"
+			},
+			{
+				"id": "673750b8-088e-4237-b042-c55735ef31a5",
+				"method": "POST"
+			},
+			{
+				"id": "c071597b-2cde-4b7c-b142-663aa01ae8a8",
+				"method": "GET"
+			},
+			{
+				"id": "93dfcc26-ae96-42cc-abc6-7850dbd02836",
+				"method": "GET"
+			},
+			{
+				"id": "b0f49ca3-07d9-462f-9107-1ecf45c06cdd",
+				"method": "GET"
+			},
+			{
+				"id": "26d5c0e7-0bde-4644-9ba0-b2fd9468d73d",
+				"method": "POST"
+			},
+			{
+				"id": "b19aca45-3729-45b2-a8a8-a74dcfa0727f",
+				"method": "POST"
+			},
+			{
+				"id": "89aa84bb-f51a-4043-83d9-43feabd87727",
+				"method": "POST"
+			},
+			{
+				"id": "d33b3b9a-6df1-4913-a309-aaa7ccae8249",
+				"method": "POST"
+			},
+			{
+				"id": "2e9911cb-9455-4831-9852-da31b98cdc0c",
+				"method": "POST"
+			},
+			{
+				"id": "fe367465-b7fc-48a7-8037-5497ea6a5ff3",
+				"method": "POST"
+			},
+			{
+				"id": "b9a4147a-61f1-4ef7-ad47-08a062973e17",
+				"method": "PUT"
+			},
+			{
+				"id": "3b0757c8-a8ce-4393-9cb5-29013b30cd73",
+				"method": "GET"
+			},
+			{
+				"id": "a90b0706-4559-429b-b354-9bcf002bedcc",
+				"method": "GET"
+			},
+			{
+				"id": "043cf880-bf55-42cc-8d17-2fd37a26bfd4",
+				"method": "GET"
+			},
+			{
+				"id": "e3c3eaf8-affe-4c88-a91e-4b10b6ef9842",
+				"method": "GET"
+			},
+			{
+				"id": "3c6ab5bc-df98-4f45-89b5-aacea4ef0104",
+				"method": "GET"
+			},
+			{
+				"id": "a96ec153-ac83-4bf2-8146-7ba62e4f3b3d",
+				"method": "GET"
+			},
+			{
+				"id": "dae4bdea-c969-4ee3-a199-7f161338e00d",
+				"method": "GET"
+			},
+			{
+				"id": "4436454b-2e3b-4fe1-a6cd-2a968b5e9097",
+				"method": "GET"
+			},
+			{
+				"id": "85d20ae4-a8dc-4745-b6ce-d98cc11971b0",
+				"method": "GET"
+			},
+			{
+				"id": "9e427b2e-16f6-41b0-ab4d-9ef426997573",
+				"method": "GET"
+			},
+			{
+				"id": "63d7d2bf-65ee-45d8-abc0-555ccf86d723",
+				"method": "GET"
+			},
+			{
+				"id": "43c7551c-e7fa-4f92-ae54-0f31bd337806",
+				"method": "GET"
+			},
+			{
+				"id": "450fe2c3-bac7-43b2-9b1a-ae419edaa854",
+				"method": "GET"
+			},
+			{
+				"id": "6508a3f1-80d3-4e39-8789-a8582b0bdc67",
+				"method": "POST"
+			},
+			{
+				"id": "7a7c4bd9-d83d-47aa-9d6d-4efda211b590",
+				"method": "PUT"
+			},
+			{
+				"id": "86c144e1-87f9-4fe5-beb4-5ae0da357974",
+				"method": "POST"
+			},
+			{
+				"id": "b44973f4-7d6c-41e5-973d-66750282dfb7",
+				"method": "PUT"
+			},
+			{
+				"id": "96f07036-59d3-48d5-952f-f7a464fa131a",
+				"method": "PUT"
+			},
+			{
+				"id": "3056cb1f-2864-4063-af98-0c739d5fb4c7",
+				"method": "POST"
+			},
+			{
+				"id": "f3296f74-e5b8-4cc2-862d-84a9987f6e1b",
+				"method": "PUT"
+			},
+			{
+				"id": "31384612-b715-4ab9-abe1-334e3c2d59bb",
+				"method": "GET"
+			},
+			{
+				"id": "795da6cf-df76-4212-844e-609cf3dc0e8a",
+				"method": "POST"
+			},
+			{
+				"id": "73398203-3ed1-4fd7-aeb4-527a7308070e",
+				"method": "PUT"
+			},
+			{
+				"id": "4d622698-6622-4d10-a70b-13649549b6b3",
+				"method": "GET"
+			},
+			{
+				"id": "8acb281e-59c8-4608-a6e0-bde27d49b997",
+				"method": "POST"
+			},
+			{
+				"id": "ef44ad13-6d41-4b9e-8ada-c0e2066cf39a",
+				"method": "PUT"
+			},
+			{
+				"id": "631ea3a7-2255-4179-8cac-326fd421900b",
+				"method": "GET"
+			},
+			{
+				"id": "8da85608-6c9c-45f4-bcf1-481beeb468de",
+				"method": "POST"
+			},
+			{
+				"id": "4381a0ca-4628-4ae2-811e-07147d174d9f",
+				"method": "PUT"
+			},
+			{
+				"id": "249c44a2-b0cc-4dfc-bab3-b96281cf5602",
+				"method": "GET"
+			},
+			{
+				"id": "a6a16704-683d-4388-94d8-be3a68df26cd",
+				"method": "POST"
+			},
+			{
+				"id": "34dc82cd-9686-4430-9729-790e7832162a",
+				"method": "PUT"
+			},
+			{
+				"id": "4df550b1-76a8-47e6-933f-b5ed64726950",
+				"method": "GET"
+			},
+			{
+				"id": "87b2da86-302e-4676-a506-e12300066ba3",
+				"method": "PUT"
+			},
+			{
+				"id": "b460954e-0176-487a-860b-de1381253e0f",
+				"method": "POST"
+			},
+			{
+				"id": "eeb9db48-f713-47f7-a864-70272e0d7ada",
+				"method": "DELETE"
+			},
+			{
+				"id": "aeb51194-0a90-4755-b050-b76de896f5f8",
+				"method": "GET"
+			},
+			{
+				"id": "ccb4ac09-f419-43f4-a1ac-d02437363b93",
+				"method": "DELETE"
+			},
+			{
+				"id": "b7755f89-395c-4b14-be4d-abde7a60fecd",
+				"method": "POST"
+			},
+			{
+				"id": "60d43e6e-68cb-4ec7-aef3-9c3958976de5",
+				"method": "POST"
+			},
+			{
+				"id": "5cbe04ba-86c4-4ec9-83d9-86bcd4d5b649",
+				"method": "POST"
+			},
+			{
+				"id": "1ef126e7-5584-43b0-b4b5-40f54031c5fd",
+				"method": "GET"
+			},
+			{
+				"id": "f41d5df8-18bb-49bd-b821-60320f5d4ec2",
+				"method": "GET"
+			},
+			{
+				"id": "b5313fc5-0f1c-4cc8-b84a-dcbedfbd7902",
+				"method": "GET"
+			},
+			{
+				"id": "47c7c78d-25d3-41f5-b443-e43ce5e211b9",
+				"method": "PUT"
+			},
+			{
+				"id": "4452055c-87b8-4b9b-94d4-e812e9ec6cea",
+				"method": "POST"
+			},
+			{
+				"id": "9c1c3ba7-2451-4877-a6c4-d6628d7f4ac2",
+				"method": "GET"
+			},
+			{
+				"id": "9fc20973-6218-4822-a23f-148e9d243916",
+				"method": "POST"
+			},
+			{
+				"id": "bd688d1b-7acf-4647-93ce-12622377bb38",
+				"method": "DELETE"
+			},
+			{
+				"id": "66d96b0a-d3ae-4d2c-8d9a-d832514bf81d",
+				"method": "POST"
+			},
+			{
+				"id": "f3e2a2bf-dbb9-4ef6-b414-337741246e66",
+				"method": "GET"
+			},
+			{
+				"id": "43ce7eb6-9410-467e-82c5-2ddc7cf8bb80",
+				"method": "POST"
+			},
+			{
+				"id": "c6d09556-c503-4a51-89a4-150bf5809cc1",
+				"method": "POST"
+			},
+			{
+				"id": "c3811694-12b3-46f8-87bc-c5675cfe0f83",
+				"method": "POST"
+			},
+			{
+				"id": "f68c9a43-3a4e-4f42-936f-d628df974111",
+				"method": "POST"
+			},
+			{
+				"id": "eedd56fb-6d0a-4bee-87fe-6200dd82f71a",
+				"method": "POST"
+			},
+			{
+				"id": "1d2873a8-44b5-4d38-959d-316ee5419886",
+				"method": "POST"
+			},
+			{
+				"id": "52226c5b-3fd2-416e-b67a-ce1da3d25182",
+				"method": "PUT"
+			},
+			{
+				"id": "02b1cc8f-11ee-4568-9f01-3e8350807b95",
+				"method": "GET"
+			},
+			{
+				"id": "c8e16968-f995-436d-a380-52c3c2238e03",
+				"method": "POST"
+			},
+			{
+				"id": "ea5e23a3-f0c0-4f23-9c42-8cedcb4c812e",
+				"method": "GET"
+			},
+			{
+				"id": "461ef3d8-eb57-4252-9d24-301976571fa7",
+				"method": "POST"
+			},
+			{
+				"id": "2dddd03c-c70b-4df0-8038-9c7cbb2c02c4",
+				"method": "PATCH"
+			},
+			{
+				"id": "fd93ca66-b823-4ba9-8368-dbb20c3b249f",
+				"method": "POST"
+			},
+			{
+				"id": "0ea643d3-927e-4412-ba3f-798414b513bf",
+				"method": "GET"
+			},
+			{
+				"id": "458e04d9-51f8-4ee4-a6c0-c57494603529",
+				"method": "POST"
+			},
+			{
+				"id": "3273bc0b-7c1e-4218-98f0-1116fc7cb25b",
+				"method": "POST"
+			},
+			{
+				"id": "c525619b-9998-4673-8a21-cb4aafe70380",
+				"method": "POST"
+			},
+			{
+				"id": "53c3f90b-f151-4b37-ac27-7a0976f19727",
+				"method": "POST"
+			},
+			{
+				"id": "f6d9bde5-59f4-4aab-9689-c653ce920308",
+				"method": "POST"
+			},
+			{
+				"id": "feb83069-7456-4e6f-ab9c-c48204e07dca",
+				"method": "GET"
+			},
+			{
+				"id": "c79cf508-0f31-4049-a18a-f1497da766ec",
+				"method": "GET"
+			},
+			{
+				"id": "c574f3da-e57b-4cde-acc3-13667725fc0f",
+				"method": "GET"
+			},
+			{
+				"id": "e4c7cc6e-e740-4c41-bfc0-4cf9bf918387",
+				"method": "GET"
+			},
+			{
+				"id": "49293c77-21bd-471a-a3ee-696a3b56989d",
+				"method": "POST"
+			},
+			{
+				"id": "8070b4a6-755b-4188-80a5-b7860fbf3d45",
+				"method": "POST"
+			},
+			{
+				"id": "55d5f6d4-df29-4a0f-9950-003e83d87872",
+				"method": "POST"
+			},
+			{
+				"id": "26dba03f-5c6a-43b8-800b-3817783ac793",
+				"method": "GET"
+			},
+			{
+				"id": "ac0c664f-1ab8-48a9-ab40-095d0c09135e",
+				"method": "POST"
+			},
+			{
+				"id": "f1d47c1d-7651-4f0e-9afd-e3c84fb23e86",
+				"method": "GET"
+			},
+			{
+				"id": "31244e50-2ac6-4909-b33c-b16b4f3394fb",
+				"method": "POST"
+			},
+			{
+				"id": "5858ca7e-ce31-4631-836d-efd54a5b71eb",
+				"method": "GET"
+			},
+			{
+				"id": "3af21b6c-0fc6-46f5-b2dd-6714c09a6d43",
+				"method": "POST"
+			},
+			{
+				"id": "a73b0b3a-f53b-43f5-9e80-a4422455d989",
+				"method": "GET"
+			},
+			{
+				"id": "ce34593b-c1b6-4dda-815a-438a078bad38",
+				"method": "POST"
+			},
+			{
+				"id": "74bfa90a-9830-4f55-a5a2-97bc42d786af",
+				"method": "GET"
+			},
+			{
+				"id": "3f7520db-4992-45c7-bf3d-9d48d3397a8c",
+				"method": "POST"
+			},
+			{
+				"id": "a3bb77e8-5529-4738-aa8f-e32d61bdad0f",
+				"method": "GET"
+			},
+			{
+				"id": "6507f55e-de28-45c8-a84c-7d1b6733db85",
+				"method": "POST"
+			},
+			{
+				"id": "f34f90fa-1fad-4adb-ba8e-30e28dbd92ae",
+				"method": "POST"
+			},
+			{
+				"id": "cf522785-f727-4989-bb91-d7f45e9e168f",
+				"method": "GET"
+			},
+			{
+				"id": "20752c67-1eae-477b-918e-4e51726661e9",
+				"method": "POST"
+			},
+			{
+				"id": "aae46fe6-f718-4af4-b7d1-ca629d080d08",
+				"method": "POST"
+			},
+			{
+				"id": "eac0ea2c-4cdf-413d-99cd-c7830c76b3ac",
+				"method": "GET"
+			},
+			{
+				"id": "069104c7-9c9c-48fa-a33e-1f0884015a99",
+				"method": "POST"
+			},
+			{
+				"id": "3d01f8aa-b7f9-4c01-86b1-d5f5b85adeba",
+				"method": "POST"
+			},
+			{
+				"id": "82b701a6-741b-4a8d-85ea-9d8d50d581aa",
+				"method": "GET"
+			},
+			{
+				"id": "6d9d6cdd-1f4d-4cd6-b666-31643ab6ac66",
+				"method": "POST"
+			},
+			{
+				"id": "4c7533b0-2e5d-4dc4-b93d-70bea22c7fcd",
+				"method": "POST"
+			},
+			{
+				"id": "773c85a3-5ff8-4297-b8a2-73cceed398f3",
+				"method": "POST"
+			},
+			{
+				"id": "5d25f22d-d93b-44ad-8751-eb16c227d54b",
+				"method": "POST"
+			},
+			{
+				"id": "725a3b08-c433-4517-bd5e-e4b11f75259f",
+				"method": "POST"
+			},
+			{
+				"id": "cc59abae-df17-4a93-9da1-f67bf517c9ae",
+				"method": "POST"
+			},
+			{
+				"id": "c80426dc-b78d-4e2f-8501-cb2e55f4465d",
+				"method": "POST"
+			},
+			{
+				"id": "c5027d8c-d62a-4620-b6ca-bff845a1def0",
+				"method": "GET"
+			},
+			{
+				"id": "d7dd93a5-d44d-45ea-89bc-a2b4ed4aaa72",
+				"method": "POST"
+			},
+			{
+				"id": "c370ec93-94d5-4b75-bc79-4da6b3b8968f",
+				"method": "POST"
+			},
+			{
+				"id": "375e0fc7-3086-4866-90c0-1d62b5f8fa8c",
+				"method": "POST"
+			},
+			{
+				"id": "4f846dc5-0c8c-4304-9c66-319360700fd3",
+				"method": "POST"
+			},
+			{
+				"id": "47531033-56f6-4d47-9281-03f3f2b3c40b",
+				"method": "POST"
+			},
+			{
+				"id": "e62a9ed1-35fd-49c5-b3b8-ba1a282dc740",
+				"method": "GET"
+			},
+			{
+				"id": "268f8e1b-1816-4330-ad11-2b646be96863",
+				"method": "GET"
+			},
+			{
+				"id": "e3e03dca-9431-4b71-86a4-b29ca5ebd024",
+				"method": "POST"
+			},
+			{
+				"id": "b5321880-4d4d-43a5-b0f5-c91027c3e27d",
+				"method": "GET"
+			},
+			{
+				"id": "d69c979e-178f-40e7-968d-9a5c38b3f7d7",
+				"method": "POST"
+			},
+			{
+				"id": "428c8240-29ef-4fc2-8738-849decc2121f",
+				"method": "POST"
+			},
+			{
+				"id": "5eb0c1cf-039c-4961-aeff-7a7bcb36ee2b",
+				"method": "POST"
+			},
+			{
+				"id": "1a947fa3-b904-480a-8748-8ec2b974e78a",
+				"method": "GET"
+			},
+			{
+				"id": "57e9c16c-fd51-4c2a-8656-391ca65331d2",
+				"method": "GET"
+			},
+			{
+				"id": "1de33ef4-6b3c-4148-bf72-519587a07a76",
+				"method": "POST"
+			},
+			{
+				"id": "66a88edf-8d91-4b74-bb84-616bd2afed96",
+				"method": "POST"
+			},
+			{
+				"id": "2d846fa0-4273-4c98-8b70-97beb9fcda52",
+				"method": "GET"
+			},
+			{
+				"id": "7334d557-50ed-4b26-8b73-5e0e35054def",
+				"method": "GET"
+			},
+			{
+				"id": "6a285439-fbdd-496b-807c-ee1d59e5fa14",
+				"method": "POST"
+			},
+			{
+				"id": "a841926c-3a6e-42f8-b2db-edc307affc79",
+				"method": "POST"
+			},
+			{
+				"id": "9ef068fd-df7c-4aff-b689-c8104225e361",
+				"method": "GET"
+			},
+			{
+				"id": "82e0517c-d6dd-4de1-be55-78aa2471aa18",
+				"method": "GET"
+			},
+			{
+				"id": "2aaffff9-ec2d-4439-a01b-0b888827bd33",
+				"method": "POST"
+			},
+			{
+				"id": "b660e162-a4ab-4f03-b28b-e6314ca1d5e5",
+				"method": "POST"
+			},
+			{
+				"id": "2891e922-a214-47cc-94ea-30f2a76e98e8",
+				"method": "PUT"
+			},
+			{
+				"id": "5cc0047b-1876-49df-8336-02bff3909eec",
+				"method": "GET"
+			},
+			{
+				"id": "a4572079-2285-4f58-b50c-4444c4bb5d73",
+				"method": "POST"
+			},
+			{
+				"id": "6207529a-ccd6-4b6e-895a-de8682fd6583",
+				"method": "POST"
+			},
+			{
+				"id": "9c1c5108-8372-46fd-b135-1e60da23b70a",
+				"method": "GET"
+			},
+			{
+				"id": "57257ea0-5117-46b7-b7e6-3d2616fbefb5",
+				"method": "GET"
+			},
+			{
+				"id": "d03aef42-912c-411d-a998-5ffcbfb2b1d5",
+				"method": "POST"
+			},
+			{
+				"id": "ed84a32f-dd09-4c47-8818-004e945e90fd",
+				"method": "POST"
+			},
+			{
+				"id": "44ce810f-d4b3-47d1-9365-571440732ee1",
+				"method": "GET"
+			},
+			{
+				"id": "e4654c88-4b2d-403f-98ac-f019f20798ca",
+				"method": "GET"
+			}
+		]
+	}
+}
