@@ -19,3 +19,6 @@ STQA Group Project.pdf
 
 # macOS Finder metadata
 .DS_Store
+
+__pycache__/
+.pytest_cache/
