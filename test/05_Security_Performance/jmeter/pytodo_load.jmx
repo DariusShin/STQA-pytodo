@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+<hashTree>
+<TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="PyTodo Pro - Week 5 load and stress (PERF-01 to PERF-06)" enabled="true">
+  <stringProp name="TestPlan.comments">setUp: register perf_user_1..N and give each 50 tasks. Main: each virtual user logs in once as one of those accounts, then loops: think time, then one weighted action - list 4, dashboard 3, home page 2, search 2, create+complete+delete 1. Properties: users, rampup, duration, think_min, think_range, perf_users, seed_tasks, port.</stringProp>
+  <boolProp name="TestPlan.functional_mode">false</boolProp>
+  <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
+  <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+</TestPlan>
+<hashTree><ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="Server: 127.0.0.1 (port from -Jport)" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.domain">127.0.0.1</stringProp>
+  <stringProp name="HTTPSampler.port">${__P(port,5015)}</stringProp>
+  <stringProp name="HTTPSampler.protocol">http</stringProp>
+  <stringProp name="HTTPSampler.connect_timeout">10000</stringProp>
+  <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
+</ConfigTestElement>
+<hashTree></hashTree>
+<CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="Session cookie per virtual user" enabled="true">
+  <collectionProp name="CookieManager.cookies"/>
+  <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+  <boolProp name="CookieManager.controlledByThreadGroup">false</boolProp>
+</CookieManager>
+<hashTree></hashTree>
+<HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="JSON content type" enabled="true">
+  <collectionProp name="HeaderManager.headers">
+    <elementProp name="" elementType="Header">
+      <stringProp name="Header.name">Content-Type</stringProp>
+      <stringProp name="Header.value">application/json</stringProp>
+    </elementProp>
+  </collectionProp>
+</HeaderManager>
+<hashTree></hashTree>
+<SetupThreadGroup guiclass="SetupThreadGroupGui" testclass="SetupThreadGroup" testname="SETUP: register perf users and seed tasks" enabled="true">
+  <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+  <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+    <boolProp name="LoopController.continue_forever">false</boolProp>
+    <stringProp name="LoopController.loops">1</stringProp>
+  </elementProp>
+  <stringProp name="ThreadGroup.num_threads">20</stringProp>
+  <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+  <boolProp name="ThreadGroup.scheduler">false</boolProp>
+  <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+</SetupThreadGroup>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SETUP register" enabled="true">
+  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+    <collectionProp name="Arguments.arguments">
+      <elementProp name="" elementType="HTTPArgument">
+        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+        <stringProp name="Argument.value">{"username": "perf_user_${__threadNum}", "password": "Passw0rd!23"}</stringProp>
+        <stringProp name="Argument.metadata">=</stringProp>
+      </elementProp>
+    </collectionProp>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/register</stringProp>
+  <stringProp name="HTTPSampler.method">POST</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 201" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">201</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+<LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Seed tasks per user" enabled="true">
+  <boolProp name="LoopController.continue_forever">true</boolProp>
+  <stringProp name="LoopController.loops">${__P(seed_tasks,50)}</stringProp>
+</LoopController>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="SETUP create task" enabled="true">
+  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+    <collectionProp name="Arguments.arguments">
+      <elementProp name="" elementType="HTTPArgument">
+        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+        <stringProp name="Argument.value">{"title": "Perf task ${__counter(TRUE,)} report meeting", "category_id": 1, "due_date": "2026-12-31"}</stringProp>
+        <stringProp name="Argument.metadata">=</stringProp>
+      </elementProp>
+    </collectionProp>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks</stringProp>
+  <stringProp name="HTTPSampler.method">POST</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 201" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">201</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+<ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Virtual users" enabled="true">
+  <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+  <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+    <boolProp name="LoopController.continue_forever">false</boolProp>
+    <stringProp name="LoopController.loops">-1</stringProp>
+  </elementProp>
+  <stringProp name="ThreadGroup.num_threads">${__P(users,1)}</stringProp>
+  <stringProp name="ThreadGroup.ramp_time">${__P(rampup,1)}</stringProp>
+  <boolProp name="ThreadGroup.scheduler">true</boolProp>
+  <stringProp name="ThreadGroup.duration">${__P(duration,150)}</stringProp>
+  <stringProp name="ThreadGroup.delay">0</stringProp>
+  <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+</ThreadGroup>
+<hashTree><OnceOnlyController guiclass="OnceOnlyControllerGui" testclass="OnceOnlyController" testname="Log in once" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/login" enabled="true">
+  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+    <collectionProp name="Arguments.arguments">
+      <elementProp name="" elementType="HTTPArgument">
+        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+        <stringProp name="Argument.value">{"username": "perf_user_${__jexl3((${__threadNum} - 1) % 20 + 1)}", "password": "Passw0rd!23"}</stringProp>
+        <stringProp name="Argument.metadata">=</stringProp>
+      </elementProp>
+    </collectionProp>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/login</stringProp>
+  <stringProp name="HTTPSampler.method">POST</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+<TestAction guiclass="TestActionGui" testclass="TestAction" testname="Think, then choose action" enabled="true">
+  <intProp name="ActionProcessor.action">1</intProp>
+  <intProp name="ActionProcessor.target">0</intProp>
+  <stringProp name="ActionProcessor.duration">0</stringProp>
+</TestAction>
+<hashTree><JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="Pick next action (weights 4:3:2:2:1)" enabled="true">
+  <stringProp name="scriptLanguage">groovy</stringProp>
+  <stringProp name="parameters"></stringProp>
+  <stringProp name="filename"></stringProp>
+  <stringProp name="cacheKey">true</stringProp>
+  <stringProp name="script">def rnd = java.util.concurrent.ThreadLocalRandom.current()
+def r = rnd.nextInt(12)
+vars.put('action', r &lt; 4 ? 'list' : r &lt; 7 ? 'dashboard' : r &lt; 9 ? 'home' : r &lt; 11 ? 'search' : 'write')
+vars.put('term', ['report', 'meeting', 'task', 'zzz'][rnd.nextInt(4)])</stringProp>
+</JSR223PreProcessor>
+<hashTree></hashTree>
+<UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Think time (default 1-3 s)" enabled="true">
+  <stringProp name="ConstantTimer.delay">${__P(think_min,1000)}</stringProp>
+  <stringProp name="RandomTimer.range">${__P(think_range,2000)}</stringProp>
+</UniformRandomTimer>
+<hashTree></hashTree>
+</hashTree>
+<SwitchController guiclass="SwitchControllerGui" testclass="SwitchController" testname="Run chosen action" enabled="true">
+  <stringProp name="SwitchController.value">${action}</stringProp>
+</SwitchController>
+<hashTree><GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="list" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/tasks" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks</stringProp>
+  <stringProp name="HTTPSampler.method">GET</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="dashboard" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/dashboard" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/dashboard</stringProp>
+  <stringProp name="HTTPSampler.method">GET</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="home" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET / (HTML)" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/</stringProp>
+  <stringProp name="HTTPSampler.method">GET</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+<ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Page shows My Tasks" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">My Tasks</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+  <boolProp name="Assertion.assume_success">false</boolProp>
+  <intProp name="Assertion.test_type">16</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="search" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /api/tasks?q=" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks?q=${term}</stringProp>
+  <stringProp name="HTTPSampler.method">GET</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+<GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="write" enabled="true"/>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /api/tasks" enabled="true">
+  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+    <collectionProp name="Arguments.arguments">
+      <elementProp name="" elementType="HTTPArgument">
+        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+        <stringProp name="Argument.value">{"title": "load test task", "category_id": 1, "due_date": "2026-12-31"}</stringProp>
+        <stringProp name="Argument.metadata">=</stringProp>
+      </elementProp>
+    </collectionProp>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks</stringProp>
+  <stringProp name="HTTPSampler.method">POST</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 201" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">201</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+<JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract task id" enabled="true">
+  <stringProp name="JSONPostProcessor.referenceNames">tid</stringProp>
+  <stringProp name="JSONPostProcessor.jsonPathExprs">$.id</stringProp>
+  <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+  <stringProp name="JSONPostProcessor.defaultValues">NOTFOUND</stringProp>
+</JSONPostProcessor>
+<hashTree></hashTree>
+</hashTree>
+<IfController guiclass="IfControllerPanel" testclass="IfController" testname="Only if the create succeeded" enabled="true">
+  <stringProp name="IfController.condition">${__jexl3("${tid}" != "NOTFOUND")}</stringProp>
+  <boolProp name="IfController.evaluateAll">false</boolProp>
+  <boolProp name="IfController.useExpression">true</boolProp>
+</IfController>
+<hashTree><HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /api/tasks/[id]" enabled="true">
+  <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+    <collectionProp name="Arguments.arguments">
+      <elementProp name="" elementType="HTTPArgument">
+        <boolProp name="HTTPArgument.always_encode">false</boolProp>
+        <stringProp name="Argument.value">{"done": true}</stringProp>
+        <stringProp name="Argument.metadata">=</stringProp>
+      </elementProp>
+    </collectionProp>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks/${tid}</stringProp>
+  <stringProp name="HTTPSampler.method">PUT</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+<HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="DELETE /api/tasks/[id]" enabled="true">
+  <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+    <collectionProp name="Arguments.arguments"/>
+  </elementProp>
+  <stringProp name="HTTPSampler.path">/api/tasks/${tid}</stringProp>
+  <stringProp name="HTTPSampler.method">DELETE</stringProp>
+  <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+  <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+</HTTPSamplerProxy>
+<hashTree><ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Status is 200" enabled="true">
+  <collectionProp name="Asserion.test_strings"><stringProp name="0">200</stringProp></collectionProp>
+  <stringProp name="Assertion.custom_message"></stringProp>
+  <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+  <boolProp name="Assertion.assume_success">true</boolProp>
+  <intProp name="Assertion.test_type">8</intProp>
+</ResponseAssertion>
+<hashTree></hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+</hashTree>
+</jmeterTestPlan>
