@@ -1,93 +1,42 @@
-# 05_Security_Performance: Week 5 security and performance tests
+# 05_Security_Performance - Security and Performance Testing
 
-All scripts are already set up for **PyTodo Pro (pytodo_pro_student)**: routes, JSON fields, and the 9+ character password rule. Results from our run on 25 Nov 2026 are in `results/` and written up in `Week5_Security_Performance_Report.md`.
+Week 5 builds a STRIDE threat table, derives safe security tests from it (pytest, pip-audit, bandit), and runs a controlled load, stress and data-volume experiment with Apache JMeter.
 
-Run everything on your own machine against a local copy only.
+| File / folder | Contents |
+| --- | --- |
+| [W5_Report.md](W5_Report.md) | Week 5 report: STRIDE table, security results, performance design, results and interpretation, limitations, recommendations |
+| [test_cases.md](test_cases.md) | SEC-01 to SEC-24 and PERF-01 to PERF-07 |
+| [defects.md](defects.md) | DEF-024 to DEF-037, and re-tests of DEF-005, 014, 015, 017, 023 |
+| `test_security.py`, `conftest.py`, `client.py`, `config.py`, `pytest.ini` | Security test suite and settings |
+| [jmeter/](jmeter/) | `pytodo_load.jmx` (PERF-01 to 06), `pytodo_data_volume.jmx` (PERF-07), `run_performance.py` (runs JMeter, builds tables and charts), `run_perf_server.py` (starts the unchanged app on a fresh database) |
+| [evidences/security/](evidences/security/) | SEC screenshots, raw pytest output, `bandit.txt`, `pip_audit.txt`, machine specs of the security run |
+| [evidences/performance/20261127-mac/](evidences/performance/20261127-mac/) | `perf_summary.md` / `.csv`, charts, `run.json` (environment), raw JMeter results `*.jtl.gz`, server logs, JMeter HTML dashboards for PERF-05, PERF-06b and the 200-user stress step |
 
-## 0. Setup (once)
+## How to run
 
-```bash
-pip install -r ../pytodo_pro_student/requirements.txt     # the app itself
-pip install pytest requests locust matplotlib bandit pip-audit
-```
-
-## 1. Start a fresh copy of PyTodo Pro
-
-```bash
-cd pytodo_pro_student
-# delete or rename pytodo_pro.db so you start clean
-python app.py
-```
-Leave this terminal open. The app runs on http://127.0.0.1:5000.
-
-## 2. Security tests (about 5 s)
-
-Open a second terminal:
+**Security tests** (about 5 s). Start a fresh copy of the app (`python app.py` from the repository root, with `pytodo_pro.db` deleted), then:
 
 ```bash
-cd 05_Security_Performance
-# macOS/Linux:
-export PYTODO_DB=../pytodo_pro_student/pytodo_pro.db
-# Windows PowerShell:  $env:PYTODO_DB="..\pytodo_pro_student\pytodo_pro.db"
-
-pytest test_security.py -v -rA --raw        # evidence run: every finding shows as FAILED
-pytest test_security.py -v -rA              # regression run: findings show as XFAIL with DEF-ID
+cd test/05_Security_Performance
+pip install pytest requests bandit pip-audit
+export PYTODO_DB=../../pytodo_pro.db          # Windows PowerShell: $env:PYTODO_DB="..\..\pytodo_pro.db"
+pytest test_security.py -v -rA --raw          # evidence run: every finding shows as FAILED (17 failed, 6 passed)
+pytest test_security.py -v -rA                # regression run: findings show as XFAIL with their defect ID
+pip-audit -r ../../requirements.txt
+bandit -r ../../app.py ../../helpers.py
 ```
 
-Expected today: `--raw` → **17 failed, 6 passed**; normal → **6 passed, 17 xfailed**.
-An **XPASS(strict)** in the normal run means a defect was fixed, so retest and close it.
+An `XPASS(strict)` in the regression run means a defect was fixed: re-test and close it.
 
-Tool scans:
+**Performance tests** (Apache JMeter 5.6.3 and Java required; the runner starts and stops the app itself):
 
 ```bash
-bandit -r ../pytodo_pro_student
-pip-audit -r ../pytodo_pro_student/requirements.txt
+pip install -r ../../requirements.txt matplotlib
+cd test/05_Security_Performance/jmeter
+python run_performance.py --quick                          # 2-minute script check
+python run_performance.py --out ../evidences/performance/<run-name>                 # PERF-01 to 05, 06b, 07 (~15 min)
+python run_performance.py --stress-steps --out ../evidences/performance/<run-name>  # PERF-06 stepped stress (~7 min)
+python run_performance.py --analyse ../evidences/performance/<run-name>             # rebuild tables and charts
 ```
 
-Manual check SEC-11: watch the `python app.py` terminal while you log in, fail a login and delete a task. You'll see URLs and status codes, but never the username.
-
-### Good live-demo moments
-- **SEC-07b (SQL injection):** in Postman, log in as user A and send
-  `GET http://127.0.0.1:5000/api/tasks?q=%' OR user_id != 0 OR title LIKE '&per_page=100`. Every user's tasks come back.
-- **SEC-12 (stored XSS):** create a task titled `<img src=x onerror="alert('XSS')">` in the browser. The alert pops up on the task list.
-- **SEC-13 (debug mode):** open `http://127.0.0.1:5000/api/tasks?q='` while logged in. The Werkzeug debugger page appears.
-
-## 3. Performance test (about 12 min)
-
-1. Close other heavy apps and note your machine's CPU, RAM and OS (report section 7.4).
-2. Seed the data (once): `python seed_data.py`
-3. Smoke test (30 s, should show 0 failures):
-   `locust -f locustfile.py --headless -u 2 -r 1 -t 30s`
-4. Full run:
-   ```bash
-   bash run_load_steps.sh        # macOS / Linux / Git Bash
-   .\run_load_steps.ps1          # Windows PowerShell
-   ```
-5. Stress run (PERF-06, 90 s, no think time):
-   ```bash
-   STRESS=1 locust -f locustfile.py --headless -u 50 -r 10 -t 90s --csv results/stress_50u --html results/stress_50u.html --only-summary
-   # PowerShell: $env:STRESS="1"; locust ... ; Remove-Item Env:STRESS
-   ```
-6. Data-volume test (PERF-07, about 1 min): `python perf_scaling.py`
-7. Charts: `python make_charts.py` builds `results/perf_chart.png` (3 panels: normal load, stress, data volume).
-
-Outputs in `results/`: `perf_summary.md`, `perf_scaling.md`, `stress_50u_stats.csv`, `perf_chart.png`, and the Locust HTML reports `step_<N>u.html` / `stress_50u.html` (good for screenshots).
-
-For a live demo, run `locust -f locustfile.py` and open http://localhost:8089 to show the live charts.
-
-## Files
-
-| File | Purpose |
-|---|---|
-| `config.py` | URLs, accounts, settings (only change `BASE_URL` if needed) |
-| `client.py` | Login/create helpers |
-| `test_security.py` | 23 automated security tests (SEC-01 … SEC-24) |
-| `conftest.py` | Maps confirmed findings to defect IDs (strict xfail); `--raw` switch |
-| `seed_data.py` | 20 users × 50 tasks for load testing |
-| `locustfile.py` | Load-test workload |
-| `run_load_steps.sh` / `.ps1` | 1/5/10/25/50 users × 2 min |
-| `summarise_results.py` | Locust step CSVs → `perf_summary.md` table |
-| `perf_scaling.py` | PERF-07 data-volume test |
-| `make_charts.py` | Builds the 3-panel `perf_chart.png` |
-| `Week5_Security_Performance_Report.md` | STRIDE, test cases, defects, performance results, recommendations |
-| `results/` | Evidence from the 25 Nov run |
+Options: `--jmeter <path to jmeter>` if it is not on `PATH`, `--port 5016` if 5015 is in use. The plans can also be opened in the JMeter GUI to inspect the thread groups, samplers and assertions.

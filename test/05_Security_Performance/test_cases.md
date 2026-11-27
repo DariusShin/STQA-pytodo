@@ -8,7 +8,7 @@ Executed 2026-11-25 by Wan Haziqah Binti Wan Hanafi (environment: W5_Report head
 
 | Test Case ID | Feature / threat | Technique | Objective | Test data / steps | Expected result | Actual result | Status | Evidence | Defect ID |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| SEC-01 | Login / TH-01 | Automated (pytest) | Login errors do not reveal which field is wrong | Login with an unknown user, then a known user with a wrong password (API and web) | Identical responses | Both 401 `invalid credentials` (API) and "Invalid username or password." (web) | Pass | raw output | — |
+| SEC-01 | Login / TH-01 | Automated | Login errors do not reveal which field is wrong | Login with an unknown user, then a known user with a wrong password (API and web) | Identical responses | Both 401 `invalid credentials` (API) and "Invalid username or password." (web) | Pass | raw output | — |
 | SEC-02 | Login / TH-02 | Automated | Repeated failures are throttled | 20 wrong passwords, then the correct one | 429 or lockout after N failures | All 20 returned 401 at once; correct password then 200 | Fail | raw output | DEF-024 |
 | SEC-03 | API auth / TH-04 | Automated | Every API endpoint needs login | 7 API calls without a cookie | 401 for all | 6 × 401; `GET /api/categories` 200 | Fail | raw output | DEF-023 |
 | SEC-04 | Session / TH-04 | Automated | Cookie has protective flags | Inspect `Set-Cookie` from `/api/login` | `HttpOnly` and `SameSite` | `session=...; HttpOnly; Path=/`, no `SameSite` | Fail | raw output | DEF-025 |

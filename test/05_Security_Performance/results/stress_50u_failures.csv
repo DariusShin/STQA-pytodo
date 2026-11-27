@@ -1,8 +1,0 @@
-Method,Name,Error,Occurrences,First Seen,Last Seen
-POST,POST /api/tasks,"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",87,2026-11-25T01:48:09Z,2026-11-25T01:48:13Z
-PUT,PUT /api/tasks/[id],"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",3,2026-11-25T01:48:09Z,2026-11-25T01:48:09Z
-GET,GET /api/dashboard,"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",258,2026-11-25T01:48:09Z,2026-11-25T01:48:13Z
-GET,GET / (HTML),"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",143,2026-11-25T01:48:09Z,2026-11-25T01:48:13Z
-GET,GET /api/tasks,"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",360,2026-11-25T01:48:09Z,2026-11-25T01:48:13Z
-GET,GET /api/tasks?q=,"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",172,2026-11-25T01:48:09Z,2026-11-25T01:48:13Z
-DELETE,DELETE /api/tasks/[id],"OSError(10048, '[WinError 10048] Only one usage of each socket address (protocol/network address/port) is normally permitted.')",2,2026-11-25T01:48:09Z,2026-11-25T01:48:09Z
