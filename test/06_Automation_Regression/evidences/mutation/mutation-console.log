@@ -40,3 +40,23 @@ M7 REQ-004 reopen no longer possible exit 1
     1 failed, 42 passed, 17 deselected, 5 xfailed in 34.70s
 
 [exited with code 0]
+
+--- 2026-11-27: Week 4 Web/API mutants (-m api), python -B evidences/mutation/mutation_runs.py M8 M9 M10 M11 M12 ---
+M8 REQ-008 API read no longer limited to the owner exit 1
+    FAILED test_06_api.py::test_api_read_another_users_task - AssertionError: exp...
+    1 failed, 68 passed, 65 deselected, 32 xfailed in 20.01s
+M9 REQ-009 /api/dashboard loses login protection exit 1
+    FAILED test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011f-dashboard]
+    1 failed, 68 passed, 65 deselected, 32 xfailed in 16.86s
+M10 DEF-014 and DEF-021 fixed (API delete limited to the owner, 404 when nothing deleted) exit 1
+    FAILED test_06_api.py::test_api_delete_another_users_task - [XPASS(strict)] k...
+    FAILED test_06_api.py::test_api_delete_missing_task - [XPASS(strict)] known o...
+    2 failed, 69 passed, 65 deselected, 30 xfailed in 33.59s
+M11 REQ-005 API status=done filter ignored exit 1
+    FAILED test_06_api.py::test_api_filter_by_status[TC-API-027b-done] - assert [...
+    1 failed, 68 passed, 65 deselected, 32 xfailed in 18.46s
+M12 REQ-002 API login accepts any password exit 1
+    FAILED test_06_api.py::test_api_login_invalid_credentials[TC-API-010a-wrong-password]
+    1 failed, 68 passed, 65 deselected, 32 xfailed in 18.72s
+
+[exited with code 0]

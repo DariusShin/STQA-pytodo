@@ -297,7 +297,7 @@ def pytest_sessionfinish(session, exitstatus):
         "timezone": time.strftime("%Z"),
         "execution_date_used_for_due_dates": TODAY.isoformat(),
         "app_commit": commit,
-        "browser": getattr(config, "w6_browser_version", config.getoption("--browser")),
+        "browser": getattr(config, "w6_browser_version", "none (no browser check selected)"),
         "headless": not config.getoption("--headed"),
         "selenium": selenium.__version__,
         "pytest": pytest.__version__,

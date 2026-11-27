@@ -1,7 +1,7 @@
 # Week 6 — Environment setup and execution guide
 
 This guide accompanies the [Week 6 report](README.md). The regression suite is
-written in **pytest + Selenium WebDriver**. It needs no change to the
+written in **pytest + Selenium WebDriver**, plus browser-free HTTP checks for the Week 4 Web/API cases. It needs no change to the
 application and does not touch the development database.
 
 ## Verified environment
@@ -12,7 +12,7 @@ application and does not touch the development database.
 | Python | 3.14.7 |
 | pytest | 9.2.0 |
 | Selenium (Python) | 4.53.0, with Selenium Manager resolving the driver |
-| Browser | Microsoft Edge 157.0.4341.60, headless, 1366x900 window |
+| Browser | Microsoft Edge 157.0.4341.60 (2026-11-20) and 158.0.4370.45 (2026-11-27), headless, 1366x900 window |
 | Flask / Werkzeug | 3.0.3 / 3.1.9 |
 
 All dependencies are pinned in [requirements-test-lock.txt](requirements-test-lock.txt).
@@ -41,11 +41,13 @@ this folder's `pytest.ini`. Use `python -B` so that importing `app.py` and
 | Purpose | Command | Typical time |
 | --- | --- | --- |
 | Smoke (critical path, run on every change) | `python -B -m pytest -m smoke --browser chrome` | about 14 s |
-| Full focused regression suite | `python -B -m pytest --browser chrome` | about 37 s |
+| Week 4 Web/API checks (server, no browser) | `python -B -m pytest -m api` | about 21 s |
+| Full focused regression suite | `python -B -m pytest --browser chrome` | about 85 s |
 | Business rules only (no browser or server) | `python -B -m pytest -m unit` | under 1 s |
-| Known defects counted as failures | `python -B -m pytest --browser chrome --defects-as-failures` | about 35 s |
+| Browser checks only (as before 2026-11-27) | `python -B -m pytest --browser chrome -m "not api"` | about 37 s |
+| Known defects counted as failures | `python -B -m pytest --browser chrome --defects-as-failures` | about 85 s |
 
-- `--browser` takes `chrome` (the default), `edge` or `firefox`.
+- `--browser` takes `chrome` (the default), `edge` or `firefox`. It has no effect on `-m api` or `-m unit` runs, which start no browser; their `results.md` records the browser as `none`.
 - `--headed` shows the browser window. Runs are headless by default.
 - `--base-url http://127.0.0.1:5000` runs the suite against a server you started yourself instead of an isolated one. That server's database will then receive the test accounts.
 - `--run-label <text>` adds a suffix to the run folder name, for example `rerun2`.
@@ -56,6 +58,7 @@ this folder's `pytest.ini`. Use `python -B` so that importing `app.py` and
 2. Each test registers a new account through the API, named `w6_<purpose>_<HHMMSS><n>`, and seeds that account's tasks through the API. The UI steps then cover only the behaviour being checked.
 3. One browser is used for the whole session. Its cookies are cleared before each test, so no login state carries over from one test to the next.
 4. Due dates are calculated as offsets from the day of the run, so the urgency and dashboard data remain valid on any date.
+5. The Week 4 checks (`test_06_api.py`, `test_07_web_forms.py`) use the same isolated server, without a browser. Each `ApiClient` keeps its own cookie jar, so one client is one user's session. Redirects are not followed, so a web form's `302` and its target can be asserted. Every check registers its own users, so a user left unable to load their list by DEF-015 cannot affect another check.
 
 ## 4. Outputs
 
@@ -65,7 +68,7 @@ Each run writes a folder `evidences/runs/<YYYYMMDD-HHMMSS>-<browser>[-label]/` c
 | --- | --- |
 | `results.md` / `results.json` | Environment, totals, and one row per check: auto ID, manual case(s), requirement, known defect, status, duration, failure message, screenshot |
 | `junit.xml` | Standard JUnit XML for CI tools |
-| `pytest.log` | Timestamped log of each UI and API step |
+| `pytest.log` | Timestamped log of each UI step, API request (`API ...`) and web form request (`WEB ...`) |
 | `server.log` | Request log of the isolated application server |
 | `screenshots/` | A PNG for every failed check and every known-defect check |
 
