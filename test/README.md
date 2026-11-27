@@ -11,6 +11,7 @@ Progressive quality assessment of the PyTodo Pro task-management web application
 | Lecturer | Ts. Dr Abdullateef Balogun |
 | Group / tutorial | Wednesday - Group 2 |
 | Repository | [github.com/DariusShin/STQA-pytodo](https://github.com/DariusShin/STQA-pytodo) |
+| Demonstration Video | https://youtu.be/tS-iB-gsl1Q |
 
 ## 2. Team members and responsibilities
 

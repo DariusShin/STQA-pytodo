@@ -1,5 +1,12 @@
 # Week 9 - Standards Integration and Final Presentation
 
+---
+
+## Demonsration Video
+The demonstration video for defects walkthrough is posted on YouTube with the link: https://youtu.be/tS-iB-gsl1Q .
+
+---
+
 | Item | Value |
 | --- | --- |
 | Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance, September 2026 |
