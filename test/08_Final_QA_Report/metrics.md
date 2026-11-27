@@ -62,7 +62,7 @@ Excluding the Week 6 automated re-runs of earlier cases: 213 cases, 151 Pass, 61
 
 | Metric | Value |
 | --- | --- |
-| Defect density | 37 defects / 557 lines (`app.py` + `helpers.py`) = **66.4 defects per KLOC** |
+| Defect density | 37 defects / 557 physical lines (`app.py` + `helpers.py`, including blank and comment lines) = **66.4 defects per KLOC** |
 | Critical + Major share | 10 of 37 = 27.0% |
 | Open / closed | 37 open, 0 closed (no fixes delivered) |
 | Re-tested in a later week | 14 of 37 |

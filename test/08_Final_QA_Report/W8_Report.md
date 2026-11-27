@@ -16,14 +16,15 @@
 - [x] [Residual risk assessment](#4-residual-risk-assessment)
 - [x] [Quality findings and limitations](#5-quality-findings-and-limitations)
 - [x] [Prioritised recommendations and future testing](#7-prioritised-recommendations-and-future-testing)
+- [x] [How the team's understanding of quality evolved](#8-how-the-teams-understanding-of-quality-evolved) (Project Overview, point 4)
 
 ## 1. Overall quality assessment
 
 PyTodo Pro does what it is supposed to do on the **normal path**: registration, login, task create/edit/complete/delete, filters, dashboard and user separation in the web pages all work in Chrome and Firefox on macOS and Windows, and at expected load it answers in under 10 ms (p95) with no errors.
 
-It is **not ready for release to real users.** Testing found 37 open defects, 4 Critical and 6 Major. The Critical ones break the two things a task manager must protect: **who can act on an account** (forged sessions with the hard-coded key, DEF-028) and **whose data a user can reach** (SQL injection in API search, DEF-029; deleting another user's task through the API, DEF-014; one bad due date locking a user out of their own list, DEF-015). Most of these sit in the JSON API, which validates and authorises less carefully than the web pages, and none needs specialist tools to trigger.
+It is **not ready for release to real users.** Testing found 37 open defects, 4 Critical and 6 Major. The Critical ones break what a task manager must protect: **who can act on an account** (forged sessions with the hard-coded key, DEF-028), **whose data a user can reach** (SQL injection in API search, DEF-029; deleting another user's task through the API, DEF-014) and **a user's access to their own tasks** (one bad due date locks a user out of their own list and dashboard, DEF-015). Most of these sit in the JSON API, which validates and authorises less carefully than the web pages, and none needs specialist tools to trigger.
 
-71.2% of 302 executed cases passed, and the areas in section 4 remain partly or wholly untested. Testing shows that defects are present; it does not show that the software is defect-free.
+70.9% of the 213 cases designed in Weeks 1-5 passed (71.2% of all 302 when the 89 Week 6 automated re-runs of earlier cases are included), and the areas in section 4 remain partly or wholly untested. Testing shows that defects are present; it does not show that the software is defect-free.
 
 ## 2. Metrics
 
@@ -63,7 +64,7 @@ Execution rate 100% (302 of 302); blocked rate 0.3% (PERF-06b, test-machine port
 
 | Metric | Value | Interpretation |
 | --- | --- | --- |
-| Defect density | 37 / 557 lines = **66 per KLOC** | High for a small application; partly because non-functional testing was deep relative to code size |
+| Defect density | 37 / 557 physical lines = **66 per KLOC** | High for a small application; partly because non-functional testing was deep relative to code size |
 | Critical + Major | 10 of 37 (27%) | All 10 are High priority |
 | Defects by phase | W1 3, W3 10, W4 10, W5 14 | Each new technique found new defects; Weeks 2 and 6 found none because they re-test known behaviour |
 | Modules with most defects | Accessibility 7, task input validation 6, sessions/access control 5 | The 4 Critical defects are in validation (DEF-015), sessions (DEF-028), ownership (DEF-014) and search (DEF-029) |
@@ -181,3 +182,20 @@ Residual risk = what remains if the application were released as tested (likelih
 4. Test on real iOS and Android devices and with a screen reader.
 5. Run a usability study with real end users.
 6. Add tests for concurrent edits, session expiry and very large data sets once those behaviours are specified.
+
+## 8. How the team's understanding of quality evolved
+
+Each week changed what the team meant by "quality" for PyTodo Pro, and later evidence was used to revise earlier artefacts.
+
+| Week | What we believed before | What the evidence showed | What we revised |
+| --- | --- | --- | --- |
+| 1 | Quality means the features work as the interface describes | The normal path worked; failures sat at boundaries (DEF-001, 002) and in validation (DEF-003). Visible-list separation passed, but that did not cover direct task IDs or the API | Week 1 risk matrix noted R-08 as only partly tested; API and security moved into the Week 4-5 scope |
+| 2 | 100% statement coverage of the selected code means it is well tested | Full coverage of `helpers.py` found no new defect: the suite asserted the code's wrong due-today result (DEF-002) and did not test the 8-character password boundary (DEF-001) | Coverage treated as a measure of what was exercised, not of correctness; expected results taken from the specification, not the code |
+| 3 | A working page is a usable page | 7 accessibility defects and broken tablet/phone layouts on pages that worked functionally | GUI/compatibility, usability and accessibility formalised as quality requirements REQ-010 to 012 in Week 7 |
+| 4 | Rules seen in the web pages also hold for the API | The API applied weaker or different rules (DEF-003, 014, 017) and had no error contract | API contract added as REQ-009; team decision on error codes recorded as the test basis (project risk P6) |
+| 5 | A small internal app has low security and performance risk | 3 Critical security defects (DEF-014, 028, 029) and many insecure defaults; fast at expected load, but slower as data grows (DEF-037) | Security and performance formalised as REQ-013 and 014 in Week 7; R-11 scored 9 |
+| 6 | Automation is mainly a way to save execution time | Its value was detecting change: 12 of 12 seeded faults found; strict xfail keeps open defects visible | Regression suite placed at the centre of the Week 9 CI/CD proposal |
+| 7 | The Week 1 risk scores were good enough to plan with | Defects clustered in login/access, task validation, search and user separation, which Week 1 had scored 6 or 4 | Scores of R-02, R-03, R-05 and R-08 raised to 9 in the Week 7 plan; R-09 to R-12 added for the API and quality requirements |
+| 8 | Pass rate summarises quality | A 70.9% pass rate hides that 4 Critical defects decide release readiness | Release judged on severity, residual risk and untested areas rather than on pass rate alone |
+
+The team's view of quality widened from **"does it do what the screen says"** to a **risk-based, multi-characteristic view**, in which security, data protection, accessibility and the API matter as much as the visible features, and in which testing shows that defects are present but cannot show that none remain.
