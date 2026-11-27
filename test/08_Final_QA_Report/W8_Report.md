@@ -89,7 +89,7 @@ Execution rate 100% (302 of 302); blocked rate 0.3% (PERF-06b, test-machine port
 | Compatibility | W3 46/48 configuration runs pass on 2 OS × 2 engines | Good on desktop; layout fails on tablet and phone (DEF-006) |
 | Usability / interaction capability | W3 4 observations (2 Minor, 2 Cosmetic); GUI 14/22 | Usable; weak feedback and inconsistent styling; no blocking issue |
 | Accessibility (part of usability) | W3 7/18 WCAG checks pass; axe/Lighthouse 76-100 | Poor: 7 defects, 2 Major (unlabelled fields, unnamed toggle) |
-| Security | W5 6/24 pass; STRIDE 22 threats, 6 mitigated | Poor: 4 Critical defects, debug mode on, no CSRF or rate limiting |
+| Security | W5 6/24 pass; STRIDE 22 threats, 6 mitigated | Poor: 3 Critical security defects (DEF-014, 028, 029), debug mode on, no CSRF or rate limiting |
 | Performance efficiency | W5 load 1-50 users p95 ≤ 9 ms, 0 errors; saturation ~790 req/s; p95 > 1 s between 100 and 200 users | Good at expected load; home page scales linearly with data (DEF-037) |
 | Reliability | Graceful slowdown under stress, no server errors to 200 users; but one bad date makes a user's pages fail (DEF-015) | Mixed: robust to load, fragile to bad data |
 | Maintainability | Week 2 CFGs show low complexity (V(G) ≤ 3); web and API duplicate logic and have drifted apart | Simple code, but duplicated rules are the root of several defects |
