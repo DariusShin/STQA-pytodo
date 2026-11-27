@@ -6,7 +6,7 @@ Reference data for every Week 3 test-case file:
 | --- | --- |
 | [1_GUI/test_cases.md](1_GUI/test_cases.md) | TC-GUI-001 to 022 |
 | [2_Compatibility/test_cases.md](2_Compatibility/test_cases.md) | TC-CMP-001 to 008 |
-| [3_Usability/test_cases.md](3_Usability/test_cases.md) | TC-USA-001 to 005 |
+| [3_Usability/observations.md](3_Usability/observations.md) | USA-OBS-001 to 004 |
 | [4_Accessibility/test_cases.md](4_Accessibility/test_cases.md) | TC-A11Y-001 to 018 |
 
 ## Test-case template
@@ -17,7 +17,7 @@ Every case uses the fields from the project guideline:
 | --- | --- |
 | Test Case ID | Unique identifier, e.g. `TC-GUI-001` |
 | Feature/Requirement | Week 1 requirement (`REQ-001` to `REQ-008`), page, or WCAG success criterion |
-| Technique/Test Type | GUI checklist, Compatibility, Usability - heuristic evaluation, or Accessibility (WCAG) |
+| Technique/Test Type | GUI checklist, Compatibility or Accessibility (WCAG) |
 | Objective | What the test verifies |
 | Preconditions | Required initial state; codes are defined in [Shared preconditions](#shared-preconditions) |
 | Test Data | Input values in JSON format; fixture IDs refer to [Fixture sets](#fixture-sets) |
@@ -25,7 +25,7 @@ Every case uses the fields from the project guideline:
 | Expected Result | Expected behaviour defined before execution, with its basis |
 | Actual Result | Observed behaviour |
 | Status | Pass / Fail / Blocked / Not Run |
-| Evidence | Planned screenshot or report filename |
+| Evidence | Screenshot, scan report or results file |
 | Defect ID | Related defect, or an earlier defect to re-check |
 
 ## Shared preconditions

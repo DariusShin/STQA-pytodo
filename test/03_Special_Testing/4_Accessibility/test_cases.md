@@ -1,16 +1,10 @@
 # Week 3 - Accessibility Test Cases
 
-Detailed cases for [Task 4 - Basic accessibility findings](../README.md#task-4) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by the Playwright suite [test_accessibility.py](test_accessibility.py), run twice: [results-C01-20261118-213348.json](evidences/results-C01-20261118-213348.json) is the recorded run and [results-C01-20261118-213235.json](evidences/results-C01-20261118-213235.json) the first reproduction. Results were identical in both runs.
+18 checks, TC-A11Y-001 to 018, against a WCAG 2.2 Level A/AA subset, in the project Test Case Template. Summary and scan results: [W3_Report.md section 5](../W3_Report.md#5-basic-accessibility-findings). Precondition codes and fixtures are defined in [fixtures.md](../fixtures.md).
 
-**How the steps were automated.** The script performs the DevTools steps with equivalent programmatic checks: computed styles for contrast, focus and target size; Chrome's accessibility tree (read through the DevTools protocol and Playwright accessibility snapshots) for names, roles and landmarks; Chrome's vision-deficiency emulation for TC-A11Y-003; and a 640x400 CSS-pixel viewport at device scale 2 for 200% zoom (TC-A11Y-013).
+Executed 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, headless) by [test_accessibility.py](test_accessibility.py), run twice with identical results. Recorded run: [results-C01-20261118-213348.json](evidences/results-C01-20261118-213348.json); reproduction: [results-C01-20261118-213235.json](evidences/results-C01-20261118-213235.json).
 
-## Review sign-off
-
-Expected results must be reviewed before execution (plan step 3). The reviewer checks that each expected result cites a basis from [README 0.3](../README.md#03-test-basis) and was not derived from observed behaviour.
-
-| Reviewer | Date | Cases reviewed | Changes requested | Approved |
-| --- | --- | --- | --- | --- |
-| Team (verbal approval of execution, recorded by Darius Lee Shin) | 2026-11-18 | TC-A11Y-001 to 018 | None recorded | Yes (verbal) |
+**Automation of the DevTools steps:** computed styles for contrast, focus and target size; Chrome's accessibility tree for names, roles and landmarks; vision-deficiency emulation for TC-A11Y-003; a 640x400 CSS px viewport at device scale 2 for 200% zoom (TC-A11Y-013). Screen readers are out of scope.
 
 ## Case index
 
