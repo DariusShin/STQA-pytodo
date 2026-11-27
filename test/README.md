@@ -19,7 +19,7 @@ Replace the placeholders with the four group members. Roles coordinate work; eve
 | Student name | Student ID | Coordination role |
 | --- | --- | --- |
 | Eu Kwan Ik  | 22001674 | QA/Test Lead |
-| Mohamd Shukri Bin Abd Ajed | 22006225 | Test Design Coordinator |
+| Mohamd Shukri Bin Abd Ajed | 22006255 | Test Design Coordinator |
 | Darius Lee Shin | 22003269 | Automation/Tool Coordinator |
 | Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator |
 
