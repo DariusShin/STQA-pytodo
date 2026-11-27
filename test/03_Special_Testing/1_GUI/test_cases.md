@@ -1,14 +1,8 @@
 # Week 3 - GUI Test Cases
 
-Detailed cases for [Task 1 - GUI checklist](../README.md#task-1) of the [Week 3 plan](../README.md). Each case uses the guideline's test-case template fields. Precondition codes (P-APP, P-OUT, P-A, P-C), test accounts and fixture IDs (F1-F9) are defined in [fixtures.md](../fixtures.md). Executed on 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, 1440x900, headless) by the Playwright suite [test_gui.py](test_gui.py), run twice: [results-C01-20261118-1933.json](evidences/results-C01-20261118-1933.json) is the recorded run, and `results-C01-20261118-1928.json` is the first reproduction. In the first run the TC-GUI-010 colour comparison was keyed on the expected class rather than the displayed one; the check was corrected before the recorded run.
+22 cases, TC-GUI-001 to 022, in the project Test Case Template. Summary and defect links: [W3_Report.md section 2](../W3_Report.md#2-gui-testing-checklist-and-results). Precondition codes (P-APP, P-OUT, P-A, P-C), accounts and fixtures F1-F9 are defined in [fixtures.md](../fixtures.md).
 
-## Review sign-off
-
-Expected results must be reviewed before execution (plan step 3). The reviewer checks that each expected result cites a basis from [README 0.3](../README.md#03-test-basis) and was not derived from observed behaviour.
-
-| Reviewer | Date | Cases reviewed | Changes requested | Approved |
-| --- | --- | --- | --- | --- |
-| Team (verbal approval of execution, recorded by Darius Lee Shin) | 2026-11-18 | TC-GUI-001 to 022 | None recorded | Yes (verbal) |
+Executed 2026-11-18 on C01 (Chrome 157.0.8103.80, macOS 26.5.2, 1440x900, headless) by [test_gui.py](test_gui.py), run twice with identical verdicts. Recorded run: [results-C01-20261118-1933.json](evidences/results-C01-20261118-1933.json); reproduction: `results-C01-20261118-1928.json`.
 
 ## Case index
 

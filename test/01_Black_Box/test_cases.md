@@ -1,23 +1,6 @@
 # Week 1 - Detailed Black-Box Test Cases
 
-This document contains a set of 44 test cases, which have the unique identifier from `TC-BB-001` to `TC-BB-044`. Each case appears once in a table containing the required fields following the templates given in the project guideline, which same as the following:
-
-| Field | Required Information |
-| --- | --- |
-| Test Case ID | Unique identifier with the format as "TC-BB-[unique value]" |
-| Feature/Requirement | Feature or requirement tested |
-| Technique/Test Type | e.g. EP, BVA, Decision Table, State Transition, Functional, API, GUI |
-| Objective | What the test verifies |
-| Preconditions | Required initial state |
-| Test Data | Input value/data in JSON format which {key: values} pairs|
-| Steps | Numbered procedure starting from 1 to n |
-| Expected Result | Expected behaviour defined before execution |
-| Actual Result | Observed behaviour |
-| Status | Pass/Fail/Blocked/Not run |
-| Evidence | Screenshotreference, the file will be named as "[Test Case ID].jpg" in /evidences folder |
-| Defect ID | Related defect if applicable with the format as "DEF-[unique value]" |
-
-Evidence filenames refer to screenshots stored directly in `evidences/`.
+44 cases, `TC-BB-001` to `TC-BB-044`, in the project Test Case Template. Test Data is given as JSON key/value pairs; Evidence names a screenshot in [`evidences/`](evidences/). Executed 18 October 2026 by Darius Lee Shin.
 
 ## TC-BB-001 - Username length 2
 
@@ -27,7 +10,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Reject a 2-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "dq", "usernameLength": 2, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Reject a 2-character username. |
@@ -44,7 +27,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept a 3-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "d7r", "usernameLength": 3, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Accept a 3-character username. |
@@ -61,7 +44,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept a 4-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "d6qz", "usernameLength": 4, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Accept a 4-character username. |
@@ -78,7 +61,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept a 19-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "daaaaaaaaaaaaaaaaaa", "usernameLength": 19, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Accept a 19-character username. |
@@ -95,7 +78,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept a 20-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "daaaaaaaaaaaaaaaaaaa", "usernameLength": 20, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Accept a 20-character username. |
@@ -112,7 +95,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Reject a 21-character username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "daaaaaaaaaaaaaaaaaaaa", "usernameLength": 21, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified username and password.<br>3. Select Register.<br>4. Observe validation or the authenticated task page. |
 | Expected Result | Reject a 21-character username. |
@@ -129,7 +112,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Reject a 7-character password. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1d_p7_2315", "usernameLength": 11, "password": "Test123", "passwordLength": 7} |
 | Steps | 1. Open `/register` and note the minimum-eight-character hint.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe rejection or successful account creation. |
 | Expected Result | Reject a 7-character password. |
@@ -146,7 +129,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept an 8-character password, matching the displayed minimum. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1d_p8_2315", "usernameLength": 11, "password": "Test1234", "passwordLength": 8} |
 | Steps | 1. Open `/register` and note the minimum-eight-character hint.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe rejection or successful account creation. |
 | Expected Result | Accept an 8-character password, matching the displayed minimum. |
@@ -163,7 +146,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | BVA / Functional |
 | Objective | Accept a 9-character password. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1d_p9b_2315", "usernameLength": 12, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register` and note the minimum-eight-character hint.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe rejection or successful account creation. |
 | Expected Result | Accept a 9-character password. |
@@ -180,7 +163,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | EP / Functional |
 | Objective | Create a valid account and display its authenticated task list. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1d_a_2315", "usernameLength": 10, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe the response or native validation popup. |
 | Expected Result | Create a valid account and display its authenticated task list. |
@@ -197,7 +180,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | EP / Functional |
 | Objective | Reject a username containing a hyphen. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1-d", "usernameLength": 4, "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe the response or native validation popup. |
 | Expected Result | Reject a username containing a hyphen. |
@@ -214,7 +197,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | EP / Functional / Browser validation |
 | Objective | Browser validation prevents submission with an empty username. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "", "password": "Test12345", "passwordLength": 9} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe the response or native validation popup. |
 | Expected Result | Browser validation prevents submission with an empty username. |
@@ -231,7 +214,7 @@ Evidence filenames refer to screenshots stored directly in `evidences/`.
 | Feature/Requirement | REQ-001 |
 | Technique/Test Type | EP / Functional / Browser validation |
 | Objective | Browser validation prevents submission with an empty password. |
-| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. No database reset is performed. |
+| Preconditions | Live development instance; logged out. Use the username and password listed in Test Data. |
 | Test Data | {"username": "w1d_empty_2315", "password": "", "passwordLength": 0} |
 | Steps | 1. Open `/register`.<br>2. Enter the specified data.<br>3. Select Register.<br>4. Observe the response or native validation popup. |
 | Expected Result | Browser validation prevents submission with an empty password. |

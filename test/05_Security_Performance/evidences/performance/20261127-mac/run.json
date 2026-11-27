@@ -1,0 +1,131 @@
+{
+  "environment": {
+    "date": "2026-11-27T15:40:18+08:00",
+    "os": "Darwin 26.5.2 (arm64)",
+    "cpu": "Apple M4",
+    "logical_cpus": 10,
+    "memory_gb": 24.0,
+    "python": "3.14.7",
+    "flask": "3.0.3",
+    "werkzeug": "3.1.9",
+    "jmeter": "5.6.3",
+    "java": "openjdk version \"21.0.13.1\" 2026-11-17",
+    "server": "Flask built-in server, threaded, debug=True, reloader off, 127.0.0.1",
+    "load_generator": "JMeter on the same machine",
+    "finished": "2026-11-27T15:53:41+08:00",
+    "stress_steps_finished": "2026-11-27T16:13:34+08:00"
+  },
+  "target": {
+    "median_ms": 200,
+    "p95_ms": 1000,
+    "error_pct": 1.0
+  },
+  "tests": [
+    {
+      "id": "PERF-01",
+      "kind": "load",
+      "users": 1,
+      "rampup": 1,
+      "measured_s": 120
+    },
+    {
+      "id": "PERF-02",
+      "kind": "load",
+      "users": 5,
+      "rampup": 1,
+      "measured_s": 120
+    },
+    {
+      "id": "PERF-03",
+      "kind": "load",
+      "users": 10,
+      "rampup": 2,
+      "measured_s": 120
+    },
+    {
+      "id": "PERF-04",
+      "kind": "load",
+      "users": 25,
+      "rampup": 5,
+      "measured_s": 120
+    },
+    {
+      "id": "PERF-05",
+      "kind": "load",
+      "users": 50,
+      "rampup": 10,
+      "measured_s": 120
+    },
+    {
+      "id": "PERF-06b",
+      "kind": "stress",
+      "users": 50,
+      "rampup": 10,
+      "measured_s": 90
+    },
+    {
+      "id": "PERF-07_50tasks",
+      "kind": "volume",
+      "tasks": 50
+    },
+    {
+      "id": "PERF-07_500tasks",
+      "kind": "volume",
+      "tasks": 500
+    },
+    {
+      "id": "PERF-07_2000tasks",
+      "kind": "volume",
+      "tasks": 2000
+    },
+    {
+      "id": "PERF-06_step_001u",
+      "kind": "stress-step",
+      "users": 1,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_005u",
+      "kind": "stress-step",
+      "users": 5,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_010u",
+      "kind": "stress-step",
+      "users": 10,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_025u",
+      "kind": "stress-step",
+      "users": 25,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_050u",
+      "kind": "stress-step",
+      "users": 50,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_100u",
+      "kind": "stress-step",
+      "users": 100,
+      "rampup": 5,
+      "measured_s": 10
+    },
+    {
+      "id": "PERF-06_step_200u",
+      "kind": "stress-step",
+      "users": 200,
+      "rampup": 5,
+      "measured_s": 10
+    }
+  ]
+}
