@@ -12,6 +12,8 @@ __pycache__/
 .coverage
 .coverage.*
 htmlcov/
+# Week 2 coverage report is a deliverable: keep it tracked so it can be read without running the tests
+!test/02_White_Box_Coverage/htmlcov/
 coverage.xml
 
 # Course brief kept locally, not part of the submission repository
