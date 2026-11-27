@@ -1,116 +1,108 @@
 # PyTodo Pro - Software Testing and Quality Assurance
 
-## 1. Project Overview
+## 1. Project overview
 
-This folder contains the progressive quality assessment of PyTodo Pro application for the UTP September 2026 Semester - Software Testing and Quality Assurance group project. Document findings and add evidence or test scripts under `test/`.
+Progressive quality assessment of the PyTodo Pro task-management web application for the UTP September 2026 Software Testing and Quality Assurance group project. The application under test (`app.py`, `helpers.py`, `templates/`, `static/`) is in the repository root and is not modified; all test work is under `test/`.
 
 | Item | Details |
 | --- | --- |
-| Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance|
+| Course | TEB3433 / TFB3433 - Software Testing and Quality Assurance |
 | Semester | September 2026 |
-| Lecturer | Ts. Dr Abdullateef Balogun  |
+| Lecturer | Ts. Dr Abdullateef Balogun |
 | Group / tutorial | Wednesday - Group 2 |
-| Repository URL | [GitHub Repository](https://github.com/DariusShin/STQA-pytodo) |
+| Repository | [github.com/DariusShin/STQA-pytodo](https://github.com/DariusShin/STQA-pytodo) |
 
-## 2. Team Members and Responsibilities
+## 2. Team members and responsibilities
 
-Replace the placeholders with the four group members. Roles coordinate work; every member should contribute across phases. Record role rotation and individual contributions as the project progresses.
+Roles coordinate the work; every member contributes across phases.
 
-| Student name | Student ID | Coordination role |
-| --- | --- | --- |
-| Eu Kwan Ik  | 22001674 | QA/Test Lead |
-| Mohamd Shukri Bin Abd Ajed | 22006225 | Test Design Coordinator |
-| Darius Lee Shin | 22003269 | Automation/Tool Coordinator |
-| Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator |
+| Student name | Student ID | Role | Phase ownership |
+| --- | --- | --- | --- |
+| Eu Kwan Ik | 22001674 | QA/Test Lead | Week 6; Week 3 usability session (user) |
+| Mohamad Shukri Bin Abdul Ajed | 22006255 | Test Design Coordinator | Weeks 4, 8; Week 3 usability session (recorder) |
+| Darius Lee Shin | 22003269 | Automation/Tool Coordinator | Weeks 1, 2, 3, 8; Week 3 usability session (recorder) |
+| Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator | Week 7; Week 3 usability session (user) |
+| Wan Haziqah Binti Wan Hanafi | 22006757 | Test Assistant / Tester | Week 5 |
 
-## 3. Deliverable Structure and Progress
+## 3. Submission structure
 
-The first eight folders correspond to Project Weeks 1-8. Folder 09 covers standards integration and the final presentation during Course Week 12.
+Every weekly folder uses the same files, so each deliverable is found in the same place:
 
-| Phase | Folder / deliverable instructions | Status |
-| --- | --- | --- |
-| 01 | [Application analysis and black-box testing](01_Black_Box/README.md) | In progress - 44 functional black-box cases recorded|
-| 02 | [White-box testing and coverage](02_White_Box_Coverage/README.md) | In Progress |
-| 03 | [GUI, compatibility, usability and accessibility](03_Special_Testing/README.md) | In progress - GUI (22), accessibility (18) and compatibility on C01-C04 executed 2026-11-18; compatibility on Windows (C05, C06) executed 2026-11-24; usability review pending |
-| 04 | [Web and API testing](04_Web_API/README.md) | Not started |
-| 05 | [Security and performance testing](05_Security_Performance/README.md) | Not started |
-| 06 | [Test automation and regression](06_Automation_Regression/README.md) | Not started |
-| 07 | [Test planning, traceability and defect management](07_Test_Management/README.md) | Not started |
-| 08 | [SQA, metrics and final quality evaluation](08_Final_QA_Report/README.md) | Not started |
-| 09 | [Standards integration, presentation and live demonstration](09_Presentation/README.md) | Not started |
+| File | Responsibility |
+| --- | --- |
+| `README.md` | Introduction to the folder: what the week covers, a table of its files, and how to run its tests |
+| `WN_Report.md` | The report to be evaluated: header (course, phase owner, execution dates, environment), deliverable checklist, one section per deliverable in the project brief |
+| `test_cases.md` | All test cases of the week in the project Test Case Template |
+| `defects.md` | Defects first found that week, in the Defect Report Template, followed by a "Re-tested defects" table for earlier defects checked again |
+| `evidences/` | Screenshots, logs, tool reports and raw results referenced by the test cases and defects |
+| Scripts | Automated tests, Postman collection or JMeter plans, next to the files above |
 
-Update status to `In progress`, `Ready for review` or `Completed` as supported by the artefacts. Tick a checklist only after its answer, evidence and peer review are complete. Revisit earlier work when later testing changes a finding or assumption.
+### Project-level tracking files
 
-## 4. Environment and Tools
+Three files in `test/` track the whole project. They were consolidated in Week 7 from the weekly `test_cases.md` and `defects.md` files, which stay the source records.
 
-The table below records the project environment. Phase 02 dependency versions
-and reproduction commands are maintained in its [setup guide](02_White_Box_Coverage/setup.md).
-Tools marked as to be selected remain unverified.
+| File | Contents |
+| --- | --- |
+| [rtm.md](rtm.md) | Requirements traceability matrix: REQ-001 to REQ-014 traced to test cases, results and defects of every week |
+| [master_test_cases.md](master_test_cases.md) | Master test-case repository: all 302 cases of Weeks 1-6, each linked to its full record |
+| [consolidated_defect_logs.md](consolidated_defect_logs.md) | Consolidated defect log: DEF-001 to DEF-037 with severity, priority, status and re-test history |
+
+### Project map
+
+| Week | Folder | Focus | Report | Test cases | Defects | Evidence | Scripts / how to run |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | [01_Black_Box](01_Black_Box/) | Application analysis; manual black-box testing (EP, BVA, decision tables, state transitions) | [W1_Report.md](01_Black_Box/W1_Report.md) | [44 cases](01_Black_Box/test_cases.md) TC-BB-001 to 044 | [DEF-001 to 003](01_Black_Box/defects.md) | [screenshots](01_Black_Box/evidences/) | Manual; [README](01_Black_Box/README.md#how-to-run) |
+| 2 | [02_White_Box_Coverage](02_White_Box_Coverage/) | Control-flow analysis, basis-path tests, statement coverage | [W2_Report.md](02_White_Box_Coverage/W2_Report.md) | [28 cases](02_White_Box_Coverage/test_cases.md) TC-WB-001 to 028 | None new | [HTML coverage report](02_White_Box_Coverage/htmlcov/index.html), [CFG figures](02_White_Box_Coverage/figures/) | pytest + pytest-cov; [README](02_White_Box_Coverage/README.md#how-to-run) |
+| 3 | [03_Special_Testing](03_Special_Testing/) | GUI checklist, compatibility matrix, usability review, WCAG accessibility | [W3_Report.md](03_Special_Testing/W3_Report.md) | [GUI 22](03_Special_Testing/1_GUI/test_cases.md), [compatibility 8](03_Special_Testing/2_Compatibility/test_cases.md), [accessibility 18](03_Special_Testing/4_Accessibility/test_cases.md), [usability observations 4](03_Special_Testing/3_Usability/observations.md) | [DEF-004 to 013](03_Special_Testing/defects.md) | `evidences/` in each technique folder | Playwright + pytest; [README](03_Special_Testing/README.md#how-to-run) |
+| 4 | [04_Web_API](04_Web_API/) | Web workflows, REST API, UI vs API comparison | [W4_Report.md](04_Web_API/W4_Report.md) | [61 cases](04_Web_API/test_cases.md) TC-WEB / TC-API; [test data](04_Web_API/test_data.md) | [DEF-014 to 023](04_Web_API/defects.md) | [runner result and screenshots](04_Web_API/evidences/) | Postman / Newman; [README](04_Web_API/README.md#how-to-run) |
+| 5 | [05_Security_Performance](05_Security_Performance/) | STRIDE threat model, security tests, JMeter load/stress/data-volume tests | [W5_Report.md](05_Security_Performance/W5_Report.md) | [24 SEC + 8 PERF](05_Security_Performance/test_cases.md) | [DEF-024 to 037](05_Security_Performance/defects.md) | [security](05_Security_Performance/evidences/security/), [performance](05_Security_Performance/evidences/performance/) | pytest, pip-audit, bandit, JMeter; [README](05_Security_Performance/README.md#how-to-run) |
+| 6 | [06_Automation_Regression](06_Automation_Regression/) | Automation candidates, Selenium/pytest/HTTP regression suite, seeded-fault check | [W6_Report.md](06_Automation_Regression/W6_Report.md) | [89 automated cases](06_Automation_Regression/test_cases.md) TC-AUT-001 to 089 | None new (14 re-tested) | [runs and mutation results](06_Automation_Regression/evidences/) | pytest + Selenium; [README](06_Automation_Regression/README.md#how-to-run) |
+| 7 | [07_Test_Management](07_Test_Management/) | Test plan and strategy, RTM, master repository, consolidated defect log | [W7_Report.md](07_Test_Management/W7_Report.md) | [Master repository, 302 cases](master_test_cases.md); [RTM](rtm.md) | [Consolidated log, DEF-001 to 037](consolidated_defect_logs.md) | Weekly evidence, linked from each case and defect | None |
+| 8 | [08_Final_QA_Report](08_Final_QA_Report/) | Metrics, residual risk, final quality evaluation | [W8_Report.md](08_Final_QA_Report/W8_Report.md) | Uses the [master repository](master_test_cases.md) | Uses the [consolidated log](consolidated_defect_logs.md) | [metrics.md](08_Final_QA_Report/metrics.md), [charts](08_Final_QA_Report/evidences/) | None |
+| 9 | [09_Presentation](09_Presentation/) | ISO/IEC 25010 coverage and gaps, CI/CD, Agile/DevOps improvements, presentation and live demonstration | [W9_Report.md](09_Presentation/W9_Report.md) | None new | None new | Reuses weekly evidence | None |
+
+## 4. Progress
+
+| Phase | Status |
+| --- | --- |
+| 01 Black-box testing | Complete - 44 cases (40 Pass, 4 Fail); 3 defects |
+| 02 White-box testing and coverage | Complete - 50 automated instances passed; 100% statement coverage of `helpers.py` and the 8 selected functions |
+| 03 GUI, compatibility, usability, accessibility | Complete - 48 cases (28 Pass, 20 Fail) on 6 configurations; 4 usability observations; 10 defects |
+| 04 Web and API testing | Complete - 61 cases (43 Pass, 18 Fail); 10 defects |
+| 05 Security and performance testing | Complete - 24 security cases (6 Pass, 18 Fail); 8 performance cases; 14 defects |
+| 06 Test automation and regression | Complete - 89 automated cases, 166 checks; 0 new failures; 12/12 seeded faults detected |
+| 07 Test planning, traceability and defect management | Complete - test plan, strategy, RTM (REQ-001 to 014), 302-case repository, 37-defect log |
+| 08 SQA, metrics and final quality evaluation | Complete - metrics, residual risks, quality assessment, recommendations |
+| 09 Standards integration, presentation and live demonstration | Complete - standards mapping, CI/CD pipeline, Agile/DevOps improvements; presentation delivered in person |
+
+## 5. Environment and tools
 
 | Component | Purpose | Version / configuration |
 | --- | --- | --- |
-| Operating system | Execution environment | Windows 11, MacOS 26.5.2 |
-| Python | Application and Python test execution | Python 3.14.7 |
-| Flask | Web application framework | 3.0.3, specified in the application requirements |
-| SQLite | Application database | `pytodo_pro.db` in the application root |
-| Browser(s) | GUI and compatibility testing | macOS: Google Chrome 155.0.8059.80 (Week 1); Google Chrome 157.0.8103.80 and Playwright's Firefox 159.0 build (Week 3). Windows 11: Google Chrome 124.0.6367.119 and Playwright's Firefox 159.0 build (Week 3, see the compatibility matrix) |
-| pytest (proposed) | Unit and regression test runner | 9.1.1 |
-| pytest-cov (proposed) | Statement and branch coverage | 7.1.0 |
-| API tool (to be selected) | Requests, authentication cookies and API evidence | [Tool and version] |
-| UI automation tool | GUI and compatibility test execution (Week 3) | Playwright 1.65.2 with pytest-playwright 0.10.0, driving the installed Chrome through the `chrome` channel; see the [Week 3 setup guide](03_Special_Testing/setup.md) |
-| Performance tool (to be selected) | Controlled workload and response measurements | [Tool and version] |
-| Accessibility tools | Basic WCAG-oriented review (Week 3) | Scripted: axe-core 4.12.1 (axe-playwright-python 0.1.8) and Lighthouse 12.8.2 via `npx`. Screen readers out of scope |
-| Git | Version and contribution tracking | git version 2.55.0 |
+| Operating systems | Test execution | macOS 26.5.2; Windows 11 25H2; Windows 64-bit desktop (Week 5 security) |
+| Python | Application and test execution | 3.14.7 (Weeks 1-3, 5 performance); 3.14 (Week 4); 3.12.10 (Week 5 security) |
+| Flask | Application framework | 3.0.3, from `requirements.txt` |
+| SQLite | Application database | `pytodo_pro.db` in the repository root; automated suites use temporary databases |
+| Browsers | Black-box, GUI and compatibility testing | Google Chrome 155.0.8059.80 (Week 1) and 157.0.8103.80 (Week 3, macOS and Windows); Playwright Firefox 159.0 build |
+| pytest, pytest-cov | Unit, integration and security tests; coverage | pytest 9.1.1 / 9.2.0; pytest-cov 7.1.0 |
+| Playwright | GUI, compatibility and accessibility automation | 1.65.2 with pytest-playwright 0.10.0 |
+| Accessibility tools | WCAG review | axe-core 4.12.1 (axe-playwright-python 0.1.8), Lighthouse 12.8.2 |
+| Postman | API and web testing | Postman 12.38.2 Collection Runner; Newman for the command line |
+| Security tools | Dependency and static scans | pip-audit, bandit |
+| Apache JMeter | Load, stress and data-volume testing | 5.6.3 on OpenJDK 21 |
+| Git | Version and contribution tracking | 2.55.0 |
 
-Also record the execution date/time, timezone, application commit, test data and relevant hardware/network details. Performance results must identify the workload and environment.
+Each week's README explains how to install its dependencies and run its tests from the repository root. Week 3 has its own `pytest.ini`, so always pass `test/03_Special_Testing/...` as the test path; the repository-root `pytest.ini` holds the Week 2 coverage settings.
 
-## 5. Setup and Automated Test Execution
-
-Use the [Phase 02 setup and reproduction guide](02_White_Box_Coverage/setup.md)
-for virtual-environment creation, dependency installation, interpreter checks,
-unit/integration test commands, HTML coverage generation, and optional manual
-application startup. Run its commands from the **repository root**. Setup
-instructions are maintained in that guide to avoid conflicting working
-folders, package records, and report destinations.
-
-The [Week 2 submission report](02_White_Box_Coverage/README.md) records selected
-functions, CFGs, test-case traceability, collected test counts, and measured
-coverage. Its implemented scripts are `test_helpers.py` and `test_app.py`.
-Later phases should document any additional dependencies and their own
-execution commands in the corresponding phase guide.
-
-Week 3 runs its Playwright suites from its own environment and `pytest.ini`;
-see the [Week 3 setup guide](03_Special_Testing/setup.md). Always pass
-`test/03_Special_Testing/...` as the test path so the repository-root
-`pytest.ini` (Week 2 coverage settings) is not used.
-
-## 6. Documentation and Evidence Conventions
-
-Use the guideline's required test-case, defect-report and RTM fields. Define expected results before execution. Do not mark an unexecuted test Pass or invent actual results.
+## 6. Conventions
 
 | Artefact | Convention |
 | --- | --- |
-| Requirements | Stable IDs such as `REQ-001`, maintained in the RTM |
-| Test cases | Unique IDs such as `TC-BB-001`, `TC-WB-001`, `TC-API-001` |
-| Test statuses | Pass / Fail / Blocked / Not Run |
-| Defects | Unique IDs such as `DEF-001`, consistent across phases |
-| Severity | Critical / Major / Moderate / Minor |
-| Priority | High / Medium / Low |
-| Defect status | Open / Confirmed / Retest / Closed, as applicable |
-| Evidence | Store under the phase's `evidences/`; include test ID and run/date in new filenames |
-
-Link screenshots, logs and outputs from the relevant answer using relative Markdown links. The current Week 1 captures are indexed in the [Week 1 evidence index](01_Black_Box/README.md#black-box-testing-evidence); Week 3 evidence is stored in each technique folder (`1_GUI/`, `2_Compatibility/`, `3_Usability/`, `4_Accessibility/`) as described in [03_Special_Testing/README.md](03_Special_Testing/README.md#09-evidence-conventions). Update evidence links whenever replacing a run.
-
-Each test case must contain its ID, feature/requirement, technique/type, objective, preconditions, test data, numbered steps, expected result, actual result, status, evidence and related defect ID. Each defect must contain its ID, title, feature, environment, preconditions, reproduction steps, expected/actual results, severity, priority, evidence and status. The RTM must connect requirements/features, scenarios, test IDs, techniques, results and defect IDs.
-
-## 7. Final Submission Readiness
-
-- [ ] Replace group, member and environment placeholders with verified information.
-- [ ] Complete and review all nine phase READMEs and supporting artefacts.
-- [ ] Verify setup and implemented automated-test commands in the documented environment.
-- [ ] Check that every test has a unique ID and recorded expected/actual results or an explicit Not Run/Blocked status.
-- [ ] Reconcile the RTM, master test-case repository and consolidated defect log.
-- [ ] Verify evidence links, performance workload/environment details and metric calculations.
-- [ ] State quality limitations, untested areas, residual risks and prioritised recommendations.
-- [ ] Complete standards integration and prepare the presentation/live demonstration.
-- [ ] Exclude local environments, caches and unnecessary generated files from commits; retain reports used as submission evidence.
+| Requirements | `REQ-001` to `REQ-014`: REQ-001 to 008 from Week 1, REQ-009 from Week 4, REQ-010 to 014 (quality requirements) from Week 7 |
+| Test cases | `TC-BB-`, `TC-WB-`, `TC-GUI-`, `TC-CMP-`, `TC-A11Y-`, `TC-WEB-`, `TC-API-`, `SEC-`, `PERF-`, `TC-AUT-` |
+| Usability observations | `USA-OBS-` |
+| Test status | Pass / Fail / Blocked / Not Run |
+| Defects | One shared series `DEF-001` to `DEF-037` across all weeks |
+| Severity / priority | Critical / Major / Moderate / Minor; High / Medium / Low |
+| Defect status | Open / Confirmed / Retest / Closed |
+| Evidence | Stored in the week's `evidences/`, named with the test ID and run date, linked from the test case or defect |
