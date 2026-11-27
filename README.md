@@ -1,5 +1,17 @@
 # PyTodo Pro
 
+## Evaluating the submission
+
+All test deliverables are in [`test/`](test/). The application files in the repository root are unchanged.
+
+1. Start with [test/README.md](test/README.md): team and roles, folder structure, and a map of every week with links to its report, test cases, defects and evidence.
+2. Evaluate each week in its folder, `test/01_Black_Box/` to `test/09_Presentation/`. The graded deliverable is the week's report, `WN_Report.md` (for example [W1_Report.md](test/01_Black_Box/W1_Report.md)), supported by `test_cases.md`, `defects.md` and `evidences/` in the same folder.
+3. Read the reports in Markdown preview, not as raw text, so that tables, images and links display. Open them on GitHub, or in VS Code with **Markdown: Open Preview** (`Cmd+Shift+V` on macOS, `Ctrl+Shift+V` on Windows).
+
+No tests need to be run to evaluate the reports: results, tool reports and screenshots are already committed in each week's `evidences/`, and the Week 2 coverage report is in `test/02_White_Box_Coverage/htmlcov/`. To re-run a week's tests, follow the "How to run" section of that week's `README.md`.
+
+## About the application
+
 A complete, ready-to-test Flask task manager — the target application
 for the course testing project. **You do not need to write or modify
 any application code.** Your job is to test it.
