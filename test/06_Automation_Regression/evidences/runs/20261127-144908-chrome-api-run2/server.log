@@ -1,0 +1,846 @@
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5006
+Press CTRL+C to quit
+127.0.0.1 - - [27/Nov/2026 14:49:10] "GET /login HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "GET /api/tasks HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 400 -
+[2026-11-27 14:49:11,924] ERROR in app: Exception on /api/register [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 318, in api_register
+    username = (data.get("username") or "").strip()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'strip'
+127.0.0.1 - - [27/Nov/2026 14:49:11] "POST /api/register HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/login HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "GET /api/tasks HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "POST /api/login HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:12] "GET /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/login HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/login HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/tasks HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/tasks/1 HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "PUT /api/tasks/1 HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "DELETE /api/tasks/1 HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/dashboard HTTP/1.1" 401 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:13] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/tasks HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/tasks HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/tasks HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:14] "POST /api/tasks HTTP/1.1" 400 -
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:15,051] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 405, in api_create_task
+    title = (data.get("title") or "").strip()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'int' object has no attribute 'strip'
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/tasks HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:15,251] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 405, in api_create_task
+    title = (data.get("title") or "").strip()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'strip'
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/tasks HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:15,472] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 413, in api_create_task
+    cur = db.execute(
+        "INSERT INTO tasks (user_id, title, description, category_id, due_date, done, created_at) "
+        "VALUES (?, ?, ?, ?, ?, 0, ?)",
+        (session["user_id"], title, description, category_id, due_date, datetime.now().isoformat()),
+    )
+sqlite3.ProgrammingError: Error binding parameter 3: type 'dict' is not supported
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/tasks HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:15,723] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 420, in api_create_task
+    return jsonify(row_to_task(row, get_category_name(db, row["category_id"]))), 201
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:15] "POST /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:15,735] ERROR in app: Exception on /api/tasks [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 385, in api_list_tasks
+    tasks = [row_to_task(r, get_category_name(db, r["category_id"])) for r in rows]
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:15] "GET /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:15,764] ERROR in app: Exception on /api/dashboard [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in api_dashboard
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in <genexpr>
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:15] "GET /api/dashboard HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:16,028] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 420, in api_create_task
+    return jsonify(row_to_task(row, get_category_name(db, row["category_id"]))), 201
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 755, in _strptime
+    julian = datetime_date(year, month, day).toordinal() - \
+             ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ValueError: day 30 must be in range 1..28 for month 2 in year 2026
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:16,046] ERROR in app: Exception on /api/tasks [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 385, in api_list_tasks
+    tasks = [row_to_task(r, get_category_name(db, r["category_id"])) for r in rows]
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 755, in _strptime
+    julian = datetime_date(year, month, day).toordinal() - \
+             ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ValueError: day 30 must be in range 1..28 for month 2 in year 2026
+127.0.0.1 - - [27/Nov/2026 14:49:16] "GET /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:16,055] ERROR in app: Exception on /api/dashboard [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in api_dashboard
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in <genexpr>
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 755, in _strptime
+    julian = datetime_date(year, month, day).toordinal() - \
+             ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+ValueError: day 30 must be in range 1..28 for month 2 in year 2026
+127.0.0.1 - - [27/Nov/2026 14:49:16] "GET /api/dashboard HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/register HTTP/1.1" 201 -
+[2026-11-27 14:49:16,250] ERROR in app: Exception on /api/tasks [POST]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 420, in api_create_task
+    return jsonify(row_to_task(row, get_category_name(db, row["category_id"]))), 201
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data 'tomorrow' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:16,261] ERROR in app: Exception on /api/tasks [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 385, in api_list_tasks
+    tasks = [row_to_task(r, get_category_name(db, r["category_id"])) for r in rows]
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data 'tomorrow' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:16] "GET /api/tasks HTTP/1.1" 500 -
+[2026-11-27 14:49:16,270] ERROR in app: Exception on /api/dashboard [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in api_dashboard
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 471, in <genexpr>
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data 'tomorrow' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:16] "GET /api/dashboard HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:16] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:17] "GET /api/tasks/13 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks/999999999 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks/14 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks/abc HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "PUT /api/tasks/16 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?category=Work HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?status=open HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?status=done HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?q=report HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?category=Work&status=open&q=report HTTP/1.1" 200 -
+[2026-11-27 14:49:18,880] ERROR in app: Exception on /api/tasks [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 384, in api_list_tasks
+    rows = db.execute(query, params).fetchall()
+           ~~~~~~~~~~^^^^^^^^^^^^^^^
+sqlite3.OperationalError: near "Brien": syntax error
+127.0.0.1 - - [27/Nov/2026 14:49:18] "GET /api/tasks?q=O'Brien HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks?per_page=2&page=0 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks?per_page=2&page=1 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks?per_page=2&page=2 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks?per_page=-1 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "GET /api/tasks?page=-1 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:19] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/tasks?page=abc HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/tasks HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "PUT /api/tasks/34 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "PUT /api/tasks/35 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "PUT /api/tasks/35 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "PUT /api/tasks/36 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:20] "GET /api/tasks/36 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "PUT /api/tasks/37 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/tasks/37 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "PUT /api/tasks/38 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/tasks/38 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/tasks HTTP/1.1" 201 -
+[2026-11-27 14:49:21,628] ERROR in app: Exception on /api/tasks/39 [PUT]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 445, in api_update_task
+    db.execute(
+    ~~~~~~~~~~^
+        "UPDATE tasks SET title=?, description=?, category_id=?, due_date=?, done=?, completed_at=? WHERE id=?",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (title, description, category_id, due_date, int(bool(done)), completed_at, task_id),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.IntegrityError: NOT NULL constraint failed: tasks.title
+127.0.0.1 - - [27/Nov/2026 14:49:21] "PUT /api/tasks/39 HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/tasks/39 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "PUT /api/tasks/40 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:21] "GET /api/tasks/40 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/tasks HTTP/1.1" 201 -
+[2026-11-27 14:49:22,184] ERROR in app: Exception on /api/tasks/41 [PUT]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 451, in api_update_task
+    return jsonify(row_to_task(updated, get_category_name(db, updated["category_id"])))
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:22] "PUT /api/tasks/41 HTTP/1.1" 500 -
+[2026-11-27 14:49:22,213] ERROR in app: Exception on /api/tasks/41 [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 130, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 398, in api_get_task
+    return jsonify(row_to_task(row, get_category_name(db, row["category_id"])))
+                   ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:22] "GET /api/tasks/41 HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "PUT /api/tasks/42 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "GET /api/tasks/42 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "PUT /api/tasks/999999999 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "DELETE /api/tasks/43 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:22] "GET /api/tasks/43 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "DELETE /api/tasks/44 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "GET /api/tasks/44 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "DELETE /api/tasks/999999999 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "PUT /api/tasks/49 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:23] "GET /api/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "PUT /api/tasks/54 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "GET /api/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "GET /api/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "PATCH /api/tasks/58 HTTP/1.1" 405 -
+127.0.0.1 - - [27/Nov/2026 14:49:24] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /register HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /register HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /register HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /login HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /login HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "GET / HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "GET /tasks/new HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "GET /tasks/1/edit HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "GET /dashboard HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /tasks/1/toggle HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:25] "POST /tasks/1/delete HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /tasks/new HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/tasks?q=Web-created HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /tasks/61/edit HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/tasks/61 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /tasks/62/toggle HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/tasks/62 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /tasks/62/toggle HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/tasks/62 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "POST /tasks/63/delete HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:26] "GET /api/tasks/63 HTTP/1.1" 404 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /tasks/new HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /tasks/new HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /tasks/new HTTP/1.1" 302 -
+[2026-11-27 14:49:27,623] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 121, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 216, in index
+    tasks = [row_to_task(r, get_category_name(db, r["category_id"])) for r in rows]
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET / HTTP/1.1" 500 -
+[2026-11-27 14:49:27,632] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 121, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 301, in dashboard
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 301, in <genexpr>
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data '31/12/2026' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET /dashboard HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:27] "POST /tasks/new HTTP/1.1" 302 -
+[2026-11-27 14:49:27,868] ERROR in app: Exception on / [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 121, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 216, in index
+    tasks = [row_to_task(r, get_category_name(db, r["category_id"])) for r in rows]
+             ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 94, in row_to_task
+    "urgency": compute_urgency(row["due_date"]) if not row["done"] else "Done",
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data 'not-a-date' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET / HTTP/1.1" 500 -
+[2026-11-27 14:49:27,877] ERROR in app: Exception on /dashboard [GET]
+Traceback (most recent call last):
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:/Users/mredw/STQA-pytodo/test/06_Automation_Regression/.venv/lib/python3.14/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 121, in wrapper
+    return f(*args, **kwargs)
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 301, in dashboard
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+  File "C:/Users/mredw/STQA-pytodo/app.py", line 301, in <genexpr>
+    overdue = sum(1 for r in rows if not r["done"] and compute_urgency(r["due_date"]) == "Overdue")
+                                                       ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:/Users/mredw/STQA-pytodo/helpers.py", line 31, in compute_urgency
+    due = datetime.strptime(due_date_str, "%Y-%m-%d").date()
+          ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 815, in _strptime_datetime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+                                    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:/msys64/ucrt64/lib/python3.14/_strptime.py", line 555, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+                     (data_string, format))
+ValueError: time data 'not-a-date' does not match format '%Y-%m-%d'
+127.0.0.1 - - [27/Nov/2026 14:49:27] "GET /dashboard HTTP/1.1" 500 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /register HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /tasks/new HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /api/tasks?per_page=1000 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /api/categories HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /tasks/69/edit HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /tasks/69/toggle HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /tasks/69/delete HTTP/1.1" 302 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /api/tasks/69 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "PUT /api/tasks/73 HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /api/dashboard HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "POST /api/tasks HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:28] "GET /?q=O'Brien HTTP/1.1" 200 -
+127.0.0.1 - - [27/Nov/2026 14:49:29] "POST /api/register HTTP/1.1" 201 -
+127.0.0.1 - - [27/Nov/2026 14:49:29] "POST /register HTTP/1.1" 302 -

@@ -1,8 +1,10 @@
-"""Seeded-fault check: run the UI regression suite against mutated COPIES of the app.
+"""Seeded-fault check: run the regression suite against mutated COPIES of the app.
 
 The real app.py/helpers.py are never modified. Each mutant is copied into the
 OS temp folder, served on port 5106 with its own temp DB, and the suite is run
 with --base-url against it. Run folders land in evidences/runs/*-mutant-Mn.
+M1-M7 run the browser checks (-m "not unit and not api"); M8-M12 seed faults
+in the JSON API and run the Week 4 Web/API checks (-m api), which need no browser.
 
 Usage (from test/06_Automation_Regression, venv active):
     python -B evidences/mutation/mutation_runs.py [M1 M2 ...]
@@ -33,7 +35,24 @@ MUTANTS = {
            "return len(password) > 8", "return len(password) >= 8"),
     "M7": ("REQ-004 reopen no longer possible", "app.py",
            'new_done = 0 if task["done"] else 1', "new_done = 1"),
+    "M8": ("REQ-008 API read no longer limited to the owner", "app.py",
+           'def api_get_task(task_id):\n    db = get_db()\n    row = db.execute(\n        "SELECT * FROM tasks WHERE id = ? AND user_id = ?"',
+           'def api_get_task(task_id):\n    db = get_db()\n    row = db.execute(\n        "SELECT * FROM tasks WHERE id = ? AND (user_id = ? OR 1=1)"'),
+    "M9": ("REQ-009 /api/dashboard loses login protection", "app.py",
+           '@app.route("/api/dashboard", methods=["GET"])\n@login_required_api', '@app.route("/api/dashboard", methods=["GET"])'),
+    "M10": ("DEF-014 and DEF-021 fixed (API delete limited to the owner, 404 when nothing deleted)", "app.py",
+            'db.execute("DELETE FROM tasks WHERE id = ?", (task_id,))\n    db.commit()\n    return jsonify({"result": "ok"})',
+            'cur = db.execute("DELETE FROM tasks WHERE id = ? AND user_id = ?", (task_id, session["user_id"]))\n'
+            '    db.commit()\n    if cur.rowcount == 0:\n        return jsonify({"error": "not found"}), 404\n'
+            '    return jsonify({"result": "ok"})'),
+    "M11": ("REQ-005 API status=done filter ignored", "app.py",
+            'if status == "done":', 'if status == "done-disabled":'),
+    "M12": ("REQ-002 API login accepts any password", "app.py",
+            'if user and check_password_hash(user["password_hash"], password):\n'
+            '        session["user_id"] = user["id"]\n        session["username"] = user["username"]\n        return jsonify(',
+            'if user:\n        session["user_id"] = user["id"]\n        session["username"] = user["username"]\n        return jsonify('),
 }
+API_MUTANTS = {"M8", "M9", "M10", "M11", "M12"}
 
 LAUNCHER = '''import sys
 sys.path.insert(0, sys.argv[3])
@@ -76,7 +95,8 @@ def main():
                 if up():
                     break
                 time.sleep(0.2)
-            res = subprocess.run([PY, "-B", "-m", "pytest", "--browser", "edge", "-m", "not unit",
+            marker = "api" if mid in API_MUTANTS else "not unit and not api"
+            res = subprocess.run([PY, "-B", "-m", "pytest", "--browser", "edge", "-m", marker,
                                   "--base-url", f"http://127.0.0.1:{PORT}", "--run-label", f"mutant-{mid}",
                                   "-q", "-p", "no:randomly"], cwd=PHASE, capture_output=True, text=True)
         finally:
