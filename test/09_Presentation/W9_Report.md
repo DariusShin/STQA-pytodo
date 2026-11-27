@@ -85,9 +85,16 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
-      - run: pip install -r requirements.txt -r test/06_Automation_Regression/requirements-test-lock.txt bandit pip-audit
+      - run: pip install -r requirements.txt -r test/06_Automation_Regression/requirements-test-lock.txt pytest-cov requests bandit pip-audit
       - run: python -m pytest -m "unit or smoke or api"
         working-directory: test/06_Automation_Regression
+      - run: |                     # Week 2 white-box suite; gate: helpers.py stays at 100%
+          python -m pytest
+          python -m coverage report --include=helpers.py --fail-under=100
+      - run: |                     # Week 5 security tests in regression mode, against a fresh app
+          python app.py & sleep 3
+          cd test/05_Security_Performance && python -m pytest test_security.py -rA
+        env: { PYTODO_DB: ../../pytodo_pro.db }
       - run: bandit -r app.py helpers.py
       - run: pip-audit -r requirements.txt
       - run: python -m pytest --browser chrome
