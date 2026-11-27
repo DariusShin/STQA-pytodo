@@ -20,7 +20,7 @@ Roles coordinate the work; every member contributes across phases.
 | --- | --- | --- | --- |
 | Eu Kwan Ik | 22001674 | QA/Test Lead | Week 6; Week 3 usability session (user) |
 | Mohamad Shukri Bin Abdul Ajed | 22006255 | Test Design Coordinator | Weeks 4, 8; Week 3 usability session (recorder) |
-| Darius Lee Shin | 22003269 | Automation/Tool Coordinator | Weeks 1, 2, 3, 8; Week 3 usability session (recorder) |
+| Darius Lee Shin | 22003269 | Automation/Tool Coordinator | Weeks 1, 2, 3, 8; Week 3 usability session (recorder), demonstration video (editor) |
 | Ameera Alysha binti Azlan | 22002998 | Defect & Metrics Coordinator | Week 7; Week 3 usability session (user) |
 | Wan Haziqah Binti Wan Hanafi | 22006757 | Test Assistant / Tester | Week 5 |
 
