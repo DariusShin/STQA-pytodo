@@ -1,6 +1,6 @@
 # Week 4 - Detailed Web and API Test Cases
 
-Every case uses the course test-case template. Each case is one or more requests in the Postman collection (`postman/PyTodo_Pro_Week4.postman_collection.json`); the request names start with the case ID. **Expected Result** lists the checks written in the collection before execution. **Actual Result** and **Status** come from the full Collection Runner run on 2026-11-24 13:41 (+08:00), saved as [`evidences/postman-run-full-20261124.json`](evidences/postman-run-full-20261124.json). A case fails if any of its checks fails.
+61 cases in the project Test Case Template, executed by Mohamad Shukri Bin Abdul Ajed. Each case is one or more requests in the Postman collection (`postman/PyTodo_Pro_Week4.postman_collection.json`); the request names start with the case ID. **Expected Result** lists the checks written in the collection before execution. **Actual Result** and **Status** come from the full Collection Runner run on 2026-11-24 13:41 (+08:00), saved as [`evidences/postman-run-full-20261124.json`](evidences/postman-run-full-20261124.json). A case fails if any of its checks fails.
 
 **61 cases: 43 Pass, 18 Fail, 0 Blocked, 0 Not Run.**
 
@@ -883,7 +883,7 @@ Every case uses the course test-case template. Each case is one or more requests
 | Expected Result | TC-API-032a: status is 400; response body is JSON (not an HTML error page)<br>TC-API-032b: status is 400; response body is JSON (not an HTML error page)<br>TC-API-032c: status is 400; response body is JSON (not an HTML error page) |
 | Actual Result | TC-API-032a: 200 OK - **FAILED:** status is 400<br>TC-API-032b: 200 OK - **FAILED:** status is 400<br>TC-API-032c: 200 OK - **FAILED:** status is 400 |
 | Status | Fail |
-| Evidence | [postman-run-full-20261124.json](evidences/postman-run-full-20261124.json)<br>[TC-API-032a-paging-not-validated-20261124.jpg](evidences/TC-API-032a-paging-not-validated-20261124.jpg) |
+| Evidence | [postman-run-full-20261124.json](evidences/postman-run-full-20261124.json)<br>[TC-API-032a-paging-not-validated-20261124.png](evidences/TC-API-032a-paging-not-validated-20261124.png) |
 | Defect ID | DEF-022 |
 
 ## TC-API-033 - Task list scoped to the user
