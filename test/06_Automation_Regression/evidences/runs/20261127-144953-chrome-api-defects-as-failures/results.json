@@ -1,0 +1,1732 @@
+{
+  "meta": {
+    "run_started": "2026-11-27T14:49:53",
+    "run_finished": "2026-11-27T14:50:15",
+    "wall_time_s": 21.2,
+    "timezone": "Malay Peninsula Standard Time",
+    "execution_date_used_for_due_dates": "2026-11-27",
+    "app_commit": "f34f7e0",
+    "browser": "none (no browser check selected)",
+    "headless": true,
+    "selenium": "4.53.0",
+    "pytest": "9.2.0",
+    "python": "3.14.7",
+    "os": "Windows 11 (10.0.26200)",
+    "target": "isolated server on port 5006",
+    "run_label": "api-defects-as-failures",
+    "marker_expression": "api",
+    "defects_as_failures": true,
+    "pytest_exit_status": 1,
+    "counts": {
+      "Pass": 69,
+      "Fail": 32
+    }
+  },
+  "results": [
+    {
+      "auto_id": "TC-AUT-029",
+      "nodeid": "test_06_api.py::test_api_register_valid_account",
+      "manual": [
+        "TC-API-001"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.18,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-030",
+      "nodeid": "test_06_api.py::test_api_username_valid_length_boundaries[TC-API-002a-len3]",
+      "manual": [
+        "TC-API-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.15,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-030",
+      "nodeid": "test_06_api.py::test_api_username_valid_length_boundaries[TC-API-002b-len20]",
+      "manual": [
+        "TC-API-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.16,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-031",
+      "nodeid": "test_06_api.py::test_api_invalid_username_partitions[TC-API-003a-len2]",
+      "manual": [
+        "TC-API-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-031",
+      "nodeid": "test_06_api.py::test_api_invalid_username_partitions[TC-API-003b-len21]",
+      "manual": [
+        "TC-API-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-031",
+      "nodeid": "test_06_api.py::test_api_invalid_username_partitions[TC-API-003c-hyphen]",
+      "manual": [
+        "TC-API-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-031",
+      "nodeid": "test_06_api.py::test_api_invalid_username_partitions[TC-API-003d-missing]",
+      "manual": [
+        "TC-API-003"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-032",
+      "nodeid": "test_06_api.py::test_api_password_length_7_rejected",
+      "manual": [
+        "TC-API-004"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-033",
+      "nodeid": "test_06_api.py::test_api_password_length_8_accepted",
+      "manual": [
+        "TC-API-005"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [
+        "DEF-001"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: 8-character password: <400 application/json '{\"error\":\"invalid password\"} '>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-034",
+      "nodeid": "test_06_api.py::test_api_missing_password_rejected",
+      "manual": [
+        "TC-API-006"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-035",
+      "nodeid": "test_06_api.py::test_api_username_wrong_json_type",
+      "manual": [
+        "TC-API-007"
+      ],
+      "req": [
+        "REQ-001",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-018"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: expected 400 with a JSON error, got <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-036",
+      "nodeid": "test_06_api.py::test_api_duplicate_username_rejected",
+      "manual": [
+        "TC-API-008"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [
+        "DEF-016"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.15,
+      "message": "AssertionError: duplicate username 'w6_api_1449537' was accepted: <201 application/json '{\"id\":5,\"username\":\"w6_api_1449537\"} '>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-037",
+      "nodeid": "test_06_api.py::test_api_login_valid_credentials",
+      "manual": [
+        "TC-API-009"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.16,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-038",
+      "nodeid": "test_06_api.py::test_api_login_invalid_credentials[TC-API-010a-wrong-password]",
+      "manual": [
+        "TC-API-010"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.18,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-038",
+      "nodeid": "test_06_api.py::test_api_login_invalid_credentials[TC-API-010b-unknown-user]",
+      "manual": [
+        "TC-API-010"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-038",
+      "nodeid": "test_06_api.py::test_api_login_invalid_credentials[TC-API-010c-empty-body]",
+      "manual": [
+        "TC-API-010"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011a-list]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011b-create]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011c-read]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011d-update]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011e-delete]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-039",
+      "nodeid": "test_06_api.py::test_api_protected_endpoints_require_session[TC-API-011f-dashboard]",
+      "manual": [
+        "TC-API-011"
+      ],
+      "req": [
+        "REQ-002",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-040",
+      "nodeid": "test_06_api.py::test_api_categories_require_session",
+      "manual": [
+        "TC-API-012"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-023"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: categories without login: <200 application/json '[{\"id\":2,\"name\":\"Personal\"},{\"id\":3,\"name\":\"Study\"},{\"id\":4,\"name\":\"Urgent\"},{\"id\":1,\"name\":\"Work\"}] '>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-041",
+      "nodeid": "test_06_api.py::test_api_list_categories",
+      "manual": [
+        "TC-API-013"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-042",
+      "nodeid": "test_06_api.py::test_api_create_task_with_all_fields",
+      "manual": [
+        "TC-API-014"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-043",
+      "nodeid": "test_06_api.py::test_api_create_title_only_task",
+      "manual": [
+        "TC-API-015"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-044",
+      "nodeid": "test_06_api.py::test_api_title_required[TC-API-016a-missing]",
+      "manual": [
+        "TC-API-016"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-044",
+      "nodeid": "test_06_api.py::test_api_title_required[TC-API-016b-empty]",
+      "manual": [
+        "TC-API-016"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-044",
+      "nodeid": "test_06_api.py::test_api_title_required[TC-API-016c-spaces]",
+      "manual": [
+        "TC-API-016"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-045",
+      "nodeid": "test_06_api.py::test_api_non_json_body_rejected",
+      "manual": [
+        "TC-API-017"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-046",
+      "nodeid": "test_06_api.py::test_api_wrong_json_types_on_create[TC-API-018a-title-number]",
+      "manual": [
+        "TC-API-018"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-018"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.03,
+      "message": "AssertionError: expected 400 with a JSON error, got <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-046",
+      "nodeid": "test_06_api.py::test_api_wrong_json_types_on_create[TC-API-018b-title-list]",
+      "manual": [
+        "TC-API-018"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-018"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: expected 400 with a JSON error, got <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-046",
+      "nodeid": "test_06_api.py::test_api_wrong_json_types_on_create[TC-API-018c-description-object]",
+      "manual": [
+        "TC-API-018"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-018"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.03,
+      "message": "AssertionError: expected 400 with a JSON error, got <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-047",
+      "nodeid": "test_06_api.py::test_api_invalid_due_date_on_create[TC-API-019a-wrong-format]",
+      "manual": [
+        "TC-API-019"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.03,
+      "message": "AssertionError: due_date '31/12/2026': create returned <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>; list/dashboard then returned (500, 500)",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-047",
+      "nodeid": "test_06_api.py::test_api_invalid_due_date_on_create[TC-API-019b-impossible-date]",
+      "manual": [
+        "TC-API-019"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.04,
+      "message": "AssertionError: due_date '2026-02-30': create returned <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>; list/dashboard then returned (500, 500)",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-047",
+      "nodeid": "test_06_api.py::test_api_invalid_due_date_on_create[TC-API-019c-text]",
+      "manual": [
+        "TC-API-019"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.06,
+      "message": "AssertionError: due_date 'tomorrow': create returned <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>; list/dashboard then returned (500, 500)",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-048",
+      "nodeid": "test_06_api.py::test_api_invalid_category_on_create[TC-API-020a-unknown-id]",
+      "manual": [
+        "TC-API-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-019"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: expected 400 with a JSON error, got <201 application/json '{\"category\":null,\"category_id\":999,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:02.301033\",\"description\":\"\",\"done\"'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-048",
+      "nodeid": "test_06_api.py::test_api_invalid_category_on_create[TC-API-020b-text]",
+      "manual": [
+        "TC-API-020"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-019"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.02,
+      "message": "AssertionError: expected 400 with a JSON error, got <201 application/json '{\"category\":null,\"category_id\":\"abc\",\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:02.520966\",\"description\":\"\",\"don'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-049",
+      "nodeid": "test_06_api.py::test_api_urgency_boundaries[TC-API-021a-yesterday]",
+      "manual": [
+        "TC-API-021"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-049",
+      "nodeid": "test_06_api.py::test_api_urgency_boundaries[TC-API-021b-today]",
+      "manual": [
+        "TC-API-021"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-002"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: due 2026-11-27: urgency 'Overdue'",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-049",
+      "nodeid": "test_06_api.py::test_api_urgency_boundaries[TC-API-021c-plus1]",
+      "manual": [
+        "TC-API-021"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-049",
+      "nodeid": "test_06_api.py::test_api_urgency_boundaries[TC-API-021d-plus2]",
+      "manual": [
+        "TC-API-021"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-049",
+      "nodeid": "test_06_api.py::test_api_urgency_boundaries[TC-API-021e-plus3]",
+      "manual": [
+        "TC-API-021"
+      ],
+      "req": [
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-050",
+      "nodeid": "test_06_api.py::test_api_read_own_task",
+      "manual": [
+        "TC-API-022"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.06,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-051",
+      "nodeid": "test_06_api.py::test_api_read_missing_task",
+      "manual": [
+        "TC-API-023"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-052",
+      "nodeid": "test_06_api.py::test_api_read_another_users_task",
+      "manual": [
+        "TC-API-024"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-053",
+      "nodeid": "test_06_api.py::test_api_non_integer_task_id",
+      "manual": [
+        "TC-API-025"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-054",
+      "nodeid": "test_06_api.py::test_api_filter_by_category",
+      "manual": [
+        "TC-API-026"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-055",
+      "nodeid": "test_06_api.py::test_api_filter_by_status[TC-API-027a-open]",
+      "manual": [
+        "TC-API-027"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-055",
+      "nodeid": "test_06_api.py::test_api_filter_by_status[TC-API-027b-done]",
+      "manual": [
+        "TC-API-027"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-056",
+      "nodeid": "test_06_api.py::test_api_title_search",
+      "manual": [
+        "TC-API-028"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-057",
+      "nodeid": "test_06_api.py::test_api_combined_filters",
+      "manual": [
+        "TC-API-029"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-058",
+      "nodeid": "test_06_api.py::test_api_search_with_apostrophe",
+      "manual": [
+        "TC-API-030"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [
+        "DEF-017"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.02,
+      "message": "AssertionError: search for O'Brien: <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-059",
+      "nodeid": "test_06_api.py::test_api_pagination",
+      "manual": [
+        "TC-API-031"
+      ],
+      "req": [
+        "REQ-005",
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.14,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-060",
+      "nodeid": "test_06_api.py::test_api_invalid_pagination[TC-API-032a-per-page-negative]",
+      "manual": [
+        "TC-API-032"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-022"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.13,
+      "message": "AssertionError: expected 400 with a JSON error, got <200 application/json '[{\"category\":null,\"category_id\":null,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:05.278378\",\"description\":\"\",\"don'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-060",
+      "nodeid": "test_06_api.py::test_api_invalid_pagination[TC-API-032b-page-negative]",
+      "manual": [
+        "TC-API-032"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-022"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.04,
+      "message": "AssertionError: expected 400 with a JSON error, got <200 application/json '[{\"category\":null,\"category_id\":null,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:05.564875\",\"description\":\"\",\"don'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-060",
+      "nodeid": "test_06_api.py::test_api_invalid_pagination[TC-API-032c-page-text]",
+      "manual": [
+        "TC-API-032"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-022"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.05,
+      "message": "AssertionError: expected 400 with a JSON error, got <200 application/json '[{\"category\":null,\"category_id\":null,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:05.829773\",\"description\":\"\",\"don'>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-061",
+      "nodeid": "test_06_api.py::test_api_task_list_scoped_to_user",
+      "manual": [
+        "TC-API-033"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.2,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-062",
+      "nodeid": "test_06_api.py::test_api_partial_update",
+      "manual": [
+        "TC-API-034"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-063",
+      "nodeid": "test_06_api.py::test_api_complete_and_reopen",
+      "manual": [
+        "TC-API-035"
+      ],
+      "req": [
+        "REQ-004"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.05,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036a-title-empty]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-020"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.05,
+      "message": "AssertionError: PUT {'title': ''}: <200 application/json '{\"category\":\"Work\",\"category_id\":1,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:06.676251\",\"description\":\"\",\"done\"'>; task afterwards: 200 {'title': '', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036b-title-spaces]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-020"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.09,
+      "message": "AssertionError: PUT {'title': '   '}: <200 application/json '{\"category\":\"Work\",\"category_id\":1,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:06.934349\",\"description\":\"\",\"done\"'>; task afterwards: 200 {'title': '   ', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036c-done-text]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-020"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.05,
+      "message": "AssertionError: PUT {'done': 'false'}: <200 application/json '{\"category\":\"Work\",\"category_id\":1,\"completed_at\":\"2026-11-27 14:50:07\",\"created_at\":\"2026-11-27T14:50:07.194332\",\"descr'>; task afterwards: 200 {'title': 'Stable title', 'done': True, 'category_id': 1, 'due_date': '2026-12-02'}",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036d-title-null]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-018"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.05,
+      "message": "AssertionError: PUT {'title': None}: <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036e-unknown-category]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-019"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.03,
+      "message": "AssertionError: PUT {'category_id': 999}: <200 application/json '{\"category\":null,\"category_id\":999,\"completed_at\":null,\"created_at\":\"2026-11-27T14:50:07.748341\",\"description\":\"\",\"done\"'>; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 999, 'due_date': '2026-12-02'}",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-064",
+      "nodeid": "test_06_api.py::test_api_invalid_values_on_update[TC-API-036f-bad-due-date]",
+      "manual": [
+        "TC-API-036"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.06,
+      "message": "AssertionError: PUT {'due_date': '31/12/2026'}: <500 text/html '<!doctype html> <html lang=en> <title>500 Internal Server Error</title> <h1>Internal Server Error</h1> <p>The server enc'>; task afterwards: 500 None",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-065",
+      "nodeid": "test_06_api.py::test_api_update_another_users_task",
+      "manual": [
+        "TC-API-037"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-066",
+      "nodeid": "test_06_api.py::test_api_update_missing_task",
+      "manual": [
+        "TC-API-038"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-067",
+      "nodeid": "test_06_api.py::test_api_delete_own_task",
+      "manual": [
+        "TC-API-039"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-068",
+      "nodeid": "test_06_api.py::test_api_delete_another_users_task",
+      "manual": [
+        "TC-API-040"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [
+        "DEF-014"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.04,
+      "message": "AssertionError: intruder DELETE returned 200; owner's GET afterwards returned 404",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-069",
+      "nodeid": "test_06_api.py::test_api_delete_missing_task",
+      "manual": [
+        "TC-API-041"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [
+        "DEF-021"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.01,
+      "message": "AssertionError: expected 404 with a JSON error, got <200 application/json '{\"result\":\"ok\"} '>",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-070",
+      "nodeid": "test_06_api.py::test_api_dashboard_counts",
+      "manual": [
+        "TC-API-042"
+      ],
+      "req": [
+        "REQ-007"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.13,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-071",
+      "nodeid": "test_06_api.py::test_api_dashboard_due_today_not_overdue",
+      "manual": [
+        "TC-API-043"
+      ],
+      "req": [
+        "REQ-006",
+        "REQ-007"
+      ],
+      "defect": [
+        "DEF-002"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.15,
+      "message": "AssertionError: Overdue counter is 2, expected 1",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-072",
+      "nodeid": "test_06_api.py::test_api_dashboard_scoped_to_user",
+      "manual": [
+        "TC-API-044"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.38,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-073",
+      "nodeid": "test_06_api.py::test_api_unsupported_method",
+      "manual": [
+        "TC-API-045"
+      ],
+      "req": [
+        "REQ-009"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-074",
+      "nodeid": "test_07_web_forms.py::test_web_register_through_form",
+      "manual": [
+        "TC-WEB-001"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.18,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-075",
+      "nodeid": "test_07_web_forms.py::test_web_registration_validated_on_server[TC-WEB-002a-empty-username]",
+      "manual": [
+        "TC-WEB-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-075",
+      "nodeid": "test_07_web_forms.py::test_web_registration_validated_on_server[TC-WEB-002b-illegal-character]",
+      "manual": [
+        "TC-WEB-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-075",
+      "nodeid": "test_07_web_forms.py::test_web_registration_validated_on_server[TC-WEB-002c-password-7]",
+      "manual": [
+        "TC-WEB-002"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.03,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-076",
+      "nodeid": "test_07_web_forms.py::test_web_login_through_form[TC-WEB-003a-valid]",
+      "manual": [
+        "TC-WEB-003"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.3,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-076",
+      "nodeid": "test_07_web_forms.py::test_web_login_through_form[TC-WEB-003b-wrong-password]",
+      "manual": [
+        "TC-WEB-003"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.31,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004a-list]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004b-new]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.01,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004c-edit]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004d-dashboard]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004e-toggle]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-077",
+      "nodeid": "test_07_web_forms.py::test_web_protected_pages_redirect_when_logged_out[TC-WEB-004f-delete]",
+      "manual": [
+        "TC-WEB-004"
+      ],
+      "req": [
+        "REQ-002"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.0,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-078",
+      "nodeid": "test_07_web_forms.py::test_web_created_task_matches_api",
+      "manual": [
+        "TC-WEB-005"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.02,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-079",
+      "nodeid": "test_07_web_forms.py::test_api_created_task_matches_web_list",
+      "manual": [
+        "TC-WEB-006"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.17,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-080",
+      "nodeid": "test_07_web_forms.py::test_web_edit_matches_api",
+      "manual": [
+        "TC-WEB-007"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.22,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-081",
+      "nodeid": "test_07_web_forms.py::test_web_toggle_matches_api",
+      "manual": [
+        "TC-WEB-008"
+      ],
+      "req": [
+        "REQ-004"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.24,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-082",
+      "nodeid": "test_07_web_forms.py::test_web_delete_matches_api",
+      "manual": [
+        "TC-WEB-009"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.19,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-083",
+      "nodeid": "test_07_web_forms.py::test_web_blank_title_validated_on_server[TC-WEB-010a-empty]",
+      "manual": [
+        "TC-WEB-010"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-003"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.02,
+      "message": "AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-083",
+      "nodeid": "test_07_web_forms.py::test_web_blank_title_validated_on_server[TC-WEB-010b-spaces]",
+      "manual": [
+        "TC-WEB-010"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-003"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.04,
+      "message": "AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-084",
+      "nodeid": "test_07_web_forms.py::test_web_due_date_validated_on_server[TC-WEB-011a-wrong-format]",
+      "manual": [
+        "TC-WEB-011"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.03,
+      "message": "AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-084",
+      "nodeid": "test_07_web_forms.py::test_web_due_date_validated_on_server[TC-WEB-011b-text]",
+      "manual": [
+        "TC-WEB-011"
+      ],
+      "req": [
+        "REQ-003",
+        "REQ-006"
+      ],
+      "defect": [
+        "DEF-015"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.05,
+      "message": "AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-085",
+      "nodeid": "test_07_web_forms.py::test_web_category_validated_on_server",
+      "manual": [
+        "TC-WEB-012"
+      ],
+      "req": [
+        "REQ-003"
+      ],
+      "defect": [
+        "DEF-019"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.02,
+      "message": "AssertionError: server accepted the form: 302 redirect to /; saved: [('bad category', 999)]",
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-086",
+      "nodeid": "test_07_web_forms.py::test_web_actions_on_another_users_task",
+      "manual": [
+        "TC-WEB-013"
+      ],
+      "req": [
+        "REQ-008"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.39,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-087",
+      "nodeid": "test_07_web_forms.py::test_web_dashboard_matches_api",
+      "manual": [
+        "TC-WEB-014"
+      ],
+      "req": [
+        "REQ-007"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.26,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-088",
+      "nodeid": "test_07_web_forms.py::test_web_search_with_apostrophe",
+      "manual": [
+        "TC-WEB-015"
+      ],
+      "req": [
+        "REQ-005"
+      ],
+      "defect": [],
+      "smoke": false,
+      "status": "Pass",
+      "duration_s": 0.21,
+      "message": null,
+      "screenshot": null
+    },
+    {
+      "auto_id": "TC-AUT-089",
+      "nodeid": "test_07_web_forms.py::test_web_duplicate_username_rejected",
+      "manual": [
+        "TC-WEB-016"
+      ],
+      "req": [
+        "REQ-001"
+      ],
+      "defect": [
+        "DEF-016"
+      ],
+      "smoke": false,
+      "status": "Fail",
+      "duration_s": 0.34,
+      "message": "AssertionError: duplicate username 'w6_web_14495383' was accepted: 302 redirect to /",
+      "screenshot": null
+    }
+  ]
+}

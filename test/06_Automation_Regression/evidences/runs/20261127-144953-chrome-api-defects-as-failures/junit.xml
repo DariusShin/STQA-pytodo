@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="32" skipped="0" tests="101" time="20.984" timestamp="2026-11-27T14:49:54.055379+08:00" hostname="ouioui"><testcase classname="test_06_api" name="test_api_register_valid_account" time="2.484" /><testcase classname="test_06_api" name="test_api_username_valid_length_boundaries[TC-API-002a-len3]" time="0.171" /><testcase classname="test_06_api" name="test_api_username_valid_length_boundaries[TC-API-002b-len20]" time="0.183" /><testcase classname="test_06_api" name="test_api_invalid_username_partitions[TC-API-003a-len2]" time="0.021" /><testcase classname="test_06_api" name="test_api_invalid_username_partitions[TC-API-003b-len21]" time="0.022" /><testcase classname="test_06_api" name="test_api_invalid_username_partitions[TC-API-003c-hyphen]" time="0.042" /><testcase classname="test_06_api" name="test_api_invalid_username_partitions[TC-API-003d-missing]" time="0.017" /><testcase classname="test_06_api" name="test_api_password_length_7_rejected" time="0.018" /><testcase classname="test_06_api" name="test_api_password_length_8_accepted" time="0.019"><failure message="AssertionError: 8-character password: &lt;400 application/json '{&quot;error&quot;:&quot;invalid password&quot;} '&gt;&#10;assert 400 == 201&#10; +  where 400 = &lt;400 application/json '{&quot;error&quot;:&quot;invalid password&quot;} '&gt;.status">anon = &lt;api_client.ApiClient object at 0x0000022c8a73f250&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-033")
+    @pytest.mark.manual("TC-API-005")
+    @pytest.mark.req("REQ-001")
+    @pytest.mark.known_defect("DEF-001")
+    def test_api_password_length_8_accepted(anon):
+        resp = anon.request("POST", "/api/register",
+                            {"username": unique_username("pw8"), "password": "abcd1234"})
+&gt;       assert resp.status == 201, f"8-character password: {resp!r}"
+E       AssertionError: 8-character password: &lt;400 application/json '{"error":"invalid password"} '&gt;
+E       assert 400 == 201
+E        +  where 400 = &lt;400 application/json '{"error":"invalid password"} '&gt;.status
+
+test_06_api.py:112: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_missing_password_rejected" time="0.017" /><testcase classname="test_06_api" name="test_api_username_wrong_json_type" time="0.024"><failure message="AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;">anon = &lt;api_client.ApiClient object at 0x0000022c8a74c050&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-035")
+    @pytest.mark.manual("TC-API-007")
+    @pytest.mark.req("REQ-001", "REQ-009")
+    @pytest.mark.known_defect("DEF-018")
+    def test_api_username_wrong_json_type(anon):
+&gt;       expect_json_error(anon.request("POST", "/api/register", {"username": 12345, "password": PASSWORD}), 400)
+
+test_06_api.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_duplicate_username_rejected" time="0.330"><failure message="AssertionError: duplicate username 'w6_api_1449537' was accepted: &lt;201 application/json '{&quot;id&quot;:5,&quot;username&quot;:&quot;w6_api_1449537&quot;} '&gt;&#10;assert 201 in (400, 409)&#10; +  where 201 = &lt;201 application/json '{&quot;id&quot;:5,&quot;username&quot;:&quot;w6_api_1449537&quot;} '&gt;.status">user = {'username': 'w6_api_1449537', 'password': 'Test12345', 'api': &lt;api_client.ApiClient object at 0x0000022c8a74c7d0&gt;}
+anon = &lt;api_client.ApiClient object at 0x0000022c8a763230&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-036")
+    @pytest.mark.manual("TC-API-008")
+    @pytest.mark.req("REQ-001")
+    @pytest.mark.known_defect("DEF-016")
+    def test_api_duplicate_username_rejected(user, anon):
+        resp = anon.request("POST", "/api/register", {"username": user["username"], "password": "Different99"})
+&gt;       assert resp.status in (400, 409), f"duplicate username {user['username']!r} was accepted: {resp!r}"
+E       AssertionError: duplicate username 'w6_api_1449537' was accepted: &lt;201 application/json '{"id":5,"username":"w6_api_1449537"} '&gt;
+E       assert 201 in (400, 409)
+E        +  where 201 = &lt;201 application/json '{"id":5,"username":"w6_api_1449537"} '&gt;.status
+
+test_06_api.py:139: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_login_valid_credentials" time="0.341" /><testcase classname="test_06_api" name="test_api_login_invalid_credentials[TC-API-010a-wrong-password]" time="0.360" /><testcase classname="test_06_api" name="test_api_login_invalid_credentials[TC-API-010b-unknown-user]" time="0.190" /><testcase classname="test_06_api" name="test_api_login_invalid_credentials[TC-API-010c-empty-body]" time="0.218" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011a-list]" time="0.018" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011b-create]" time="0.019" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011c-read]" time="0.022" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011d-update]" time="0.041" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011e-delete]" time="0.019" /><testcase classname="test_06_api" name="test_api_protected_endpoints_require_session[TC-API-011f-dashboard]" time="0.020" /><testcase classname="test_06_api" name="test_api_categories_require_session" time="0.018"><failure message="AssertionError: categories without login: &lt;200 application/json '[{&quot;id&quot;:2,&quot;name&quot;:&quot;Personal&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Study&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;Urgent&quot;},{&quot;id&quot;:1,&quot;name&quot;:&quot;Work&quot;}] '&gt;&#10;assert 200 == 401&#10; +  where 200 = &lt;200 application/json '[{&quot;id&quot;:2,&quot;name&quot;:&quot;Personal&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Study&quot;},{&quot;id&quot;:4,&quot;name&quot;:&quot;Urgent&quot;},{&quot;id&quot;:1,&quot;name&quot;:&quot;Work&quot;}] '&gt;.status">anon = &lt;api_client.ApiClient object at 0x0000022c8a6b2930&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-040")
+    @pytest.mark.manual("TC-API-012")
+    @pytest.mark.req("REQ-009")
+    @pytest.mark.known_defect("DEF-023")
+    def test_api_categories_require_session(anon):
+        resp = anon.request("GET", "/api/categories")
+&gt;       assert resp.status == 401, f"categories without login: {resp!r}"
+E       AssertionError: categories without login: &lt;200 application/json '[{"id":2,"name":"Personal"},{"id":3,"name":"Study"},{"id":4,"name":"Urgent"},{"id":1,"name":"Work"}] '&gt;
+E       assert 200 == 401
+E        +  where 200 = &lt;200 application/json '[{"id":2,"name":"Personal"},{"id":3,"name":"Study"},{"id":4,"name":"Urgent"},{"id":1,"name":"Work"}] '&gt;.status
+
+test_06_api.py:203: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_list_categories" time="0.206" /><testcase classname="test_06_api" name="test_api_create_task_with_all_fields" time="0.183" /><testcase classname="test_06_api" name="test_api_create_title_only_task" time="0.162" /><testcase classname="test_06_api" name="test_api_title_required[TC-API-016a-missing]" time="0.184" /><testcase classname="test_06_api" name="test_api_title_required[TC-API-016b-empty]" time="0.169" /><testcase classname="test_06_api" name="test_api_title_required[TC-API-016c-spaces]" time="0.185" /><testcase classname="test_06_api" name="test_api_non_json_body_rejected" time="0.173" /><testcase classname="test_06_api" name="test_api_wrong_json_types_on_create[TC-API-018a-title-number]" time="0.180"><failure message="AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3530&gt;
+payload = {'title': 123}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-046")
+    @pytest.mark.manual("TC-API-018")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": 123}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018a-title-number"),
+        pytest.param({"title": ["a", "b"]}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018b-title-list"),
+        pytest.param({"title": "ok", "description": {"a": 1}}, marks=pytest.mark.known_defect("DEF-018"),
+                     id="TC-API-018c-description-object"),
+    ])
+    def test_api_wrong_json_types_on_create(api, payload):
+&gt;       expect_json_error(api.request("POST", "/api/tasks", payload), 400)
+
+test_06_api.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_wrong_json_types_on_create[TC-API-018b-title-list]" time="0.176"><failure message="AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a6b36b0&gt;
+payload = {'title': ['a', 'b']}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-046")
+    @pytest.mark.manual("TC-API-018")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": 123}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018a-title-number"),
+        pytest.param({"title": ["a", "b"]}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018b-title-list"),
+        pytest.param({"title": "ok", "description": {"a": 1}}, marks=pytest.mark.known_defect("DEF-018"),
+                     id="TC-API-018c-description-object"),
+    ])
+    def test_api_wrong_json_types_on_create(api, payload):
+&gt;       expect_json_error(api.request("POST", "/api/tasks", payload), 400)
+
+test_06_api.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_wrong_json_types_on_create[TC-API-018c-description-object]" time="0.217"><failure message="AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3d10&gt;
+payload = {'title': 'ok', 'description': {'a': 1}}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-046")
+    @pytest.mark.manual("TC-API-018")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": 123}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018a-title-number"),
+        pytest.param({"title": ["a", "b"]}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-018b-title-list"),
+        pytest.param({"title": "ok", "description": {"a": 1}}, marks=pytest.mark.known_defect("DEF-018"),
+                     id="TC-API-018c-description-object"),
+    ])
+    def test_api_wrong_json_types_on_create(api, payload):
+&gt;       expect_json_error(api.request("POST", "/api/tasks", payload), 400)
+
+test_06_api.py:282: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_due_date_on_create[TC-API-019a-wrong-format]" time="0.290"><failure message="AssertionError: due_date '31/12/2026': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)&#10;assert (500, False) == (400, True)&#10;  &#10;  At index 0 diff: 500 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3dd0&gt;
+due_date = '31/12/2026'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-047")
+    @pytest.mark.manual("TC-API-019")
+    @pytest.mark.req("REQ-003", "REQ-006")
+    @pytest.mark.parametrize("due_date", [
+        pytest.param("31/12/2026", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019a-wrong-format"),
+        pytest.param("2026-02-30", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019b-impossible-date"),
+        pytest.param("tomorrow", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019c-text"),
+    ])
+    def test_api_invalid_due_date_on_create(api, due_date):
+        create = api.request("POST", "/api/tasks", {"title": "bad date", "due_date": due_date})
+        after = (api.request("GET", "/api/tasks").status, api.request("GET", "/api/dashboard").status)
+&gt;       assert (create.status, create.is_json) == (400, True), \
+            f"due_date {due_date!r}: create returned {create!r}; list/dashboard then returned {after}"
+E       AssertionError: due_date '31/12/2026': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)
+E       assert (500, False) == (400, True)
+E         
+E         At index 0 diff: 500 != 400
+E         Use -v to get more diff
+
+test_06_api.py:297: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_due_date_on_create[TC-API-019b-impossible-date]" time="0.198"><failure message="AssertionError: due_date '2026-02-30': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)&#10;assert (500, False) == (400, True)&#10;  &#10;  At index 0 diff: 500 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a829b50&gt;
+due_date = '2026-02-30'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-047")
+    @pytest.mark.manual("TC-API-019")
+    @pytest.mark.req("REQ-003", "REQ-006")
+    @pytest.mark.parametrize("due_date", [
+        pytest.param("31/12/2026", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019a-wrong-format"),
+        pytest.param("2026-02-30", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019b-impossible-date"),
+        pytest.param("tomorrow", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019c-text"),
+    ])
+    def test_api_invalid_due_date_on_create(api, due_date):
+        create = api.request("POST", "/api/tasks", {"title": "bad date", "due_date": due_date})
+        after = (api.request("GET", "/api/tasks").status, api.request("GET", "/api/dashboard").status)
+&gt;       assert (create.status, create.is_json) == (400, True), \
+            f"due_date {due_date!r}: create returned {create!r}; list/dashboard then returned {after}"
+E       AssertionError: due_date '2026-02-30': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)
+E       assert (500, False) == (400, True)
+E         
+E         At index 0 diff: 500 != 400
+E         Use -v to get more diff
+
+test_06_api.py:297: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_due_date_on_create[TC-API-019c-text]" time="0.212"><failure message="AssertionError: due_date 'tomorrow': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)&#10;assert (500, False) == (400, True)&#10;  &#10;  At index 0 diff: 500 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3e90&gt;, due_date = 'tomorrow'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-047")
+    @pytest.mark.manual("TC-API-019")
+    @pytest.mark.req("REQ-003", "REQ-006")
+    @pytest.mark.parametrize("due_date", [
+        pytest.param("31/12/2026", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019a-wrong-format"),
+        pytest.param("2026-02-30", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019b-impossible-date"),
+        pytest.param("tomorrow", marks=pytest.mark.known_defect("DEF-015"), id="TC-API-019c-text"),
+    ])
+    def test_api_invalid_due_date_on_create(api, due_date):
+        create = api.request("POST", "/api/tasks", {"title": "bad date", "due_date": due_date})
+        after = (api.request("GET", "/api/tasks").status, api.request("GET", "/api/dashboard").status)
+&gt;       assert (create.status, create.is_json) == (400, True), \
+            f"due_date {due_date!r}: create returned {create!r}; list/dashboard then returned {after}"
+E       AssertionError: due_date 'tomorrow': create returned &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; list/dashboard then returned (500, 500)
+E       assert (500, False) == (400, True)
+E         
+E         At index 0 diff: 500 != 400
+E         Use -v to get more diff
+
+test_06_api.py:297: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_category_on_create[TC-API-020a-unknown-id]" time="0.178"><failure message="AssertionError: expected 400 with a JSON error, got &lt;201 application/json '{&quot;category&quot;:null,&quot;category_id&quot;:999,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:02.301033&quot;,&quot;description&quot;:&quot;&quot;,&quot;done&quot;'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3c50&gt;, category_id = 999
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-048")
+    @pytest.mark.manual("TC-API-020")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.parametrize("category_id", [
+        pytest.param(999, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-020a-unknown-id"),
+        pytest.param("abc", marks=pytest.mark.known_defect("DEF-019"), id="TC-API-020b-text"),
+    ])
+    def test_api_invalid_category_on_create(api, category_id):
+&gt;       expect_json_error(api.request("POST", "/api/tasks", {"title": "bad category", "category_id": category_id}), 400)
+
+test_06_api.py:311: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;201 application/json '{"category":null,"category_id":999,"completed_at":null,"created_at":"2026-11-27T14:50:02.301033","description":"","done"'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;201 application/json '{"category":null,"category_id":999,"completed_at":null,"created_at":"2026-11-27T14:50:02.301033","description":"","done"'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_category_on_create[TC-API-020b-text]" time="0.186"><failure message="AssertionError: expected 400 with a JSON error, got &lt;201 application/json '{&quot;category&quot;:null,&quot;category_id&quot;:&quot;abc&quot;,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:02.520966&quot;,&quot;description&quot;:&quot;&quot;,&quot;don'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a6b3530&gt;, category_id = 'abc'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-048")
+    @pytest.mark.manual("TC-API-020")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.parametrize("category_id", [
+        pytest.param(999, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-020a-unknown-id"),
+        pytest.param("abc", marks=pytest.mark.known_defect("DEF-019"), id="TC-API-020b-text"),
+    ])
+    def test_api_invalid_category_on_create(api, category_id):
+&gt;       expect_json_error(api.request("POST", "/api/tasks", {"title": "bad category", "category_id": category_id}), 400)
+
+test_06_api.py:311: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;201 application/json '{"category":null,"category_id":"abc","completed_at":null,"created_at":"2026-11-27T14:50:02.520966","description":"","don'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;201 application/json '{"category":null,"category_id":"abc","completed_at":null,"created_at":"2026-11-27T14:50:02.520966","description":"","don'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_urgency_boundaries[TC-API-021a-yesterday]" time="0.186" /><testcase classname="test_06_api" name="test_api_urgency_boundaries[TC-API-021b-today]" time="0.168"><failure message="AssertionError: due 2026-11-27: urgency 'Overdue'&#10;assert 'Overdue' == 'Due Today'&#10;  &#10;  - Due Today&#10;  + Overdue">api = &lt;api_client.ApiClient object at 0x0000022c8a8280b0&gt;, offset = 0
+expected = 'Due Today'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-049")
+    @pytest.mark.manual("TC-API-021")
+    @pytest.mark.req("REQ-006")
+    @pytest.mark.parametrize("offset, expected", [
+        pytest.param(-1, "Overdue", id="TC-API-021a-yesterday"),
+        pytest.param(0, "Due Today", marks=pytest.mark.known_defect("DEF-002"), id="TC-API-021b-today"),
+        pytest.param(1, "Due Soon", id="TC-API-021c-plus1"),
+        pytest.param(2, "Due Soon", id="TC-API-021d-plus2"),
+        pytest.param(3, "Upcoming", id="TC-API-021e-plus3"),
+    ])
+    def test_api_urgency_boundaries(api, offset, expected):
+        resp = api.request("POST", "/api/tasks", {"title": f"urgency {offset:+d}", "due_date": iso_in(offset)})
+        assert resp.status == 201, resp
+&gt;       assert resp.json["urgency"] == expected, f"due {iso_in(offset)}: urgency {resp.json['urgency']!r}"
+E       AssertionError: due 2026-11-27: urgency 'Overdue'
+E       assert 'Overdue' == 'Due Today'
+E         
+E         - Due Today
+E         + Overdue
+
+test_06_api.py:328: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_urgency_boundaries[TC-API-021c-plus1]" time="0.168" /><testcase classname="test_06_api" name="test_api_urgency_boundaries[TC-API-021d-plus2]" time="0.183" /><testcase classname="test_06_api" name="test_api_urgency_boundaries[TC-API-021e-plus3]" time="0.165" /><testcase classname="test_06_api" name="test_api_read_own_task" time="0.213" /><testcase classname="test_06_api" name="test_api_read_missing_task" time="0.168" /><testcase classname="test_06_api" name="test_api_read_another_users_task" time="0.355" /><testcase classname="test_06_api" name="test_api_non_integer_task_id" time="0.158" /><testcase classname="test_06_api" name="test_api_filter_by_category" time="0.251" /><testcase classname="test_06_api" name="test_api_filter_by_status[TC-API-027a-open]" time="0.008" /><testcase classname="test_06_api" name="test_api_filter_by_status[TC-API-027b-done]" time="0.008" /><testcase classname="test_06_api" name="test_api_title_search" time="0.026" /><testcase classname="test_06_api" name="test_api_combined_filters" time="0.007" /><testcase classname="test_06_api" name="test_api_search_with_apostrophe" time="0.025"><failure message="AssertionError: search for O'Brien: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;&#10;assert 500 == 200&#10; +  where 500 = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;.status">list_user = &lt;api_client.ApiClient object at 0x0000022c8a828ad0&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-058")
+    @pytest.mark.manual("TC-API-030")
+    @pytest.mark.req("REQ-005")
+    @pytest.mark.known_defect("DEF-017")
+    def test_api_search_with_apostrophe(list_user):
+        resp = list_user.request("GET", "/api/tasks", params={"q": "O'Brien"})
+&gt;       assert resp.status == 200, f"search for O'Brien: {resp!r}"
+E       AssertionError: search for O'Brien: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;
+E       assert 500 == 200
+E        +  where 500 = &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;.status
+
+test_06_api.py:441: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_pagination" time="0.296" /><testcase classname="test_06_api" name="test_api_invalid_pagination[TC-API-032a-per-page-negative]" time="0.293"><failure message="AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{&quot;category&quot;:null,&quot;category_id&quot;:null,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:05.278378&quot;,&quot;description&quot;:&quot;&quot;,&quot;don'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a828170&gt;
+params = {'per_page': '-1'}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-060")
+    @pytest.mark.manual("TC-API-032")
+    @pytest.mark.req("REQ-009")
+    @pytest.mark.parametrize("params", [
+        pytest.param({"per_page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032a-per-page-negative"),
+        pytest.param({"page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032b-page-negative"),
+        pytest.param({"page": "abc"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032c-page-text"),
+    ])
+    def test_api_invalid_pagination(api, params):
+        for i in range(3):
+            api.create_task(f"Paging {i}")
+&gt;       expect_json_error(api.request("GET", "/api/tasks", params=params), 400)
+
+test_06_api.py:469: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.278378","description":"","don'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.278378","description":"","don'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_pagination[TC-API-032b-page-negative]" time="0.219"><failure message="AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{&quot;category&quot;:null,&quot;category_id&quot;:null,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:05.564875&quot;,&quot;description&quot;:&quot;&quot;,&quot;don'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a82a330&gt;
+params = {'page': '-1'}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-060")
+    @pytest.mark.manual("TC-API-032")
+    @pytest.mark.req("REQ-009")
+    @pytest.mark.parametrize("params", [
+        pytest.param({"per_page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032a-per-page-negative"),
+        pytest.param({"page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032b-page-negative"),
+        pytest.param({"page": "abc"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032c-page-text"),
+    ])
+    def test_api_invalid_pagination(api, params):
+        for i in range(3):
+            api.create_task(f"Paging {i}")
+&gt;       expect_json_error(api.request("GET", "/api/tasks", params=params), 400)
+
+test_06_api.py:469: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.564875","description":"","don'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.564875","description":"","don'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_pagination[TC-API-032c-page-text]" time="0.246"><failure message="AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{&quot;category&quot;:null,&quot;category_id&quot;:null,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:05.829773&quot;,&quot;description&quot;:&quot;&quot;,&quot;don'&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a82a870&gt;
+params = {'page': 'abc'}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-060")
+    @pytest.mark.manual("TC-API-032")
+    @pytest.mark.req("REQ-009")
+    @pytest.mark.parametrize("params", [
+        pytest.param({"per_page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032a-per-page-negative"),
+        pytest.param({"page": "-1"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032b-page-negative"),
+        pytest.param({"page": "abc"}, marks=pytest.mark.known_defect("DEF-022"), id="TC-API-032c-page-text"),
+    ])
+    def test_api_invalid_pagination(api, params):
+        for i in range(3):
+            api.create_task(f"Paging {i}")
+&gt;       expect_json_error(api.request("GET", "/api/tasks", params=params), 400)
+
+test_06_api.py:469: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.829773","description":"","don'&gt;
+status = 400, message = None
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 400 with a JSON error, got &lt;200 application/json '[{"category":null,"category_id":null,"completed_at":null,"created_at":"2026-11-27T14:50:05.829773","description":"","don'&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_task_list_scoped_to_user" time="0.202" /><testcase classname="test_06_api" name="test_api_partial_update" time="0.191" /><testcase classname="test_06_api" name="test_api_complete_and_reopen" time="0.221" /><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036a-title-empty]" time="0.205"><failure message="AssertionError: PUT {'title': ''}: &lt;200 application/json '{&quot;category&quot;:&quot;Work&quot;,&quot;category_id&quot;:1,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:06.676251&quot;,&quot;description&quot;:&quot;&quot;,&quot;done&quot;'&gt;; task afterwards: 200 {'title': '', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}&#10;assert (200, True) == (400, True)&#10;  &#10;  At index 0 diff: 200 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a82bb30&gt;
+payload = {'title': ''}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'title': ''}: &lt;200 application/json '{"category":"Work","category_id":1,"completed_at":null,"created_at":"2026-11-27T14:50:06.676251","description":"","done"'&gt;; task afterwards: 200 {'title': '', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}
+E       assert (200, True) == (400, True)
+E         
+E         At index 0 diff: 200 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036b-title-spaces]" time="0.251"><failure message="AssertionError: PUT {'title': '   '}: &lt;200 application/json '{&quot;category&quot;:&quot;Work&quot;,&quot;category_id&quot;:1,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:06.934349&quot;,&quot;description&quot;:&quot;&quot;,&quot;done&quot;'&gt;; task afterwards: 200 {'title': '   ', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}&#10;assert (200, True) == (400, True)&#10;  &#10;  At index 0 diff: 200 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a82bad0&gt;
+payload = {'title': '   '}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'title': '   '}: &lt;200 application/json '{"category":"Work","category_id":1,"completed_at":null,"created_at":"2026-11-27T14:50:06.934349","description":"","done"'&gt;; task afterwards: 200 {'title': '   ', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}
+E       assert (200, True) == (400, True)
+E         
+E         At index 0 diff: 200 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036c-done-text]" time="0.206"><failure message="AssertionError: PUT {'done': 'false'}: &lt;200 application/json '{&quot;category&quot;:&quot;Work&quot;,&quot;category_id&quot;:1,&quot;completed_at&quot;:&quot;2026-11-27 14:50:07&quot;,&quot;created_at&quot;:&quot;2026-11-27T14:50:07.194332&quot;,&quot;descr'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': True, 'category_id': 1, 'due_date': '2026-12-02'}&#10;assert (200, True) == (400, True)&#10;  &#10;  At index 0 diff: 200 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a83dd90&gt;
+payload = {'done': 'false'}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'done': 'false'}: &lt;200 application/json '{"category":"Work","category_id":1,"completed_at":"2026-11-27 14:50:07","created_at":"2026-11-27T14:50:07.194332","descr'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': True, 'category_id': 1, 'due_date': '2026-12-02'}
+E       assert (200, True) == (400, True)
+E         
+E         At index 0 diff: 200 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036d-title-null]" time="0.225"><failure message="AssertionError: PUT {'title': None}: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}&#10;assert (500, False) == (400, True)&#10;  &#10;  At index 0 diff: 500 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a83df10&gt;
+payload = {'title': None}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'title': None}: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 1, 'due_date': '2026-12-02'}
+E       assert (500, False) == (400, True)
+E         
+E         At index 0 diff: 500 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036e-unknown-category]" time="0.227"><failure message="AssertionError: PUT {'category_id': 999}: &lt;200 application/json '{&quot;category&quot;:null,&quot;category_id&quot;:999,&quot;completed_at&quot;:null,&quot;created_at&quot;:&quot;2026-11-27T14:50:07.748341&quot;,&quot;description&quot;:&quot;&quot;,&quot;done&quot;'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 999, 'due_date': '2026-12-02'}&#10;assert (200, True) == (400, True)&#10;  &#10;  At index 0 diff: 200 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a82af30&gt;
+payload = {'category_id': 999}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'category_id': 999}: &lt;200 application/json '{"category":null,"category_id":999,"completed_at":null,"created_at":"2026-11-27T14:50:07.748341","description":"","done"'&gt;; task afterwards: 200 {'title': 'Stable title', 'done': False, 'category_id': 999, 'due_date': '2026-12-02'}
+E       assert (200, True) == (400, True)
+E         
+E         At index 0 diff: 200 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_invalid_values_on_update[TC-API-036f-bad-due-date]" time="0.216"><failure message="AssertionError: PUT {'due_date': '31/12/2026'}: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; task afterwards: 500 None&#10;assert (500, False) == (400, True)&#10;  &#10;  At index 0 diff: 500 != 400&#10;  Use -v to get more diff">api = &lt;api_client.ApiClient object at 0x0000022c8a82b050&gt;
+payload = {'due_date': '31/12/2026'}
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-064")
+    @pytest.mark.manual("TC-API-036")
+    @pytest.mark.req("REQ-003", "REQ-009")
+    @pytest.mark.parametrize("payload", [
+        pytest.param({"title": ""}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036a-title-empty"),
+        pytest.param({"title": "   "}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036b-title-spaces"),
+        pytest.param({"done": "false"}, marks=pytest.mark.known_defect("DEF-020"), id="TC-API-036c-done-text"),
+        pytest.param({"title": None}, marks=pytest.mark.known_defect("DEF-018"), id="TC-API-036d-title-null"),
+        pytest.param({"category_id": 999}, marks=pytest.mark.known_defect("DEF-019"), id="TC-API-036e-unknown-category"),
+        pytest.param({"due_date": "31/12/2026"}, marks=pytest.mark.known_defect("DEF-015"), id="TC-API-036f-bad-due-date"),
+    ])
+    def test_api_invalid_values_on_update(api, payload):
+        before = api.create_task("Stable title", category="Work", due_date=iso_in(5))
+        resp = api.request("PUT", f"/api/tasks/{before['id']}", payload)
+        check = api.request("GET", f"/api/tasks/{before['id']}")
+        after = check.json if check.is_json else None
+        stored = None if after is None else \
+            {k: after.get(k) for k in ("title", "done", "category_id", "due_date")}
+        expected = {k: before[k] for k in ("title", "done", "category_id", "due_date")}
+&gt;       assert (resp.status, resp.is_json) == (400, True), \
+            f"PUT {payload}: {resp!r}; task afterwards: {check.status} {stored}"
+E       AssertionError: PUT {'due_date': '31/12/2026'}: &lt;500 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;500 Internal Server Error&lt;/title&gt; &lt;h1&gt;Internal Server Error&lt;/h1&gt; &lt;p&gt;The server enc'&gt;; task afterwards: 500 None
+E       assert (500, False) == (400, True)
+E         
+E         At index 0 diff: 500 != 400
+E         Use -v to get more diff
+
+test_06_api.py:536: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_update_another_users_task" time="0.353" /><testcase classname="test_06_api" name="test_api_update_missing_task" time="0.168" /><testcase classname="test_06_api" name="test_api_delete_own_task" time="0.188" /><testcase classname="test_06_api" name="test_api_delete_another_users_task" time="0.375"><failure message="AssertionError: intruder DELETE returned 200; owner's GET afterwards returned 404&#10;assert (200, 404) == (404, 200)&#10;  &#10;  At index 0 diff: 200 != 404&#10;  Use -v to get more diff">owner_and_intruder = (&lt;api_client.ApiClient object at 0x0000022c8a6b3c50&gt;, &lt;api_client.ApiClient object at 0x0000022c8a6b39b0&gt;, {'category': 'Work', 'category_id': 1, 'completed_at': None, 'created_at': '2026-11-27T14:50:09.086472', ...})
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-068")
+    @pytest.mark.manual("TC-API-040")
+    @pytest.mark.req("REQ-008")
+    @pytest.mark.known_defect("DEF-014")
+    def test_api_delete_another_users_task(owner_and_intruder):
+        owner, intruder, task = owner_and_intruder
+        delete = intruder.request("DELETE", f"/api/tasks/{task['id']}")
+        check = owner.request("GET", f"/api/tasks/{task['id']}")
+&gt;       assert (delete.status, check.status) == (404, 200), \
+            f"intruder DELETE returned {delete.status}; owner's GET afterwards returned {check.status}"
+E       AssertionError: intruder DELETE returned 200; owner's GET afterwards returned 404
+E       assert (200, 404) == (404, 200)
+E         
+E         At index 0 diff: 200 != 404
+E         Use -v to get more diff
+
+test_06_api.py:584: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_delete_missing_task" time="0.162"><failure message="AssertionError: expected 404 with a JSON error, got &lt;200 application/json '{&quot;result&quot;:&quot;ok&quot;} '&gt;">api = &lt;api_client.ApiClient object at 0x0000022c8a83e930&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-069")
+    @pytest.mark.manual("TC-API-041")
+    @pytest.mark.req("REQ-009")
+    @pytest.mark.known_defect("DEF-021")
+    def test_api_delete_missing_task(api):
+&gt;       expect_json_error(api.request("DELETE", f"/api/tasks/{MISSING}"), 404, "not found")
+
+test_06_api.py:594: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;200 application/json '{"result":"ok"} '&gt;, status = 404
+message = 'not found'
+
+    def expect_json_error(resp, status, message=None):
+        """Status, JSON body (not an HTML error page) and, optionally, the error text."""
+&gt;       assert resp.status == status, f"expected {status} with a JSON error, got {resp!r}"
+               ^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: expected 404 with a JSON error, got &lt;200 application/json '{"result":"ok"} '&gt;
+
+api_checks.py:45: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_dashboard_counts" time="0.276" /><testcase classname="test_06_api" name="test_api_dashboard_due_today_not_overdue" time="0.371"><failure message="AssertionError: Overdue counter is 2, expected 1&#10;assert 2 == 1">api = &lt;api_client.ApiClient object at 0x0000022c8a83eb10&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-071")
+    @pytest.mark.manual("TC-API-043")
+    @pytest.mark.req("REQ-006", "REQ-007")
+    @pytest.mark.known_defect("DEF-002")
+    def test_api_dashboard_due_today_not_overdue(api):
+        seed_dashboard_dataset(api)
+        api.create_task("D today", due_date=iso_in(0))
+        counts = _dashboard(api)
+        assert counts["total"] == 6
+&gt;       assert counts["overdue"] == 1, f"Overdue counter is {counts['overdue']}, expected 1"
+E       AssertionError: Overdue counter is 2, expected 1
+E       assert 2 == 1
+
+test_06_api.py:633: AssertionError</failure></testcase><testcase classname="test_06_api" name="test_api_dashboard_scoped_to_user" time="0.381" /><testcase classname="test_06_api" name="test_api_unsupported_method" time="0.229" /><testcase classname="test_07_web_forms" name="test_web_register_through_form" time="0.198" /><testcase classname="test_07_web_forms" name="test_web_registration_validated_on_server[TC-WEB-002a-empty-username]" time="0.024" /><testcase classname="test_07_web_forms" name="test_web_registration_validated_on_server[TC-WEB-002b-illegal-character]" time="0.035" /><testcase classname="test_07_web_forms" name="test_web_registration_validated_on_server[TC-WEB-002c-password-7]" time="0.044" /><testcase classname="test_07_web_forms" name="test_web_login_through_form[TC-WEB-003a-valid]" time="0.318" /><testcase classname="test_07_web_forms" name="test_web_login_through_form[TC-WEB-003b-wrong-password]" time="0.326" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004a-list]" time="0.020" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004b-new]" time="0.020" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004c-edit]" time="0.018" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004d-dashboard]" time="0.018" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004e-toggle]" time="0.030" /><testcase classname="test_07_web_forms" name="test_web_protected_pages_redirect_when_logged_out[TC-WEB-004f-delete]" time="0.021" /><testcase classname="test_07_web_forms" name="test_web_created_task_matches_api" time="0.165" /><testcase classname="test_07_web_forms" name="test_api_created_task_matches_web_list" time="0.171" /><testcase classname="test_07_web_forms" name="test_web_edit_matches_api" time="0.217" /><testcase classname="test_07_web_forms" name="test_web_toggle_matches_api" time="0.242" /><testcase classname="test_07_web_forms" name="test_web_delete_matches_api" time="0.194" /><testcase classname="test_07_web_forms" name="test_web_blank_title_validated_on_server[TC-WEB-010a-empty]" time="0.200"><failure message="AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']">client = &lt;api_client.ApiClient object at 0x0000022c8a83c0b0&gt;, title = ''
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-083")
+    @pytest.mark.manual("TC-WEB-010")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.parametrize("title", [
+        pytest.param("", marks=pytest.mark.known_defect("DEF-003"), id="TC-WEB-010a-empty"),
+        pytest.param("   ", marks=pytest.mark.known_defect("DEF-003"), id="TC-WEB-010b-spaces"),
+    ])
+    def test_web_blank_title_validated_on_server(client, title):
+        resp = client.web_post("/tasks/new", blank_task_form(title=title))
+        saved = client.tasks()
+&gt;       expect_not_accepted(resp, f"saved titles: {titles(saved)}")
+
+test_07_web_forms.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;
+afterwards = "saved titles: ['']"
+
+    def expect_not_accepted(resp, afterwards=""):
+        """A web form submission the server should refuse: no redirect to the task list."""
+&gt;       assert not (resp.status == 302 and resp.location == "/"), \
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"server accepted the form: {resp.status} redirect to {resp.location}" + \
+            (f"; {afterwards}" if afterwards else "")
+E       AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']
+
+api_checks.py:60: AssertionError</failure></testcase><testcase classname="test_07_web_forms" name="test_web_blank_title_validated_on_server[TC-WEB-010b-spaces]" time="0.197"><failure message="AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']">client = &lt;api_client.ApiClient object at 0x0000022c8a83e150&gt;, title = '   '
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-083")
+    @pytest.mark.manual("TC-WEB-010")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.parametrize("title", [
+        pytest.param("", marks=pytest.mark.known_defect("DEF-003"), id="TC-WEB-010a-empty"),
+        pytest.param("   ", marks=pytest.mark.known_defect("DEF-003"), id="TC-WEB-010b-spaces"),
+    ])
+    def test_web_blank_title_validated_on_server(client, title):
+        resp = client.web_post("/tasks/new", blank_task_form(title=title))
+        saved = client.tasks()
+&gt;       expect_not_accepted(resp, f"saved titles: {titles(saved)}")
+
+test_07_web_forms.py:218: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;
+afterwards = "saved titles: ['']"
+
+    def expect_not_accepted(resp, afterwards=""):
+        """A web form submission the server should refuse: no redirect to the task list."""
+&gt;       assert not (resp.status == 302 and resp.location == "/"), \
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"server accepted the form: {resp.status} redirect to {resp.location}" + \
+            (f"; {afterwards}" if afterwards else "")
+E       AssertionError: server accepted the form: 302 redirect to /; saved titles: ['']
+
+api_checks.py:60: AssertionError</failure></testcase><testcase classname="test_07_web_forms" name="test_web_due_date_validated_on_server[TC-WEB-011a-wrong-format]" time="0.188"><failure message="AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)">client = &lt;api_client.ApiClient object at 0x0000022c8a5d89b0&gt;
+due_date = '31/12/2026'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-084")
+    @pytest.mark.manual("TC-WEB-011")
+    @pytest.mark.req("REQ-003", "REQ-006")
+    @pytest.mark.parametrize("due_date", [
+        pytest.param("31/12/2026", marks=pytest.mark.known_defect("DEF-015"), id="TC-WEB-011a-wrong-format"),
+        pytest.param("not-a-date", marks=pytest.mark.known_defect("DEF-015"), id="TC-WEB-011b-text"),
+    ])
+    def test_web_due_date_validated_on_server(client, due_date):
+        resp = client.web_post("/tasks/new", blank_task_form(title="bad date", due_date=due_date))
+        pages = (client.web_get("/").status, client.web_get("/dashboard").status)
+&gt;       expect_not_accepted(resp, f"/ and /dashboard then returned {pages}")
+
+test_07_web_forms.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;
+afterwards = '/ and /dashboard then returned (500, 500)'
+
+    def expect_not_accepted(resp, afterwards=""):
+        """A web form submission the server should refuse: no redirect to the task list."""
+&gt;       assert not (resp.status == 302 and resp.location == "/"), \
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"server accepted the form: {resp.status} redirect to {resp.location}" + \
+            (f"; {afterwards}" if afterwards else "")
+E       AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)
+
+api_checks.py:60: AssertionError</failure></testcase><testcase classname="test_07_web_forms" name="test_web_due_date_validated_on_server[TC-WEB-011b-text]" time="0.197"><failure message="AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)">client = &lt;api_client.ApiClient object at 0x0000022c8a5d9070&gt;
+due_date = 'not-a-date'
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-084")
+    @pytest.mark.manual("TC-WEB-011")
+    @pytest.mark.req("REQ-003", "REQ-006")
+    @pytest.mark.parametrize("due_date", [
+        pytest.param("31/12/2026", marks=pytest.mark.known_defect("DEF-015"), id="TC-WEB-011a-wrong-format"),
+        pytest.param("not-a-date", marks=pytest.mark.known_defect("DEF-015"), id="TC-WEB-011b-text"),
+    ])
+    def test_web_due_date_validated_on_server(client, due_date):
+        resp = client.web_post("/tasks/new", blank_task_form(title="bad date", due_date=due_date))
+        pages = (client.web_get("/").status, client.web_get("/dashboard").status)
+&gt;       expect_not_accepted(resp, f"/ and /dashboard then returned {pages}")
+
+test_07_web_forms.py:233: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;
+afterwards = '/ and /dashboard then returned (500, 500)'
+
+    def expect_not_accepted(resp, afterwards=""):
+        """A web form submission the server should refuse: no redirect to the task list."""
+&gt;       assert not (resp.status == 302 and resp.location == "/"), \
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"server accepted the form: {resp.status} redirect to {resp.location}" + \
+            (f"; {afterwards}" if afterwards else "")
+E       AssertionError: server accepted the form: 302 redirect to /; / and /dashboard then returned (500, 500)
+
+api_checks.py:60: AssertionError</failure></testcase><testcase classname="test_07_web_forms" name="test_web_category_validated_on_server" time="0.173"><failure message="AssertionError: server accepted the form: 302 redirect to /; saved: [('bad category', 999)]">client = &lt;api_client.ApiClient object at 0x0000022c8a5d9730&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-085")
+    @pytest.mark.manual("TC-WEB-012")
+    @pytest.mark.req("REQ-003")
+    @pytest.mark.known_defect("DEF-019")
+    def test_web_category_validated_on_server(client):
+        resp = client.web_post("/tasks/new", blank_task_form(title="bad category", category_id="999"))
+        saved = client.tasks()
+&gt;       expect_not_accepted(resp, f"saved: {[(t['title'], t['category_id']) for t in saved]}")
+
+test_07_web_forms.py:245: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+resp = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;
+afterwards = "saved: [('bad category', 999)]"
+
+    def expect_not_accepted(resp, afterwards=""):
+        """A web form submission the server should refuse: no redirect to the task list."""
+&gt;       assert not (resp.status == 302 and resp.location == "/"), \
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            f"server accepted the form: {resp.status} redirect to {resp.location}" + \
+            (f"; {afterwards}" if afterwards else "")
+E       AssertionError: server accepted the form: 302 redirect to /; saved: [('bad category', 999)]
+
+api_checks.py:60: AssertionError</failure></testcase><testcase classname="test_07_web_forms" name="test_web_actions_on_another_users_task" time="0.387" /><testcase classname="test_07_web_forms" name="test_web_dashboard_matches_api" time="0.261" /><testcase classname="test_07_web_forms" name="test_web_search_with_apostrophe" time="0.212" /><testcase classname="test_07_web_forms" name="test_web_duplicate_username_rejected" time="0.363"><failure message="AssertionError: duplicate username 'w6_web_14495383' was accepted: 302 redirect to /&#10;assert 302 == 200&#10; +  where 302 = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;.status">new_account = &lt;function new_account.&lt;locals&gt;._create at 0x0000022c8a6194e0&gt;
+anon = &lt;api_client.ApiClient object at 0x0000022c8a5d9c70&gt;
+
+    @pytest.mark.api
+    @pytest.mark.auto("TC-AUT-089")
+    @pytest.mark.manual("TC-WEB-016")
+    @pytest.mark.req("REQ-001")
+    @pytest.mark.known_defect("DEF-016")
+    def test_web_duplicate_username_rejected(new_account, anon):
+        existing = new_account("web")["username"]
+        resp = anon.web_post("/register", {"username": existing, "password": "Different99"})
+&gt;       assert resp.status == 200, \
+            f"duplicate username {existing!r} was accepted: {resp.status} redirect to {resp.location}"
+E       AssertionError: duplicate username 'w6_web_14495383' was accepted: 302 redirect to /
+E       assert 302 == 200
+E        +  where 302 = &lt;302 text/html '&lt;!doctype html&gt; &lt;html lang=en&gt; &lt;title&gt;Redirecting...&lt;/title&gt; &lt;h1&gt;Redirecting...&lt;/h1&gt; &lt;p&gt;You should be redirected automat'&gt;.status
+
+test_07_web_forms.py:301: AssertionError</failure></testcase></testsuite></testsuites>
